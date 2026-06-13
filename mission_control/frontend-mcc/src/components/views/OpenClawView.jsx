@@ -117,10 +117,10 @@ export default function OpenClawView({ theme }) {
       fetch('/api/openclaw/sysinfo').then(r => r.json()).catch(() => ({})),
       fetch('/api/openclaw/registry').then(r => r.json()).catch(() => ({ agents: [] })),
       fetch('/api/openclaw/telegram').then(r => r.json()).catch(() => ({})),
-      fetch('/api/openclaw/runtime-status').then(r => r.json()).catch(() => ({runtime: 'unknown'})),
       fetch('/api/models/overview').then(r => r.json()).catch(() => ({ agents: [] })),
       fetch('/api/openclaw/memory').then(r => r.json()).catch(() => ({ databases: [] })),
       fetch('/api/openclaw/logs/recent').then(r => r.json()).catch(() => ({ logs: [] })),
+      fetch('/api/openclaw/runtime-status').then(r => r.json()).catch(() => ({runtime: 'unknown'})),
     ])
     const sessions = parseSessions(status.raw || '')
     const heartbeats = parseHeartbeats(status.raw || '')
