@@ -1,0 +1,8 @@
+graph TD
+    Agents --> OC[OpenClaw Gateway poort 50506]
+    OC --> FILE[Bestandsoperaties]
+    OC --> TEL[Telegram]
+    OC --> WEB[Web zoeken]
+    OC --> CODE[Code uitvoering]
+    OC --> LLM[LiteLLM poort 4000]
+    LLM --> Models[AI Modellen]

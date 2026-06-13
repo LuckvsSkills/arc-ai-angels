@@ -1,0 +1,14 @@
+{
+  "chapters": [
+    {"id":"section-1","section":1,"title":"System Overview","description":"ARC AI AGENTS architecture","content":"<h2>System Overview</h2><p>Multi-agent orchestration platform with strict hierarchy and governance.</p>","related_diagrams":["01_hierarchy"],"subsections":[]},
+    {"id":"section-2","section":2,"title":"Agent Hierarchy","description":"Complete organizational structure","content":"<h2>Agent Hierarchy</h2><p>5-level hierarchical structure from Supreme Fea to Workers.</p>","related_diagrams":["01_hierarchy"],"subsections":[]},
+    {"id":"section-3","section":3,"title":"Omni Areas","description":"Five domain areas","content":"<h2>Omni Areas</h2><p>Helix, Matrix, Finix, Quantix, Zenix with specialized leaders.</p>","related_diagrams":["01_hierarchy"],"subsections":[]},
+    {"id":"section-4","section":4,"title":"Sentinels","description":"Execution containers","content":"<h2>Sentinels & Workers</h2><p>Sentinels hold agents, workers are future execution units.</p>","related_diagrams":["01_hierarchy"],"subsections":[]},
+    {"id":"section-5","section":5,"title":"Operations","description":"Task execution flow","content":"<h2>Operational System</h2><p>Pipeline: Nova intake → Flux orchestration → Omni coordination → Sentinel execution → Writeback → MCC.</p>","related_diagrams":["02_dataflow"],"subsections":[]},
+    {"id":"section-6","section":6,"title":"Agent Specs","description":"Individual agent capabilities","content":"<h2>Agent Specifications</h2><p>32 canonical agents with specialized roles across 5 domains.</p>","related_diagrams":[],"subsections":[]},
+    {"id":"section-7","section":7,"title":"Model Strategy","description":"Model optimization","content":"<h2>Model Strategy</h2><p>Different models for different task types and complexity levels.</p>","related_diagrams":[],"subsections":[]},
+    {"id":"section-8","section":8,"title":"Cost Framework","description":"Budget management","content":"<h2>Cost Framework</h2><p>Tracking per-agent, per-workflow, and per-platform costs.</p>","related_diagrams":["06_cost"],"subsections":[]},
+    {"id":"section-9","section":9,"title":"Tools & Integrations","description":"Integration roadmap","content":"<h2>Tools & Integrations</h2><p>Launch critical tools + Phase 2-4 roadmap for voice, content, trading, marketing.</p>","related_diagrams":["05_tools"],"subsections":[]},
+    {"id":"section-10","section":10,"title":"Future Roadmap","description":"Expansion plans","content":"<h2>Future Roadmap</h2><p>Scale from 32 agents to 158 agents through domain expansion.</p>","related_diagrams":["03_capacity"],"subsections":[]}
+  ]
+}

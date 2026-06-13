@@ -1,0 +1,13 @@
+{
+  "id": "string",
+  "agent": "string",
+  "providerUsed": "tavily | firecrawl",
+  "type": "search | extract",
+  "status": "completed | failed",
+  "requestedAt": "ISO-8601 timestamp",
+  "completedAt": "ISO-8601 timestamp",
+  "query": "string|null",
+  "url": "string|null",
+  "result": {},
+  "error": null
+}

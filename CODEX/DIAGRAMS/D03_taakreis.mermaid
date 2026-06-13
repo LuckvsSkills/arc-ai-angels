@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant SF as Supreme Fea
+    participant N as Nova
+    participant F as Flux
+    participant OL as Omni Lead
+    participant SN as Sentinel
+    SF->>N: Verzoek
+    N->>N: Analyseer intent
+    alt Eenvoudig verzoek
+        N->>SF: Direct afhandelen
+    else Complex project
+        N->>F: Flux-ready briefing
+        F->>F: Routing beslissing
+        F->>OL: Taak + context
+        OL->>SN: Verdeel werk
+        SN->>SN: Voer uit
+        SN->>OL: Output
+        OL->>F: Gevalideerd resultaat
+        F->>N: Gesynthetiseerde output
+        N->>SF: Oplevering
+    end

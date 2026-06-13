@@ -1,0 +1,61 @@
+# Logs en sessies
+agents/*/sessions/
+agents/*/logs/
+agents/*/runtime/
+agents/*/workspace/
+agents/*/consolidation.log
+agents/*/intelligent-consolidation.log
+logs/
+ping_pong_logs/
+*.log
+*.jsonl
+
+# Grote mappen — nooit op GitHub
+backups/
+ROOT_ARCHIVE/
+HARNAS_BACKUP*/
+reports/
+archive/
+
+# Build en dist
+mission_control/frontend-mcc/dist/
+mission_control/frontend-mcc/node_modules/
+mcc-backend/__pycache__/
+**/__pycache__/
+**/*.pyc
+
+# Website builds — klant projecten lokaal houden
+projects/website_builds/*/code/
+projects/website_builds/*/database/
+
+# Temp en audit bestanden
+*audit*.txt
+*audit*.md
+AGENT_AUDIT*.txt
+*REPORT*.txt
+analyze-*.sh
+audit-*.sh
+complete-*.sh
+fix-*.sh
+/tmp/
+
+# Environment
+.env
+.env.local
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Agent temp bestanden
+agents/*/TASK_HISTORY.md
+agents/*/cronjobs/
+mcc-frontend/
+backups/
+agents/forge/projects/test-demo/
+agents/forge/projects/
+mcc-backend/node_modules/
+agents/*/agent/
+agents/*/agent/
+agents/*/agent/

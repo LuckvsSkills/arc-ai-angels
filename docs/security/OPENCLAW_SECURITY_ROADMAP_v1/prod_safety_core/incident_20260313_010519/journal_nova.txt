@@ -1,0 +1,101 @@
+-- Logs begin at Tue 2026-03-03 21:40:57 CET, end at Fri 2026-03-13 01:05:19 CET. --
+Mar 13 00:22:06 Magneto systemd[100612]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:06 Magneto systemd[100612]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:06 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:06 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:08 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 650.
+Mar 13 00:22:08 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:08 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:08 Magneto systemd[100764]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:08 Magneto systemd[100764]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:08 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:08 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:10 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 651.
+Mar 13 00:22:10 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:10 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:10 Magneto systemd[100915]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:10 Magneto systemd[100915]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:10 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:10 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:12 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 652.
+Mar 13 00:22:13 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:13 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:13 Magneto systemd[101067]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:13 Magneto systemd[101067]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:13 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:13 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:15 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 653.
+Mar 13 00:22:15 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:15 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:15 Magneto systemd[101219]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:15 Magneto systemd[101219]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:15 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:15 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:17 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 654.
+Mar 13 00:22:17 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:17 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:17 Magneto systemd[101370]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:17 Magneto systemd[101370]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:17 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:17 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:19 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 655.
+Mar 13 00:22:19 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:19 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:19 Magneto systemd[101524]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:19 Magneto systemd[101524]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:19 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:19 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:21 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 656.
+Mar 13 00:22:22 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:22 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:22 Magneto systemd[101676]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:22 Magneto systemd[101676]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:22 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:22 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:24 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 657.
+Mar 13 00:22:24 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:24 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:24 Magneto systemd[101828]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:24 Magneto systemd[101828]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:24 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:24 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:27 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 658.
+Mar 13 00:22:27 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:27 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:27 Magneto systemd[101979]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:27 Magneto systemd[101979]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:27 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:27 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:29 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 659.
+Mar 13 00:22:29 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:29 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:29 Magneto systemd[102132]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:29 Magneto systemd[102132]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:29 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:29 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:31 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 660.
+Mar 13 00:22:31 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:31 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:31 Magneto systemd[102284]: openclaw-nova.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:31 Magneto systemd[102284]: openclaw-nova.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:31 Magneto systemd[1]: openclaw-nova.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:31 Magneto systemd[1]: openclaw-nova.service: Failed with result 'exit-code'.
+Mar 13 00:22:33 Magneto systemd[1]: openclaw-nova.service: Scheduled restart job, restart counter is at 661.
+Mar 13 00:22:33 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:22:33 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:22:34 Magneto sudo[102583]:     root : TTY=unknown ; PWD=/ ; USER=agent-nova ; COMMAND=/usr/local/bin/openclaw-nova
+Mar 13 00:22:34 Magneto sudo[102583]: pam_unix(sudo:session): session opened for user agent-nova by (uid=0)
+Mar 13 00:23:56 Magneto systemd[1]: Stopping OpenClaw Nova (Telegram agent)...
+Mar 13 00:23:56 Magneto sudo[102583]: pam_unix(sudo:session): session closed for user agent-nova
+Mar 13 00:23:56 Magneto systemd[1]: openclaw-nova.service: Succeeded.
+Mar 13 00:23:56 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:23:56 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:23:56 Magneto sudo[102834]:     root : TTY=unknown ; PWD=/ ; USER=agent-nova ; COMMAND=/usr/local/bin/openclaw-nova
+Mar 13 00:23:56 Magneto sudo[102834]: pam_unix(sudo:session): session opened for user agent-nova by (uid=0)
+Mar 13 00:50:03 Magneto systemd[1]: Stopping OpenClaw Nova (Telegram agent)...
+Mar 13 00:50:03 Magneto sudo[102834]: pam_unix(sudo:session): session closed for user agent-nova
+Mar 13 00:50:03 Magneto systemd[1]: openclaw-nova.service: Succeeded.
+Mar 13 00:50:03 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+Mar 13 00:50:39 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:50:39 Magneto sudo[104398]:     root : TTY=unknown ; PWD=/ ; USER=agent-nova ; COMMAND=/usr/local/bin/openclaw-nova
+Mar 13 00:50:39 Magneto sudo[104398]: pam_unix(sudo:session): session opened for user agent-nova by (uid=0)

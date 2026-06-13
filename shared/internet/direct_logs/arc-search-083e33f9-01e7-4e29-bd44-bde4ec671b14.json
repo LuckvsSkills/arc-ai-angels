@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "id": "arc-search-083e33f9-01e7-4e29-bd44-bde4ec671b14",
+  "provider": "tavily",
+  "query": "populair reggae nummer youtube",
+  "maxResults": 3,
+  "completedAt": "2026-04-05T00:46:55Z",
+  "result": {
+    "query": "populair reggae nummer youtube",
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.youtube.com/playlist?list=PLfHmW3UGVrcCjXo6G8dwloHBPYEKw3uL4",
+        "title": "Reggae music popular",
+        "content": "Reggae music popular · SOJA - You And Me (Official Video) ft. Chris Boomer · Gyptian - Hold You | Official Music Video · Bob Marley & The Wailers - Could You Be",
+        "score": 0.99899167,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=4nijoz_JU1M",
+        "title": "Best Reggae Popular Songs 2017 ...",
+        "content": "Best Reggae Popular Songs 2017 Reggae Mix Best Reggae Music Hits 2017. 11M views · 8 years ago. #lazb ...more. Music “blackstar” House.",
+        "score": 0.9986436,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/playlist?list=PLjF50Dlp9ieks26oOKahUFiRTj18o6YGt",
+        "title": "All-Time Reggae Classics - Best Reggae Hit Songs",
+        "content": "Watch music videos for Reggae's all-time greatest hits in this playlist, featuring videos from Bob Marley, Damian Marley, Musical Youth, UB40 and more.",
+        "score": 0.997783,
+        "raw_content": null
+      }
+    ],
+    "response_time": 0.63,
+    "request_id": "d80dbec1-604d-4c2a-ae41-d6f5a654e584"
+  }
+}

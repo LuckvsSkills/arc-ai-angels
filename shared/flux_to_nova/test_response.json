@@ -1,0 +1,19 @@
+{"timestamp":"2026-03-03T13:58:33+01:00","source":"flux","type":"response","payload":{"status":"success","output":"total 660
+drwxr-xr-x  7 prime prime   4096 Mar  3 13:55 .
+drwxr-xr-x 22 prime prime   4096 Mar  3 12:58 ..
+-rwxr-x---  1 prime prime    855 Mar  1 09:45 AGENTS.md
+-rw-r--r--  1 prime prime   4079 Mar  3 09:48 BLOK_01_AFSLUITING.txt
+-rwxr-x---  1 prime prime      0 Mar  1 09:45 HEARTBEAT.md
+-rwxr-x---  1 prime prime    681 Mar  1 09:45 IDENTITY.md
+-rw-r--r--  1 prime prime    694 Mar  3 09:43 MASTER_CONTEXT.md
+-rwxr-x---  1 prime prime 617109 Mar  1 09:45 MEMORY.md
+-rwxr-x---  1 prime prime    318 Mar  1 09:45 NOVA_PROTOCOL.md
+-rw-r--r--  1 prime prime    213 Mar  3 09:43 OVERDRACHT_BLOK_01.md
+-rwxr-x---  1 prime prime      0 Mar  1 09:45 SOUL.md
+-rwxr-x---  1 prime prime      0 Mar  1 09:45 USER.md
+drwxr-xr-x  6 prime prime   4096 Mar  3 13:44 agents
+drwxr-xr-x  4 prime prime   4096 Mar  3 12:50 backups
+drwx------  7 prime prime   4096 Mar  3 12:24 gatekeeper
+-rwxr-xr-x  1 prime prime    284 Mar  3 06:10 rebuild.sh
+drwxr-xr-x  2 prime prime   4096 Mar  3 12:49 roadmap
+drwxr-xr-x  4 prime prime   4096 Mar  3 12:12 shared"}}

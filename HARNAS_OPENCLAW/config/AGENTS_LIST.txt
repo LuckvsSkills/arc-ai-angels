@@ -1,0 +1,48 @@
+# HARNAS_OPENCLAW - All 32 Agents
+# Format: agent_name agent_type team
+
+# CORE (2)
+nova core gateway
+flux core orchestrator
+
+# LEADS (5)
+cortexia lead helix
+saelia lead matrix
+finoria lead finix
+lumeria lead quantix
+fluentia lead zenix
+
+# SENTINELS - HELIX Team (5)
+nero sentinel helix
+forge sentinel helix
+axon sentinel helix
+ventura sentinel helix
+clio sentinel helix
+
+# SENTINELS - MATRIX Team (5)
+kairo sentinel matrix
+kenzo sentinel matrix
+odis sentinel matrix
+vector sentinel matrix
+zion sentinel matrix
+
+# SENTINELS - FINIX Team (5)
+arix sentinel finix
+daxio sentinel finix
+enki sentinel finix
+sora sentinel finix
+tharos sentinel finix
+
+# SENTINELS - QUANTIX Team (5)
+elora sentinel quantix
+kresta sentinel quantix
+luvia sentinel quantix
+nura sentinel quantix
+vondra sentinel quantix
+
+# SENTINELS - ZENIX Team (5)
+draven sentinel zenix
+orizon sentinel zenix
+solis sentinel zenix
+unia sentinel zenix
+zena sentinel zenix

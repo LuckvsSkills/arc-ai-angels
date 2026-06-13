@@ -1,0 +1,197 @@
+# M10 — Flux Orchestration Map
+
+## Scope
+Dit document beschrijft hoe Flux de volledige ARC / OpenClaw operatie orkestreert.
+
+Flux is het centrale brein dat:
+- taken ontvangt
+- domeinen herkent
+- sentinels aanstuurt
+- resultaten samenvoegt
+- terugkoppeling verzorgt naar interface agents.
+
+Flux fungeert als:
+- centrale intelligentie
+- orchestrator
+- router
+- supervisor van sentinels.
+
+---
+
+# 1. Hoofdstructuur
+
+Operator
+↓
+Direct Interface Agents
+- Nova
+- James
+- Jim
+↓
+Flux
+↓
+Sentinels
+↓
+Lead Agents
+↓
+Workers
+
+---
+
+# 2. Interface laag
+
+Direct interface agents communiceren met de operator.
+
+Voorbeeld:
+Operator → Nova → Flux
+
+Interface agents vertalen:
+- natuurlijke taal
+- intent
+- taakbeschrijving
+
+naar een taak voor Flux.
+
+---
+
+# 3. Flux orchestration rol
+
+Flux voert de volgende stappen uit:
+
+1. taak ontvangen
+2. taak analyseren
+3. domein herkennen
+4. sentinel kiezen
+5. lead agent kiezen
+6. taak routeren
+7. resultaten verzamelen
+8. eindantwoord vormen
+9. antwoord teruggeven aan interface agent
+
+---
+
+# 4. Sentinel routing
+
+Flux gebruikt sentinel mapping.
+
+Voorbeeld:
+
+Security → Sentinel Security → Nero  
+Research → Sentinel Research → Sora  
+Engineering → Sentinel Engineering → Forge  
+Documentation → Sentinel Documentation → Clio  
+
+---
+
+# 5. Worker inzet
+
+Lead agents bepalen:
+
+- welke worker nodig is
+- hoeveel workers nodig zijn
+- in welke volgorde workers draaien
+
+Voorbeeld:
+
+Flux → Nero  
+Nero → Prompt Defense Worker  
+Nero → Runtime Audit Worker
+
+---
+
+# 6. Multi-sentinel samenwerking
+
+Wanneer een taak meerdere domeinen raakt:
+
+Flux kan meerdere sentinels inzetten.
+
+Voorbeeld:
+
+Security analyse + code review
+
+Flux → Sentinel Security  
+Flux → Sentinel Engineering
+
+Flux combineert daarna resultaten.
+
+---
+
+# 7. Task queue integratie
+
+Flux gebruikt de shared queue structuur:
+
+shared/tasks
+
+- inbox
+- in_progress
+- done
+- failed
+
+Flux kan taken:
+- genereren
+- routeren
+- monitoren
+- afronden
+
+---
+
+# 8. Shared memory
+
+Flux gebruikt:
+
+shared/memory
+
+voor:
+
+- globale context
+- projectstatus
+- sentinel output
+- kennisdeling
+
+---
+
+# 9. Observability
+
+Flux bewaakt:
+
+- taakstatus
+- sentinel status
+- worker output
+- fouten
+- escalaties
+
+Deze data kan later zichtbaar worden in:
+
+Mission Control.
+
+---
+
+# 10. Conclusie
+
+Flux is:
+
+- het brein
+- de router
+- de orchestrator
+- de supervisor
+
+van het gehele ARC AI systeem.
+
+---
+
+## 🏗️ Flux Orchestration Architectuur
+
+\`\`\`mermaid
+flowchart TB
+    OP[Operator] --> NOVA & JAMES & JIM
+    NOVA --> FLUX
+    JAMES --> FLUX  
+    JIM --> FLUX
+    FLUX --> SEC & RES & ENG
+    SEC --> L1 --> W1
+    RES --> L2 --> W2
+    ENG --> L3 --> W3
+    W1 --> TASKS[(shared/tasks)]
+    W2 --> MEMORY[(shared/memory)]
+    W3 --> TASKS
+\`\`\`
+

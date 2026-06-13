@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Model Runtime &amp; Providers — Execution Workers</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: rgba(255,255,255,.10);
+      --text: #eef4ff;
+      --muted: #a8b7d1;
+      --accent: #9b7cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 35%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1324 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .backlink {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, var(--panel)) 0%, var(--panel) 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      margin-bottom: 22px;
+    }
+    .content {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(24px, 2.6vw, 30px);
+      line-height: 1.2;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 30px 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    ul, ol {
+      margin: 0 0 18px 24px;
+      padding: 0;
+    }
+    pre {
+      margin: 16px 0 22px;
+      padding: 18px 20px;
+      background: #0a0f1a;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 18px;
+      overflow: auto;
+      color: #eaf1ff;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 720px) {
+      .content, .hero { padding: 22px; }
+      p, li { font-size: 17px; }
+      h3 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../model_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Model Runtime &amp; Providers · M06</div>
+    </div>
+
+    <div class="hero">
+      <h1>Model Runtime &amp; Providers</h1>
+      <h2>Block 06 — Execution Workers</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>Workers zijn de **concrete uitvoeringsinstanties**. Stateless, ephemeral, gespecialiseerd.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Task Execution** | Voer atomic taken uit |</p>
+<p>| **Tool Usage** | Bedien externe tools, API&#x27;s |</p>
+<p>| **Model Interaction** | Communcatie met LLMs |</p>
+<p>| **Output Generation** | Produceer tastbare resultaten |</p>
+<p>---</p>
+<h3>System Context</h3>
+<p>Sentinel → Workers</p>
+<p>---</p>
+<h3>Concrete Structure</h3>
+<p>#### 6.1 Worker Types</p>
+<p>LLM, Tool, Code, Data, File, API Workers.</p>
+<p>#### 6.2 Lifecycle</p>
+<p>IDLE → ASSIGNED → RUNNING → COMPLETE → IDLE.</p>
+<p>#### 6.3 Execution Command/Result</p>
+<p>Gestandaardiseerde formats voor input/output.</p>
+<p>---</p>
+<h3>Rules</h3>
+<ul>
+<li>R1: Workers zijn stateless</li>
+<li>R2: Max execution time enforced</li>
+<li>R3: Geen directe externe communicatie zonder proxy</li>
+<li>R4: Alle tool calls gelogd</li>
+</ul>
+<p>---</p>
+<h3>Decision Locked</h3>
+<p>Owner: Fea  </p>
+<p>Status: Active  </p>
+<p>Version: 2.0.0</p>
+<p>#### 6.4 Execution Result (ER) Formaat</p>
+<p>Status, output, metadata, quality_signals.</p>
+<h3>Flows</h3>
+<p>#### 6.1 LLM Worker Execution</p>
+<p>Sentinel EC binnen → Context ophalen → Prompt samenstellen → Model API call → Output ontvangen → Basis validatie → Metadata verzamelen → ER bouwen → Terug naar Sentinel → Cleanup</p>
+<p>#### 6.2 Code Worker Execution (Sandboxed)</p>
+<p>Sentinel EC binnen → Sandbox initialiseren (gVisor) → Code schrijven → Dependencies installeren → Code uitvoeren met resource limits → Output capture → Test suite draaien → Resultaat terugsturen → Sandbox vernietigen</p>
+<p>---</p>
+<h3>Relaties met andere ARC-lagen</h3>
+<p>| Laag | Richting | Data |</p>
+<p>|------|----------|------|</p>
+<p>| **Sentinel** | Ontvangt EC / Stuurt ER | Commands / Results |</p>
+<p>| **OpenClaw** | Runtime dependency | Model API&#x27;s, sandboxing |</p>
+<p>| **External** | Tool/API calls | Gecontroleerde egress |</p>
+<p>**Critical:** Workers communiceren **nooit direct** met Flux, Omni, Nova, of Fea. Altijd via Sentinel.</p>
+<p>---</p>
+<h3>Decision Logic</h3>
+<p>| Beslissing | Input | Output |</p>
+<p>|------------|-------|--------|</p>
+<p>| **Welk model?** | Task type, complexity, cost constraints | Model ID + parameters |</p>
+<p>| **Sandbox level?** | Code vs data vs tool | gVisor / Kata / Namespace |</p>
+<p>| **Retry in Worker?** | Failure type | Boolean (meestal nee, Sentinel handelt retry) |</p>
+<p>| **Early termination?** | Streaming output quality | Stop criteria check |</p>
+<p>---</p>
+<h3>Rules &amp; Constraints</h3>
+<p>| Regel | Rationale |</p>
+<p>|-------|-----------|</p>
+<p>| **R1:** Workers zijn stateless | Schaalbaarheid, debugbaarheid |</p>
+<p>| **R2:** Max execution time enforced (hard kill) | Resource bescherming |</p>
+<p>| **R3:** Geen directe externe communicatie zonder proxy | Security, auditability |</p>
+<p>| **R4:** Alle tool calls gelogd | Reproduceerbaarheid |</p>
+<p>| **R5:** Output size limits (max 10MB) | Memory bescherming |</p>
+<p>| **R6:** Worker pool altijd warm (pre-initialized) | Latency reductie |</p>
+<p>---</p>
+<h3>Dependencies</h3>
+<p>| Component | Type | Fallback |</p>
+<p>|-----------|------|----------|</p>
+<p>| OpenClaw Runtime | Hard | Geen uitvoering |</p>
+<p>| Model API&#x27;s | Hard | Fallback model (lokaal) |</p>
+<p>| Sandbox runtime | Hard | Geen code execution |</p>
+<p>| Tool registries | Soft | Cached tool definitions |</p>
+<p>| Sentinel command queue | Hard | Worker idle |</p>
+<p>---</p>
+<h3>Decisions Made</h3>
+<p>| Beslissing | Argumentatie |</p>
+<p>|------------|--------------|</p>
+<p>| **Stateless design** | Schaalbaarheid &gt; state complexiteit |</p>
+<p>| **Ephemeral sandboxes** | Security &gt; herbruikbaarheid |</p>
+<p>| **Pre-warmed pool** | Latency &gt; resource efficiëntie |</p>
+<p>---</p>
+<h3>Decision Locked</h3>
+<p>**Owner:** Fea  </p>
+<p>**Status:** Active  </p>
+<p>**Version:** 2.0.0  </p>
+<p>**Last Updated:** 2026-03-22</p>
+<p>---</p>
+<p>**Einde Block 06**</p>
+<h2>Worker Execution Flow</h2>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>|  Sentinel Task |-----&gt;|  Worker Pool   |-----&gt;|  Agent Exec    |</p>
+<p>|  (Assigned)    |      |  (M06)         |      |  (Sandbox)     |</p>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>                               |                       |</p>
+<p>                               v                       v</p>
+<p>                        +----------------+      +----------------+</p>
+<p>                        |  Monitoring    |      |  Result        |</p>
+<p>                        |  (Health)      |      |  (Output)      |</p>
+<p>                        +----------------+      +----------------+</p>
+<p>                                                        |</p>
+<p>                                                        v</p>
+<p>                                                 +----------------+</p>
+<p>                                                 |  Back to       |</p>
+<p>                                                 |  Flux          |</p>
+<p>                                                 +----------------+</p>
+    </div>
+  </div>
+</body>
+</html>

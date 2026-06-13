@@ -1,0 +1,13 @@
+{
+  "id": "nova-motivation-youtube",
+  "agent": "nova",
+  "providerUsed": "tavily",
+  "type": "search",
+  "status": "failed",
+  "requestedAt": "2026-04-05T01:59:00Z",
+  "completedAt": "2026-04-04T23:59:44Z",
+  "query": "motiverende youtube short",
+  "url": null,
+  "result": {},
+  "error": "use case 'briefing_content' not allowed for agent 'nova'"
+}

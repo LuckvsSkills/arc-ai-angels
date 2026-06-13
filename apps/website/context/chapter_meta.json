@@ -1,0 +1,150 @@
+{
+  "security_hardening": {
+    "cluster_order": ["prod_safety_core"],
+    "clusters": {
+      "prod_safety_core": {
+        "title": "Prod Safety Core",
+        "overview": "Deze cluster bundelt de minimale productierijpheidslaag voor OpenClaw: inventarisatie, secrets, egress, incident response en runtime safety.",
+        "duration": "Kort → middel",
+        "color": "#3fe3b5"
+      }
+    },
+    "blocks": {
+      "b07": {
+        "number": "B07",
+        "overview": "Breng de huidige attack surface, services, secrets en relevante runtime-paden in kaart."
+      },
+      "b08": {
+        "number": "B08",
+        "overview": "Zet health checks, monitoring-signalen en basis runtime safety neer."
+      },
+      "b09": {
+        "number": "B09",
+        "overview": "Werk incident response en een veilige kill switch uit voor snelle containment."
+      },
+      "b10": {
+        "number": "B10",
+        "overview": "Harden secrets-opslag, permissies, redaction en leakage checks."
+      },
+      "b11": {
+        "number": "B11",
+        "overview": "Definieer default-deny internet/egress policy met expliciete uitzonderingen."
+      }
+    }
+  },
+
+  "platform_runtime": {
+    "cluster_order": ["runtime_foundation"],
+    "clusters": {
+      "runtime_foundation": {
+        "title": "Core Runtime Foundation",
+        "overview": "De basislaag van OpenClaw runtime, process isolation en execution control.",
+        "duration": "Kort",
+        "color": "#36c9ff"
+      }
+    },
+    "blocks": {
+      "b01": {"number": "B01", "overview": "Installeer en verifieer de OpenClaw core runtime."},
+      "b02": {"number": "B02", "overview": "Zet systemd runtime services correct neer."},
+      "b03": {"number": "B03", "overview": "Maak een hardened runner voor agents."},
+      "b04": {"number": "B04", "overview": "Centraliseer env + allowlists."},
+      "b05": {"number": "B05", "overview": "Isoleer agents via Linux users."},
+      "b06": {"number": "B06", "overview": "Provision worker skeleton cluster."}
+    }
+  },
+
+  "model_runtime": {
+    "cluster_order": ["ollama_provider_layer"],
+    "clusters": {
+      "ollama_provider_layer": {
+        "title": "Ollama & Provider Layer",
+        "overview": "De model-router laag voor lokale modellen en externe providers.",
+        "duration": "Middel",
+        "color": "#9b7cff"
+      }
+    },
+    "blocks": {
+      "b12": {"number": "B12", "overview": "Installeer Ollama en service setup."},
+      "b13": {"number": "B13", "overview": "Maak een model registry."},
+      "b14": {"number": "B14", "overview": "Bouw provider abstraction."},
+      "b15": {"number": "B15", "overview": "Werk fallback logic local/cloud uit."},
+      "b16": {"number": "B16", "overview": "Koppel modellen per agent."}
+    }
+  },
+
+  "data_memory": {
+    "cluster_order": ["agent_db_memory_layer"],
+    "clusters": {
+      "agent_db_memory_layer": {
+        "title": "Agent DB + Memory Layer",
+        "overview": "De opslaglaag voor agent state, memory, embeddings en retrieval.",
+        "duration": "Middel → lang",
+        "color": "#4ea8de"
+      }
+    },
+    "blocks": {
+      "b17": {"number": "B17", "overview": "Definieer agent management schema."},
+      "b18": {"number": "B18", "overview": "Ontwerp memory architecture."},
+      "b19": {"number": "B19", "overview": "Kies embedding/vector strategy."},
+      "b20": {"number": "B20", "overview": "Werk shared world memory uit."},
+      "b21": {"number": "B21", "overview": "Koppel per-agent memory links."}
+    }
+  },
+
+  "agent_logic": {
+    "cluster_order": ["roles_skills_swarm_core"],
+    "clusters": {
+      "roles_skills_swarm_core": {
+        "title": "Roles, Skills & Swarm Core",
+        "overview": "De samenwerkingslaag voor rollen, skills, routing en swarm coordination.",
+        "duration": "Lang",
+        "color": "#ff4d6d"
+      }
+    },
+    "blocks": {
+      "b22": {"number": "B22", "overview": "Definieer agent roles framework."},
+      "b23": {"number": "B23", "overview": "Stel communication protocol op."},
+      "b24": {"number": "B24", "overview": "Bouw workflow dispatcher."},
+      "b25": {"number": "B25", "overview": "Definieer skill registry."},
+      "b26": {"number": "B26", "overview": "Werk swarm coordination uit."}
+    }
+  },
+
+  "observability": {
+    "cluster_order": ["observability_cost_ledger"],
+    "clusters": {
+      "observability_cost_ledger": {
+        "title": "Observability & Cost Ledger",
+        "overview": "De zichtlaag voor tracing, usage, kosten en reporting.",
+        "duration": "Middel",
+        "color": "#ffb84d"
+      }
+    },
+    "blocks": {
+      "b27": {"number": "B27", "overview": "Inventariseer APIs."},
+      "b28": {"number": "B28", "overview": "Bouw usage ledger."},
+      "b29": {"number": "B29", "overview": "Werk cost calculations uit."},
+      "b30": {"number": "B30", "overview": "Voeg latency/error tracing toe."},
+      "b31": {"number": "B31", "overview": "Rapporteer per agent/per workflow."}
+    }
+  },
+
+  "control_center": {
+    "cluster_order": ["control_center_ui_core"],
+    "clusters": {
+      "control_center_ui_core": {
+        "title": "Strategic Control Center UI",
+        "overview": "De interface-laag voor roadmap, prompts, progress en operations-ready uitbreiding.",
+        "duration": "Middel",
+        "color": "#d6b35e"
+      }
+    },
+    "blocks": {
+      "b32": {"number": "B32", "overview": "Bouw homepage dashboard."},
+      "b33": {"number": "B33", "overview": "Werk chapter pages uit."},
+      "b34": {"number": "B34", "overview": "Maak prompt library."},
+      "b35": {"number": "B35", "overview": "Voeg progress visualization toe."},
+      "b36": {"number": "B36", "overview": "Bereid operations-ready layout voor."}
+    }
+  }
+}

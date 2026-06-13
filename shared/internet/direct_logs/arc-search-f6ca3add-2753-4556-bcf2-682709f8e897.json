@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "id": "arc-search-f6ca3add-2753-4556-bcf2-682709f8e897",
+  "provider": "tavily",
+  "query": "motiverende youtube short",
+  "maxResults": 3,
+  "completedAt": "2026-04-05T00:46:59Z",
+  "result": {
+    "query": "motiverende youtube short",
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.youtube.com/playlist?list=PLTFCM8gfGxuH8b7Rn2RT3DVPAFMWucg36",
+        "title": "Motivational Shorts (Reels and YouTube Shorts) Motivation ...",
+        "content": "Motivational Shorts (Reels and YouTube Shorts) Motivation Speeches and Music · To All of You Fighting Battles Alone (STAY STRONG) #shorts · Become a GHOST · Are",
+        "score": 0.74541736,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/playlist?list=PLWrXZe2hpXx-LxSKe4DhYU1TPOMhkBkRh",
+        "title": "Motivational Shorts #shorts - YouTube",
+        "content": "Motivation and discipline speech | achieve your goals #shorts. Motivation Theory Running · 0:58. Focus on discipline not motivation #shorts #motivation.",
+        "score": 0.72814995,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/shorts/WPs-8BHOQug",
+        "title": "LIFE IS HARD! Greatest Motivational Video #shorts - YouTube",
+        "content": "Get ready to conquer life's toughest challenges with the incomparable Les Brown in our latest motivational video, \"Life is Hard\"!",
+        "score": 0.7156829,
+        "raw_content": null
+      }
+    ],
+    "response_time": 0.67,
+    "request_id": "0bbd78d7-8044-4668-a881-be0d9f62f13d"
+  }
+}

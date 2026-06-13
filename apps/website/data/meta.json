@@ -1,0 +1,29 @@
+{
+  "project_title": "The Arc Strategic Control Center",
+  "subtitle": "Architecture, Governance & Deployment Hub for the Arc AI Agent Network",
+
+  "durations": {
+    "minimum_hours": 141,
+    "realistic_hours": 190,
+    "heavy_hours": 269
+  },
+
+  "fastest_path_to_live": [
+    "Platform & Runtime",
+    "Security Hardening",
+    "Model Runtime & Providers",
+    "Data & Memory Architecture",
+    "Agent Logic, Skills & Swarm",
+    "Observability & API Cost Control",
+    "Strategic Control Center UI"
+  ],
+
+  "dependencies": [
+    {"from": "Platform & Runtime", "to": "Security Hardening"},
+    {"from": "Security Hardening", "to": "Model Runtime & Providers"},
+    {"from": "Model Runtime & Providers", "to": "Data & Memory Architecture"},
+    {"from": "Data & Memory Architecture", "to": "Agent Logic, Skills & Swarm"},
+    {"from": "Agent Logic, Skills & Swarm", "to": "Observability & API Cost Control"},
+    {"from": "Observability & API Cost Control", "to": "Strategic Control Center UI"}
+  ]
+}

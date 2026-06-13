@@ -1,0 +1,175 @@
+{
+  "diagrams": [
+    {
+      "id": 1,
+      "title": "Tijdlijn ARC AI AGENTS",
+      "chapter": "CH01",
+      "file": "D01_tijdlijn_arc.mermaid",
+      "type": "timeline",
+      "description": "De evolutie van ARC van \u00e9\u00e9n agent naar volledig autonoom systeem",
+      "content": "timeline\n    title De Evolutie van ARC AI AGENTS\n    Fase 0 : E\u00e9n agent\n           : Geen structuur\n           : Geen geheugen\n    Fase 1 : Hi\u00ebrarchie ontworpen\n           : 32 agents geconfigureerd\n           : HARNAS operationeel\n    Fase 2 : Structured Freedom\n           : Agentic levels actief\n           : Active Memory live\n    Fase 3 : Domein-initiatieven\n           : Cross-domain autonomie\n           : Zelfverbeterend systeem\n    Fase 4 : Volledige autonomie\n           : Agents initi\u00ebren projecten\n           : Supreme Fea geeft richting\n",
+      "hasContent": true
+    },
+    {
+      "id": 2,
+      "title": "Systeemarchitectuur",
+      "chapter": "CH02",
+      "file": "D02_systeemarchitectuur.mermaid",
+      "type": "graph",
+      "description": "De vijf lagen van ARC \u2014 Supreme Fea tot Sentinels",
+      "content": "graph TD\n    SF[Supreme Fea<br/>Architect & Eigenaar]\n    N[Nova<br/>Consigliere / Silver Surfer]\n    F[Flux<br/>Underboss / Brain]\n    C[Cortexia<br/>Helix Lead]\n    FI[Finoria<br/>Finix Lead]\n    S[Saelia<br/>Matrix Lead]\n    L[Lumeria<br/>Quantix Lead]\n    FL[Fluentia<br/>Zenix Lead]\n    HS[5x Helix Sentinels]\n    FIS[5x Finix Sentinels]\n    MS[5x Matrix Sentinels]\n    QS[5x Quantix Sentinels]\n    ZS[5x Zenix Sentinels]\n    SF --> N\n    N --> F\n    F --> C\n    F --> FI\n    F --> S\n    F --> L\n    F --> FL\n    C --> HS\n    FI --> FIS\n    S --> MS\n    L --> QS\n    FL --> ZS\n",
+      "hasContent": true
+    },
+    {
+      "id": 3,
+      "title": "Taakreis",
+      "chapter": "CH02",
+      "file": "D03_taakreis.mermaid",
+      "type": "sequence",
+      "description": "Hoe een verzoek van Supreme Fea door het systeem reist",
+      "content": "sequenceDiagram\n    participant SF as Supreme Fea\n    participant N as Nova\n    participant F as Flux\n    participant OL as Omni Lead\n    participant SN as Sentinel\n    SF->>N: Verzoek\n    N->>N: Analyseer intent\n    alt Eenvoudig verzoek\n        N->>SF: Direct afhandelen\n    else Complex project\n        N->>F: Flux-ready briefing\n        F->>F: Routing beslissing\n        F->>OL: Taak + context\n        OL->>SN: Verdeel werk\n        SN->>SN: Voer uit\n        SN->>OL: Output\n        OL->>F: Gevalideerd resultaat\n        F->>N: Gesynthetiseerde output\n        N->>SF: Oplevering\n    end\n",
+      "hasContent": true
+    },
+    {
+      "id": 4,
+      "title": "Dagelijkse Cyclus",
+      "chapter": "CH03",
+      "file": "D04_dagelijkse_cyclus.mermaid",
+      "type": "graph",
+      "description": "De vier HARNAS fases die dagelijks draaien voor alle 32 agents",
+      "content": "graph LR\n    A[00:00 UTC Voorbereiding] --> B[06:00 UTC Consolidatie]\n    B --> C[12:00 UTC Intelligente analyse]\n    C --> D[00:00 UTC Wrap-up]\n    D --> A\n",
+      "hasContent": true
+    },
+    {
+      "id": 5,
+      "title": "Escalatiepad",
+      "chapter": "CH03",
+      "file": "D05_escalatiepad.mermaid",
+      "type": "graph",
+      "description": "Hoe problemen omhoog reizen door de hi\u00ebrarchie",
+      "content": "graph TD\n    A[Agent detecteert probleem] --> B{Zelf op te lossen?}\n    B -->|Ja| C[Agent lost op]\n    B -->|Nee| D[Rapporteert aan Lead]\n    D --> E{Lead kan oplossen?}\n    E -->|Ja| F[Lead lost op]\n    E -->|Nee| G[Escaleert naar Flux]\n    G --> H{Flux kan oplossen?}\n    H -->|Ja| I[Flux lost op]\n    H -->|Nee| J[Nova informeert Supreme Fea]\n",
+      "hasContent": true
+    },
+    {
+      "id": 6,
+      "title": "De Vijf Domeinen",
+      "chapter": "CH04",
+      "file": "D06_vijf_domeinen.mermaid",
+      "type": "graph",
+      "description": "Alle 32 agents georganiseerd per domein met agentic levels",
+      "content": "graph TD\n    F[Flux]\n    C[Cortexia L4] --> FO[Forge L4]\n    C --> NE[Nero L4]\n    C --> VE[Ventura L3]\n    C --> AX[Axon L3]\n    C --> CL[Clio L2]\n    FI[Finoria L4] --> VE2[Vector L3]\n    FI --> KA[Kairo L3]\n    FI --> KE[Kenzo L2]\n    FI --> OD[Odis L2]\n    FI --> ZI[Zion L1]\n    SA[Saelia L3] --> TH[Tharos L3]\n    SA --> SO[Sora L3]\n    SA --> AR[Arix L2]\n    SA --> EN[Enki L2]\n    SA --> DA[Daxio L2]\n    LU[Lumeria L3] --> KR[Kresta L3]\n    LU --> EL[Elora L2]\n    LU --> LV[Luvia L3]\n    LU --> NU[Nura L2]\n    LU --> VO[Vondra L2]\n    FL[Fluentia L3] --> DR[Draven L3]\n    FL --> SL[Solis L3]\n    FL --> OR[Orizon L3]\n    FL --> UN[Unia L2]\n    FL --> ZE[Zena L1]\n    F --> C\n    F --> FI\n    F --> SA\n    F --> LU\n    F --> FL\n",
+      "hasContent": true
+    },
+    {
+      "id": 7,
+      "title": "Agentic Levels",
+      "chapter": "CH05",
+      "file": "D07_agentic_levels.mermaid",
+      "type": "graph",
+      "description": "De vier autonomie-niveaus en groeipaden",
+      "content": "graph LR\n    L1[Level 1 Uitvoerend]\n    L2[Level 2 Beperkt autonoom]\n    L3[Level 3 Domein autonoom]\n    L4[Level 4 Volledig autonoom]\n    L1 --> L2\n    L2 --> L3\n    L3 --> L4\n",
+      "hasContent": true
+    },
+    {
+      "id": 8,
+      "title": "Routing Patronen",
+      "chapter": "CH05",
+      "file": "D08_routing_patronen.mermaid",
+      "type": "graph",
+      "description": "Binnen-domein, cross-domain en Lead-naar-Lead routing",
+      "content": "graph TD\n    S1[Sentinel] --> L1[Eigen Lead]\n    L1 --> F[Flux]\n    F --> L2[Andere Lead]\n    L2 --> S2[Andere Sentinel]\n",
+      "hasContent": true
+    },
+    {
+      "id": 9,
+      "title": "HARNAS Cyclus",
+      "chapter": "CH06",
+      "file": "D09_harnas_cyclus.mermaid",
+      "type": "graph",
+      "description": "Het autonome leersysteem dat dagelijks alle agents consolideert",
+      "content": "graph TD\n    F1[Fase 1 Voorbereiding 00:00] --> F2[Fase 2 Consolidatie 06:00]\n    F2 --> F3[Fase 3 Intelligente analyse 12:00]\n    F3 --> F4[Fase 4 Wrap-up 00:00]\n    F4 --> F1\n",
+      "hasContent": true
+    },
+    {
+      "id": 10,
+      "title": "Geheugenstructuur",
+      "chapter": "CH06",
+      "file": "D10_geheugenstructuur.mermaid",
+      "type": "graph",
+      "description": "MEMORY.md, JOURNAL en Active Memory per agent",
+      "content": "graph LR\n    MEM[MEMORY.md] --> AM[Active Memory]\n    AM --> Sessie\n    JCL[JOURNAL/closed] --> H2[HARNAS Consolidatie]\n    H2 --> MEM\n",
+      "hasContent": true
+    },
+    {
+      "id": 11,
+      "title": "Governance Structuur",
+      "chapter": "CH07",
+      "file": "D11_governance.mermaid",
+      "type": "graph",
+      "description": "Gezagslagen en approval gates in ARC",
+      "content": "graph TD\n    SF[Supreme Fea Absoluut gezag]\n    N[Nova Interface]\n    F[Flux Routing en policies]\n    OL[Omni Leads Domein gezag]\n    SN[Sentinels Taak gezag]\n    AG[Approval Gates]\n    SF --> N\n    N --> F\n    F --> OL\n    OL --> SN\n    SN --> OL\n    OL --> F\n    F --> N\n    N --> SF\n    F --> AG\n    AG --> SF\n",
+      "hasContent": true
+    },
+    {
+      "id": 12,
+      "title": "Model Tier Systeem",
+      "chapter": "CH08",
+      "file": "D12_model_tiers.mermaid",
+      "type": "graph",
+      "description": "Tier A/B/C model routing per agent en domein",
+      "content": "graph TD\n    A[Tier A Kimi K2.6 GPT-4o DeepSeek V4 Pro Claude Sonnet]\n    B[Tier B Gemini 2.5 Flash GPT-4o-mini Claude Haiku]\n    C[Tier C Llama 3.3 70B Gemini Flash Lite DeepSeek Flash]\n    A --> B\n    B --> C\n    C --> B\n    B --> A\n",
+      "hasContent": true
+    },
+    {
+      "id": 13,
+      "title": "Skill Ontwikkeling",
+      "chapter": "CH09",
+      "file": "D13_skill_ontwikkeling.mermaid",
+      "type": "graph",
+      "description": "Van ervaring naar skill naar herbruikbare workflow",
+      "content": "graph LR\n    EX[Ervaring] --> PAT[Patroon herkennen]\n    PAT --> DOC[Workflow documenteren]\n    DOC --> SK[Skill opslaan]\n    SK --> TOE[Skill toepassen]\n    TOE --> REF[Skill verfijnen]\n    REF --> SK\n",
+      "hasContent": true
+    },
+    {
+      "id": 14,
+      "title": "Tool Infrastructuur",
+      "chapter": "CH10",
+      "file": "D14_tool_infrastructuur.mermaid",
+      "type": "graph",
+      "description": "OpenClaw gateway, LiteLLM en tool categorie\u00ebn",
+      "content": "graph TD\n    Agents --> OC[OpenClaw Gateway poort 50506]\n    OC --> FILE[Bestandsoperaties]\n    OC --> TEL[Telegram]\n    OC --> WEB[Web zoeken]\n    OC --> CODE[Code uitvoering]\n    OC --> LLM[LiteLLM poort 4000]\n    LLM --> Models[AI Modellen]\n",
+      "hasContent": true
+    },
+    {
+      "id": 15,
+      "title": "MCC Architectuur",
+      "chapter": "CH11",
+      "file": "D15_mcc_architectuur.mermaid",
+      "type": "graph",
+      "description": "Mission Control Center \u2014 frontend, backend en Cloudflare tunnels",
+      "content": "graph TD\n    SF[Supreme Fea]\n    MCC[arc-vortex.nl MCC Frontend]\n    OC_UI[dashboard.arc-vortex.nl OpenClaw UI]\n    API[api.arc-vortex.nl MCC Backend]\n    GW[OpenClaw Gateway poort 50506]\n    AGENTS[32 Agents]\n    TEL[Telegram]\n    SF --> MCC\n    SF --> OC_UI\n    MCC --> API\n    API --> GW\n    GW --> AGENTS\n    AGENTS --> TEL\n    TEL --> SF\n",
+      "hasContent": true
+    },
+    {
+      "id": 16,
+      "title": "Roadmap",
+      "chapter": "CH12",
+      "file": "D16_roadmap.mermaid",
+      "type": "timeline",
+      "description": "ARC AI AGENTS roadmap van Fase 1 tot volledige autonomie",
+      "content": "timeline\n    title ARC AI AGENTS Roadmap\n    Fase 1 Voltooid : 32 agents geconfigureerd\n                    : HARNAS operationeel\n    Fase 2 Huidig : Structured Freedom\n                  : Active Memory live\n    Fase 3 Volgende stap : Proactieve agents\n                         : Domein-initiatieven\n    Fase 4 Toekomst : Volledige autonomie\n",
+      "hasContent": true
+    },
+    {
+      "id": 17,
+      "title": "Backup Strategie",
+      "chapter": "CH12",
+      "file": "D17_backup_strategie.mermaid",
+      "type": "graph",
+      "description": "De vier-niveau backup strategie voor ARC AI AGENTS",
+      "content": "graph TD\n    L1[Level 1 GitHub automatisch]\n    L2[Level 2 Lokale backup dagelijks]\n    L3[Level 3 Windows download handmatig]\n    L4[Level 4 E-mail maandelijks]\n    L1 --> L2\n    L2 --> L3\n    L3 --> L4\n",
+      "hasContent": true
+    }
+  ],
+  "total": 17
+}

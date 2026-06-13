@@ -1,0 +1,378 @@
+import React, { useState, useEffect, useCallback } from 'react'
+
+const SC = (s) => !s || s==='unknown' ? '#f59e0b' : ['reachable','connected','ok','running','true'].includes(String(s)) ? '#22c55e' : '#ef4444'
+
+export default function OpenClawView({ theme }) {
+  const t = theme?.colors || {}
+  const acc = t.accent || '#c9a84c'
+  const [tab, setTab] = useState('overzicht')
+  const [data, setData] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [msg, setMsg] = useState(null)
+  const [agentFilter, setAgentFilter] = useState('')
+  const [jobFilter, setJobFilter] = useState('all')
+
+  const load = useCallback(async () => {
+    setLoading(true)
+    const [status, sysinfo, registry, telegram, memory, logs, cronjobs] = await Promise.all([
+      fetch('/api/openclaw/status').then(r=>r.json()).catch(()=>({})),
+      fetch('/api/openclaw/sysinfo').then(r=>r.json()).catch(()=>({})),
+      fetch('/api/openclaw/registry').then(r=>r.json()).catch(()=>({agents:[]})),
+      fetch('/api/openclaw/telegram').then(r=>r.json()).catch(()=>({})),
+      fetch('/api/openclaw/memory').then(r=>r.json()).catch(()=>({databases:[],total_kb:0})),
+      fetch('/api/openclaw/logs/all').then(r=>r.json()).catch(()=>({})),
+      fetch('/api/memory/cronjobs').then(r=>r.json()).catch(()=>({cronjobs:[],total:0})),
+    ])
+    setData({ status, sysinfo, registry, telegram, memory, logs, cronjobs })
+    setLoading(false)
+  }, [])
+
+  useEffect(() => { load() }, [load])
+
+  const action = async (url, label) => {
+    setMsg({ text: `⏳ ${label}...`, type: 'info' })
+    try {
+      const r = await fetch(url, {method:'POST'})
+      const d = await r.json()
+      setMsg({ text: d.ok ? `✅ ${label} geslaagd` : `❌ ${d.error||'Fout'}`, type: d.ok ? 'ok' : 'err' })
+    } catch { setMsg({ text: `❌ ${label} mislukt`, type: 'err' }) }
+    setTimeout(() => { setMsg(null); load() }, 4000)
+  }
+
+  const card = (e={}) => ({background:t.bgSecondary,border:`1px solid ${t.border}`,borderRadius:'12px',padding:'14px',...e})
+  const statCard = (label, value, color, sub='') => (
+    <div style={{...card({padding:'12px 16px'}),borderLeft:`3px solid ${color}`}}>
+      <div style={{fontSize:'11px',color:t.textMuted,marginBottom:'4px'}}>{label}</div>
+      <div style={{fontSize:'22px',fontWeight:'600',color,lineHeight:1}}>{value}</div>
+      {sub && <div style={{fontSize:'9px',color:t.textMuted,marginTop:'4px'}}>{sub}</div>}
+    </div>
+  )
+
+  const { status={}, sysinfo={}, registry={agents:[]}, telegram={}, memory={databases:[],total_kb:0}, logs={}, cronjobs={cronjobs:[],total:0} } = data
+  const agents = registry.agents || []
+  const jobs = cronjobs.cronjobs || []
+  const totalJobs = cronjobs.total || 0
+  const activeJobs = jobs.filter(j=>j.enabled).length
+  const errorJobs = jobs.filter(j=>j.errors>0).length
+  const memMB = (memory.total_kb/1024).toFixed(1)
+
+  const TABS = [
+    {id:'overzicht', label:'Overzicht',  icon:'ti-layout-dashboard'},
+    {id:'agents',    label:'Agents',     icon:'ti-robot'},
+    {id:'cronjobs',  label:'Cronjobs',   icon:'ti-calendar-event'},
+    {id:'memory',    label:'Memory',     icon:'ti-database'},
+    {id:'logs',      label:'Logs',       icon:'ti-terminal-2'},
+    {id:'telegram',  label:'Telegram',   icon:'ti-brand-telegram'},
+  ]
+
+  const filteredAgents = agents.filter(a =>
+    !agentFilter || a.name?.toLowerCase().includes(agentFilter.toLowerCase())
+  )
+  const filteredJobs = jobs.filter(j =>
+    jobFilter === 'all' ? true :
+    jobFilter === 'errors' ? j.errors > 0 :
+    jobFilter === 'active' ? j.status === 'ok' : true
+  )
+
+  return (
+    <div style={{height:'100%',display:'flex',flexDirection:'column',overflow:'hidden'}}>
+      {/* Header */}
+      <div style={{padding:'12px 16px',borderBottom:`1px solid ${t.border}`,flexShrink:0}}>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:'8px',marginBottom:'10px'}}>
+          <div style={{display:'flex',alignItems:'center',gap:'10px'}}>
+            <div style={{width:'36px',height:'36px',borderRadius:'10px',background:`${acc}20`,border:`1px solid ${acc}40`,display:'flex',alignItems:'center',justifyContent:'center'}}>
+              <i className="ti ti-heart-rate-monitor" style={{fontSize:'18px',color:acc}}/>
+            </div>
+            <div>
+              <div style={{fontSize:'15px',fontWeight:'600',color:t.text}}>OpenClaw</div>
+              <div style={{fontSize:'10px',color:t.textMuted}}>
+                {sysinfo.display_name || 'Build Node'} · v{sysinfo.version || '—'}
+              </div>
+            </div>
+          </div>
+          <div style={{display:'flex',gap:'6px',flexWrap:'wrap',alignItems:'center'}}>
+            {msg && (
+              <span style={{fontSize:'10px',padding:'4px 10px',borderRadius:'6px',
+                background:msg.type==='ok'?'#22c55e20':msg.type==='err'?'#ef444420':`${acc}20`,
+                color:msg.type==='ok'?'#22c55e':msg.type==='err'?'#ef4444':acc,
+                border:`1px solid ${msg.type==='ok'?'#22c55e40':msg.type==='err'?'#ef444440':`${acc}40`}`}}>
+                {msg.text}
+              </span>
+            )}
+            <button onClick={()=>action('/api/openclaw/update','Update naar nieuwste versie')}
+              style={{padding:'5px 12px',background:'#a78bfa15',border:'1px solid #a78bfa40',borderRadius:'7px',color:'#a78bfa',cursor:'pointer',fontSize:'10px',fontWeight:'500'}}>
+              <i className="ti ti-arrow-up"/> Update
+            </button>
+            <button onClick={()=>action('/api/openclaw/restart','Herstart OpenClaw')}
+              style={{padding:'5px 12px',background:'#f8711520',border:'1px solid #f8711140',borderRadius:'7px',color:'#f87115',cursor:'pointer',fontSize:'10px',fontWeight:'500'}}>
+              <i className="ti ti-refresh"/> Herstart
+            </button>
+            <button onClick={load}
+              style={{padding:'5px 12px',background:`${acc}15`,border:`1px solid ${acc}40`,borderRadius:'7px',color:acc,cursor:'pointer',fontSize:'10px',fontWeight:'500'}}>
+              <i className="ti ti-reload"/> Refresh
+            </button>
+          </div>
+        </div>
+
+        {/* Subnav */}
+        <div style={{display:'flex',gap:'4px',flexWrap:'wrap'}}>
+          {TABS.map(tb => (
+            <button key={tb.id} onClick={()=>setTab(tb.id)} style={{
+              display:'flex',alignItems:'center',gap:'5px',padding:'5px 12px',
+              borderRadius:'7px',fontSize:'10px',cursor:'pointer',fontWeight:tab===tb.id?'500':'400',
+              border:`1px solid ${tab===tb.id?acc+'60':t.border}`,
+              background:tab===tb.id?`${acc}15`:'transparent',
+              color:tab===tb.id?acc:t.textMuted,transition:'all .15s',
+            }}>
+              <i className={`ti ${tb.icon}`}/> {tb.label}
+              {tb.id==='cronjobs' && errorJobs>0 && (
+                <span style={{background:'#ef4444',color:'#fff',borderRadius:'8px',padding:'0 5px',fontSize:'8px'}}>{errorJobs}</span>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{flex:1,overflow:'auto',padding:'14px 16px'}}>
+        {loading && (
+          <div style={{display:'flex',alignItems:'center',gap:'8px',color:t.textMuted,fontSize:'12px',padding:'20px'}}>
+            <div style={{width:'8px',height:'8px',borderRadius:'50%',background:acc,animation:'mcc-pulse 1s infinite'}}/>
+            OpenClaw data laden...
+          </div>
+        )}
+
+        {/* OVERZICHT */}
+        {!loading && tab==='overzicht' && (
+          <div style={{display:'flex',flexDirection:'column',gap:'14px'}}>
+            {/* Stat cards */}
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(160px,1fr))',gap:'10px'}}>
+              {statCard('Gateway', status.gateway||'unknown', SC(status.gateway), 'localhost:50506')}
+              {statCard('Telegram', status.telegram||'unknown', SC(status.telegram), telegram.bot?.username ? `@${telegram.bot.username}` : 'Bot status')}
+              {statCard('Agents', agents.length, '#38bdf8', `${agents.length} geregistreerd`)}
+              {statCard('Cronjobs', totalJobs, '#a78bfa', `${errorJobs} errors`)}
+              {statCard('Memory', `${memMB} MB`, '#34d399', `${memory.total||0} databases`)}
+              {statCard('Versie', sysinfo.version||'—', acc, sysinfo.display_name||'')}
+            </div>
+
+            {/* Node info + Gateway */}
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:'12px'}}>
+              <div style={card()}>
+                <div style={{fontSize:'11px',color:acc,fontWeight:'500',marginBottom:'10px',display:'flex',alignItems:'center',gap:'6px'}}>
+                  <i className="ti ti-server"/> Node Informatie
+                </div>
+                <div style={{fontSize:'10px',color:t.textMuted,marginBottom:'8px',lineHeight:1.6}}>
+                  Dit is de OpenClaw Build Node — de lokale instantie die alle 32 agents aanstuurt op Silver-Surfer.
+                </div>
+                {[
+                  {l:'Node ID', v:sysinfo.node_id?.slice(0,20)+'...'},
+                  {l:'Hostname', v:'Silver-Surfer'},
+                  {l:'Gateway', v:`${sysinfo.gateway?.host}:${sysinfo.gateway?.port}`},
+                  {l:'Versie', v:sysinfo.version},
+                  {l:'TLS', v:sysinfo.gateway?.tls ? '✅ Aan' : '❌ Uit'},
+                ].map(x => x.v && (
+                  <div key={x.l} style={{display:'flex',justifyContent:'space-between',padding:'4px 0',borderBottom:`1px solid ${t.border}`,fontSize:'11px'}}>
+                    <span style={{color:t.textMuted}}>{x.l}</span>
+                    <span style={{color:t.text,fontWeight:'500'}}>{x.v}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div style={card()}>
+                <div style={{fontSize:'11px',color:acc,fontWeight:'500',marginBottom:'10px',display:'flex',alignItems:'center',gap:'6px'}}>
+                  <i className="ti ti-activity"/> Verbindingen
+                </div>
+                <div style={{fontSize:'10px',color:t.textMuted,marginBottom:'10px',lineHeight:1.6}}>
+                  OpenClaw communiceert via de Gateway (AI verzoeken) en Telegram (agent berichten naar jou).
+                </div>
+                {[
+                  {l:'Gateway', v:status.gateway, color:SC(status.gateway), desc:'AI model requests'},
+                  {l:'Telegram', v:status.telegram, color:SC(status.telegram), desc:'Agent → Fea berichten'},
+                ].map(x => (
+                  <div key={x.l} style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'8px 0',borderBottom:`1px solid ${t.border}`}}>
+                    <div>
+                      <div style={{fontSize:'12px',color:t.text,fontWeight:'500'}}>{x.l}</div>
+                      <div style={{fontSize:'9px',color:t.textMuted}}>{x.desc}</div>
+                    </div>
+                    <div style={{display:'flex',alignItems:'center',gap:'6px'}}>
+                      <div style={{width:'8px',height:'8px',borderRadius:'50%',background:x.color,boxShadow:`0 0 6px ${x.color}`}}/>
+                      <span style={{fontSize:'11px',color:x.color,fontWeight:'500'}}>{x.v||'unknown'}</span>
+                    </div>
+                  </div>
+                ))}
+                {status.gateway === 'unreachable' && (
+                  <div style={{marginTop:'8px',padding:'8px',background:'#f8711510',borderRadius:'6px',border:'1px solid #f8711130',fontSize:'10px',color:'#f87115'}}>
+                    ⚠️ Gateway niet bereikbaar — klik Herstart om OpenClaw opnieuw op te starten
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* AGENTS */}
+        {!loading && tab==='agents' && (
+          <div>
+            <div style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'12px',flexWrap:'wrap'}}>
+              <input value={agentFilter} onChange={e=>setAgentFilter(e.target.value)}
+                placeholder="Zoek agent..."
+                style={{padding:'6px 10px',background:t.bgSecondary,border:`1px solid ${t.border}`,borderRadius:'6px',color:t.text,fontSize:'11px',width:'160px'}}/>
+              <span style={{fontSize:'11px',color:t.textMuted}}>{filteredAgents.length} van {agents.length} agents</span>
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(240px,1fr))',gap:'8px'}}>
+              {filteredAgents.map(agent => (
+                <div key={agent.id} style={{...card({padding:'10px 12px'}),borderLeft:`3px solid ${acc}`}}>
+                  <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'6px'}}>
+                    <span style={{fontSize:'16px'}}>{agent.emoji||'🤖'}</span>
+                    <div>
+                      <div style={{fontSize:'12px',fontWeight:'500',color:t.text}}>{agent.name}</div>
+                      <div style={{fontSize:'9px',color:t.textMuted}}>{agent.id}</div>
+                    </div>
+                    <div style={{marginLeft:'auto',width:'6px',height:'6px',borderRadius:'50%',background:'#22c55e',boxShadow:'0 0 5px #22c55e80'}}/>
+                  </div>
+                  <div style={{fontSize:'10px',color:t.textMuted,marginBottom:'4px'}}>
+                    <i className="ti ti-cpu" style={{marginRight:'4px'}}/>{agent.model?.replace('google/','').replace('gemini-','Gemini ')||'—'}
+                  </div>
+                  {agent.subagents?.length > 0 && (
+                    <div style={{fontSize:'9px',color:t.textMuted,marginTop:'4px'}}>
+                      <i className="ti ti-hierarchy" style={{marginRight:'4px'}}/>
+                      {agent.subagents.slice(0,3).join(', ')}{agent.subagents.length>3?` +${agent.subagents.length-3}`:''}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CRONJOBS */}
+        {!loading && tab==='cronjobs' && (
+          <div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(140px,1fr))',gap:'8px',marginBottom:'14px'}}>
+              {statCard('Totaal', totalJobs, acc)}
+              {statCard('Actief', jobs.filter(j=>j.status==='ok').length, '#22c55e')}
+              {statCard('Nooit gedraaid', jobs.filter(j=>j.last_run==='nooit').length, '#f59e0b')}
+              {statCard('Errors', errorJobs, '#ef4444')}
+            </div>
+            <div style={{display:'flex',gap:'6px',marginBottom:'12px',flexWrap:'wrap'}}>
+              {[['all','Alle'],['active','Succesvol'],['errors','Met errors']].map(([f,l]) => (
+                <button key={f} onClick={()=>setJobFilter(f)} style={{padding:'3px 10px',borderRadius:'5px',fontSize:'10px',cursor:'pointer',
+                  border:`1px solid ${jobFilter===f?acc+'60':t.border}`,background:jobFilter===f?`${acc}15`:'transparent',color:jobFilter===f?acc:t.textMuted}}>
+                  {l}
+                </button>
+              ))}
+            </div>
+            <div style={{display:'flex',flexDirection:'column',gap:'5px'}}>
+              {filteredJobs.map((job,i) => {
+                const sc = job.errors>0?'#ef4444':job.status==='ok'?'#22c55e':job.last_run==='nooit'?'#f59e0b':'#38bdf8'
+                return (
+                  <div key={i} style={{...card({padding:'8px 12px'}),display:'flex',alignItems:'center',gap:'10px',borderLeft:`3px solid ${sc}`}}>
+                    <div style={{width:'6px',height:'6px',borderRadius:'50%',background:sc,flexShrink:0}}/>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{fontSize:'11px',fontWeight:'500',color:t.text,marginBottom:'2px'}}>{job.id}</div>
+                      <div style={{fontSize:'9px',color:t.textMuted}}>
+                        Laatste: {job.last_run} · Volgende: {job.next_run}
+                      </div>
+                    </div>
+                    <span style={{fontSize:'10px',color:acc,flexShrink:0}}>{job.agent_name}</span>
+                    {job.errors>0 && <span style={{fontSize:'9px',color:'#ef4444',background:'#ef444415',padding:'2px 6px',borderRadius:'4px'}}>{job.errors} err</span>}
+                    <span style={{fontSize:'9px',color:t.textMuted,background:t.bg,padding:'2px 6px',borderRadius:'4px',flexShrink:0}}>{job.schedule||'—'}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* MEMORY */}
+        {!loading && tab==='memory' && (
+          <div>
+            <div style={{fontSize:'11px',color:t.textMuted,marginBottom:'8px',lineHeight:1.8}}>
+              Elke agent heeft een eigen SQLite database voor persistent geheugen. Grotere databases betekenen meer opgeslagen context en learnings.
+              Totaal: <strong style={{color:acc}}>{memMB} MB</strong> over {memory.total} databases.
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(160px,1fr))',gap:'6px'}}>
+              {(memory.databases||[]).sort((a,b)=>b.size_kb-a.size_kb).map(db => {
+                const pct = memory.total_kb > 0 ? (db.size_kb/memory.total_kb*100).toFixed(0) : 0
+                const color = db.size_kb > 10000 ? '#f59e0b' : db.size_kb > 5000 ? '#38bdf8' : '#22c55e'
+                return (
+                  <div key={db.agent} style={{...card({padding:'10px 12px'}),borderLeft:`3px solid ${color}`}}>
+                    <div style={{fontSize:'11px',fontWeight:'500',color:t.text,marginBottom:'4px'}}>{db.agent}</div>
+                    <div style={{fontSize:'13px',fontWeight:'600',color}}>{(db.size_kb/1024).toFixed(1)} MB</div>
+                    <div style={{marginTop:'4px',height:'3px',background:t.border,borderRadius:'2px'}}>
+                      <div style={{width:`${Math.min(pct,100)}%`,height:'100%',background:color,borderRadius:'2px'}}/>
+                    </div>
+                    <div style={{fontSize:'8px',color:t.textMuted,marginTop:'2px'}}>{pct}% van totaal</div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* LOGS */}
+        {!loading && tab==='logs' && (
+          <div style={{display:'flex',flexDirection:'column',gap:'12px'}}>
+            <div style={{fontSize:'11px',color:t.textMuted,lineHeight:1.8}}>
+              OpenClaw logs tonen wat het systeem heeft gedaan. Errors (rood) vereisen aandacht. Warnings (oranje) zijn informatief. Groene regels zijn succesvolle operaties.
+            </div>
+            {[
+              {key:'commands', label:'Commands Log', desc:'Alle OpenClaw commando\'s uitgevoerd door agents'},
+              {key:'gateway',  label:'Gateway Log',  desc:'Verbindingsgeschiedenis van de AI gateway'},
+              {key:'writeback',label:'Writeback Events', desc:'Memory schrijfoperaties naar disk'},
+            ].map(({key,label,desc}) => (
+              <div key={key} style={card()}>
+                <div style={{marginBottom:'8px'}}>
+                  <div style={{fontSize:'12px',fontWeight:'500',color:t.text}}>{label}</div>
+                  <div style={{fontSize:'10px',color:t.textMuted}}>{desc} · {(logs[key]||[]).length} regels</div>
+                </div>
+                <div style={{background:t.bg,borderRadius:'6px',padding:'8px',maxHeight:'140px',overflow:'auto',fontFamily:'monospace',fontSize:'10px',lineHeight:1.6}}>
+                  {(logs[key]||[]).length === 0
+                    ? <span style={{color:t.textMuted}}>Geen log entries</span>
+                    : [...(logs[key]||[])].reverse().map((l,i) => (
+                        <div key={i} style={{
+                          color: l.toLowerCase().includes('error')||l.toLowerCase().includes('fail') ? '#f87171' :
+                                 l.toLowerCase().includes('warn') ? '#f59e0b' :
+                                 l.toLowerCase().includes('ok')||l.toLowerCase().includes('success') ? '#22c55e' : t.textSecondary,
+                          paddingBottom:'2px',marginBottom:'2px',borderBottom:`1px solid ${t.border}40`,wordBreak:'break-all'
+                        }}>{l}</div>
+                      ))
+                  }
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* TELEGRAM */}
+        {!loading && tab==='telegram' && (
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:'12px'}}>
+            <div style={card()}>
+              <div style={{fontSize:'11px',color:acc,fontWeight:'500',marginBottom:'10px',display:'flex',alignItems:'center',gap:'6px'}}>
+                <i className="ti ti-brand-telegram"/> Telegram Bot
+              </div>
+              <div style={{fontSize:'10px',color:t.textMuted,marginBottom:'10px',lineHeight:1.6}}>
+                Nova communiceert via deze Telegram bot met jou. Alle HARNAS status updates en agent berichten komen via dit kanaal.
+              </div>
+              {telegram.bot && [
+                {l:'Bot naam', v:telegram.bot.first_name},
+                {l:'Username', v:`@${telegram.bot.username}`},
+                {l:'Bot ID', v:String(telegram.bot.id)},
+                {l:'Groups', v:telegram.bot.can_join_groups?'✅ Kan joinen':'❌ Niet'},
+                {l:'Inline queries', v:telegram.bot.supports_inline_queries?'✅ Ja':'❌ Nee'},
+                {l:'Laatste fetch', v:telegram.fetched_at?.slice(0,16)?.replace('T',' ')},
+              ].map(x => x.v && (
+                <div key={x.l} style={{display:'flex',justifyContent:'space-between',padding:'5px 0',borderBottom:`1px solid ${t.border}`,fontSize:'11px'}}>
+                  <span style={{color:t.textMuted}}>{x.l}</span>
+                  <span style={{color:t.text,fontWeight:'500'}}>{x.v}</span>
+                </div>
+              ))}
+              <div style={{marginTop:'10px',padding:'8px',background:'#22c55e10',borderRadius:'6px',border:'1px solid #22c55e30',fontSize:'10px',color:'#22c55e'}}>
+                ✅ Verbonden — Nova stuurt 4x per dag status updates
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}

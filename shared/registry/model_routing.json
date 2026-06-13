@@ -1,0 +1,77 @@
+{
+  "defaults": {
+    "lite": "gemini-2.5-flash-lite",
+    "standard": "gemini-2.5-flash",
+    "heavy": "kimi-k2.5"
+  },
+
+  "agents": {
+    "nova": {
+      "primary": "gemini-2.5-flash",
+      "fallback": "gemini-2.5-flash-lite"
+    },
+
+    "flux": {
+      "lite": "gemini-2.5-flash-lite",
+      "core": "gemini-2.5-flash"
+    },
+
+    "omni": {
+      "cortexia": {
+        "primary": "kimi-k2.5",
+        "fallback": "gemini-2.5-flash"
+      },
+      "saelia": {
+        "primary": "gemini-2.5-flash",
+        "fallback": "kimi-k2.5"
+      },
+      "lumeria": {
+        "primary": "gemini-2.5-flash-lite",
+        "fallback": "gemini-2.5-flash"
+      },
+      "fluentia": {
+        "primary": "gemini-2.5-flash-lite",
+        "fallback": "gemini-2.5-flash"
+      },
+      "finoria": {
+        "primary": "gemini-2.5-flash",
+        "fallback": "kimi-k2.5"
+      }
+    },
+
+    "sentinels": {
+      "forge": "kimi-k2.5",
+      "ventura": "kimi-k2.5",
+      "axon": "kimi-k2.5",
+      "draven": "kimi-k2.5",
+      "enki": "kimi-k2.5",
+      "kairo": "kimi-k2.5",
+
+      "nero": "gemini-2.5-flash",
+      "sora": "gemini-2.5-flash",
+      "daxio": "gemini-2.5-flash",
+      "orizon": "gemini-2.5-flash",
+      "zena": "gemini-2.5-flash",
+      "vector": "gemini-2.5-flash",
+      "zion": "gemini-2.5-flash",
+      "odis": "gemini-2.5-flash",
+      "kenzo": "gemini-2.5-flash",
+
+      "clio": "gemini-2.5-flash-lite",
+      "tharos": "gemini-2.5-flash-lite",
+      "arix": "gemini-2.5-flash-lite",
+      "vondra": "gemini-2.5-flash-lite",
+      "nura": "gemini-2.5-flash-lite",
+      "elora": "gemini-2.5-flash-lite",
+      "luvia": "gemini-2.5-flash-lite",
+      "kresta": "gemini-2.5-flash-lite",
+      "solis": "gemini-2.5-flash-lite",
+      "unia": "gemini-2.5-flash-lite"
+    },
+
+    "standalone": {
+      "jim": "gemini-2.5-flash-lite",
+      "james": "gemini-2.5-flash-lite"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "diagrams": [
+    {"id":"01_hierarchy","title":"System Hierarchy","category":"Architecture","description":"Complete organizational structure","file":"01_system_hierarchy.svg","related_chapters":["section-1","section-2"],"tags":["structure","hierarchy"],"height":1200,"width":680},
+    {"id":"02_dataflow","title":"Data Flow Pipeline","category":"Operations","description":"Task execution flow","file":"02_data_flow_pipeline.svg","related_chapters":["section-5"],"tags":["flow","execution"],"height":900,"width":680},
+    {"id":"03_capacity","title":"Omni Expansion","category":"Planning","description":"Growth roadmap","file":"03_omni_expansion_capacity.svg","related_chapters":["section-3"],"tags":["growth"],"height":800,"width":680},
+    {"id":"05_tools","title":"Tools Roadmap","category":"Integration","description":"Tool integration timeline","file":"05_tools_integration_roadmap.svg","related_chapters":["section-9"],"tags":["tools"],"height":850,"width":680},
+    {"id":"06_cost","title":"Cost Model","category":"Finance","description":"Cost structure","file":"06_cost_model_framework.svg","related_chapters":["section-8"],"tags":["cost"],"height":900,"width":680}
+  ]
+}

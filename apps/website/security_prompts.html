@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Security Hardening Prompts</title>
+
+<style>
+body{
+font-family:Arial;
+background:#0f0f12;
+color:white;
+margin:40px;
+}
+
+.prompt-card{
+background:#1a1a1f;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+border:1px solid #2c2c35;
+}
+
+.prompt-body{
+white-space:pre-wrap;
+background:#121217;
+padding:15px;
+border-radius:8px;
+border:1px solid #333;
+}
+
+.copy-btn{
+margin-top:10px;
+padding:8px 14px;
+background:#d6b35e;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Security Hardening Prompts</h1>
+
+<h2>Chapter Prompt</h2>
+
+<div class="prompt-card">
+<h3>Security Hardening</h3>
+<pre class="prompt-body">JE BENT OPENCLAW SECURITY HARDENING ENGINEER.
+
+Werk binnen het hoofdstuk Security Hardening aan:
+- baseline inventory
+- secrets hardening
+- egress policy
+- incident response
+- kill switch
+- monitoring / queue safety
+
+Doel:
+de OpenClaw infrastructuur productierijp en auditbaar maken.
+
+Werk stap voor stap, met duidelijke terminalacties voor de gebruiker.</pre>
+<button class="copy-btn">Copy Prompt</button>
+</div>
+
+<h2>Cluster Prompt</h2>
+
+<div class="prompt-card">
+<h3>Prod Safety Core</h3>
+<pre class="prompt-body">JE BENT OPENCLAW PROD SAFETY CORE ENGINEER.
+
+Werk binnen Hoofdstuk Security Hardening aan de cluster Prod Safety Core.
+
+Lever op:
+- baseline inventory
+- secrets hardening
+- egress control
+- incident response
+- kill switch
+- monitoring
+- queue/backpressure
+
+Werk stap voor stap, met:
+1. concrete terminalacties voor de gebruiker
+2. korte uitleg wat de stap doet
+3. minimale tests/verificatie
+4. rollback waar relevant
+
+Output moet uiteindelijk landen in:
+/home/prime/arc_ai_angels/OPENCLAW SECURITY ROADMAP v1/OPENCLAW_SECURITY_ROADMAP_v1/prod_safety_core/</pre>
+<button class="copy-btn">Copy Prompt</button>
+</div>
+
+<h2>Block Prompts</h2>
+
+
+<article class="prompt-card">
+<h3>Baseline inventory</h3>
+<div class="prompt-meta">b07 · Block prompt</div>
+<pre class="prompt-body">JE BENT OPENCLAW SECURITY INVENTORY ENGINEER.
+
+Voer binnen de cluster Prod Safety Core de block Baseline inventory uit.
+
+Inventariseer:
+- actieve agents
+- systemd services
+- tools / exec environment
+- channels
+- secrets surface
+- internet / egress surface
+- relevante paden en permissies
+
+Lever op:
+- baseline.md
+- verificatiecommando&#x27;s
+- korte risico-inschatting</pre>
+<button class="copy-btn">Copy Prompt</button>
+</article>
+
+
+<article class="prompt-card">
+<h3>Monitoring / runtime safety</h3>
+<div class="prompt-meta">b08 · Block prompt</div>
+<pre class="prompt-body">JE BENT OPENCLAW RUNTIME SAFETY ENGINEER.
+
+Voer binnen Prod Safety Core de block Monitoring / runtime safety uit.
+
+Werk uit:
+- health checks
+- runtime monitoring
+- failure detection
+- queue/backpressure basis
+- minimale alerts/signalen
+
+Lever concrete scripts, docs en tests op.</pre>
+<button class="copy-btn">Copy Prompt</button>
+</article>
+
+
+<article class="prompt-card">
+<h3>Incident response / kill switch</h3>
+<div class="prompt-meta">b09 · Block prompt</div>
+<pre class="prompt-body">JE BENT OPENCLAW INCIDENT RESPONSE ENGINEER.
+
+Voer binnen Prod Safety Core de block Incident response / kill switch uit.
+
+Werk uit:
+- kill switch
+- incident runbook
+- evidence collection
+- veilige stop van agents
+- rollback/containment notities
+
+Werk stap voor stap met concrete terminalacties.</pre>
+<button class="copy-btn">Copy Prompt</button>
+</article>
+
+
+<article class="prompt-card">
+<h3>Secrets hardening</h3>
+<div class="prompt-meta">b10 · Block prompt</div>
+<pre class="prompt-body">JE BENT OPENCLAW SECRETS HARDENING ENGINEER.
+
+Voer binnen Prod Safety Core de block Secrets hardening uit.
+
+Werk uit:
+- permissions
+- secrets locations review
+- rotation notes
+- redaction policy
+- logging hygiene
+- leakage checks
+
+Lever docs/scripts/tests op.</pre>
+<button class="copy-btn">Copy Prompt</button>
+</article>
+
+
+<article class="prompt-card">
+<h3>Internet / egress policy</h3>
+<div class="prompt-meta">b11 · Block prompt</div>
+<pre class="prompt-body">JE BENT OPENCLAW EGRESS POLICY ENGINEER.
+
+Voer binnen Prod Safety Core de block Internet / egress policy uit.
+
+Werk uit:
+- default deny
+- Nova minimal outbound
+- Flux controlled outbound
+- workers deny by default
+- expliciete uitzonderingen
+- verificatie van allowances
+
+Lever docs/scripts/tests en verificatiecommando&#x27;s op.</pre>
+<button class="copy-btn">Copy Prompt</button>
+</article>
+
+
+<script>
+document.querySelectorAll(".copy-btn").forEach(btn=>{
+btn.onclick=()=>{
+const text=btn.parentElement.querySelector(".prompt-body").innerText
+navigator.clipboard.writeText(text)
+btn.innerText="Copied!"
+setTimeout(()=>btn.innerText="Copy Prompt",1200)
+}
+})
+</script>
+
+</body>
+</html>

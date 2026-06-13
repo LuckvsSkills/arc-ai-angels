@@ -1,0 +1,71 @@
+╔════════════════════════════════════════════════════════════════╗
+║          HARNAS MONITORING - QUICK REFERENCE                  ║
+║          Nederlandse Snelle Referentie voor MCC Chat          ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 COPY-PASTE PROMPT VOOR MCC CHAT:
+
+"HARNAS Status Report
+
+Ik wil HARNAS monitoren (het agent autonomy system we net bouwden).
+
+Controleer:
+1. /home/prime/arc_ai_angels/HARNAS/monitoring-dashboard.sh uitvoeren
+2. crontab -l | grep consolidate-memory (moet 128 entries zijn)
+3. Zijn alle 32 agents gezond? (check MEMORY.md, consolidation.log)
+4. Groeit MEMORY dagelijks?
+5. Zijn er errors in Phase 3/4 logs?
+
+Geef status: GROEN/GEEL/ROOD met aanbevelingen."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 IMPORTANTES BESTANDEN:
+
+Dashboard:
+  /home/prime/arc_ai_angels/HARNAS/monitoring-dashboard.sh
+
+Agent Data (alle 32):
+  /home/prime/arc_ai_angels/agents/[agent]/MEMORY.md
+  /home/prime/arc_ai_angels/agents/[agent]/consolidation.log
+  /home/prime/arc_ai_angels/agents/[agent]/JOURNAL/closed/
+
+Cronjob Check:
+  crontab -l | grep consolidate-memory
+
+Logs (per agent):
+  /home/prime/arc_ai_angels/agents/[agent]/intelligent-consolidation.log
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 AGENT NAMEN (voor diepte analyse):
+
+nova, flux (orchestrators)
+cortexia, saelia, finoria, lumeria, fluentia (leads)
+arix, axon, clio, daxio, draven, elora, enki, forge, kairo, kenzo, 
+kresta, luvia, nero, nura, odis, orizon, solis, sora, tharos, unia, 
+vector, ventura, vondra, zena, zion (sentinels)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ VERWACHTE METREKEN:
+
+Cronjobs:     128 (4 × 32 agents)
+MEMORY groei: Dagelijks stijgend
+Success rate: >90%
+Consolidaties: 4 per dag per agent (00:00, 06:00, 12:00, 18:00)
+Phase 4:      Patterns detecteren, bottlenecks vinden
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ WAARSCHUWINGEN:
+
+Cronjobs < 128         → Herinstellingen nodig
+MEMORY staal > 24h     → Consolidatie niet gedraaid
+Logs met errors        → Agent probleem
+Geen Phase 4 patterns  → Intelligence niet werkend
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 KLAAR? USE DEZE PROMPT IN MCC CHAT!
+

@@ -1,0 +1,47 @@
+{
+  "enabled": true,
+  "overrides": {
+    "nova": null,
+    "flux.lite": null,
+    "flux.core": null,
+
+    "cortexia": null,
+    "saelia": null,
+    "lumeria": null,
+    "fluentia": null,
+    "finoria": null,
+
+    "nero": null,
+    "forge": null,
+    "ventura": null,
+    "axon": null,
+    "clio": null,
+
+    "sora": null,
+    "daxio": null,
+    "enki": null,
+    "tharos": null,
+    "arix": null,
+
+    "vondra": null,
+    "nura": null,
+    "elora": null,
+    "luvia": null,
+    "kresta": null,
+
+    "solis": null,
+    "orizon": null,
+    "zena": null,
+    "unia": null,
+    "draven": null,
+
+    "vector": null,
+    "zion": null,
+    "odis": null,
+    "kenzo": null,
+    "kairo": null,
+
+    "jim": null,
+    "james": null
+  }
+}

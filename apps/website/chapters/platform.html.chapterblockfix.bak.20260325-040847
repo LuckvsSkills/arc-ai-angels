@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform & Runtime - Arc AI Angels</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --chapter-color: #8B5CF6;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 4px; }
+        
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-strong {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Chapter header with color */
+        .chapter-header-bg {
+            background: linear-gradient(135deg, #8B5CF620 0%, #8B5CF605 100%);
+            border-bottom: 2px solid #8B5CF640;
+        }
+        
+        /* Block cards with chapter color - v8 style */
+        .block-card {
+            background: #8B5CF615;
+            border: 1px solid #8B5CF640;
+            transition: all 0.3s ease;
+        }
+        
+        .block-card:hover {
+            background: #8B5CF625;
+            border-color: #8B5CF670;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px #8B5CF640;
+        }
+        
+        .block-completed {
+            background: #10b98115 !important;
+            border-color: #10b98140 !important;
+        }
+        
+        .block-completed:hover {
+            background: #10b98125 !important;
+            border-color: #10b98170 !important;
+            box-shadow: 0 10px 30px -10px #10b98140 !important;
+        }
+        
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .theme-dropdown {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .theme-select {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+        
+        .theme-select option {
+            background: #1e293b;
+            color: white;
+        }
+        
+        .arc-ai-angels-compact {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .chapter-item {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .chapter-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+        
+        .chapter-item.active {
+            background: #8B5CF615;
+            border-left-color: #8B5CF6;
+        }
+        
+        /* Diagram container */
+        .diagram-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #8B5CF630;
+            border-radius: 12px;
+        }
+    
+/* ===== ARC AI ANGELS CHAPTER PAGES PATCH START ===== */
+
+.hero{
+  margin-bottom: 22px !important;
+}
+
+.hero-content,
+.page-hero,
+.chapter-hero{
+  max-width: 980px !important;
+}
+
+.hero-content h1,
+.page-hero h1,
+.chapter-hero h1{
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  line-height: 1.05 !important;
+  margin-bottom: 12px !important;
+}
+
+.hero-subtitle,
+.page-hero p,
+.chapter-hero p{
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+
+.chapter-card,
+.block-card,
+.content-card,
+.info-card,
+.panel{
+  border-radius: 16px !important;
+}
+
+.info-section{
+  display:none !important;
+}
+
+/* ruimtegebruik meer als index */
+main,
+.page-wrap,
+.content,
+.container{
+  width: 100%;
+}
+
+@media (max-width: 900px){
+  .chapters-grid{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== ARC AI ANGELS CHAPTER PAGES PATCH END ===== */
+
+
+/* ===== ARC AI ANGELS CHAPTER FINISH PATCH START ===== */
+
+/* page shell meer zoals index */
+.wrap{
+  max-width: 1400px !important;
+  padding: 0 24px !important;
+}
+
+.hero{
+  padding: 34px 0 10px !important;
+}
+
+.hero-grid{
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+}
+
+.hero .panel{
+  border-radius: 20px !important;
+  padding: 22px !important;
+}
+
+h1{
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  line-height: 1.06 !important;
+}
+
+.hero p{
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  max-width: 900px !important;
+}
+
+/* KPI's rustiger / kleiner */
+.kpi{
+  grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+  gap: 10px !important;
+  margin-top: 14px !important;
+}
+
+.kpi-box{
+  padding: 12px !important;
+  border-radius: 16px !important;
+}
+
+.kpi-label{
+  font-size: 12px !important;
+}
+
+.kpi-value{
+  font-size: 16px !important;
+}
+
+/* cards compacter zoals index */
+.chapter-grid{
+  gap: 14px !important;
+}
+
+.chapter-card{
+  padding: 14px !important;
+  border-radius: 16px !important;
+}
+
+.chapter-title{
+  font-size: 18px !important;
+}
+
+/* sections netter */
+.section{
+  padding-top: 2px !important;
+}
+
+.section h2{
+  font-size: 26px !important;
+  margin-bottom: 12px !important;
+}
+
+.section-intro{
+  font-size: 15px !important;
+  margin-bottom: 12px !important;
+}
+
+/* overbodige info cards weg */
+.info-section{
+  display: none !important;
+}
+
+/* buttons / nav iets strakker */
+.nav a,.btn,select{
+  font-size: 13px !important;
+  padding: 8px 12px !important;
+}
+
+/* ===== ARC AI ANGELS CHAPTER FINISH PATCH END ===== */
+
+</style>
+</head>
+<body class="min-h-screen grid-bg">
+    <!-- Theme Dropdown -->
+    <div class="theme-dropdown">
+        <select class="theme-select" id="themeSelect" onchange="setTheme(this.value)">
+            <option value="dark">🌙 Dark</option>
+            <option value="light">☀️ Light</option>
+            <option value="midnight">🌌 Midnight</option>
+            <option value="forest">🌲 Forest</option>
+        </select>
+    </div>
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-80 glass-strong flex flex-col overflow-hidden">
+            <div class="p-6 border-b border-white/10">
+                <a href="../index.html" class="text-2xl font-bold font-mono bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+                    Arc AI Angels
+                </a>
+                <p class="text-xs text-gray-400 mt-1">Strategisch Architectuur Platform</p>
+            </div>
+            
+            <!-- Arc AI Angels Compact Block -->
+            <div class="arc-ai-angels-compact p-4 m-4 rounded-lg">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-sm text-blue-300">Arc AI Angels</h3>
+                        <p class="text-xs text-gray-400">OpenClaw installatie & AI agents</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto p-4 space-y-2" id="sidebar-nav">
+                <!-- Chapters loaded via JS -->
+            </nav>
+            
+            <div class="p-4 border-t border-white/10">
+                <a href="../index.html" class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors mb-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    Terug naar home
+                </a>
+                <a href="index.html" class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                    </svg>
+                    Alle chapters
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Chapter Header -->
+            <section class="chapter-header-bg p-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-bold"
+                             style="background: #8B5CF630; color: #8B5CF6; border: 2px solid #8B5CF650;">
+                            2
+                        </div>
+                        <div>
+                            <h1 class="text-4xl font-bold font-mono" style="color: #8B5CF6;">Platform & Runtime</h1>
+                            <p class="text-gray-400 mt-1">OpenClaw installatie & AI agents beheren op je eigen systeem</p>
+                        </div>
+                        <span class="px-4 py-2 rounded-full bg-green-500/20 text-green-400 text-sm font-medium border border-green-500/40 flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Chapter Compleet</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-6 mt-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-48 h-3 bg-gray-800 rounded-full overflow-hidden border border-gray-700">
+                                <div class="h-full rounded-full transition-all duration-500" 
+                                     style="width: 100%; background: linear-gradient(90deg, #8B5CF6, #8B5CF680);"></div>
+                            </div>
+                            <span class="text-lg font-mono font-bold" style="color: #8B5CF6;">100%</span>
+                        </div>
+                        <span class="text-sm text-gray-400">6 van 6 blocks voltooid</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blocks Grid -->
+            <section class="p-8">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-2xl font-bold mb-6 font-mono flex items-center gap-2">
+                        <span style="color: #8B5CF6;">▸</span> Blocks
+                    </h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+        <div class="block-card block-completed rounded-xl p-6" id="plat-1">
+            <div class="flex items-start justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold"
+                     style="background: #10b98120; color: #10b981; border: 2px solid #10b98140;">
+                    ✓
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-mono" 
+                      style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    plat-1
+                </span>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">Systeem vereisten</h3>
+            <p class="text-sm text-gray-400 mb-4">
+                Dit block is voltooid en bevat alle benodigde documentatie, voorbeelden en configuraties.
+            </p>
+            
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+                <span class="text-xs" style="color: #10b981;">
+                    ✓ Voltooid
+                </span>
+                <button class="text-sm px-4 py-2 rounded-lg transition-all hover:scale-105 font-medium"
+                        style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    Herbekijk
+                </button>
+            </div>
+        </div>
+        
+        <div class="block-card block-completed rounded-xl p-6" id="plat-2">
+            <div class="flex items-start justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold"
+                     style="background: #10b98120; color: #10b981; border: 2px solid #10b98140;">
+                    ✓
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-mono" 
+                      style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    plat-2
+                </span>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">Docker & Podman setup</h3>
+            <p class="text-sm text-gray-400 mb-4">
+                Dit block is voltooid en bevat alle benodigde documentatie, voorbeelden en configuraties.
+            </p>
+            
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+                <span class="text-xs" style="color: #10b981;">
+                    ✓ Voltooid
+                </span>
+                <button class="text-sm px-4 py-2 rounded-lg transition-all hover:scale-105 font-medium"
+                        style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    Herbekijk
+                </button>
+            </div>
+        </div>
+        
+        <div class="block-card block-completed rounded-xl p-6" id="plat-3">
+            <div class="flex items-start justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold"
+                     style="background: #10b98120; color: #10b981; border: 2px solid #10b98140;">
+                    ✓
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-mono" 
+                      style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    plat-3
+                </span>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">OpenClaw installatie</h3>
+            <p class="text-sm text-gray-400 mb-4">
+                Dit block is voltooid en bevat alle benodigde documentatie, voorbeelden en configuraties.
+            </p>
+            
+                <div class="mt-4 p-3 diagram-box">
+                    <div class="mermaid text-xs">
+flowchart LR
+    A[Download] --> B[Install]
+    B --> C[Configure]
+    C --> D[Start]
+                    </div>
+                </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+                <span class="text-xs" style="color: #10b981;">
+                    ✓ Voltooid
+                </span>
+                <button class="text-sm px-4 py-2 rounded-lg transition-all hover:scale-105 font-medium"
+                        style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    Herbekijk
+                </button>
+            </div>
+        </div>
+        
+        <div class="block-card block-completed rounded-xl p-6" id="plat-4">
+            <div class="flex items-start justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold"
+                     style="background: #10b98120; color: #10b981; border: 2px solid #10b98140;">
+                    ✓
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-mono" 
+                      style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    plat-4
+                </span>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">Runtime configuratie</h3>
+            <p class="text-sm text-gray-400 mb-4">
+                Dit block is voltooid en bevat alle benodigde documentatie, voorbeelden en configuraties.
+            </p>
+            
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+                <span class="text-xs" style="color: #10b981;">
+                    ✓ Voltooid
+                </span>
+                <button class="text-sm px-4 py-2 rounded-lg transition-all hover:scale-105 font-medium"
+                        style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    Herbekijk
+                </button>
+            </div>
+        </div>
+        
+        <div class="block-card block-completed rounded-xl p-6" id="plat-5">
+            <div class="flex items-start justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold"
+                     style="background: #10b98120; color: #10b981; border: 2px solid #10b98140;">
+                    ✓
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-mono" 
+                      style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    plat-5
+                </span>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">Agent deployment</h3>
+            <p class="text-sm text-gray-400 mb-4">
+                Dit block is voltooid en bevat alle benodigde documentatie, voorbeelden en configuraties.
+            </p>
+            
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+                <span class="text-xs" style="color: #10b981;">
+                    ✓ Voltooid
+                </span>
+                <button class="text-sm px-4 py-2 rounded-lg transition-all hover:scale-105 font-medium"
+                        style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    Herbekijk
+                </button>
+            </div>
+        </div>
+        
+        <div class="block-card block-completed rounded-xl p-6" id="plat-6">
+            <div class="flex items-start justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold"
+                     style="background: #10b98120; color: #10b981; border: 2px solid #10b98140;">
+                    ✓
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-mono" 
+                      style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    plat-6
+                </span>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">Monitoring & logging</h3>
+            <p class="text-sm text-gray-400 mb-4">
+                Dit block is voltooid en bevat alle benodigde documentatie, voorbeelden en configuraties.
+            </p>
+            
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+                <span class="text-xs" style="color: #10b981;">
+                    ✓ Voltooid
+                </span>
+                <button class="text-sm px-4 py-2 rounded-lg transition-all hover:scale-105 font-medium"
+                        style="background: #10b98120; color: #10b981; border: 1px solid #10b98140;">
+                    Herbekijk
+                </button>
+            </div>
+        </div>
+        
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter Diagram -->
+            
+            <section class="p-8 border-t border-white/10">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-2xl font-bold mb-6 font-mono" style="color: #8B5CF6;">Platform Architectuur</h2>
+                    <div class="diagram-box p-6">
+                        <div class="mermaid">
+graph TB
+    subgraph "User Layer"
+        A[Web UI] 
+        B[CLI]
+    end
+    
+    subgraph "OpenClaw Core"
+        C[API Gateway]
+        D[Agent Manager]
+    end
+    
+    subgraph "Runtime"
+        E[Docker]
+        F[Models]
+    end
+    
+    A --> C
+    B --> C
+    C --> D
+    D --> E
+    D --> F
+    
+    style A fill:#3b82f6,stroke:#60a5fa,stroke-width:2px,color:#fff
+    style B fill:#3b82f6,stroke:#60a5fa,stroke-width:2px,color:#fff
+    style C fill:#8b5cf6,stroke:#a78bfa,stroke-width:2px,color:#fff
+    style D fill:#8b5cf6,stroke:#a78bfa,stroke-width:2px,color:#fff
+    style E fill:#10b981,stroke:#34d399,stroke-width:2px,color:#fff
+    style F fill:#f59e0b,stroke:#fbbf24,stroke-width:2px,color:#fff
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        </main>
+    </div>
+
+    <script>
+        // Theme management
+        const themes = {
+            dark: { bg: '#0f172a', secondary: '#1e293b', text: '#f8fafc', accent: '#3b82f6' },
+            light: { bg: '#f8fafc', secondary: '#e2e8f0', text: '#0f172a', accent: '#3b82f6' },
+            midnight: { bg: '#020617', secondary: '#0f172a', text: '#e2e8f0', accent: '#6366f1' },
+            forest: { bg: '#022c22', secondary: '#064e3b', text: '#ecfdf5', accent: '#10b981' }
+        };
+
+        function setTheme(themeName) {
+            const theme = themes[themeName];
+            document.documentElement.style.setProperty('--bg-primary', theme.bg);
+            document.documentElement.style.setProperty('--bg-secondary', theme.secondary);
+            document.documentElement.style.setProperty('--text-primary', theme.text);
+            document.documentElement.style.setProperty('--accent', theme.accent);
+            
+            mermaid.initialize({ 
+                theme: themeName === 'light' ? 'default' : 'dark',
+                startOnLoad: true,
+                securityLevel: 'loose'
+            });
+        }
+
+        // Load sidebar
+        async function loadSidebar() {
+            try {
+                const response = await fetch('../data/progress.json');
+                const data = await response.json();
+                const sidebarNav = document.getElementById('sidebar-nav');
+                
+                data.chapters.forEach(chapter => {
+                    const isActive = chapter.id === 'platform';
+                    const completedCount = chapter.blocks.filter(b => b.completed).length;
+                    const totalCount = chapter.blocks.length;
+                    
+                    const div = document.createElement('div');
+                    div.className = 'chapter-item rounded-lg mb-1 ' + (isActive ? 'active' : '');
+                    div.innerHTML = `
+                        <a href="${chapter.id}.html" class="block p-3 rounded-lg">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2 h-2 rounded-full" style="background: ${chapter.color}"></span>
+                                <span class="font-medium text-sm ${isActive ? 'text-white' : 'text-gray-400'}">${chapter.title}</span>
+                                ${isActive ? '<span class="ml-auto text-xs" style="color: ${chapter.color};">●</span>' : ''}
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex-1 h-1 bg-gray-700 rounded-full">
+                                    <div class="h-full rounded-full" 
+                                         style="width: ${Math.round((completedCount/totalCount)*100)}%; background: ${chapter.color}"></div>
+                                </div>
+                                <span class="text-xs text-gray-500">${completedCount}/${totalCount}</span>
+                            </div>
+                        </a>
+                    `;
+                    sidebarNav.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error loading sidebar:', error);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            mermaid.initialize({ 
+                theme: 'dark',
+                startOnLoad: true,
+                securityLevel: 'loose'
+            });
+            loadSidebar();
+        });
+    </script>
+</body>
+</html>

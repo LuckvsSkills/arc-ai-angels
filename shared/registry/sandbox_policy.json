@@ -1,0 +1,47 @@
+{
+  "enabled": true,
+
+  "defaultPolicy": {
+    "sandboxRequired": false,
+    "allowSystemAccess": false,
+    "allowPrivilegedCommands": false,
+    "allowOpenInternet": false,
+    "ephemeralExecution": true,
+    "logExecution": true
+  },
+
+  "agents": {
+    "forge": {
+      "sandboxRequired": true,
+      "allowSystemAccess": false,
+      "allowPrivilegedCommands": false,
+      "allowOpenInternet": false,
+      "ephemeralExecution": true,
+      "logExecution": true
+    },
+    "ventura": {
+      "sandboxRequired": true,
+      "allowSystemAccess": false,
+      "allowPrivilegedCommands": false,
+      "allowOpenInternet": false,
+      "ephemeralExecution": true,
+      "logExecution": true
+    },
+    "axon": {
+      "sandboxRequired": true,
+      "allowSystemAccess": false,
+      "allowPrivilegedCommands": false,
+      "allowOpenInternet": false,
+      "ephemeralExecution": true,
+      "logExecution": true
+    },
+    "draven": {
+      "sandboxRequired": true,
+      "allowSystemAccess": false,
+      "allowPrivilegedCommands": false,
+      "allowOpenInternet": false,
+      "ephemeralExecution": true,
+      "logExecution": true
+    }
+  }
+}

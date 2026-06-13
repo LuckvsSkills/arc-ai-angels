@@ -1,0 +1,13 @@
+{
+  "id": "test-nova-search-001",
+  "agent": "nova",
+  "providerUsed": "tavily",
+  "type": "search",
+  "status": "failed",
+  "requestedAt": "2026-04-04T21:00:00Z",
+  "completedAt": "2026-04-04T20:54:26Z",
+  "query": "AI agents trends 2026 summary",
+  "url": null,
+  "result": {},
+  "error": "internet disabled by runtime_mode"
+}

@@ -1,0 +1,245 @@
+{
+  "timestamp": "2026-05-10T08:46:28.193Z",
+  "agents_processed": 27,
+  "total_learnings": 332,
+  "learnings_by_agent": {
+    "nova": {
+      "count": 17,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "flux": {
+      "count": 28,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "kairo": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "kenzo": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "odis": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "vector": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "zion": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "axon": {
+      "count": 19,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "clio": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "forge": {
+      "count": 12,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "nero": {
+      "count": 14,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "ventura": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "arix": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "daxio": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "enki": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "sora": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "tharos": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van taakstatus"
+      ]
+    },
+    "elora": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "kresta": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "luvia": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "nura": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "vondra": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "draven": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "orizon": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "solis": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "unia": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    },
+    "zena": {
+      "count": 11,
+      "sample": [
+        "- alleen herbruikbare learnings",
+        "- geen dagelijkse ruis",
+        "- geen duplicatie van actuele taakstatus"
+      ]
+    }
+  },
+  "domains": {
+    "finix": {
+      "agents_with_learning": 6,
+      "total_learnings": 55
+    },
+    "helix": {
+      "agents_with_learning": 6,
+      "total_learnings": 67
+    },
+    "matrix": {
+      "agents_with_learning": 6,
+      "total_learnings": 55
+    },
+    "quantix": {
+      "agents_with_learning": 6,
+      "total_learnings": 55
+    },
+    "zenix": {
+      "agents_with_learning": 6,
+      "total_learnings": 55
+    }
+  }
+}

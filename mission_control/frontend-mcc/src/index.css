@@ -1,0 +1,36 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 13px; }
+
+body {
+  font-family: inherit;
+  background: var(--mcc-bg, #080d1f);
+  color: var(--mcc-text, #dce8f8);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Scrollbar volgt accent kleur */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--mcc-bg, #080d1f); }
+::-webkit-scrollbar-thumb {
+  background: var(--mcc-accent, #00d9ff);
+  opacity: 0.5;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { opacity: 0.8; }
+* { scrollbar-width: thin; scrollbar-color: var(--mcc-accent, #00d9ff) var(--mcc-bg, #080d1f); }
+
+/* Smooth theme transitions */
+div, nav, button, input, select, textarea, span, p, h1, h2, h3, h4, li, td, th {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+button { font-family: inherit; cursor: pointer; }
+input, textarea, select { font-family: inherit; }
+a { color: var(--mcc-accent); text-decoration: none; }
+
+@keyframes mcc-fadein  { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+@keyframes mcc-pulse   { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+@keyframes mcc-glow    { 0%,100% { opacity:0.7; } 50% { opacity:1; } }
+@keyframes mcc-spin    { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }

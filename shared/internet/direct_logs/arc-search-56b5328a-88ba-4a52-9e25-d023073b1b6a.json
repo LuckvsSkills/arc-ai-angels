@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "id": "arc-search-56b5328a-88ba-4a52-9e25-d023073b1b6a",
+  "provider": "tavily",
+  "preset": "youtube_short",
+  "query": "motivational video",
+  "effectiveQuery": "site:youtube.com/shorts motivational video motivational OR discipline OR success OR mindset -playlist",
+  "maxResults": 5,
+  "completedAt": "2026-04-05T01:20:43Z",
+  "result": {
+    "query": "motivational video motivational OR discipline OR success OR mindset -playlist",
+    "response_time": 1.07,
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.youtube.com/watch?v=Vnn9pdH9b_Y",
+        "title": "CONSISTENCY, DISCIPLINE AND MINDSET IS ALL YOU NEED",
+        "content": "CONSISTENCY, DISCIPLINE AND MINDSET IS ALL YOU NEED – Powerful Motivational Speech Video is a no-nonsense motivational video created and",
+        "score": 0.62879556,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=maljWFCQ3LI",
+        "title": "DISCIPLINE IS POWER - Best Motivational Speeches - YouTube",
+        "content": "DISCIPLINE IS POWER - Best Motivational Speeches\nMotivationHub\n3600000 subscribers\n417 likes\n11896 views\n30 Sep 2024\nDiscipline is Power! The number one skill that is essential to accomplish your goals. It requires doing what needs to be done, even when you don't feel like it. Your level of success is determined by your level of DISCIPLINE!\n\n►Special thanks to \n@lewishowes \n Marcus A. Taylor -  / @MarcusTaylorOfficial \n@JordanBPeterson  \n\n\nSubscribe to MotivationHub for new videos every week from the greatest minds: http://bit.ly/SubscribeHub\n\n“When you are disciplined, how you do anything is how you do everything. ” \n― Marcus A. Taylor\n\nIf you know someone who could use this video, share it with them!\n\n_____________\n\nWays to stay connected with MotivationHub and stay motivated:\n\n▶Subscribe for New Motivational Speeches: \n https://bit.ly/motivationhubofficial\n\n▶SHOP Official Motivational Canvases and Apparel:\nhttps://bit.ly/motiversityshop\n\n▶BECOME A MEMBER of our loyal community!\nhttps://bit.ly/hubmemberships\n\n▶Follow all the Motiversity YouTube channels: \nhttps://linktr.ee/motiversity\n\n►Follow on Music and Podcast Platforms\nMindset App: https://bit.ly/HubonMindsetApp\n\n_____________\n\n▶Speakers:\n\nDavid Goggins\n\nMarcus A. Taylor\n\nJordan B Peterson\n\n►Follow MotivationHub on Social Media\nDiscord: https://bit.ly/motiversitydiscord\nFacebook:  https://bit.ly/motiversityfacebook \nInstagram: https://bit.ly/motiversityinstagram\nTikTok: https://bit.ly/motiversitytiktok\nMindset App: https://bit.ly/getmindsetapp\nWebsite: https://bit.ly/MotivationHubWebsite\n\n►Music: \n\n\n\n►Video footage: All video footage used is either licensed through either CC-BY or from various stock footage websites. All creative commons footage is listed at the end of the video and is licensed under CC-BY 3.0.\n\n►Submissions to Motiversity\nSpeeches: http://bit.ly/MotiversitySubmitSpeeches\nMusic or Footage:  https://bit.ly/MotiversitySubmitFootageMusic\n\n►Disclaimer: This video was fully edited and licensed by the team at MotivationHub.\n\n#motivationhub #hopecore #motivationalspeech\n29 comments\n",
+        "score": 0.5248093,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=4fsu2q_aPGg",
+        "title": "DISCIPLINE YOUR MINDSET - Motivational Speech - YouTube",
+        "content": "... Video Footage: All Video Footage licensed through Artgrid, Filmpac, VideoBlocks and Pexels. ------------------ #motivation #inspiration #speech.",
+        "score": 0.5521781,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=gKyHqzL-MNg",
+        "title": "STAY DISCIPLINED - Motivational Video - YouTube",
+        "content": "STAY DISCIPLINED - Motivational Speech You don't rise to the level of your goals. You fall to the level of your systems.",
+        "score": 0.54303354,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=5bR_KRMQSV4",
+        "title": "SAVAGE MENTALITY - Motivational Video - YouTube",
+        "content": "SAVAGE MENTALITY - Motivational Speech Test days are what make you a savage. You gotta discipline yourself, and you gotta learn that when",
+        "score": 0.5325473,
+        "raw_content": null
+      }
+    ],
+    "request_id": "934a28e3-0f7a-4ab1-9179-fe25768a8636"
+  }
+}

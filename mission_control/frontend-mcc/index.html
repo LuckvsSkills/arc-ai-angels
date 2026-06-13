@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Arc AI Agents — Mission Control Center</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+      #root { height: 100%; width: 100%; display: flex; flex-direction: column; overflow: hidden; }
+      img, video, canvas { max-width: 100%; }
+      ::-webkit-scrollbar { width: 4px; height: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+      * { -webkit-tap-highlight-color: transparent; }
+      body { -webkit-font-smoothing: antialiased; }
+      nav, button { user-select: none; -webkit-user-select: none; }
+      @media (max-width: 768px) { html { font-size: 14px; } }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

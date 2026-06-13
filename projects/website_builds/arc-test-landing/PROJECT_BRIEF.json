@@ -1,0 +1,30 @@
+{
+  "project_naam": "ARC-Test-Landing",
+  "type": "landing",
+  "beschrijving": "Test landing page voor ARC AI Agents website fabriek",
+  "features": [
+    "hero sectie",
+    "features overzicht",
+    "contact formulier"
+  ],
+  "kleurenschema": "goud en zwart",
+  "domein": "arc-test-landing.vercel.app",
+  "template": "template-landing",
+  "stack": "HTML/CSS/JS",
+  "admin_panel": false,
+  "website_agent": false,
+  "pricing": {
+    "tier": 1,
+    "min": 500,
+    "max": 2000
+  },
+  "aangemaakt": "2026-06-12T03:34:26.265055",
+  "status": "GESTART",
+  "sentinels": {
+    "forge": "PENDING",
+    "axon": "PENDING",
+    "nero": "PENDING",
+    "ventura": "PENDING",
+    "clio": "PENDING"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "chapter": {
+    "title": "Security Hardening",
+    "prompt": "JE BENT OPENCLAW SECURITY HARDENING ENGINEER.\n\nWerk binnen het hoofdstuk Security Hardening aan:\n- baseline inventory\n- secrets hardening\n- egress policy\n- incident response\n- kill switch\n- monitoring / queue safety\n\nDoel:\nde OpenClaw infrastructuur productierijp en auditbaar maken.\n\nWerk stap voor stap, met duidelijke terminalacties voor de gebruiker."
+  },
+  "cluster": {
+    "title": "Prod Safety Core",
+    "prompt": "JE BENT OPENCLAW PROD SAFETY CORE ENGINEER.\n\nWerk binnen Hoofdstuk Security Hardening aan de cluster Prod Safety Core.\n\nLever op:\n- baseline inventory\n- secrets hardening\n- egress control\n- incident response\n- kill switch\n- monitoring\n- queue/backpressure\n\nWerk stap voor stap, met:\n1. concrete terminalacties voor de gebruiker\n2. korte uitleg wat de stap doet\n3. minimale tests/verificatie\n4. rollback waar relevant\n\nOutput moet uiteindelijk landen in:\n/home/prime/arc_ai_angels/OPENCLAW SECURITY ROADMAP v1/OPENCLAW_SECURITY_ROADMAP_v1/prod_safety_core/"
+  },
+  "blocks": [
+    {
+      "id": "b07",
+      "title": "Baseline inventory",
+      "prompt": "JE BENT OPENCLAW SECURITY INVENTORY ENGINEER.\n\nVoer binnen de cluster Prod Safety Core de block Baseline inventory uit.\n\nInventariseer:\n- actieve agents\n- systemd services\n- tools / exec environment\n- channels\n- secrets surface\n- internet / egress surface\n- relevante paden en permissies\n\nLever op:\n- baseline.md\n- verificatiecommando's\n- korte risico-inschatting"
+    },
+    {
+      "id": "b08",
+      "title": "Monitoring / runtime safety",
+      "prompt": "JE BENT OPENCLAW RUNTIME SAFETY ENGINEER.\n\nVoer binnen Prod Safety Core de block Monitoring / runtime safety uit.\n\nWerk uit:\n- health checks\n- runtime monitoring\n- failure detection\n- queue/backpressure basis\n- minimale alerts/signalen\n\nLever concrete scripts, docs en tests op."
+    },
+    {
+      "id": "b09",
+      "title": "Incident response / kill switch",
+      "prompt": "JE BENT OPENCLAW INCIDENT RESPONSE ENGINEER.\n\nVoer binnen Prod Safety Core de block Incident response / kill switch uit.\n\nWerk uit:\n- kill switch\n- incident runbook\n- evidence collection\n- veilige stop van agents\n- rollback/containment notities\n\nWerk stap voor stap met concrete terminalacties."
+    },
+    {
+      "id": "b10",
+      "title": "Secrets hardening",
+      "prompt": "JE BENT OPENCLAW SECRETS HARDENING ENGINEER.\n\nVoer binnen Prod Safety Core de block Secrets hardening uit.\n\nWerk uit:\n- permissions\n- secrets locations review\n- rotation notes\n- redaction policy\n- logging hygiene\n- leakage checks\n\nLever docs/scripts/tests op."
+    },
+    {
+      "id": "b11",
+      "title": "Internet / egress policy",
+      "prompt": "JE BENT OPENCLAW EGRESS POLICY ENGINEER.\n\nVoer binnen Prod Safety Core de block Internet / egress policy uit.\n\nWerk uit:\n- default deny\n- Nova minimal outbound\n- Flux controlled outbound\n- workers deny by default\n- expliciete uitzonderingen\n- verificatie van allowances\n\nLever docs/scripts/tests en verificatiecommando's op."
+    }
+  ]
+}

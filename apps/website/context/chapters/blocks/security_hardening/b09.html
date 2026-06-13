@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Security Hardening — Incident response / kill switch</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: rgba(255,255,255,.10);
+      --text: #eef4ff;
+      --muted: #a8b7d1;
+      --accent: #36c9ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 35%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1324 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .backlink {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, var(--panel)) 0%, var(--panel) 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      margin-bottom: 22px;
+    }
+    .content {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(24px, 2.6vw, 30px);
+      line-height: 1.2;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 30px 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    ul, ol {
+      margin: 0 0 18px 24px;
+      padding: 0;
+    }
+    pre {
+      margin: 16px 0 22px;
+      padding: 18px 20px;
+      background: #0a0f1a;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 18px;
+      overflow: auto;
+      color: #eaf1ff;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 720px) {
+      .content, .hero { padding: 22px; }
+      p, li { font-size: 17px; }
+      h3 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../security_hardening.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Security Hardening · B09</div>
+    </div>
+
+    <div class="hero">
+      <h1>Security Hardening</h1>
+      <h2>Block 09 — Incident response / kill switch</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>Dit block definieert incident response procedures en de kill switch functionaliteit. Het stopt automatisch of handmatig verdachte agents bij security incidents.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Auto Kill** | Automatische stop bij anomalies |</p>
+<p>| **Manual Kill** | Handmatige noodstop |</p>
+<p>| **Incident Playbook** | Standaard response procedures |</p>
+<p>| **Forensics** | Logging voor onderzoek |</p>
+<h3>System Context</h3>
+<p>Kill switch kan elk agent proces stoppen.</p>
+<p>Alert -&gt; Decision -&gt; Kill Switch -&gt; Termination -&gt; Forensics</p>
+<h3>Core Structure</h3>
+<p>#### 1. Kill Engine</p>
+<p>Voert terminatie uit.</p>
+<p>#### 2. Decision Module</p>
+<p>Bepaalt of kill nodig is.</p>
+<p>#### 3. Playbook Manager</p>
+<p>Beheert response procedures.</p>
+<p>#### 4. Forensics Logger</p>
+<p>Logt alles voor analyse.</p>
+<h3>How It Works</h3>
+<ol>
+<li>Detecteer threat</li>
+<li>Evalueer ernst</li>
+<li>Beslis actie</li>
+<li>Voer kill uit</li>
+<li>Log forensics</li>
+</ol>
+<h3>How to Find / Use It</h3>
+<p>Kill switch: oc-admin kill --agent-id &lt;id&gt;</p>
+<h3>Why It Exists</h3>
+<p>Noodstop is essentieel voor containment van security incidents.</p>
+<p>---</p>
+<h2>Diagram</h2>
+<p>\`\`\`mermaid</p>
+<p>flowchart TB</p>
+<p>    A[Start] --&gt; B[Process]</p>
+<p>    B --&gt; C[End]</p>
+<p>\`\`\`</p>
+<p>---</p>
+<h2>Diagram</h2>
+<div class="mermaid">flowchart TB
+    A[Start] --> B[Process]
+    B --> C[End]</div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad:true,
+  theme:'dark',
+  themeVariables:{
+    primaryColor:'#d6b35e',
+    primaryTextColor:'#eef4fb',
+    primaryBorderColor:'#d6b35e',
+    lineColor:'#95a7c2',
+    secondaryColor:'#1c1c20',
+    tertiaryColor:'#232329'
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+== OPENCLAW RUNTIME HEALTH CHECK ==
+
+-- Services --
+openclaw-nova: inactive
+openclaw-flux: inactive
+
+-- Gateway Process --
+105377 openclaw-gateway                                                                                  
+
+-- Ports --
+LISTEN    0         511               127.0.0.1:50506            0.0.0.0:*       users:(("openclaw-gatewa",pid=105377,fd=22))                                   
+LISTEN    0         511                   [::1]:50506               [::]:*       users:(("openclaw-gatewa",pid=105377,fd=23))                                   
+LISTEN    0         511               127.0.0.1:50509            0.0.0.0:*       users:(("openclaw-gatewa",pid=105377,fd=28))                                   
+
+-- Critical Files --
+OK file: /home/prime/.openclaw/.env
+OK file: /home/prime/.openclaw/openclaw.json
+
+-- Memory DBs --
+/home/prime/.openclaw/memory/flux.sqlite
+/home/prime/.openclaw/memory/main.sqlite
+/home/prime/.openclaw/memory/nova.sqlite
+
+-- Gatekeeper Paths --
+OK dir: /home/prime/arc_ai_angels/gatekeeper/logs
+OK dir: /home/prime/arc_ai_angels/gatekeeper/policies
+
+-- Capacity --
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G   14G  942G   2% /
+/dev/sdd       1007G   14G  942G   2% /
+
+              total        used        free      shared  buff/cache   available
+Mem:          7.6Gi       811Mi       6.2Gi       8.0Mi       652Mi       6.6Gi
+Swap:         2.0Gi          0B       2.0Gi
+
+== END HEALTH CHECK ==

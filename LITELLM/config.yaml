@@ -1,0 +1,233 @@
+model_list:
+
+  # ════════════════════════════════════════
+  # TIER C — Snel/Goedkoop
+  # Gebruik: Sentinels, logging, routing
+  # ════════════════════════════════════════
+
+  - model_name: arc-low
+    litellm_params:
+      model: gemini/gemini-2.5-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 30
+    model_info:
+      tier: free
+      label: "Tier C — Gemini 2.5 Flash Lite (direct)"
+
+  - model_name: arc-low-or
+    litellm_params:
+      model: openrouter/google/gemini-2.5-flash
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 30
+    model_info:
+      tier: free
+      label: "Tier C — Gemini 2.5 Flash (OpenRouter fallback)"
+
+  - model_name: arc-low-deepseek
+    litellm_params:
+      model: openrouter/deepseek/deepseek-v4-flash
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 30
+    model_info:
+      tier: free
+      label: "Tier C — Deepseek V4 Flash (OpenRouter fallback)"
+
+  # ════════════════════════════════════════
+  # TIER B — Balans
+  # Gebruik: Lead Agents, analyse, coordinatie
+  # ════════════════════════════════════════
+
+  - model_name: arc-mid
+    litellm_params:
+      model: gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+      rpm: 60
+    model_info:
+      tier: paid
+      label: "Tier B — OpenAI GPT-4o-mini (direct)"
+
+  - model_name: arc-mid-or
+    litellm_params:
+      model: openrouter/openai/gpt-4o-mini
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 60
+    model_info:
+      tier: paid
+      label: "Tier B — GPT-4o-mini (OpenRouter fallback)"
+
+  - model_name: arc-mid-gemini
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 10
+    model_info:
+      tier: paid
+      label: "Tier B — Gemini Flash (directe key fallback)"
+
+  # ════════════════════════════════════════
+  # TIER A — Krachtig
+  # Gebruik: Zware taken, complexe redenering
+  # ════════════════════════════════════════
+
+  - model_name: arc-high
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 5
+    model_info:
+      tier: paid
+      label: "Tier A — Gemini 2.5 Pro (Google direct)"
+
+  - model_name: arc-high-or
+    litellm_params:
+      model: openrouter/google/gemini-2.5-pro
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 5
+    model_info:
+      tier: paid
+      label: "Tier A — Gemini 2.5 Pro (OpenRouter fallback)"
+
+  - model_name: arc-high-openai
+    litellm_params:
+      model: gpt-4o
+      api_key: os.environ/OPENAI_API_KEY
+      rpm: 20
+    model_info:
+      tier: paid
+      label: "Tier A — GPT-4o (OpenAI directe key fallback)"
+
+  # ════════════════════════════════════════
+  # SPECIAAL: NOVA
+  # Gateway/Intake — GPT-4o-mini OpenAI
+  # ════════════════════════════════════════
+
+  - model_name: arc-nova
+    litellm_params:
+      model: gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+      rpm: 60
+    model_info:
+      tier: paid
+      label: "Nova — OpenAI GPT-4o-mini (direct)"
+
+  - model_name: arc-nova-or
+    litellm_params:
+      model: openrouter/openai/gpt-4o-mini
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 60
+    model_info:
+      tier: paid
+      label: "Nova — GPT-4o-mini (OpenRouter fallback)"
+
+  # ════════════════════════════════════════
+  # SPECIAAL: FLUX
+  # Orchestratie — Kimi K2.6 Moonshot
+  # ════════════════════════════════════════
+
+  - model_name: arc-flux
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 5
+    model_info:
+      tier: paid
+      label: "Flux — Gemini 2.5 Pro (Google direct)"
+
+  - model_name: arc-flux-or
+    litellm_params:
+      model: openrouter/google/gemini-2.5-pro
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 5
+    model_info:
+      tier: paid
+      label: "Flux — Gemini 2.5 Pro (OpenRouter fallback)"
+
+  # ════════════════════════════════════════
+  # CLAUDE — Beschikbaar na credits
+  # ════════════════════════════════════════
+
+  - model_name: arc-claude
+    litellm_params:
+      model: claude-haiku-4-5
+      api_key: os.environ/ANTHROPIC_API_KEY
+      rpm: 20
+    model_info:
+      tier: paid
+      label: "Claude Haiku (Anthropic direct)"
+
+  - model_name: arc-claude-or
+    litellm_params:
+      model: openrouter/anthropic/claude-haiku-4-5
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 20
+    model_info:
+      tier: paid
+      label: "Claude Haiku (OpenRouter fallback)"
+
+  # ════════════════════════════════════════
+  # GEMINI ALIASSEN
+  # ════════════════════════════════════════
+
+  - model_name: gemini-flash
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 15
+    model_info:
+      tier: free
+      label: "Gemini 2.5 Flash (direct)"
+
+  - model_name: gemini-pro
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 5
+    model_info:
+      tier: paid
+      label: "Gemini 2.5 Pro (direct)"
+
+  # ── CRONJOBS — Goedkoopst betaald ──
+  - model_name: arc-cron
+    litellm_params:
+      model: gemini/gemini-2.5-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 30
+    model_info:
+      tier: free
+      label: "Tier C — Gemini Flash Lite — cronjobs"
+
+  - model_name: arc-cron-fallback
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 15
+    model_info:
+      tier: free
+      label: "Tier C — Gemini Flash — cronjob fallback"
+
+router_settings:
+  routing_strategy: least-busy
+  num_retries: 3
+  timeout: 45
+  retry_after: 10
+  fallbacks:
+    # Tier A fallback keten
+    - arc-high:  ["arc-high-or", "arc-high-openai", "arc-mid"]
+    - arc-flux:  ["arc-flux-or", "arc-high", "arc-mid"]
+    # Tier B fallback keten
+    - arc-mid:   ["arc-mid-or", "arc-mid-gemini", "arc-low"]
+    - arc-nova:  ["arc-nova-or", "arc-mid", "arc-low"]
+    # Tier C fallback keten
+    - arc-low:   ["arc-low-or", "arc-low-deepseek", "gemini-flash"]
+    - arc-cron:  ["arc-cron-fallback", "arc-low"]
+    # Claude fallback
+    - arc-claude: ["arc-claude-or", "arc-mid"]
+
+litellm_settings:
+  drop_params: true
+  set_verbose: true
+  json_logs: true
+
+general_settings:
+  port: 4000
+  workers: 4

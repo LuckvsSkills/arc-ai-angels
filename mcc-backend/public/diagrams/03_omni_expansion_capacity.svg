@@ -1,0 +1,62 @@
+<svg width="100%" viewBox="0 0 680 800" xmlns="http://www.w3.org/2000/svg">
+  <text style="font-size: 18px; font-weight: 500;" x="340" y="30" text-anchor="middle" fill="#f1f5f9">Omni Expansion Capacity</text>
+  <text x="340" y="50" text-anchor="middle" fill="#94a3b8" font-size="12">Current: 5 Sentinels per Omni | Max: 12 per Omni | Available Slots: 35</text>
+
+  <!-- Helix -->
+  <text x="50" y="100" fill="#f1f5f9" font-weight="600" font-size="14">Helix / Tech</text>
+  <text x="50" y="120" fill="#cbd5e1" font-size="12">Current: Nero, Forge, Axon, Ventura, Clio (5/12)</text>
+  
+  <rect x="50" y="135" width="300" height="20" rx="4" fill="rgba(100, 116, 139, 0.2)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <rect x="50" y="135" width="125" height="20" rx="4" fill="#4A7C59" opacity="0.7"/>
+  <text x="205" y="150" text-anchor="middle" fill="white" font-weight="500" font-size="11">5/12 (42%)</text>
+  
+  <text x="50" y="172" fill="#cbd5e1" font-size="12">Expansion capacity: 7 additional sentinels</text>
+
+  <!-- Matrix -->
+  <text x="50" y="220" fill="#f1f5f9" font-weight="600" font-size="14">Matrix / Intelligence</text>
+  <text x="50" y="240" fill="#cbd5e1" font-size="12">Current: Arix, Daxio, Enki, Sora, Tharos (5/12)</text>
+  
+  <rect x="50" y="255" width="300" height="20" rx="4" fill="rgba(100, 116, 139, 0.2)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <rect x="50" y="255" width="125" height="20" rx="4" fill="#4A7C59" opacity="0.7"/>
+  <text x="205" y="270" text-anchor="middle" fill="white" font-weight="500" font-size="11">5/12 (42%)</text>
+  
+  <text x="50" y="292" fill="#cbd5e1" font-size="12">Expansion capacity: 7 additional sentinels</text>
+
+  <!-- Finix -->
+  <text x="50" y="340" fill="#f1f5f9" font-weight="600" font-size="14">Finix / Finance</text>
+  <text x="50" y="360" fill="#cbd5e1" font-size="12">Current: Kairo, Kenzo, Odis, Vector, Zion (5/12)</text>
+  
+  <rect x="50" y="375" width="300" height="20" rx="4" fill="rgba(100, 116, 139, 0.2)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <rect x="50" y="375" width="125" height="20" rx="4" fill="#4A7C59" opacity="0.7"/>
+  <text x="205" y="390" text-anchor="middle" fill="white" font-weight="500" font-size="11">5/12 (42%)</text>
+  
+  <text x="50" y="412" fill="#cbd5e1" font-size="12">Expansion capacity: 7 additional sentinels</text>
+
+  <!-- Quantix -->
+  <text x="50" y="460" fill="#f1f5f9" font-weight="600" font-size="14">Quantix / Operations</text>
+  <text x="50" y="480" fill="#cbd5e1" font-size="12">Current: Elora, Kresta, Luvia, Nura, Vondra (5/12)</text>
+  
+  <rect x="50" y="495" width="300" height="20" rx="4" fill="rgba(100, 116, 139, 0.2)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <rect x="50" y="495" width="125" height="20" rx="4" fill="#4A7C59" opacity="0.7"/>
+  <text x="205" y="510" text-anchor="middle" fill="white" font-weight="500" font-size="11">5/12 (42%)</text>
+  
+  <text x="50" y="532" fill="#cbd5e1" font-size="12">Expansion capacity: 7 additional sentinels</text>
+
+  <!-- Zenix -->
+  <text x="50" y="580" fill="#f1f5f9" font-weight="600" font-size="14">Zenix / Language</text>
+  <text x="50" y="600" fill="#cbd5e1" font-size="12">Current: Draven, Orizon, Solis, Unia, Zena (5/12)</text>
+  
+  <rect x="50" y="615" width="300" height="20" rx="4" fill="rgba(100, 116, 139, 0.2)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <rect x="50" y="615" width="125" height="20" rx="4" fill="#4A7C59" opacity="0.7"/>
+  <text x="205" y="630" text-anchor="middle" fill="white" font-weight="500" font-size="11">5/12 (42%)</text>
+  
+  <text x="50" y="652" fill="#cbd5e1" font-size="12">Expansion capacity: 7 additional sentinels</text>
+
+  <!-- Summary -->
+  <rect x="40" y="700" width="600" height="80" rx="6" fill="rgba(30, 41, 59, 0.6)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  
+  <text x="60" y="725" fill="#f1f5f9" font-weight="600" font-size="13">System Capacity Summary</text>
+  <text x="60" y="745" fill="#cbd5e1" font-size="12">Current: 25 sentinels (5 omni's × 5 sentinels) + 5 Omni Leads + Nova + Flux = 32 agents</text>
+  <text x="60" y="763" fill="#cbd5e1" font-size="12">Available slots: 35 sentinels (5 omni's × 7 available per omni)</text>
+  <text x="60" y="781" fill="#cbd5e1" font-size="12">Maximum capacity: 60 sentinels (5 omni's × 12 sentinels) + 5 Leads + Nova + Flux = 67 agents</text>
+</svg>

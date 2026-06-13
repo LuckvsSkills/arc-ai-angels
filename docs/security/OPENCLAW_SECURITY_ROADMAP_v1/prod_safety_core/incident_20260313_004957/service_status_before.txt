@@ -1,0 +1,33 @@
+=== SERVICE STATUS BEFORE ===
+● openclaw-nova.service - OpenClaw Nova (Telegram agent)
+     Loaded: loaded (/etc/systemd/system/openclaw-nova.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2026-03-13 00:23:56 CET; 26min ago
+   Main PID: 102825 (bash)
+      Tasks: 4 (limit: 9344)
+     Memory: 5.2M
+        CPU: 66ms
+     CGroup: /system.slice/openclaw-nova.service
+             ├─102825 bash /usr/local/lib/openclaw/agent_runner.sh nova agent-nova /usr/local/bin/openclaw-nova /etc/openclaw/agents.d/nova.env
+             ├─102834 sudo -u agent-nova /usr/local/bin/openclaw-nova
+             ├─102835 python3 /usr/local/lib/openclaw/redact_stdout.py
+             └─102838 /bin/sleep 999999
+
+Mar 13 00:23:56 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:23:56 Magneto sudo[102834]:     root : TTY=unknown ; PWD=/ ; USER=agent-nova ; COMMAND=/usr/local/bin/openclaw-nova
+Mar 13 00:23:56 Magneto sudo[102834]: pam_unix(sudo:session): session opened for user agent-nova by (uid=0)
+● openclaw-flux.service - OpenClaw Flux (Execution agent)
+     Loaded: loaded (/etc/systemd/system/openclaw-flux.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2026-03-13 00:23:56 CET; 26min ago
+   Main PID: 102836 (bash)
+      Tasks: 4 (limit: 9344)
+     Memory: 5.3M
+        CPU: 49ms
+     CGroup: /system.slice/openclaw-flux.service
+             ├─102836 bash /usr/local/lib/openclaw/agent_runner.sh flux agent-flux /usr/local/bin/openclaw-flux /etc/openclaw/agents.d/flux.env
+             ├─102842 sudo -u agent-flux /usr/local/bin/openclaw-flux
+             ├─102843 python3 /usr/local/lib/openclaw/redact_stdout.py
+             └─102844 /bin/sleep 999999
+
+Mar 13 00:23:56 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:23:56 Magneto sudo[102842]:     root : TTY=unknown ; PWD=/ ; USER=agent-flux ; COMMAND=/usr/local/bin/openclaw-flux
+Mar 13 00:23:57 Magneto sudo[102842]: pam_unix(sudo:session): session opened for user agent-flux by (uid=0)

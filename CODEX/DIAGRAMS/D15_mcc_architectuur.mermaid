@@ -1,0 +1,15 @@
+graph TD
+    SF[Supreme Fea]
+    MCC[arc-vortex.nl MCC Frontend]
+    OC_UI[dashboard.arc-vortex.nl OpenClaw UI]
+    API[api.arc-vortex.nl MCC Backend]
+    GW[OpenClaw Gateway poort 50506]
+    AGENTS[32 Agents]
+    TEL[Telegram]
+    SF --> MCC
+    SF --> OC_UI
+    MCC --> API
+    API --> GW
+    GW --> AGENTS
+    AGENTS --> TEL
+    TEL --> SF

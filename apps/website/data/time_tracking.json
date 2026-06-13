@@ -1,0 +1,9 @@
+{
+  "platform_runtime": { "actual_hours": 23 },
+  "security_hardening": { "actual_hours": 28 },
+  "model_runtime": { "actual_hours": 17 },
+  "data_memory": { "actual_hours": 0 },
+  "agent_logic": { "actual_hours": 0 },
+  "observability": { "actual_hours": 0 },
+  "control_center": { "actual_hours": 6 }
+}

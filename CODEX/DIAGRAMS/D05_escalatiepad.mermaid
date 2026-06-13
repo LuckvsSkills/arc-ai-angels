@@ -1,0 +1,10 @@
+graph TD
+    A[Agent detecteert probleem] --> B{Zelf op te lossen?}
+    B -->|Ja| C[Agent lost op]
+    B -->|Nee| D[Rapporteert aan Lead]
+    D --> E{Lead kan oplossen?}
+    E -->|Ja| F[Lead lost op]
+    E -->|Nee| G[Escaleert naar Flux]
+    G --> H{Flux kan oplossen?}
+    H -->|Ja| I[Flux lost op]
+    H -->|Nee| J[Nova informeert Supreme Fea]

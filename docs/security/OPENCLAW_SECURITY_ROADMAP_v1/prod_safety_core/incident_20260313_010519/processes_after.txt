@@ -1,0 +1,1 @@
+prime     104350     722  0 00:50 ?        00:00:07 openclaw-gateway

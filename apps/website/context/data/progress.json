@@ -1,0 +1,464 @@
+{
+  "project": "The Arc Strategic Control Center",
+  "chapters": [
+    {
+      "id": "platform_runtime",
+      "title": "Platform & Runtime",
+      "status": "finished",
+      "color": "runtime",
+      "total_blocks": 6,
+      "done_blocks": 6,
+      "progress_percent": 100,
+      "clusters": [
+        {
+          "id": "runtime_foundation",
+          "title": "Core Runtime Foundation",
+          "status": "finished",
+          "total_blocks": 6,
+          "done_blocks": 6,
+          "started_blocks": 0,
+          "planned_blocks": 0,
+          "progress_percent": 100,
+          "blocks": [
+            {
+              "id": "b01",
+              "title": "OpenClaw core installatie",
+              "status": "finished"
+            },
+            {
+              "id": "b02",
+              "title": "Systemd runtime services",
+              "status": "finished"
+            },
+            {
+              "id": "b03",
+              "title": "Hardened agent runner",
+              "status": "finished"
+            },
+            {
+              "id": "b04",
+              "title": "Central env + allowlists",
+              "status": "finished"
+            },
+            {
+              "id": "b05",
+              "title": "Linux user isolation",
+              "status": "finished"
+            },
+            {
+              "id": "b06",
+              "title": "Worker skeleton cluster",
+              "status": "finished"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security_hardening",
+      "title": "Security Hardening",
+      "status": "finished",
+      "color": "security",
+      "total_blocks": 5,
+      "done_blocks": 5,
+      "progress_percent": 100,
+      "clusters": [
+        {
+          "id": "prod_safety_core",
+          "title": "Prod Safety Core",
+          "status": "finished",
+          "total_blocks": 5,
+          "done_blocks": 5,
+          "started_blocks": 0,
+          "planned_blocks": 0,
+          "progress_percent": 100,
+          "blocks": [
+            {
+              "id": "b07",
+              "title": "Baseline inventory",
+              "status": "finished"
+            },
+            {
+              "id": "b08",
+              "title": "Monitoring / runtime safety",
+              "status": "finished"
+            },
+            {
+              "id": "b09",
+              "title": "Incident response / kill switch",
+              "status": "finished"
+            },
+            {
+              "id": "b10",
+              "title": "Secrets hardening",
+              "status": "finished"
+            },
+            {
+              "id": "b11",
+              "title": "Internet / egress policy",
+              "status": "finished"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "model_runtime",
+      "title": "Model Runtime & Providers",
+      "status": "finished",
+      "color": "models",
+      "total_blocks": 17,
+      "done_blocks": 17,
+      "progress_percent": 100,
+      "clusters": [
+        {
+          "id": "arc_model_control_layer",
+          "title": "ARC Model Control Layer",
+          "status": "finished",
+          "total_blocks": 17,
+          "done_blocks": 17,
+          "started_blocks": 0,
+          "planned_blocks": 0,
+          "progress_percent": 100,
+          "blocks": [
+            {
+              "id": "m01",
+              "title": "Model runtime architecture",
+              "status": "finished"
+            },
+            {
+              "id": "m02",
+              "title": "Gateway & Intake Protocol (Nova)",
+              "status": "finished"
+            },
+            {
+              "id": "m03",
+              "title": "Master Orchestrator (Flux)",
+              "status": "finished"
+            },
+            {
+              "id": "m04",
+              "title": "Domain Intelligence Layer (Omni)",
+              "status": "finished"
+            },
+            {
+              "id": "m05",
+              "title": "Specialist Teams (Sentinel)",
+              "status": "finished"
+            },
+            {
+              "id": "m06",
+              "title": "Execution Workers",
+              "status": "finished"
+            },
+            {
+              "id": "m07",
+              "title": "OpenClaw Integration",
+              "status": "finished"
+            },
+            {
+              "id": "m08",
+              "title": "Direct interface & command routing",
+              "status": "finished"
+            },
+            {
+              "id": "m09",
+              "title": "Team & subagent architecture",
+              "status": "finished"
+            },
+            {
+              "id": "m10",
+              "title": "Flux orchestration map",
+              "status": "finished"
+            },
+            {
+              "id": "m11",
+              "title": "Model governance matrix",
+              "status": "finished"
+            },
+            {
+              "id": "m12",
+              "title": "Agent build blueprint",
+              "status": "finished"
+            },
+            {
+              "id": "m13",
+              "title": "Agent communication & memory topology",
+              "status": "finished"
+            },
+            {
+              "id": "m14",
+              "title": "Flux sentinel integration",
+              "status": "finished"
+            },
+            {
+              "id": "m15",
+              "title": "Sentinel protocol enrichment",
+              "status": "finished"
+            },
+            {
+              "id": "m16",
+              "title": "Task queue structure",
+              "status": "finished"
+            },
+            {
+              "id": "m17",
+              "title": "Flux routing blueprint",
+              "status": "finished"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agent_logic",
+      "title": "Agent Logic, Skills & Swarm",
+      "status": "started",
+      "color": "swarm",
+      "total_blocks": 5,
+      "done_blocks": 0,
+      "progress_percent": 0,
+      "clusters": [
+        {
+          "id": "roles_skills_swarm_core",
+          "title": "Roles, Skills & Swarm Core",
+          "status": "started",
+          "total_blocks": 5,
+          "done_blocks": 0,
+          "started_blocks": 1,
+          "planned_blocks": 4,
+          "progress_percent": 0,
+          "blocks": [
+            {
+              "id": "b22",
+              "title": "Agent roles framework",
+              "status": "started"
+            },
+            {
+              "id": "b23",
+              "title": "Communication protocol",
+              "status": "planned"
+            },
+            {
+              "id": "b24",
+              "title": "Workflow dispatcher",
+              "status": "planned"
+            },
+            {
+              "id": "b25",
+              "title": "Skill registry",
+              "status": "planned"
+            },
+            {
+              "id": "b26",
+              "title": "Swarm coordination",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data_memory",
+      "title": "Data & Memory Architecture",
+      "status": "completed",
+      "color": "memory",
+      "total_blocks": 5,
+      "done_blocks": 5,
+      "progress_percent": 100,
+      "clusters": [
+        {
+          "id": "agent_db_memory_layer",
+          "title": "Agent DB + Memory Layer",
+          "status": "completed",
+          "total_blocks": 5,
+          "done_blocks": 5,
+          "started_blocks": 5,
+          "planned_blocks": 0,
+          "progress_percent": 100,
+          "blocks": [
+            {
+              "id": "b17",
+              "title": "Agent management schema",
+              "status": "completed"
+            },
+            {
+              "id": "b18",
+              "title": "Memory architecture",
+              "status": "completed"
+            },
+            {
+              "id": "b19",
+              "title": "Embedding/vector strategy",
+              "status": "completed"
+            },
+            {
+              "id": "b20",
+              "title": "Shared world memory",
+              "status": "completed"
+            },
+            {
+              "id": "b21",
+              "title": "Per-agent memory links",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "observability",
+      "title": "Observability & API Cost Control",
+      "status": "planned",
+      "color": "observe",
+      "total_blocks": 5,
+      "done_blocks": 0,
+      "progress_percent": 0,
+      "clusters": [
+        {
+          "id": "observability_cost_ledger",
+          "title": "Observability & Cost Ledger",
+          "status": "planned",
+          "total_blocks": 5,
+          "done_blocks": 0,
+          "started_blocks": 0,
+          "planned_blocks": 5,
+          "progress_percent": 0,
+          "blocks": [
+            {
+              "id": "b27",
+              "title": "API inventory",
+              "status": "planned"
+            },
+            {
+              "id": "b28",
+              "title": "Usage ledger",
+              "status": "planned"
+            },
+            {
+              "id": "b29",
+              "title": "Cost calculations",
+              "status": "planned"
+            },
+            {
+              "id": "b30",
+              "title": "Latency/error tracing",
+              "status": "planned"
+            },
+            {
+              "id": "b31",
+              "title": "Per agent / per workflow reporting",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control_center",
+      "title": "Strategic Control Center UI",
+      "status": "started",
+      "color": "ui",
+      "total_blocks": 5,
+      "done_blocks": 1,
+      "progress_percent": 20,
+      "clusters": [
+        {
+          "id": "control_center_ui_core",
+          "title": "Strategic Control Center UI",
+          "status": "started",
+          "total_blocks": 5,
+          "done_blocks": 1,
+          "started_blocks": 3,
+          "planned_blocks": 1,
+          "progress_percent": 20,
+          "blocks": [
+            {
+              "id": "b32",
+              "title": "Homepage dashboard",
+              "status": "finished"
+            },
+            {
+              "id": "b33",
+              "title": "Chapter pages",
+              "status": "started"
+            },
+            {
+              "id": "b34",
+              "title": "Prompt library",
+              "status": "started"
+            },
+            {
+              "id": "b35",
+              "title": "Progress visualization",
+              "status": "started"
+            },
+            {
+              "id": "b36",
+              "title": "Operations-ready layout",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mission_control_ops",
+      "title": "Mission Control & Operations Orchestration",
+      "status": "planned",
+      "color": "command",
+      "total_blocks": 6,
+      "done_blocks": 0,
+      "progress_percent": 0,
+      "clusters": [
+        {
+          "id": "mission_control_runtime",
+          "title": "Mission Control Runtime",
+          "status": "planned",
+          "total_blocks": 6,
+          "done_blocks": 0,
+          "started_blocks": 0,
+          "planned_blocks": 6,
+          "progress_percent": 0,
+          "blocks": [
+            {
+              "id": "mc01",
+              "title": "Live control surface",
+              "status": "planned"
+            },
+            {
+              "id": "mc02",
+              "title": "Runtime overrides",
+              "status": "planned"
+            },
+            {
+              "id": "mc03",
+              "title": "Queue & dispatch control",
+              "status": "planned"
+            },
+            {
+              "id": "mc04",
+              "title": "Sentinel operations panel",
+              "status": "planned"
+            },
+            {
+              "id": "mc05",
+              "title": "Escalation & intervention layer",
+              "status": "planned"
+            },
+            {
+              "id": "mc06",
+              "title": "Operator command center",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "overall": {
+    "total_blocks": 54,
+    "done_blocks": 29,
+    "progress_percent": 54
+  }
+}

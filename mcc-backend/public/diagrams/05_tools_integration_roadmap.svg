@@ -1,0 +1,61 @@
+<svg width="100%" viewBox="0 0 680 850" xmlns="http://www.w3.org/2000/svg">
+  <text style="font-size: 18px; font-weight: 500;" x="340" y="30" text-anchor="middle" fill="#f1f5f9">Tools Integration Roadmap</text>
+  <text x="340" y="50" text-anchor="middle" fill="#94a3b8" font-size="12">Launch Critical vs Post-Launch Phases</text>
+
+  <!-- Launch Critical -->
+  <text style="font-size: 13px; font-weight: 600;" x="340" y="90" text-anchor="middle" fill="#f1f5f9">🔴 LAUNCH CRITICAL (May 25-27)</text>
+  
+  <rect x="40" y="110" width="600" height="140" rx="8" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="60" y="135" fill="#cbd5e1" font-weight="600" font-size="12">✅ Already Integrated & Operational</text>
+  
+  <rect x="60" y="150" width="110" height="50" rx="6" fill="#10b981"/>
+  <text x="115" y="170" text-anchor="middle" dominant-baseline="central" fill="white" font-weight="600" font-size="12">Gemini 2.5</text>
+  <text x="115" y="187" text-anchor="middle" dominant-baseline="central" fill="white" font-size="10">Flash & Pro</text>
+
+  <rect x="190" y="150" width="110" height="50" rx="6" fill="#10b981"/>
+  <text x="245" y="170" text-anchor="middle" dominant-baseline="central" fill="white" font-weight="600" font-size="12">Google OAuth</text>
+  <text x="245" y="187" text-anchor="middle" dominant-baseline="central" fill="white" font-size="10">Auth</text>
+
+  <rect x="320" y="150" width="110" height="50" rx="6" fill="#10b981"/>
+  <text x="375" y="170" text-anchor="middle" dominant-baseline="central" fill="white" font-weight="600" font-size="12">Telegram</text>
+  <text x="375" y="187" text-anchor="middle" dominant-baseline="central" fill="white" font-size="10">Binding</text>
+
+  <rect x="450" y="150" width="110" height="50" rx="6" fill="#10b981"/>
+  <text x="505" y="170" text-anchor="middle" dominant-baseline="central" fill="white" font-weight="600" font-size="12">Tailscale</text>
+  <text x="505" y="187" text-anchor="middle" dominant-baseline="central" fill="white" font-size="10">SSH</text>
+
+  <!-- Phase 2: Voice -->
+  <text style="font-size: 13px; font-weight: 600;" x="340" y="290" text-anchor="middle" fill="#f1f5f9">🟠 Phase 2: Voice I/O (June)</text>
+  
+  <rect x="40" y="310" width="600" height="100" rx="8" fill="rgba(30, 41, 59, 0.6)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <text x="60" y="335" fill="#cbd5e1" font-size="12">Enable agent voice communication with users</text>
+  
+  <rect x="80" y="355" width="150" height="40" rx="6" fill="#3b82f6"/>
+  <text x="155" y="372" text-anchor="middle" dominant-baseline="central" fill="white" font-weight="600" font-size="11">Whisper</text>
+
+  <rect x="265" y="355" width="150" height="40" rx="6" fill="#3b82f6"/>
+  <text x="340" y="372" text-anchor="middle" dominant-baseline="central" fill="white" font-weight="600" font-size="11">ElevenLabs</text>
+
+  <rect x="450" y="355" width="150" height="40" rx="6" fill="#3b82f6"/>
+  <text x="525" y="372" text-anchor="middle" dominant-baseline="central" fill="white" font-weight="600" font-size="11">Google Speech</text>
+
+  <!-- Phase 3: Content -->
+  <text style="font-size: 13px; font-weight: 600;" x="340" y="440" text-anchor="middle" fill="#f1f5f9">🟡 Phase 3: Content Ecosystem (July)</text>
+  
+  <rect x="40" y="460" width="600" height="110" rx="8" fill="rgba(30, 41, 59, 0.6)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <text x="60" y="485" fill="#cbd5e1" font-size="12">Enable Zenix domain video/social workflows</text>
+  
+  <text x="60" y="510" fill="#cbd5e1" font-size="11" font-weight="500">Social Media: Instagram | TikTok | YouTube | Facebook/X</text>
+  <text x="60" y="527" fill="#cbd5e1" font-size="11" font-weight="500">Video Processing: FFmpeg | OpenCV</text>
+
+  <!-- Phase 4: Trading & Marketing -->
+  <text style="font-size: 13px; font-weight: 600;" x="340" y="610" text-anchor="middle" fill="#f1f5f9">🟢 Phase 4: Trading & Marketing (August+)</text>
+  
+  <rect x="40" y="630" width="600" height="110" rx="8" fill="rgba(30, 41, 59, 0.6)" stroke="rgba(100, 116, 139, 0.3)" stroke-width="0.5"/>
+  <text x="60" y="655" fill="#cbd5e1" font-size="12">Enable new Prism (Trading) and Pulse (Marketing) domains</text>
+  
+  <text x="60" y="680" fill="#cbd5e1" font-size="11" font-weight="500">Trading: AlphaVantage | Binance | CoinGecko | Sports APIs</text>
+  <text x="60" y="697" fill="#cbd5e1" font-size="11" font-weight="500">Marketing: Google Analytics 4 | HubSpot | SEMrush | SendGrid</text>
+  <text x="60" y="714" fill="#cbd5e1" font-size="11" font-weight="500">Automation: Zapier | n8n | Make.com</text>
+</svg>

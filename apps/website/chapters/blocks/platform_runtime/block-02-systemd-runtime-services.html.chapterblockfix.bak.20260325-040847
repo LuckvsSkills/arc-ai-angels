@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-preset="obsidian_gold">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Systemd runtime services — The Arc Strategic Control Center</title>
+<style>
+
+:root{
+  --bg0:#0b0b0c;
+  --bg1:#0f0f11;
+  --panel:#161618;
+  --panel2:#1c1c20;
+  --card:#232329;
+  --line:rgba(255,255,255,.10);
+  --text:#eef4fb;
+  --muted:#c3d0e3;
+  --muted2:#95a7c2;
+
+  --accent:#d6b35e;
+  --accent2:#f0d18a;
+  --accentGlow:rgba(240,209,138,.20);
+
+  --runtime:#36c9ff;
+  --security:#3fe3b5;
+  --models:#9b7cff;
+  --memory:#4ea8de;
+  --swarm:#ff4d6d;
+  --observe:#ff9f43;
+  --ui:#d6b35e;
+  --command:#7fb8ff;
+}
+
+[data-theme="light"]{
+  --bg0:#f8fbff;
+  --bg1:#f2f7fd;
+  --panel:#ffffff;
+  --panel2:#edf4fb;
+  --card:#ffffff;
+  --line:rgba(16,24,40,.10);
+  --text:#132033;
+  --muted:#51627b;
+  --muted2:#6d7f99;
+  --accentGlow:rgba(214,179,94,.10);
+}
+
+[data-preset="obsidian_gold"]{
+  --accent:#d6b35e; --accent2:#f0d18a; --accentGlow:rgba(240,209,138,.20);
+}
+[data-preset="graphite_cyan"]{
+  --accent:#36c9ff; --accent2:#92e8ff; --accentGlow:rgba(54,201,255,.14);
+}
+[data-preset="midnight_purple"]{
+  --accent:#9b7cff; --accent2:#c9b8ff; --accentGlow:rgba(155,124,255,.14);
+}
+[data-preset="slate_teal"]{
+  --accent:#2fd3c5; --accent2:#93fff4; --accentGlow:rgba(47,211,197,.12);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at 85% -10%, var(--accentGlow), transparent 60%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in oklab,var(--panel) 82%, transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;
+}
+.logo{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.2px;
+}
+.logo-sub{
+  font-size:13px;
+  color:var(--muted2);
+  margin-top:4px;
+}
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.nav a,.btn,select{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:14px;
+  padding:9px 13px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--panel2) 74%, transparent);
+  cursor:pointer;
+}
+
+.hero{
+  padding:54px 0 20px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:18px;
+}
+@media (max-width: 980px){
+  .hero-grid{grid-template-columns:1fr}
+}
+
+.panel{
+  background:color-mix(in oklab,var(--panel) 88%, transparent);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 18px 48px rgba(0,0,0,.18);
+}
+.panel:before{
+  content:"";
+  position:absolute;inset:-1px;
+  background:
+    radial-gradient(640px 220px at 0% 0%, var(--accentGlow), transparent 60%);
+  opacity:.95;
+  pointer-events:none;
+}
+.panel>*{position:relative}
+
+h1{
+  margin:0;
+  font-size:48px;
+  line-height:1.05;
+  letter-spacing:.2px;
+}
+.hero p{
+  margin:14px 0 0;
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
+.kpi{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+.kpi-box{
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--panel2) 78%, transparent);
+  padding:14px;
+}
+.kpi-label{font-size:13px;color:var(--muted2)}
+.kpi-value{font-size:18px;font-weight:900;margin-top:4px}
+
+.section{
+  padding:8px 0 0;
+}
+.section h2{
+  font-size:30px;
+  margin:0 0 16px;
+}
+.section-intro{
+  color:var(--muted);
+  font-size:17px;
+  margin:0 0 14px;
+  line-height:1.7;
+}
+
+.chapter-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+@media (max-width:1100px){.chapter-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.chapter-grid{grid-template-columns:1fr}}
+
+.chapter-card{
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--card) 92%, transparent);
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:0 12px 28px rgba(0,0,0,.14);
+  transition:transform .15s ease, border-color .15s ease;
+}
+.chapter-card:hover{
+  transform:translateY(-3px);
+  border-color:color-mix(in oklab,var(--c) 45%, var(--line));
+}
+.chapter-card:before{
+  content:"";
+  position:absolute;left:0;top:0;right:0;height:4px;
+  background:linear-gradient(90deg, transparent, var(--c), transparent);
+  opacity:.95;
+}
+.chapter-card:after{
+  content:"";
+  position:absolute;inset:-1px;
+  background:radial-gradient(560px 220px at 0% 0%, color-mix(in oklab,var(--c) 18%, transparent), transparent 62%);
+  pointer-events:none;
+}
+.chapter-card>*{position:relative}
+.chapter-title{
+  font-size:21px;
+  font-weight:900;
+  margin:0;
+}
+.chapter-desc{
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+}
+.meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:12px;
+  margin-top:14px;
+  color:var(--muted2);
+  font-size:14px;
+}
+.pbar{
+  margin-top:10px;
+  height:14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  background:color-mix(in oklab,var(--panel2) 76%, transparent);
+}
+.pbar > div{
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg, color-mix(in oklab,var(--c) 68%, transparent), color-mix(in oklab,var(--c) 95%, white 8%));
+  box-shadow:0 0 0 4px color-mix(in oklab,var(--c) 14%, transparent);
+}
+
+.layout-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+@media (max-width:980px){.layout-grid{grid-template-columns:1fr}}
+
+.svg-card{
+  background:color-mix(in oklab,var(--panel) 90%, transparent);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 18px 48px rgba(0,0,0,.18);
+}
+.svg-card h3{
+  margin:0 0 10px;
+  font-size:24px;
+  line-height:1.2;
+}
+.svg-card p{
+  margin:0 0 16px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+}
+.svg-card svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.step-list{
+  display:grid;
+  gap:12px;
+}
+.step{
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--panel2) 76%, transparent);
+  padding:14px 16px;
+  font-size:17px;
+  font-weight:800;
+}
+.footer-space{height:36px}
+
+
+/* Sidebar addon voor master.css */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--panel, #1a1a2e);
+    border-right: 1px solid var(--line, rgba(255,255,255,.1));
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar-header h2 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+
+.sidebar-header a {
+    color: var(--accent, #d6b35e);
+    text-decoration: none;
+}
+
+.chapter {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.chapter.active {
+    background: rgba(214, 179, 94, 0.1);
+    border-left: 3px solid var(--accent, #d6b35e);
+}
+
+.chapter h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chapter h3 a {
+    color: var(--text, #eef4fb);
+    text-decoration: none;
+}
+
+.block-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.block-list li {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.block-list a {
+    color: var(--muted, #a8b7d1);
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.block-list a:hover {
+    color: var(--accent, #d6b35e);
+    background: rgba(255,255,255,0.05);
+}
+
+/* Body shift voor sidebar */
+body.with-sidebar {
+    margin-left: 280px !important;
+}
+
+/* Topbar fix voor sidebar */
+.topbar {
+    margin-left: 280px !important;
+    width: calc(100% - 280px) !important;
+}
+
+</style>
+</head>
+<body class="with-sidebar">
+
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <h2><a href="../../index.html">The Arc Strategic Control Center</a></h2>
+        <div class="logo-sub">Architecture, Governance & Deployment Hub</div>
+    </div>
+    <div class="sidebar-content">
+
+        <div class="chapter active">
+            <h3><a href="../platform_runtime.html">Platform & Runtime</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-01-openclaw-core-installatie.html">Block 01: OpenClaw core installatie</a></li>
+
+                <li><a href="block-02-systemd-runtime-services.html">Block 02: Systemd runtime services</a></li>
+
+                <li><a href="block-03-hardened-agent-runner.html">Block 03: Hardened agent runner</a></li>
+
+                <li><a href="block-04-central-env--allowlists.html">Block 04: Central env + allowlists</a></li>
+
+                <li><a href="block-05-linux-user-isolation.html">Block 05: Linux user isolation</a></li>
+
+                <li><a href="block-06-worker-skeleton-cluster.html">Block 06: Worker skeleton cluster</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../security_hardening.html">Security Hardening</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-07-baseline-inventory.html">Block 07: Baseline inventory</a></li>
+
+                <li><a href="block-08-monitoring--runtime-safety.html">Block 08: Monitoring / runtime safety</a></li>
+
+                <li><a href="block-09-incident-response--kill-switch.html">Block 09: Incident response / kill switch</a></li>
+
+                <li><a href="block-10-secrets-hardening.html">Block 10: Secrets hardening</a></li>
+
+                <li><a href="block-11-internet--egress-policy.html">Block 11: Internet / egress policy</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../model_runtime.html">Model Runtime & Providers</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-01-model-runtime-architecture.html">Block 01: Model runtime architecture</a></li>
+
+                <li><a href="block-02-gateway--intake-protocol-nova.html">Block 02: Gateway & Intake Protocol (Nova)</a></li>
+
+                <li><a href="block-03-master-orchestrator-flux.html">Block 03: Master Orchestrator (Flux)</a></li>
+
+                <li><a href="block-04-domain-intelligence-layer-omni.html">Block 04: Domain Intelligence Layer (Omni)</a></li>
+
+                <li><a href="block-05-specialist-teams-sentinel.html">Block 05: Specialist Teams (Sentinel)</a></li>
+
+                <li><a href="block-06-execution-workers.html">Block 06: Execution Workers</a></li>
+
+                <li><a href="block-07-openclaw-integration.html">Block 07: OpenClaw Integration</a></li>
+
+                <li><a href="block-08-direct-interface--command-routing.html">Block 08: Direct interface & command routing</a></li>
+
+                <li><a href="block-09-team--subagent-architecture.html">Block 09: Team & subagent architecture</a></li>
+
+                <li><a href="block-10-flux-orchestration-map.html">Block 10: Flux orchestration map</a></li>
+
+                <li><a href="block-11-model-governance-matrix.html">Block 11: Model governance matrix</a></li>
+
+                <li><a href="block-12-agent-build-blueprint.html">Block 12: Agent build blueprint</a></li>
+
+                <li><a href="block-13-agent-communication--memory-topology.html">Block 13: Agent communication & memory topology</a></li>
+
+                <li><a href="block-14-flux-sentinel-integration.html">Block 14: Flux sentinel integration</a></li>
+
+                <li><a href="block-15-sentinel-protocol-enrichment.html">Block 15: Sentinel protocol enrichment</a></li>
+
+                <li><a href="block-16-task-queue-structure.html">Block 16: Task queue structure</a></li>
+
+                <li><a href="block-17-flux-routing-blueprint.html">Block 17: Flux routing blueprint</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../agent_logic.html">Agent Logic, Skills & Swarm</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-22-agent-roles-framework.html">Block 22: Agent roles framework</a></li>
+
+                <li><a href="block-23-communication-protocol.html">Block 23: Communication protocol</a></li>
+
+                <li><a href="block-24-workflow-dispatcher.html">Block 24: Workflow dispatcher</a></li>
+
+                <li><a href="block-25-skill-registry.html">Block 25: Skill registry</a></li>
+
+                <li><a href="block-26-swarm-coordination.html">Block 26: Swarm coordination</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../data_memory.html">Data & Memory Architecture</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-17-agent-management-schema.html">Block 17: Agent management schema</a></li>
+
+                <li><a href="block-18-memory-architecture.html">Block 18: Memory architecture</a></li>
+
+                <li><a href="block-19-embeddingvector-strategy.html">Block 19: Embedding/vector strategy</a></li>
+
+                <li><a href="block-20-shared-world-memory.html">Block 20: Shared world memory</a></li>
+
+                <li><a href="block-21-per-agent-memory-links.html">Block 21: Per-agent memory links</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../observability.html">Observability & API Cost Control</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-27-api-inventory.html">Block 27: API inventory</a></li>
+
+                <li><a href="block-28-usage-ledger.html">Block 28: Usage ledger</a></li>
+
+                <li><a href="block-29-cost-calculations.html">Block 29: Cost calculations</a></li>
+
+                <li><a href="block-30-latencyerror-tracing.html">Block 30: Latency/error tracing</a></li>
+
+                <li><a href="block-31-per-agent--per-workflow-reporting.html">Block 31: Per agent / per workflow reporting</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../control_center.html">Strategic Control Center UI</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-32-homepage-dashboard.html">Block 32: Homepage dashboard</a></li>
+
+                <li><a href="block-33-chapter-pages.html">Block 33: Chapter pages</a></li>
+
+                <li><a href="block-34-prompt-library.html">Block 34: Prompt library</a></li>
+
+                <li><a href="block-35-progress-visualization.html">Block 35: Progress visualization</a></li>
+
+                <li><a href="block-36-operations-ready-layout.html">Block 36: Operations-ready layout</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../mission_control_ops.html">Mission Control & Operations Orchestration</a></h3>
+            <ul class="block-list">
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div>
+        <div class="logo">The Arc Strategic Control Center</div>
+        <div class="logo-sub">Architecture, Governance & Deployment Hub</div>
+      </div>
+      <div class="nav">
+        <a href="../index.html">Home</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 100px;">
+
+
+    
+
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../platform_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Platform &amp; Runtime · B02</div>
+    </div>
+
+    <div class="hero">
+      <h1>Platform &amp; Runtime</h1>
+      <h2>Block 02 — Systemd runtime services</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>Dit block definieert alle systemd services die de OpenClaw runtime beheren. Systemd zorgt voor service management, automatisch starten, en monitoring.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Service Management** | Start, stop, restart services |</p>
+<p>| **Auto-start** | Boot-time service initialisatie |</p>
+<p>| **Logging** | Journald integratie |</p>
+<p>| **Resource Control** | Cgroups voor resource limits |</p>
+<h3>System Context</h3>
+<p>Systemd beheert alle OpenClaw services bovenop de core installatie.</p>
+<p>OpenClaw Core -&gt; Systemd -&gt; Services -&gt; Agents</p>
+<h3>Core Structure</h3>
+<p>#### 1. Main Service</p>
+<p>openclaw.service - hoofd daemon.</p>
+<p>#### 2. Agent Services</p>
+<p>Per-agent service instanties.</p>
+<p>#### 3. Support Services</p>
+<p>Database, cache, message queue.</p>
+<p>#### 4. Timer Units</p>
+<p>Geplande taken en cleanup.</p>
+<h3>How It Works</h3>
+<ol>
+<li>Systemd start bij boot</li>
+<li>Laadt openclaw.service</li>
+<li>Start afhankelijkheden</li>
+<li>Start agent services</li>
+<li>Monitored health</li>
+<li>Restart bij failures</li>
+</ol>
+<h3>How to Find / Use It</h3>
+<p>Beheer via: systemctl status openclaw</p>
+<h3>Why It Exists</h3>
+<p>Systemd is de standaard voor Linux service management.</p>
+<p>---</p>
+<h2>Diagram</h2>
+<p>\`\`\`mermaid</p>
+<p>flowchart TB</p>
+<p>    A[Start] --&gt; B[Process]</p>
+<p>    B --&gt; C[End]</p>
+<p>\`\`\`</p>
+<p>---</p>
+<h2>Diagram</h2>
+<div class="mermaid">flowchart TB
+    A[Start] --> B[Process]
+    B --> C[End]</div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad:true,
+  theme:'dark',
+  themeVariables:{
+    primaryColor:'#d6b35e',
+    primaryTextColor:'#eef4fb',
+    primaryBorderColor:'#d6b35e',
+    lineColor:'#95a7c2',
+    secondaryColor:'#1c1c20',
+    tertiaryColor:'#232329'
+  }
+});
+</script>
+
+
+</div>
+</body>
+</html>

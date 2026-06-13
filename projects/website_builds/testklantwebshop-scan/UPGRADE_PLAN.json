@@ -1,0 +1,78 @@
+{
+  "project_naam": "TestKlantWebshop",
+  "intake_type": "upgrade",
+  "scope": "rebuild",
+  "scope_beschrijving": "Volledige herbouw met nieuwe stack + admin + AI agents",
+  "upgrade_wensen": [
+    "AI chatbot",
+    "order automatisering",
+    "betere SEO",
+    "leverancier emails"
+  ],
+  "aangemaakt": "2026-06-12",
+  "status": "GEPLAND",
+  "sentinels": {
+    "forge": {
+      "taak": "Volledige herbouw frontend + backend",
+      "acties": [
+        "nieuwe React frontend",
+        "FastAPI backend",
+        "admin panel",
+        "content migratie"
+      ],
+      "worker": "clone_template.py",
+      "status": "PENDING"
+    },
+    "axon": {
+      "taak": "Nieuwe database + pipelines",
+      "acties": [
+        "database ontwerp",
+        "migratie bestaande data",
+        "payment integratie",
+        "webhooks"
+      ],
+      "worker": "provision_database.py",
+      "status": "PENDING"
+    },
+    "nero": {
+      "taak": "Volledige security audit",
+      "acties": [
+        "OWASP scan",
+        "penetration test",
+        "secrets check",
+        "hardening"
+      ],
+      "worker": "scan_template_security.py",
+      "status": "PENDING"
+    },
+    "ventura": {
+      "taak": "Cloud deploy + domein migratie",
+      "acties": [
+        "VPS of Vercel setup",
+        "domein migratie",
+        "SSL",
+        "monitoring"
+      ],
+      "worker": "provision_cloud_service.sh",
+      "status": "PENDING"
+    },
+    "clio": {
+      "taak": "Volledige documentatie + client handoff",
+      "acties": [
+        "README",
+        "API docs",
+        "deployment guide",
+        "gebruikershandleiding",
+        "AI agent docs"
+      ],
+      "worker": "generate_client_handoff.py",
+      "status": "PENDING"
+    }
+  },
+  "doorlooptijd": "3-6 weken",
+  "kostenraming": "€5.000 – €15.000 + €500/mnd",
+  "website_agent": true,
+  "agent_taken": [
+    "order automatisering"
+  ]
+}

@@ -1,0 +1,101 @@
+-- Logs begin at Tue 2026-03-03 21:40:57 CET, end at Fri 2026-03-13 00:49:56 CET. --
+Mar 13 00:22:04 Magneto systemd[100457]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:04 Magneto systemd[100457]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:04 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:04 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:06 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 649.
+Mar 13 00:22:06 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:06 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:06 Magneto systemd[100611]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:06 Magneto systemd[100611]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:06 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:06 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:08 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 650.
+Mar 13 00:22:08 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:08 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:08 Magneto systemd[100763]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:08 Magneto systemd[100763]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:08 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:08 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:10 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 651.
+Mar 13 00:22:10 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:10 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:10 Magneto systemd[100914]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:10 Magneto systemd[100914]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:10 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:10 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:12 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 652.
+Mar 13 00:22:13 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:13 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:13 Magneto systemd[101066]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:13 Magneto systemd[101066]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:13 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:13 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:15 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 653.
+Mar 13 00:22:15 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:15 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:15 Magneto systemd[101218]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:15 Magneto systemd[101218]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:15 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:15 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:17 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 654.
+Mar 13 00:22:17 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:17 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:17 Magneto systemd[101369]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:17 Magneto systemd[101369]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:17 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:17 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:19 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 655.
+Mar 13 00:22:19 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:19 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:19 Magneto systemd[101523]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:19 Magneto systemd[101523]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:19 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:19 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:21 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 656.
+Mar 13 00:22:22 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:22 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:22 Magneto systemd[101675]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:22 Magneto systemd[101675]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:22 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:22 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:24 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 657.
+Mar 13 00:22:24 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:24 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:24 Magneto systemd[101827]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:24 Magneto systemd[101827]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:24 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:24 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:27 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 658.
+Mar 13 00:22:27 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:27 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:27 Magneto systemd[101978]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:27 Magneto systemd[101978]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:27 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:27 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:29 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 659.
+Mar 13 00:22:29 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:29 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:29 Magneto systemd[102131]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:29 Magneto systemd[102131]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:29 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:29 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:31 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 660.
+Mar 13 00:22:31 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:31 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:31 Magneto systemd[102283]: openclaw-flux.service: Failed to set up mount namespacing: /run/systemd/unit-root/run/openclaw: No such file or directory
+Mar 13 00:22:31 Magneto systemd[102283]: openclaw-flux.service: Failed at step NAMESPACE spawning /usr/local/lib/openclaw/agent_runner.sh: No such file or directory
+Mar 13 00:22:31 Magneto systemd[1]: openclaw-flux.service: Main process exited, code=exited, status=226/NAMESPACE
+Mar 13 00:22:31 Magneto systemd[1]: openclaw-flux.service: Failed with result 'exit-code'.
+Mar 13 00:22:33 Magneto systemd[1]: openclaw-flux.service: Scheduled restart job, restart counter is at 661.
+Mar 13 00:22:33 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:22:33 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:22:34 Magneto sudo[102644]:     root : TTY=unknown ; PWD=/ ; USER=agent-flux ; COMMAND=/usr/local/bin/openclaw-flux
+Mar 13 00:22:34 Magneto sudo[102644]: pam_unix(sudo:session): session opened for user agent-flux by (uid=0)
+Mar 13 00:23:56 Magneto systemd[1]: Stopping OpenClaw Flux (Execution agent)...
+Mar 13 00:23:56 Magneto sudo[102644]: pam_unix(sudo:session): session closed for user agent-flux
+Mar 13 00:23:56 Magneto systemd[1]: openclaw-flux.service: Succeeded.
+Mar 13 00:23:56 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+Mar 13 00:23:56 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:23:56 Magneto sudo[102842]:     root : TTY=unknown ; PWD=/ ; USER=agent-flux ; COMMAND=/usr/local/bin/openclaw-flux
+Mar 13 00:23:57 Magneto sudo[102842]: pam_unix(sudo:session): session opened for user agent-flux by (uid=0)

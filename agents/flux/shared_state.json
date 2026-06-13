@@ -1,0 +1,16 @@
+{
+  "system": "FLUX ↔ FLUX_CORE Integration",
+  "version": "1.0",
+  "unified": true,
+  "flux_status": "active",
+  "flux_core_status": "active",
+  "shared_files": [
+    "MEMORY.md",
+    "TASKS.md",
+    "JOURNAL/",
+    "consolidation.log",
+    "intelligent-consolidation.log"
+  ],
+  "coordination": "seamless",
+  "last_updated": "2026-06-01"
+}

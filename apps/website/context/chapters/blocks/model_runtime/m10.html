@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Model Runtime &amp; Providers — Flux orchestration map</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: rgba(255,255,255,.10);
+      --text: #eef4ff;
+      --muted: #a8b7d1;
+      --accent: #9b7cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 35%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1324 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .backlink {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, var(--panel)) 0%, var(--panel) 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      margin-bottom: 22px;
+    }
+    .content {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(24px, 2.6vw, 30px);
+      line-height: 1.2;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 30px 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    ul, ol {
+      margin: 0 0 18px 24px;
+      padding: 0;
+    }
+    pre {
+      margin: 16px 0 22px;
+      padding: 18px 20px;
+      background: #0a0f1a;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 18px;
+      overflow: auto;
+      color: #eaf1ff;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 720px) {
+      .content, .hero { padding: 22px; }
+      p, li { font-size: 17px; }
+      h3 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../model_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Model Runtime &amp; Providers · M10</div>
+    </div>
+
+    <div class="hero">
+      <h1>Model Runtime &amp; Providers</h1>
+      <h2>Block 10 — Flux orchestration map</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>De Flux Orchestration Map visualiseert en beheert alle routing beslissingen binnen het ARC systeem. Het definieert welke taken naar welke teams gaan en hoe workflows worden samengesteld.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Routing Rules** | Bepaal welk team welke taak krijgt |</p>
+<p>| **Workflow Composition** | Stel complexe workflows samen |</p>
+<p>| **Dependency Graph** | Beheer afhankelijkheden tussen taken |</p>
+<p>| **State Tracking** | Volg voortgang van workflows |</p>
+<h3>System Context</h3>
+<p>Flux Orchestration Map is het centrale brein van Flux. Het ontvangt intenties en vertaalt deze naar concrete routing beslissingen.</p>
+<p>Intentie -&gt; Router -&gt; Orchestration Map -&gt; Team Assignment -&gt; Execution</p>
+<h3>Core Structure</h3>
+<p>#### 1. Routing Engine</p>
+<p>Bepaalt doel op basis van intentie type.</p>
+<p>#### 2. Workflow Builder</p>
+<p>Construeert multi-step workflows.</p>
+<p>#### 3. State Manager</p>
+<p>Houdt workflow staat bij.</p>
+<p>#### 4. Dependency Resolver</p>
+<p>Bepaalt uitvoeringsvolgorde.</p>
+<h3>How It Works</h3>
+<ol>
+<li>Ontvang intentie van Nova</li>
+<li>Analyseer type en vereisten</li>
+<li>Zoek routing regels</li>
+<li>Bepaal target team</li>
+<li>Creer workflow indien nodig</li>
+<li>Dispatch naar Sentinel</li>
+</ol>
+<h3>How to Find / Use It</h3>
+<p>Orchestration rules zijn configureerbaar via admin interface.</p>
+<h3>Why It Exists</h3>
+<p>Centrale routing logica maakt het systeem configureerbaar en onderhoudbaar.</p>
+<h2>Routing Decision Flow</h2>
+<p>+----------------+</p>
+<p>|  GIO Intent    |</p>
+<p>+----------------+</p>
+<p>        |</p>
+<p>        v</p>
+<p>+----------------+</p>
+<p>|  Route Lookup  |</p>
+<p>+----------------+</p>
+<p>        |</p>
+<p>   +----+----+</p>
+<p>   |         |</p>
+<p>   v         v</p>
+<p>+------+  +------+</p>
+<p>|Simple|  |Complex|</p>
+<p>|Route |  |Route |</p>
+<p>+------+  +------+</p>
+<p>   |         |</p>
+<p>   v         v</p>
+<p>+------+  +------+</p>
+<p>|Direct|  |Multi-|</p>
+<p>|Send  |  |Step  |</p>
+<p>+------+  +------+</p>
+<p>---</p>
+<h2>Diagram</h2>
+<p>\`\`\`mermaid</p>
+<p>flowchart TB</p>
+<p>    A --&gt; B</p>
+<p>\`\`\`</p>
+<p>---</p>
+<h2>Diagram</h2>
+<div class="mermaid">flowchart TB
+    A[Start] --> B[Process]
+    B --> C[End]</div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad:true,
+  theme:'dark',
+  themeVariables:{
+    primaryColor:'#d6b35e',
+    primaryTextColor:'#eef4fb',
+    primaryBorderColor:'#d6b35e',
+    lineColor:'#95a7c2',
+    secondaryColor:'#1c1c20',
+    tertiaryColor:'#232329'
+  }
+});
+</script>
+
+</body>
+</html>

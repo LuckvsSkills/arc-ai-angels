@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "id": "arc-search-8ce30845-d954-4f2c-a0bd-10c513d25e56",
+  "provider": "tavily",
+  "preset": "youtube_song",
+  "query": "reggae",
+  "effectiveQuery": "site:youtube.com reggae official music video OR audio OR song -playlist -mix -compilation -live",
+  "maxResults": 5,
+  "completedAt": "2026-04-05T01:17:16Z",
+  "result": {
+    "query": "reggae official music video OR audio OR song -playlist -mix -compilation -live",
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.youtube.com/watch?v=bJCkz-gTcCU",
+        "title": "Pura Irie (Official Music Video) | Conkarah feat. Talawa | Reggae 2018",
+        "content": "Official Music Video for Reggae singer Conkarah and Reggae band Talawa's song \"Pura Irie\". Produced by Loud City and written by Conkarah and",
+        "score": 0.51105833,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=PtJzhlJaw9k",
+        "title": "John Ozila - Reggae Jamaica (Official Music Video) - YouTube",
+        "content": "John Ozila - Reggae Jamaica (Official Music Video). 807 views · 1 year ago ...more. Guno Santos - Reggaeterapia. 4.49K. Subscribe. 40. Share.",
+        "score": 0.4906999,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=biBtAs4YtXI",
+        "title": "Jahricio - Sweet Reggae Music [Official Video 2015] - YouTube",
+        "content": "SUBSCRIBE ➜ http://bit.ly/yt-reggaeville http://www.REGGAEVILLE.com.",
+        "score": 0.5013922,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=cd67HtrwY7w",
+        "title": "A#keem feat. Sharee Elise - Sweet Reggae Music [Official Video 2017]",
+        "content": "https://www.REGGAEVILLE.com Produced by: LionRiddims Written by: A#keem & Sharee Elise Mixed by: Red Boom (Jamaica) Mastered by: Andrew",
+        "score": 0.48499045,
+        "raw_content": null
+      }
+    ],
+    "response_time": 1.06,
+    "request_id": "bb0623a8-ca81-497d-913c-da409d079c9a"
+  }
+}

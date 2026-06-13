@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "generated_at": "2026-03-14",
+  "central_intelligence": {
+    "name": "Flux",
+    "role": "Central Intelligence"
+  },
+  "direct_interface_agents": [
+    {
+      "name": "Nova",
+      "role": "Direct Interface AI Agent"
+    },
+    {
+      "name": "James",
+      "role": "Direct Interface AI Agent"
+    },
+    {
+      "name": "Jim",
+      "role": "Direct Interface AI Agent"
+    }
+  ],
+  "shared_structure": {
+    "memory": "~/arc_ai_angels/shared/memory",
+    "tasks": "~/arc_ai_angels/shared/tasks",
+    "results": "~/arc_ai_angels/shared/results",
+    "sentinel_queues": "~/arc_ai_angels/shared/sentinel-queues",
+    "projects": "~/arc_ai_angels/shared/projects",
+    "registry": "~/arc_ai_angels/shared/registry",
+    "logs": "~/arc_ai_angels/shared/logs",
+    "legacy_nova_to_flux": "~/arc_ai_angels/shared/nova_to_flux",
+    "legacy_flux_to_nova": "~/arc_ai_angels/shared/flux_to_nova"
+  },
+  "sentinels": [
+    {
+      "name": "Sentinel Security",
+      "lead_agent": "Nero",
+      "path": "~/arc_ai_angels/agents/sentinel-security",
+      "status": "built_phase_1",
+      "workers": [
+        "Prompt Defense Worker",
+        "Runtime Audit Worker",
+        "Secrets Monitor Worker",
+        "Incident Response Worker",
+        "Policy Validation Worker"
+      ]
+    },
+    {
+      "name": "Sentinel Research",
+      "lead_agent": "Sora",
+      "path": "~/arc_ai_angels/agents/sentinel-research",
+      "status": "built_phase_1",
+      "workers": [
+        "Web Research Worker",
+        "Competitor Scan Worker",
+        "Source Validation Worker",
+        "Dataset Collection Worker"
+      ]
+    },
+    {
+      "name": "Sentinel Engineering",
+      "lead_agent": "Forge",
+      "path": "~/arc_ai_angels/agents/sentinel-engineering",
+      "status": "built_phase_1",
+      "workers": [
+        "Code Generation Worker",
+        "Code Review Worker",
+        "Architecture Validation Worker",
+        "Automation Build Worker"
+      ]
+    },
+    {
+      "name": "Sentinel Documentation",
+      "lead_agent": "Clio",
+      "path": "~/arc_ai_angels/agents/sentinel-documentation",
+      "status": "built_phase_1",
+      "workers": [
+        "Doc Cleanup Worker",
+        "Doc Summary Worker",
+        "Knowledge Index Worker",
+        "Structure Review Worker"
+      ]
+    }
+  ]
+}

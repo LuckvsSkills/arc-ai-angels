@@ -1,0 +1,62 @@
+{
+  "project": "The Arc Strategic Control Center",
+  "chapters": [
+
+    {
+      "id": "platform_runtime",
+      "title": "Platform & Runtime",
+      "status": "finished",
+      "progress": 100,
+      "duration_hours": 23
+    },
+
+    {
+      "id": "security_hardening",
+      "title": "Security Hardening",
+      "status": "planned",
+      "progress": 0,
+      "duration_hours": 28
+    },
+
+    {
+      "id": "model_runtime",
+      "title": "Model Runtime & Providers",
+      "status": "planned",
+      "progress": 0,
+      "duration_hours": 22
+    },
+
+    {
+      "id": "data_memory",
+      "title": "Data & Memory Architecture",
+      "status": "planned",
+      "progress": 0,
+      "duration_hours": 32
+    },
+
+    {
+      "id": "agent_logic",
+      "title": "Agent Logic, Skills & Swarm",
+      "status": "planned",
+      "progress": 0,
+      "duration_hours": 54
+    },
+
+    {
+      "id": "observability",
+      "title": "Observability & API Cost Control",
+      "status": "planned",
+      "progress": 0,
+      "duration_hours": 24
+    },
+
+    {
+      "id": "control_center",
+      "title": "Strategic Control Center UI",
+      "status": "started",
+      "progress": 20,
+      "duration_hours": 30
+    }
+
+  ]
+}

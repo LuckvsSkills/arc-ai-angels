@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="gold" data-mode="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Configuration (b04) - ARC Strategic Control Center</title>
+    <link rel="stylesheet" href="css/arc-scc.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="js/arc-scc.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="topbar">
+    <a href="index.html" class="logo">ARC Strategic Control Center</a>
+    <div class="topbar-controls">
+        <div class="theme-switcher">
+            <button class="theme-btn gold active" data-theme="gold" title="Gold Theme"></button>
+            <button class="theme-btn cyan" data-theme="cyan" title="Cyan Theme"></button>
+            <button class="theme-btn purple" data-theme="purple" title="Purple Theme"></button>
+            <button class="theme-btn teal" data-theme="teal" title="Teal Theme"></button>
+        </div>
+        <button id="mode-toggle" class="mode-toggle">☀️ Light</button>
+    </div>
+</header>
+
+        <aside class="sidebar" id="sidebar">
+<div class="sidebar-header">Navigation</div>
+<nav><ul class="nav-list">
+<li class="nav-chapter expanded" data-chapter="ch1">
+<button class="chapter-toggle">Foundation</button>
+<ul class="chapter-blocks">
+<li><a href="block_b01.html" class="block-link "><span class="block-id">b01</span><span class="block-title">System Architecture Overview</span></a></li>
+<li><a href="block_b02.html" class="block-link "><span class="block-id">b02</span><span class="block-title">Hardware Requirements</span></a></li>
+<li><a href="block_b03.html" class="block-link "><span class="block-id">b03</span><span class="block-title">Network Topology</span></a></li>
+<li><a href="block_b04.html" class="block-link active"><span class="block-id">b04</span><span class="block-title">Base Configuration</span></a></li>
+<li><a href="block_b05.html" class="block-link "><span class="block-id">b05</span><span class="block-title">Installation Procedures</span></a></li>
+<li><a href="block_b06.html" class="block-link "><span class="block-id">b06</span><span class="block-title">Initial Setup</span></a></li>
+<li><a href="block_b07.html" class="block-link "><span class="block-id">b07</span><span class="block-title">Core Services</span></a></li>
+</ul>
+</li>
+<li class="nav-chapter " data-chapter="ch2">
+<button class="chapter-toggle">Platform & Runtime</button>
+<ul class="chapter-blocks">
+<li><a href="block_b08.html" class="block-link "><span class="block-id">b08</span><span class="block-title">Runtime Environment</span></a></li>
+<li><a href="block_b09.html" class="block-link "><span class="block-id">b09</span><span class="block-title">Container Orchestration</span></a></li>
+<li><a href="block_b10.html" class="block-link "><span class="block-id">b10</span><span class="block-title">Service Mesh</span></a></li>
+<li><a href="block_b11.html" class="block-link "><span class="block-id">b11</span><span class="block-title">Load Balancing</span></a></li>
+<li><a href="block_b12.html" class="block-link "><span class="block-id">b12</span><span class="block-title">Auto-scaling</span></a></li>
+<li><a href="block_b13.html" class="block-link "><span class="block-id">b13</span><span class="block-title">Resource Management</span></a></li>
+<li><a href="block_b14.html" class="block-link "><span class="block-id">b14</span><span class="block-title">Monitoring Stack</span></a></li>
+</ul>
+</li>
+<li class="nav-chapter " data-chapter="ch3">
+<button class="chapter-toggle">Security Hardening</button>
+<ul class="chapter-blocks">
+<li><a href="block_b15.html" class="block-link "><span class="block-id">b15</span><span class="block-title">Threat Model</span></a></li>
+<li><a href="block_b16.html" class="block-link "><span class="block-id">b16</span><span class="block-title">Access Control</span></a></li>
+<li><a href="block_b17.html" class="block-link "><span class="block-id">b17</span><span class="block-title">Encryption Standards</span></a></li>
+<li><a href="block_b18.html" class="block-link "><span class="block-id">b18</span><span class="block-title">Firewall Configuration</span></a></li>
+<li><a href="block_b19.html" class="block-link "><span class="block-id">b19</span><span class="block-title">Intrusion Detection</span></a></li>
+<li><a href="block_b20.html" class="block-link "><span class="block-id">b20</span><span class="block-title">Audit Logging</span></a></li>
+<li><a href="block_b21.html" class="block-link "><span class="block-id">b21</span><span class="block-title">Vulnerability Management</span></a></li>
+</ul>
+</li>
+<li class="nav-chapter " data-chapter="ch4">
+<button class="chapter-toggle">Data Management</button>
+<ul class="chapter-blocks">
+<li><a href="block_b22.html" class="block-link "><span class="block-id">b22</span><span class="block-title">Data Architecture</span></a></li>
+<li><a href="block_b23.html" class="block-link "><span class="block-id">b23</span><span class="block-title">Storage Solutions</span></a></li>
+<li><a href="block_b24.html" class="block-link "><span class="block-id">b24</span><span class="block-title">Backup Strategy</span></a></li>
+<li><a href="block_b25.html" class="block-link "><span class="block-id">b25</span><span class="block-title">Data Pipeline</span></a></li>
+<li><a href="block_b26.html" class="block-link "><span class="block-id">b26</span><span class="block-title">ETL Processes</span></a></li>
+<li><a href="block_b27.html" class="block-link "><span class="block-id">b27</span><span class="block-title">Data Governance</span></a></li>
+<li><a href="block_b28.html" class="block-link "><span class="block-id">b28</span><span class="block-title">Disaster Recovery</span></a></li>
+</ul>
+</li>
+<li class="nav-chapter " data-chapter="ch5">
+<button class="chapter-toggle">API & Integration</button>
+<ul class="chapter-blocks">
+<li><a href="block_b29.html" class="block-link "><span class="block-id">b29</span><span class="block-title">API Design Principles</span></a></li>
+<li><a href="block_b30.html" class="block-link "><span class="block-id">b30</span><span class="block-title">REST Endpoints</span></a></li>
+<li><a href="block_b31.html" class="block-link "><span class="block-id">b31</span><span class="block-title">GraphQL Schema</span></a></li>
+<li><a href="block_b32.html" class="block-link "><span class="block-id">b32</span><span class="block-title">Authentication Flow</span></a></li>
+<li><a href="block_b33.html" class="block-link "><span class="block-id">b33</span><span class="block-title">Rate Limiting</span></a></li>
+<li><a href="block_b34.html" class="block-link "><span class="block-id">b34</span><span class="block-title">Webhook Integration</span></a></li>
+<li><a href="block_b35.html" class="block-link "><span class="block-id">b35</span><span class="block-title">Third-party Connectors</span></a></li>
+</ul>
+</li>
+<li class="nav-chapter " data-chapter="ch6">
+<button class="chapter-toggle">Deployment & CI/CD</button>
+<ul class="chapter-blocks">
+<li><a href="block_b36.html" class="block-link "><span class="block-id">b36</span><span class="block-title">Deployment Pipeline</span></a></li>
+<li><a href="block_b37.html" class="block-link "><span class="block-id">b37</span><span class="block-title">Build Automation</span></a></li>
+<li><a href="block_b38.html" class="block-link "><span class="block-id">b38</span><span class="block-title">Testing Strategy</span></a></li>
+<li><a href="block_b39.html" class="block-link "><span class="block-id">b39</span><span class="block-title">Release Management</span></a></li>
+<li><a href="block_b40.html" class="block-link "><span class="block-id">b40</span><span class="block-title">Rollback Procedures</span></a></li>
+<li><a href="block_b41.html" class="block-link "><span class="block-id">b41</span><span class="block-title">Environment Promotion</span></a></li>
+<li><a href="block_b42.html" class="block-link "><span class="block-id">b42</span><span class="block-title">Version Control</span></a></li>
+</ul>
+</li>
+<li class="nav-chapter " data-chapter="ch7">
+<button class="chapter-toggle">Operations & Monitoring</button>
+<ul class="chapter-blocks">
+<li><a href="block_b43.html" class="block-link "><span class="block-id">b43</span><span class="block-title">Operations Runbook</span></a></li>
+<li><a href="block_b44.html" class="block-link "><span class="block-id">b44</span><span class="block-title">Alerting Rules</span></a></li>
+<li><a href="block_b45.html" class="block-link "><span class="block-id">b45</span><span class="block-title">Incident Response</span></a></li>
+<li><a href="block_b46.html" class="block-link "><span class="block-id">b46</span><span class="block-title">Performance Tuning</span></a></li>
+<li><a href="block_b47.html" class="block-link "><span class="block-id">b47</span><span class="block-title">Capacity Planning</span></a></li>
+<li><a href="block_b48.html" class="block-link "><span class="block-id">b48</span><span class="block-title">SLA Management</span></a></li>
+<li><a href="block_b49.html" class="block-link "><span class="block-id">b49</span><span class="block-title">Maintenance Windows</span></a></li>
+</ul>
+</li>
+<li class="nav-chapter " data-chapter="ch8">
+<button class="chapter-toggle">Compliance & Governance</button>
+<ul class="chapter-blocks">
+<li><a href="block_b50.html" class="block-link "><span class="block-id">b50</span><span class="block-title">Compliance Framework</span></a></li>
+<li><a href="block_b51.html" class="block-link "><span class="block-id">b51</span><span class="block-title">Audit Procedures</span></a></li>
+<li><a href="block_b52.html" class="block-link "><span class="block-id">b52</span><span class="block-title">Risk Assessment</span></a></li>
+<li><a href="block_b53.html" class="block-link "><span class="block-id">b53</span><span class="block-title">Policy Enforcement</span></a></li>
+<li><a href="block_b54.html" class="block-link "><span class="block-id">b54</span><span class="block-title">Documentation Standards</span></a></li>
+</ul>
+</li>
+</ul></nav>
+</aside>
+
+        <main class="main-content">
+            <div class="breadcrumbs">
+                <a href="index.html">Dashboard</a>
+                <span>/</span>
+                <a href="chapters.html">Chapters</a>
+                <span>/</span>
+                <a href="chapters.html#ch1">Foundation</a>
+                <span>/</span>
+                <span>Base Configuration</span>
+            </div>
+            
+            <div class="block-container">
+                <div class="block-header">
+                    <span class="block-id-badge">b04</span>
+                    <h1 class="block-title-large">Base Configuration</h1>
+                    <span class="block-type-badge">config</span>
+                </div>
+                
+                <div class="block-content" id="block-content" data-block-id="b04">
+                    
+<h2>Overview</h2>
+<p>This block covers <strong>Base Configuration</strong> within the Foundation domain. 
+It is a critical component of the enterprise architecture and requires careful implementation.</p>
+
+<h2>Objectives</h2>
+<ul>
+    <li>Understand core concepts of Base Configuration</li>
+    <li>Implementation guidelines and best practices</li>
+    <li>Integration with other system components</li>
+    <li>Monitoring and maintenance procedures</li>
+</ul>
+
+<h2>Architecture Diagram</h2>
+<div class="mermaid-container">
+<div class="mermaid">
+flowchart TD
+    A[Base Configuration Entry] --> B{Validation Layer}
+    B -->|Valid| C[Processing Unit]
+    B -->|Invalid| D[Error Handler]
+    C --> E[Data Storage]
+    D --> F[Audit Logger]
+    E --> G[Output Interface]
+    F --> G
+    style A fill:var(--primary),stroke:#333,stroke-width:2px
+    style G fill:#90EE90,stroke:#333,stroke-width:2px
+</div>
+</div>
+
+<h2>Implementation</h2>
+<h3>Configuration</h3>
+<pre><code># Configuration for Base Configuration
+b04:
+  enabled: true
+  version: "1.0"
+  environment: production
+  settings:
+    retry_attempts: 3
+    timeout_seconds: 30
+    logging_level: info</code></pre>
+
+<h3>Code Example</h3>
+<pre><code>// Base Configuration implementation
+class BaseConfigurationManager {
+    constructor() {
+        this.config = loadConfig('b04');
+        this.initialized = false;
+    }
+    
+    async initialize() {
+        await this.validatePrerequisites();
+        await this.connect();
+        this.initialized = true;
+    }
+    
+    async process(data) {
+        if (!this.initialized) throw new Error('Not initialized');
+        return await this.transform(data);
+    }
+}</code></pre>
+
+<h2>Best Practices</h2>
+<ol>
+    <li><strong>Security:</strong> Validate all inputs before processing</li>
+    <li><strong>Performance:</strong> Implement caching where appropriate</li>
+    <li><strong>Monitoring:</strong> Log all critical operations</li>
+    <li><strong>Scalability:</strong> Design for horizontal scaling</li>
+</ol>
+
+<h2>Troubleshooting</h2>
+<table style="width:100%; border-collapse: collapse; margin: 1.5rem 0;">
+    <tr style="background: var(--bg);">
+        <th style="padding: 0.75rem; border: 1px solid var(--border); text-align: left; color: var(--primary);">Issue</th>
+        <th style="padding: 0.75rem; border: 1px solid var(--border); text-align: left; color: var(--primary);">Cause</th>
+        <th style="padding: 0.75rem; border: 1px solid var(--border); text-align: left; color: var(--primary);">Solution</th>
+    </tr>
+    <tr>
+        <td style="padding: 0.75rem; border: 1px solid var(--border);">Timeout errors</td>
+        <td style="padding: 0.75rem; border: 1px solid var(--border);">Network latency</td>
+        <td style="padding: 0.75rem; border: 1px solid var(--border);">Increase timeout value</td>
+    </tr>
+    <tr>
+        <td style="padding: 0.75rem; border: 1px solid var(--border);">Connection failed</td>
+        <td style="padding: 0.75rem; border: 1px solid var(--border);">Service unavailable</td>
+        <td style="padding: 0.75rem; border: 1px solid var(--border);">Check service status</td>
+    </tr>
+</table>
+
+                </div>
+                
+                <div class="block-nav">
+                    <a href="block_b03.html">← Network Topology</a>
+                    <a href="block_b05.html">Installation Procedures →</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

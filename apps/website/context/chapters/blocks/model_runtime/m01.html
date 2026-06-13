@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Model Runtime &amp; Providers — Model runtime architecture</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: rgba(255,255,255,.10);
+      --text: #eef4ff;
+      --muted: #a8b7d1;
+      --accent: #9b7cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 35%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1324 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .backlink {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, var(--panel)) 0%, var(--panel) 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      margin-bottom: 22px;
+    }
+    .content {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(24px, 2.6vw, 30px);
+      line-height: 1.2;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 30px 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    ul, ol {
+      margin: 0 0 18px 24px;
+      padding: 0;
+    }
+    pre {
+      margin: 16px 0 22px;
+      padding: 18px 20px;
+      background: #0a0f1a;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 18px;
+      overflow: auto;
+      color: #eaf1ff;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 720px) {
+      .content, .hero { padding: 22px; }
+      p, li { font-size: 17px; }
+      h3 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../model_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Model Runtime &amp; Providers · M01</div>
+    </div>
+
+    <div class="hero">
+      <h1>Model Runtime &amp; Providers</h1>
+      <h2>Block 01 — Model runtime architecture</h2>
+    </div>
+
+    <div class="content">
+      <h3>Purpose</h3>
+<p>Dit block beschrijft hoe de OpenClaw installatie wordt gebruikt als runtimebasis voor ARC AI Agents en hoe AI agents daarin logisch worden opgebouwd, verbonden en aangestuurd.</p>
+<p>De focus van dit block ligt op:</p>
+<ul>
+<li>waar agents draaien</li>
+<li>hoe de hoofdstructuur is opgebouwd</li>
+<li>hoe routing tussen Nova, Flux, Omni, Sentinels en Workers verloopt</li>
+<li>hoe OpenClaw en ARC AI Agents zich tot elkaar verhouden</li>
+</ul>
+<h3>OpenClaw runtime context</h3>
+<p>OpenClaw is binnen dit project de technische runtimebasis waarop AI agents worden geplaatst en geconfigureerd.</p>
+<p>ARC AI Agents is de organisatielaag bovenop OpenClaw. Die laag bepaalt niet de runtime zelf, maar wel:</p>
+<ul>
+<li>de hiërarchie</li>
+<li>de domeinverdeling</li>
+<li>de routinglogica</li>
+<li>de samenwerking tussen agents</li>
+</ul>
+<p>Kort gezegd:</p>
+<ul>
+<li>OpenClaw = technische basis</li>
+<li>ARC AI Agents = operationele structuur</li>
+</ul>
+<h3>Full system flow</h3>
+<pre><code>Fea (gebruiker)
+  ↓
+Nova (Gateway / Interface)
+  ↓
+Flux (Master Orchestrator)
+  ↓
+Omni (Domain Layer)
+  ↓
+Sentinel (Specialist Layer)
+  ↓
+Workers (Execution Layer)</code></pre>
+<p>Terugkoppeling:</p>
+<pre><code>Workers → Sentinel → Omni → Flux → Nova → Fea</code></pre>
+<h3>Core architecture logic</h3>
+<p>De architectuur is opgebouwd als een gecontroleerde AI-hiërarchie.</p>
+<p>Belangrijkste logica:</p>
+<ul>
+<li>Fea communiceert niet direct met Flux, maar via Nova of Mission Control</li>
+<li>Nova beslist of een taak lokaal afgehandeld kan worden of naar Flux moet</li>
+<li>Flux bepaalt welk domein verantwoordelijk is</li>
+<li>Omni neemt domeincoördinatie over</li>
+<li>Sentinels voeren specialistische taken uit</li>
+<li>Workers doen de uitvoerende handelingen</li>
+</ul>
+<h3>Nova decision logic</h3>
+<pre><code>Input komt binnen bij Nova
+├ simpele taak → Nova handelt zelf af
+└ complexe / domeintaak → Flux</code></pre>
+<p>Nova is dus een filterlaag, niet de centrale orchestrator.</p>
+<h3>Flux orchestration logic</h3>
+<p>Flux is het centrale brein dat overzicht houdt over alle domeinen en taakstromen.</p>
+<p>Flux doet het volgende:</p>
+<ul>
+<li>interpreteert taakintentie</li>
+<li>kiest de juiste Omni</li>
+<li>bewaakt routing en terugkoppeling</li>
+<li>kan in uitzonderlijke gevallen direct een Sentinel aanspreken</li>
+</ul>
+<h3>Omni overview</h3>
+<pre><code>Flux
+ ├ Omni Helix   → Tech         → Lead AI Agent: Cortexia
+ ├ Omni Matrix  → Intelligence → Lead AI Agent: Saelia
+ ├ Omni Quantix → Growth       → Lead AI Agent: Lumeria
+ ├ Omni Zenix   → Operations   → Lead AI Agent: Fluentia
+ └ Omni Finix   → Assets       → Lead AI Agent: Finoria</code></pre>
+<p>Elke Omni is verantwoordelijk voor één domein en stuurt de Sentinels binnen dat domein aan.</p>
+<h3>Sentinel relationship to Omni</h3>
+<p>Alle Omni’s met hun bijbehorende Sentinels:</p>
+<pre><code>Omni Helix (Tech)
+ ├ Sentinel Security       → Lead AI Agent: Nero
+ ├ Sentinel Engineering    → Lead AI Agent: Forge
+ ├ Sentinel Infrastructure → Lead AI Agent: Ventura
+ ├ Sentinel Automation     → Lead AI Agent: Axon
+ └ Sentinel Documentation  → Lead AI Agent: Clio
+
+Omni Matrix (Intelligence)
+ ├ Sentinel Research          → Lead AI Agent: Sora
+ ├ Sentinel Data Analysis     → Lead AI Agent: Daxio
+ ├ Sentinel Strategy          → Lead AI Agent: Enki
+ └ Sentinel Knowledge Systems → Lead AI Agent: Tharos
+
+Omni Quantix (Growth)
+ ├ Sentinel Marketing         → Lead AI Agent: Vondra
+ ├ Sentinel Content Creation  → Lead AI Agent: Nura
+ ├ Sentinel SEO               → Lead AI Agent: Elora
+ ├ Sentinel Affiliate Systems → Lead AI Agent: Luvia
+ └ Sentinel Audience Growth   → Lead AI Agent: Kresta
+
+Omni Zenix (Operations)
+ ├ Sentinel Workflow             → Lead AI Agent: Solis
+ ├ Sentinel Process Systems      → Lead AI Agent: Orizon
+ ├ Sentinel Project Coordination → Lead AI Agent: Zena
+ └ Sentinel System Monitoring    → Lead AI Agent: Unia
+
+Omni Finix (Assets)
+ ├ Sentinel Trading              → Lead AI Agent: Vector
+ ├ Sentinel Crypto Assets        → Lead AI Agent: Zion
+ ├ Sentinel Real Estate          → Lead AI Agent: Odis
+ └ Sentinel Portfolio Management → Lead AI Agent: Kenzo</code></pre>
+<p>Elke Sentinel:</p>
+<ul>
+<li>heeft een specialistisch domein</li>
+<li>heeft een Lead AI Agent</li>
+<li>stuurt Workers aan</li>
+<li>rapporteert terug aan de Omni</li>
+</ul>
+<h3>Worker relationship to Sentinels</h3>
+<p>Workers zijn de uitvoerende laag.</p>
+<p>Workers kunnen onder meer worden ingezet voor:</p>
+<ul>
+<li>code generatie</li>
+<li>validatie</li>
+<li>research</li>
+<li>analyse</li>
+<li>documentatie</li>
+<li>automatisering</li>
+</ul>
+<p>Workers rapporteren niet rechtstreeks aan Flux, maar lopen via Sentinel en Omni terug omhoog.</p>
+<h3>Agent placement &amp; installatie</h3>
+<p>Binnen OpenClaw moeten agents volgens vaste structuur worden ingericht.</p>
+<p>Elke agent moet minimaal logisch gekoppeld zijn aan:</p>
+<ul>
+<li>domein</li>
+<li>rol</li>
+<li>naam</li>
+<li>hiërarchische positie</li>
+</ul>
+<p>Dit voorkomt losse, onduidelijke agentconfiguraties zonder heldere verantwoordelijkheid.</p>
+<h3>Mission entry points</h3>
+<p>Fea kan het systeem op twee hoofdmanieren bereiken:</p>
+<pre><code>1. Via Nova
+   - Telegram
+   - UI / Gateway
+
+2. Via Mission Control
+   - directe besturing / overzicht</code></pre>
+<p>Beide routes komen uiteindelijk uit bij Flux wanneer domeinlogica nodig is.</p>
+<h3>Key rules</h3>
+<ul>
+<li>Nova stuurt nooit direct Omni’s of Sentinels aan</li>
+<li>Flux stuurt primair Omni’s aan</li>
+<li>Omni’s sturen Sentinels aan</li>
+<li>Sentinels sturen Workers aan</li>
+<li>directe Flux → Sentinel routing is alleen een uitzonderingsroute</li>
+<li>terugkoppeling verloopt altijd omhoog in de hiërarchie</li>
+</ul>
+<h3>Known verification point</h3>
+<p>Er moet later nog gecontroleerd worden:</p>
+<ul>
+<li>waar OpenClaw fysiek op het systeem is geïnstalleerd</li>
+<li>of die installatie binnen ARC AI Agents staat of daarbuiten</li>
+<li>welke mapstructuur leidend is voor deployment en configuratie</li>
+</ul>
+<p>Dit punt moet later expliciet worden gevalideerd op de pc.</p>
+<h3>Why it exists</h3>
+<p>Deze structuur bestaat om chaos te voorkomen.</p>
+<p>Zonder deze architectuur zouden agents:</p>
+<ul>
+<li>dubbel werk doen</li>
+<li>onduidelijk aangestuurd worden</li>
+<li>zonder domeinverantwoordelijkheid opereren</li>
+<li>moeilijk schaalbaar zijn</li>
+</ul>
+<p>Met deze opbouw ontstaat:</p>
+<ul>
+<li>duidelijke verantwoordelijkheid</li>
+<li>schaalbaarheid</li>
+<li>voorspelbare routing</li>
+<li>controle over uitvoering en terugkoppeling</li>
+</ul>
+<h3>Dependencies</h3>
+<ul>
+<li>Agent &amp; subagent mapping</li>
+<li>Direct interface &amp; command routing</li>
+<li>Flux orchestration map</li>
+<li>Flux routing blueprint</li>
+<li>Team &amp; subagent architecture</li>
+</ul>
+<h3>Decisions made</h3>
+<ul>
+<li>OpenClaw is runtimebasis</li>
+<li>ARC AI Agents is organisatielaag</li>
+<li>Nova is gateway en beslisfilter</li>
+<li>Flux is centrale orchestrator</li>
+<li>Omni’s zijn domeinverantwoordelijken</li>
+<li>Sentinels zijn specialistische lagen</li>
+<li>Workers zijn uitvoeringslaag</li>
+<li>routing verloopt hiërarchisch van boven naar beneden en terug</li>
+</ul>
+<h3>Decision locked</h3>
+<p>Owner: Fea</p>
+<p>Status: ARC AI Agents — Model Runtime baseline v2</p>
+    </div>
+  </div>
+</body>
+</html>

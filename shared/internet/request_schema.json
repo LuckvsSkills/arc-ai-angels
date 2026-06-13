@@ -1,0 +1,12 @@
+{
+  "id": "string",
+  "agent": "string",
+  "type": "search | extract",
+  "provider": "tavily | firecrawl | auto",
+  "query": "string|null",
+  "url": "string|null",
+  "useCase": "quick_research | search | deep_extraction | crawl",
+  "maxResults": 3,
+  "requestedAt": "ISO-8601 timestamp",
+  "status": "pending | processing | completed | failed"
+}

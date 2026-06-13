@@ -1,0 +1,32 @@
+{
+  "firecrawl": {
+    "mode": "gateway_only",
+    "directSkillUseAllowed": false,
+    "allowedAgents": [
+      "sora",
+      "tharos",
+      "forge",
+      "ventura"
+    ]
+  },
+  "tavily": {
+    "mode": "gateway_only",
+    "directSkillUseAllowed": false,
+    "allowedAgents": [
+      "nova",
+      "sora",
+      "daxio",
+      "enki",
+      "tharos",
+      "arix",
+      "forge",
+      "ventura",
+      "axon",
+      "draven",
+      "vector",
+      "zion",
+      "kenzo",
+      "kairo"
+    ]
+  }
+}

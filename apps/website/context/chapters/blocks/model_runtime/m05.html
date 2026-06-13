@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Model Runtime &amp; Providers — Specialist Teams (Sentinel)</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: rgba(255,255,255,.10);
+      --text: #eef4ff;
+      --muted: #a8b7d1;
+      --accent: #9b7cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 35%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1324 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .backlink {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, var(--panel)) 0%, var(--panel) 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      margin-bottom: 22px;
+    }
+    .content {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(24px, 2.6vw, 30px);
+      line-height: 1.2;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 30px 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    ul, ol {
+      margin: 0 0 18px 24px;
+      padding: 0;
+    }
+    pre {
+      margin: 16px 0 22px;
+      padding: 18px 20px;
+      background: #0a0f1a;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 18px;
+      overflow: auto;
+      color: #eaf1ff;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 720px) {
+      .content, .hero { padding: 22px; }
+      p, li { font-size: 17px; }
+      h3 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../model_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Model Runtime &amp; Providers · M05</div>
+    </div>
+
+    <div class="hero">
+      <h1>Model Runtime &amp; Providers</h1>
+      <h2>Block 05 — Specialist Teams (Sentinel)</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>Sentinel is de **specialistische uitvoeringslaag** binnen ARC AI Agents. Waar Omni domein-kennis beheert, bevat Sentinel de **operationele expertise** voor specifieke taken.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Expert Coordination** | Beheer teams van gespecialiseerde Workers |</p>
+<p>| **Skill Matching** | Match taak-specificaties met Worker capabilities |</p>
+<p>| **Quality Control** | Eerste validatie van Worker output |</p>
+<p>| **Error Handling** | Lokaal herstel voordat escalatie naar Flux |</p>
+<p>Sentinel-teams zijn **verticaal gespecialiseerd** (bijv. code, design, data) en **horizontaal gestructureerd** (lead + specialists + juniors).</p>
+<p>---</p>
+<h3>System Context</h3>
+<p>**Positionering:**</p>
+<ul>
+<li>**Parent:** Omni (ontvangt Task Specs)</li>
+<li>**Children:** Workers (concrete uitvoering)</li>
+<li>**Peers:** Andere Sentinel teams (load balancing, failover)</li>
+</ul>
+<p>---</p>
+<h3>Concrete Structure</h3>
+<p>Sentinel bestaat uit 4 kerncomponenten:</p>
+<p>#### 5.1 Team Organisatie</p>
+<p>| Rol | Verantwoordelijkheid | Worker Type |</p>
+<p>|-----|---------------------|-------------|</p>
+<p>| **Lead** | Review, architectuur beslissingen, escalatie | Senior Worker |</p>
+<p>| **Senior** | Complexe taken, mentoring, kwaliteit | Specialized Worker |</p>
+<p>| **Junior** | Standaard taken, ondersteuning, learning | General Worker |</p>
+<p>#### 5.2 Sentinel Teams Registry</p>
+<p>| Team ID | Domein | Specialisaties | Workers |</p>
+<p>|---------|--------|--------------|---------|</p>
+<p>| sentinel_code_team | Software | Python, JS, Go, Rust, SQL | 3 senior, 5 junior |</p>
+<p>| sentinel_design_team | Visual | UI/UX, branding, illustration | 2 senior, 3 junior |</p>
+<p>| sentinel_data_team | Analytics | SQL, Python, visualization | 2 senior, 4 junior |</p>
+<p>| sentinel_security_team | Security | Audits, pentest, compliance | 2 senior, 2 junior |</p>
+<p>| sentinel_copy_team | Content | SEO, technical writing, tone | 2 senior, 3 junior |</p>
+<p>#### 5.3 Task Distribution Engine</p>
+<p>Wijs taak toe op basis van:</p>
+<ul>
+<li>Vereiste skills (filter)</li>
+<li>Huidige load (50% weight)</li>
+<li>Expertise match (40% weight)</li>
+<li>Recency factor (10% weight)</li>
+<li>Backup Worker selectie</li>
+</ul>
+<p>#### 5.4 Quality Gate</p>
+<p>Eerste controle voor terugkeer naar Omni:</p>
+<ul>
+<li>Automated checks (syntax, tests, linting)</li>
+<li>Lead review voor complexiteit &gt; 3</li>
+<li>Security scan voor gevoelige code</li>
+<li>Performance benchmarks</li>
+</ul>
+<h3>Flows</h3>
+<p>#### 5.1 Standard Task Execution</p>
+<p>#### 5.2 Multi-Worker Parallel Task</p>
+<h3>Flows</h3>
+<p>#### 5.1 Standard Task Execution</p>
+<p>#### 5.2 Multi-Worker Parallel Task</p>
+<h3>Relaties met andere ARC-lagen</h3>
+<p>| Laag | Interface | Data |</p>
+<p>|------|-----------|------|</p>
+<p>| **Omni** | Input/Output | Task Specs / Results |</p>
+<p>| **Workers** | Command/Response | Execution commands / Output |</p>
+<p>| **Flux** | Escalatie only | Bij failures na retry |</p>
+<p>| **Andere Sentinel** | Failover | Task overname bij overload |</p>
+<p>---</p>
+<h3>Decision Logic</h3>
+<p>| Beslissing | Input | Output |</p>
+<p>|------------|-------|--------|</p>
+<p>| **Welke Worker?** | Skills nodig, huidige load, expertise | Worker ID + backup ID |</p>
+<p>| **Review nodig?** | Complexity, security flag, historie | Boolean + reviewer assignment |</p>
+<p>| **Retry of escalatie?** | Failure type, retry count, impact | &quot;retry&quot; / &quot;escalate_to_flux&quot; / &quot;fail_fast&quot; |</p>
+<p>| **Parallel of sequentieel?** | Sub-task dependencies | Execution graph |</p>
+<p>---</p>
+<h3>Rules &amp; Constraints</h3>
+<p>| Regel | Rationale |</p>
+<p>|-------|-----------|</p>
+<p>| **R1:** Elke taak heeft minimaal 1 backup Worker | Voorkomt single point of failure |</p>
+<p>| **R2:** Lead review verplicht voor complexity &gt; 3 | Kwaliteitshandhaving |</p>
+<p>| **R3:** Worker timeout strikt gehandhaafd | Voorkomt resource starvation |</p>
+<p>| **R4:** Sentinel mag nooit direct naar Fea | Altijd via Omni→Flux |</p>
+<p>| **R5:** Worker attribution altijd gelogd | Accountability, debugging, learning |</p>
+<p>---</p>
+<h3>Dependencies</h3>
+<p>| Component | Type | Impact |</p>
+<p>|-----------|------|--------|</p>
+<p>| Worker pool | Hard | Geen uitvoering mogelijk |</p>
+<p>| Task queue | Hard | Backlog opbouwen |</p>
+<p>| Omni specificaties | Hard | Geen richting zonder STS |</p>
+<p>| Lead Worker availability | Soft | Review queue opbouwen |</p>
+<p>---</p>
+<h3>Decisions Made</h3>
+<p>| Beslissing | Argumentatie |</p>
+<p>|------------|--------------|</p>
+<p>| **Team hierarchie** | Lead/Senior/Junior voor kwaliteit en schaalbaarheid |</p>
+<p>| **Skill-based routing** | Precieze matching taak-capability |</p>
+<p>| **Automated + human review** | Balans tussen snelheid en kwaliteit |</p>
+<p>---</p>
+<h3>Decision Locked</h3>
+<p>**Owner:** Fea  </p>
+<p>**Status:** Active  </p>
+<p>**Version:** 2.0.0  </p>
+<p>**Last Updated:** 2026-03-22</p>
+<p>---</p>
+<p>**Einde Block 05**</p>
+<h2>Team Dispatch Flow</h2>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>|  Omni Task     |-----&gt;|  Sentinel      |-----&gt;|  Team Router   |</p>
+<p>|  (Enriched)    |      |  (M05)         |      |  (Classifier)  |</p>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>                               |</p>
+<p>                    +----------+----------+</p>
+<p>                    |                     |</p>
+<p>                    v                     v</p>
+<p>             +------------+        +------------+</p>
+<p>             |  Domain A  |        |  Domain B  |</p>
+<p>             |  Team      |        |  Team      |</p>
+<p>             +------------+        +------------+</p>
+<p>                    |                     |</p>
+<p>                    v                     v</p>
+<p>             +------------+        +------------+</p>
+<p>             |  Workers   |        |  Workers   |</p>
+<p>             +------------+        +------------+</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+● openclaw-nova.service - OpenClaw Nova (Telegram agent)
+     Loaded: loaded (/etc/systemd/system/openclaw-nova.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Fri 2026-03-13 01:05:19 CET; 10min ago
+    Process: 104394 ExecStart=/usr/local/lib/openclaw/agent_runner.sh nova agent-nova /usr/local/bin/openclaw-nova /etc/openclaw/agents.d/nova.env (code=killed, signal=TERM)
+   Main PID: 104394 (code=killed, signal=TERM)
+        CPU: 40ms
+
+Mar 13 00:50:39 Magneto systemd[1]: Started OpenClaw Nova (Telegram agent).
+Mar 13 00:50:39 Magneto sudo[104398]:     root : TTY=unknown ; PWD=/ ; USER=agent-nova ; COMMAND=/usr/local/bin/openclaw-nova
+Mar 13 00:50:39 Magneto sudo[104398]: pam_unix(sudo:session): session opened for user agent-nova by (uid=0)
+Mar 13 01:05:19 Magneto systemd[1]: Stopping OpenClaw Nova (Telegram agent)...
+Mar 13 01:05:19 Magneto sudo[104398]: pam_unix(sudo:session): session closed for user agent-nova
+Mar 13 01:05:19 Magneto systemd[1]: openclaw-nova.service: Succeeded.
+Mar 13 01:05:19 Magneto systemd[1]: Stopped OpenClaw Nova (Telegram agent).
+● openclaw-flux.service - OpenClaw Flux (Execution agent)
+     Loaded: loaded (/etc/systemd/system/openclaw-flux.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Fri 2026-03-13 01:05:19 CET; 10min ago
+    Process: 104404 ExecStart=/usr/local/lib/openclaw/agent_runner.sh flux agent-flux /usr/local/bin/openclaw-flux /etc/openclaw/agents.d/flux.env (code=killed, signal=TERM)
+   Main PID: 104404 (code=killed, signal=TERM)
+        CPU: 42ms
+
+Mar 13 00:50:41 Magneto systemd[1]: Started OpenClaw Flux (Execution agent).
+Mar 13 00:50:41 Magneto sudo[104408]:     root : TTY=unknown ; PWD=/ ; USER=agent-flux ; COMMAND=/usr/local/bin/openclaw-flux
+Mar 13 00:50:41 Magneto sudo[104408]: pam_unix(sudo:session): session opened for user agent-flux by (uid=0)
+Mar 13 01:05:19 Magneto systemd[1]: Stopping OpenClaw Flux (Execution agent)...
+Mar 13 01:05:19 Magneto systemd[1]: openclaw-flux.service: Succeeded.
+Mar 13 01:05:19 Magneto systemd[1]: Stopped OpenClaw Flux (Execution agent).
+  openclaw-agent@agent-02.service        loaded    inactive   dead         OpenClaw Agent (agent-02)                                                       
+  openclaw-agent@agent-03.service        loaded    inactive   dead         OpenClaw Agent (agent-03)                                                       
+  openclaw-agent@agent-04.service        loaded    inactive   dead         OpenClaw Agent (agent-04)                                                       
+  openclaw-agent@agent-05.service        loaded    inactive   dead         OpenClaw Agent (agent-05)                                                       
+  openclaw-agent@agent-06.service        loaded    inactive   dead         OpenClaw Agent (agent-06)                                                       
+  openclaw-agent@agent-08.service        loaded    inactive   dead         OpenClaw Agent (agent-08)                                                       
+  openclaw-agent@agent-09.service        loaded    inactive   dead         OpenClaw Agent (agent-09)                                                       
+  openclaw-agent@agent-10.service        loaded    inactive   dead         OpenClaw Agent (agent-10)                                                       
+  openclaw-agent@agent-11.service        loaded    inactive   dead         OpenClaw Agent (agent-11)                                                       
+  openclaw-agent@agent-12.service        loaded    inactive   dead         OpenClaw Agent (agent-12)                                                       
+  openclaw-agent@agent-13.service        loaded    inactive   dead         OpenClaw Agent (agent-13)                                                       
+  openclaw-agent@agent-14.service        loaded    inactive   dead         OpenClaw Agent (agent-14)                                                       
+  openclaw-agent@agent-15.service        loaded    inactive   dead         OpenClaw Agent (agent-15)                                                       
+  openclaw-agent@agent-16.service        loaded    inactive   dead         OpenClaw Agent (agent-16)                                                       
+  openclaw-agent@agent-17.service        loaded    inactive   dead         OpenClaw Agent (agent-17)                                                       
+  openclaw-agent@agent-18.service        loaded    inactive   dead         OpenClaw Agent (agent-18)                                                       
+  openclaw-agent@agent-19.service        loaded    inactive   dead         OpenClaw Agent (agent-19)                                                       
+  openclaw-agent@agent-20.service        loaded    inactive   dead         OpenClaw Agent (agent-20)                                                       
+  openclaw-agent@agent-21.service        loaded    inactive   dead         OpenClaw Agent (agent-21)                                                       
+  openclaw-agent@agent-22.service        loaded    inactive   dead         OpenClaw Agent (agent-22)                                                       
+  openclaw-agent@agent-23.service        loaded    inactive   dead         OpenClaw Agent (agent-23)                                                       
+  openclaw-agent@agent-24.service        loaded    inactive   dead         OpenClaw Agent (agent-24)                                                       
+  openclaw-agent@agent-25.service        loaded    inactive   dead         OpenClaw Agent (agent-25)                                                       
+  openclaw-agent@agent-26.service        loaded    inactive   dead         OpenClaw Agent (agent-26)                                                       
+  openclaw-agent@agent-27.service        loaded    inactive   dead         OpenClaw Agent (agent-27)                                                       
+  openclaw-agent@agent-28.service        loaded    inactive   dead         OpenClaw Agent (agent-28)                                                       
+  openclaw-agent@agent-29.service        loaded    inactive   dead         OpenClaw Agent (agent-29)                                                       
+  openclaw-agent@agent-30.service        loaded    inactive   dead         OpenClaw Agent (agent-30)                                                       
+  openclaw-agent@agent-31.service        loaded    inactive   dead         OpenClaw Agent (agent-31)                                                       
+  openclaw-agent@agent-32.service        loaded    inactive   dead         OpenClaw Agent (agent-32)                                                       
+  openclaw-agent@agent-33.service        loaded    inactive   dead         OpenClaw Agent (agent-33)                                                       
+  openclaw-agent@agent-34.service        loaded    inactive   dead         OpenClaw Agent (agent-34)                                                       
+  openclaw-agent@agent-35.service        loaded    inactive   dead         OpenClaw Agent (agent-35)                                                       
+  openclaw-agent@agent-36.service        loaded    inactive   dead         OpenClaw Agent (agent-36)                                                       
+  openclaw-agent@agent-37.service        loaded    inactive   dead         OpenClaw Agent (agent-37)                                                       
+  openclaw-agent@agent-38.service        loaded    inactive   dead         OpenClaw Agent (agent-38)                                                       
+  openclaw-agent@agent-39.service        loaded    inactive   dead         OpenClaw Agent (agent-39)                                                       
+  openclaw-agent@agent-40.service        loaded    inactive   dead         OpenClaw Agent (agent-40)                                                       
+  openclaw-agent@agent-41.service        loaded    inactive   dead         OpenClaw Agent (agent-41)                                                       
+  openclaw-agent@agent-42.service        loaded    inactive   dead         OpenClaw Agent (agent-42)                                                       
+  openclaw-agent@agent-43.service        loaded    inactive   dead         OpenClaw Agent (agent-43)                                                       
+  openclaw-agent@agent-44.service        loaded    inactive   dead         OpenClaw Agent (agent-44)                                                       
+  openclaw-agent@agent-45.service        loaded    inactive   dead         OpenClaw Agent (agent-45)                                                       
+  openclaw-agent@agent-46.service        loaded    inactive   dead         OpenClaw Agent (agent-46)                                                       
+  openclaw-agent@agent-47.service        loaded    inactive   dead         OpenClaw Agent (agent-47)                                                       
+  openclaw-agent@agent-48.service        loaded    inactive   dead         OpenClaw Agent (agent-48)                                                       
+  openclaw-agent@agent-49.service        loaded    inactive   dead         OpenClaw Agent (agent-49)                                                       
+  openclaw-agent@agent-50.service        loaded    inactive   dead         OpenClaw Agent (agent-50)                                                       

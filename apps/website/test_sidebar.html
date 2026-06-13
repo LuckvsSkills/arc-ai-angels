@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sidebar Test</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .sidebar { 
+            position: fixed; 
+            left: 0; 
+            top: 0; 
+            width: 280px; 
+            height: 100vh; 
+            background: #1a1a2e; 
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .main { margin-left: 300px; padding: 20px; }
+        a { color: #d6b35e; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Arc AI Angels</h2>
+        <p><a href="index.html">Home</a></p>
+        <h3>Chapters</h3>
+        <ul>
+            <li><a href="chapters/model_runtime.html">Model Runtime</a></li>
+            <li><a href="chapters/platform_runtime.html">Platform Runtime</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <h1>Sidebar Test</h1>
+        <p>Als je dit ziet, werkt de sidebar!</p>
+    </div>
+</body>
+</html>

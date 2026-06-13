@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "id": "arc-search-5011ff20-8e8d-4546-b0ba-1506a55b8f9d",
+  "provider": "tavily",
+  "preset": "youtube_song",
+  "query": "reggae",
+  "effectiveQuery": "site:youtube.com reggae official music video OR audio OR song -playlist -mix -compilation -live",
+  "maxResults": 5,
+  "completedAt": "2026-04-05T01:20:42Z",
+  "result": {
+    "query": "reggae official music video OR audio OR song -playlist -mix -compilation -live",
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.youtube.com/watch?v=PtJzhlJaw9k",
+        "title": "John Ozila - Reggae Jamaica (Official Music Video) - YouTube",
+        "content": "John Ozila - Reggae Jamaica (Official Music Video). 807 views · 1 year ago ...more. Guno Santos - Reggaeterapia. 4.49K. Subscribe. 40. Share.",
+        "score": 0.9984022,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=bJCkz-gTcCU",
+        "title": "Pura Irie (Official Music Video) | Conkarah feat. Talawa | Reggae 2018",
+        "content": "Official Music Video for Reggae singer Conkarah and Reggae band Talawa's song \"Pura Irie\". Produced by Loud City and written by Conkarah and",
+        "score": 0.9976769,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=03KNGDrmovg",
+        "title": "André George - \"Just Fine\" (Official Music Video) / Roots Reggae",
+        "content": "OFFICIAL MUSIC VIDEO — “Just Fine” by André George Welcome to my latest release! “Just Fine” is a Rootz Reggae track full of authentic",
+        "score": 0.99719906,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=7deDvMM8X2I",
+        "title": "Isaiah Tavares - Reggae Music (feat. Pohaku) Official Lyric Video",
+        "content": "Isaiah Tavares - Reggae Music (feat. Pohaku) Official Lyric Video. 4.4K views · 3 years ago ...more. Waiaka Records. 243. Subscribe.",
+        "score": 0.9967013,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=7VLlxXGmDfw",
+        "title": "Queen Atara - Reggae [Official Video 2024] - YouTube",
+        "content": "Queen Atara - Reggae [Official Video 2024]. 4.9K views · 1 year ago. #Reggaeville #ReggaevilleVideoPremiere #MaadSickReggaeville ...more",
+        "score": 0.9947391,
+        "raw_content": null
+      }
+    ],
+    "response_time": 0.75,
+    "request_id": "bd1841cf-1df4-455f-a5fb-3e2ac902a229"
+  }
+}

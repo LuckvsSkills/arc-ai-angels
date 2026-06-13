@@ -1,0 +1,81 @@
+{
+  "naam": "TestKlantWebshop",
+  "url": "https://arc-vortex.nl",
+  "tech_stack": [
+    "React"
+  ],
+  "ai_readiness_score": 15,
+  "ai_readiness_label": "KRITIEK",
+  "findings": [
+    {
+      "punt": "Chatbot gewenst",
+      "score": 0,
+      "max": 20,
+      "status": "MISSING"
+    },
+    {
+      "punt": "API",
+      "score": 0,
+      "max": 20,
+      "status": "MISSING"
+    },
+    {
+      "punt": "Modern framework",
+      "score": 15,
+      "max": 15,
+      "status": "OK"
+    },
+    {
+      "punt": "AI personalisatie gewenst",
+      "score": 0,
+      "max": 20,
+      "status": "MISSING"
+    },
+    {
+      "punt": "Automatisering gewenst",
+      "score": 0,
+      "max": 25,
+      "status": "MISSING"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioriteit": 2,
+      "titel": "REST API toevoegen",
+      "beschrijving": "FastAPI backend bouwen voor data-uitwisseling met AI agents en externe services.",
+      "impact": "HOOG",
+      "type": "uitbreiding",
+      "kostenraming": "€1.500 – €3.000",
+      "doorlooptijd": "1-2 weken"
+    },
+    {
+      "prioriteit": 3,
+      "titel": "AI Chatbot integreren",
+      "beschrijving": "Klantenservice chatbot toevoegen via OpenClaw agent. Beantwoordt vragen 24/7 autonoom.",
+      "impact": "HOOG",
+      "type": "ai-agent",
+      "kostenraming": "€2.000 – €4.000 + €300/mnd",
+      "doorlooptijd": "1-2 weken"
+    },
+    {
+      "prioriteit": 4,
+      "titel": "Order automatisering via AI agent",
+      "beschrijving": "AI agent die bestellingen verwerkt, leveranciers informeert en klanten updates stuurt.",
+      "impact": "ZEER HOOG",
+      "type": "ai-agent",
+      "kostenraming": "€3.000 – €6.000 + €500/mnd",
+      "doorlooptijd": "2-3 weken"
+    },
+    {
+      "prioriteit": 5,
+      "titel": "Volledige AI-ready rebuild",
+      "beschrijving": "Website volledig herbouwen met moderne stack + admin panel + AI agents. Maximale toekomstbestendigheid.",
+      "impact": "MAXIMAAL",
+      "type": "rebuild",
+      "kostenraming": "€8.000 – €15.000 + €500/mnd",
+      "doorlooptijd": "4-6 weken"
+    }
+  ],
+  "rapport_path": "/home/prime/arc_ai_angels/projects/website_builds/testklantwebshop-scan/ADVIES_RAPPORT.md",
+  "datum": "2026-06-12 04:03"
+}

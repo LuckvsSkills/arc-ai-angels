@@ -1,0 +1,178 @@
+{
+  "chapters": [
+    {
+      "id": "intro",
+      "title": "Introductie",
+      "color": "#3B82F6",
+      "description": "Wat is Arc AI Angels en waarom OpenClaw?",
+      "completed": true,
+      "blocks": [
+        {
+          "id": "intro-1",
+          "title": "Wat is Arc AI Angels?",
+          "completed": true
+        },
+        {
+          "id": "intro-2",
+          "title": "Waarom OpenClaw kiezen?",
+          "completed": true
+        },
+        {
+          "id": "intro-3",
+          "title": "Architectuur overzicht",
+          "completed": true
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform & Runtime",
+      "color": "#8B5CF6",
+      "description": "OpenClaw installatie & AI agents beheren op je eigen systeem",
+      "completed": true,
+      "blocks": [
+        {
+          "id": "plat-1",
+          "title": "Systeem vereisten",
+          "completed": true
+        },
+        {
+          "id": "plat-2",
+          "title": "Docker & Podman setup",
+          "completed": true
+        },
+        {
+          "id": "plat-3",
+          "title": "OpenClaw installatie",
+          "completed": true
+        },
+        {
+          "id": "plat-4",
+          "title": "Runtime configuratie",
+          "completed": true
+        },
+        {
+          "id": "plat-5",
+          "title": "Agent deployment",
+          "completed": true
+        },
+        {
+          "id": "plat-6",
+          "title": "Monitoring & logging",
+          "completed": true
+        }
+      ]
+    },
+    {
+      "id": "agents",
+      "title": "AI Agents",
+      "color": "#10B981",
+      "description": "Verschillende agent types en hun mogelijkheden",
+      "completed": false,
+      "blocks": [
+        {
+          "id": "agent-1",
+          "title": "Code agents",
+          "completed": true
+        },
+        {
+          "id": "agent-2",
+          "title": "Research agents",
+          "completed": true
+        },
+        {
+          "id": "agent-3",
+          "title": "Creative agents",
+          "completed": false
+        },
+        {
+          "id": "agent-4",
+          "title": "Analysis agents",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "orchestration",
+      "title": "Orchestratie",
+      "color": "#F59E0B",
+      "description": "Multi-agent workflows en samenwerking",
+      "completed": false,
+      "blocks": [
+        {
+          "id": "orch-1",
+          "title": "Workflow design",
+          "completed": true
+        },
+        {
+          "id": "orch-2",
+          "title": "Agent communicatie",
+          "completed": false
+        },
+        {
+          "id": "orch-3",
+          "title": "Task scheduling",
+          "completed": false
+        },
+        {
+          "id": "orch-4",
+          "title": "Foutafhandeling",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security & Privacy",
+      "color": "#EF4444",
+      "description": "Veilige AI deployment en data bescherming",
+      "completed": false,
+      "blocks": [
+        {
+          "id": "sec-1",
+          "title": "Lokale processing",
+          "completed": true
+        },
+        {
+          "id": "sec-2",
+          "title": "API key management",
+          "completed": false
+        },
+        {
+          "id": "sec-3",
+          "title": "Data isolatie",
+          "completed": false
+        },
+        {
+          "id": "sec-4",
+          "title": "Audit logging",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "title": "Advanced Topics",
+      "color": "#EC4899",
+      "description": "Geavanceerde configuraties en tuning",
+      "completed": false,
+      "blocks": [
+        {
+          "id": "adv-1",
+          "title": "Custom models",
+          "completed": false
+        },
+        {
+          "id": "adv-2",
+          "title": "Performance tuning",
+          "completed": false
+        },
+        {
+          "id": "adv-3",
+          "title": "Integration patterns",
+          "completed": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Model Runtime &amp; Providers — OpenClaw Integration</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: rgba(255,255,255,.10);
+      --text: #eef4ff;
+      --muted: #a8b7d1;
+      --accent: #9b7cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 35%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1324 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .backlink {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, var(--panel)) 0%, var(--panel) 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      margin-bottom: 22px;
+    }
+    .content {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(24px, 2.6vw, 30px);
+      line-height: 1.2;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 30px 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    ul, ol {
+      margin: 0 0 18px 24px;
+      padding: 0;
+    }
+    pre {
+      margin: 16px 0 22px;
+      padding: 18px 20px;
+      background: #0a0f1a;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 18px;
+      overflow: auto;
+      color: #eaf1ff;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 720px) {
+      .content, .hero { padding: 22px; }
+      p, li { font-size: 17px; }
+      h3 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../model_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Model Runtime &amp; Providers · M07</div>
+    </div>
+
+    <div class="hero">
+      <h1>Model Runtime &amp; Providers</h1>
+      <h2>Block 07 — OpenClaw Integration</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>OpenClaw is de **execution runtime** waarop ARC AI Agents draait. Het beheert de fysieke resources, model inference, en infrastructuur waar alle ARC-lagen op voortbouwen.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Resource Management** | GPU/CPU allocatie, scaling, scheduling |</p>
+<p>| **Model Serving** | LLM inference, embeddings, fine-tuning |</p>
+<p>| **Sandboxing** | Veilige code-uitvoering voor Workers |</p>
+<p>| **Observability** | Metrics, logging, tracing voor hele stack |</p>
+<p>OpenClaw is de **fundering** — zonder OpenClaw draait ARC niet.</p>
+<p>---</p>
+<h3>System Context</h3>
+<p>**Positionering:**</p>
+<ul>
+<li>**Parent:** Geen — fundering voor alle ARC-lagen</li>
+<li>**Children:** Alle ARC-lagen (indirect via API&#x27;s)</li>
+<li>**Peers:** Externe infrastructure (cloud providers, on-prem clusters)</li>
+</ul>
+<p>---</p>
+<h3>Concrete Structure</h3>
+<p>#### 7.1 Model Engine</p>
+<p>| Component | Functie | Technologie |</p>
+<p>|-----------|---------|-------------|</p>
+<p>| Inference Server | LLM inference serving | vLLM, TGI, TensorRT-LLM |</p>
+<p>| Embedding Engine | Text/vector embeddings | SentenceTransformers, OpenAI API |</p>
+<p>| Batch Processor | Async batch jobs | Ray, Celery |</p>
+<p>| Model Cache | Hot model loading | GPU memory management |</p>
+<p>**Model Configuratie:**</p>
+<ul>
+<li>gpt4_arc: OpenAI API, max 100 concurrent, 30s timeout</li>
+<li>llama3_local: 70B Q4_K_M, 4x A100, 48GB VRAM, batch 16</li>
+<li>embedding_default: all-MiniLM-L6-v2, CUDA, batch 32</li>
+</ul>
+<p>#### 7.2 Sandbox Runtime</p>
+<p>| Type | Use Case | Isolatie Level |</p>
+<p>|------|----------|----------------|</p>
+<p>| gvisor_container | Code execution | Syscall filtering + user namespace |</p>
+<p>| firecracker_microvm | Untrusted code | KVM virtualisatie |</p>
+<p>| namespace_sandbox | Trusted tools | Linux namespaces only |</p>
+<p>**Sandbox Resource Limits:**</p>
+<ul>
+<li>CPU: 1 core</li>
+<li>Memory: 512MB</li>
+<li>Disk: 1024MB</li>
+<li>Network: egress_only / none / full</li>
+<li>Timeout: 30s max</li>
+<li>Max processes: 10</li>
+</ul>
+<p>#### 7.3 Resource Manager</p>
+<p>| Functie | Implementatie | Metrics |</p>
+<p>|---------|-------------|---------|</p>
+<p>| GPU scheduling | Kubernetes + GPU operator | Utilization %, queue depth |</p>
+<p>| Autoscaling | KEDA + Prometheus | Latency p95, request rate |</p>
+<p>| Load balancing | Envoy + consistent hashing | Per-model distribution |</p>
+<p>| Cost optimization | Spot instance fallback | Cost per 1k tokens |</p>
+<p>#### 7.4 Storage Layer</p>
+<p>| Component | Type | Data |</p>
+<p>|-----------|------|------|</p>
+<p>| Model Registry | Object storage | gguf, safetensors, ONNX |</p>
+<p>| Vector Store | Vector DB | Pinecone, Weaviate, Milvus |</p>
+<p>| Object Store | S3/MinIO | Files, logs, temp data |</p>
+<h3>Flows</h3>
+<p>#### 7.1 Model Inference Request (van Worker)</p>
+<p>Worker request → API Gateway → Model Router → Queue → Batch Manager → Inference Engine → GPU execution → Response streaming → Metrics logging</p>
+<p>**Timing breakdown:**</p>
+<ul>
+<li>Gateway + Router: &lt; 10ms</li>
+<li>Queue wait: 0-50ms</li>
+<li>Inference: 50-500ms</li>
+<li>Logging: async</li>
+</ul>
+<p>#### 7.2 Sandbox Creation (voor Code Worker)</p>
+<p>Sentinel request → Resource check → MicroVM creatie (Firecracker &lt; 100ms) → Filesystem overlay → Network setup → Code + dependencies injecteren → Execution start → Cleanup trigger → MicroVM destroy + log capture</p>
+<p>---</p>
+<h3>Relaties met ARC-lagen</h3>
+<p>| ARC Laag | OpenClaw Service | Interface |</p>
+<p>|----------|------------------|-----------|</p>
+<p>| **Nova** | API Gateway | HTTP/gRPC |</p>
+<p>| **Flux** | Context Store | Redis protocol |</p>
+<p>| **Omni** | Vector Store | Native client |</p>
+<p>| **Sentinel** | Task Queue | Message queue |</p>
+<p>| **Workers** | Model API + Sandbox | Interne SDK |</p>
+<p>**Critical:** ARC-lagen communiceren met OpenClaw via **abstracte interfaces**, niet direct met infrastructuur.</p>
+<p>---</p>
+<h3>Decision Logic</h3>
+<p>| Beslissing | Input | Output |</p>
+<p>|------------|-------|--------|</p>
+<p>| **Welk model?** | Requested model, load, cost | Geselecteerde model instantie |</p>
+<p>| **GPU of CPU?** | Model size, latency, queue | Hardware target |</p>
+<p>| **Sandbox type?** | Code source, trust, network | Isolatie level |</p>
+<p>| **Scale up/down?** | Utilization, queue, budget | Replica count |</p>
+<p>---</p>
+<h3>Rules &amp; Constraints</h3>
+<p>| Regel | Rationale |</p>
+<p>|-------|-----------|</p>
+<p>| **R1:** Model API&#x27;s altijd via OpenClaw proxy | Centralized rate limiting, caching, failover |</p>
+<p>| **R2:** GPU resources exclusief per model | Voorkomt interference, consistente latency |</p>
+<p>| **R3:** Sandboxen max 30s levensduur | Resource rotatie, security |</p>
+<p>| **R4:** Alle model calls gelogd | Audit trail, geen data leakage |</p>
+<p>| **R5:** Fallback model bij primary failure | Availability garantie |</p>
+<p>| **R6:** Cost attribution per ARC-laag | Budget management, optimalisatie |</p>
+<p>---</p>
+<h3>Dependencies</h3>
+<p>| Component | Type | Impact bij uitval |</p>
+<p>|-----------|------|-------------------|</p>
+<p>| GPU cluster | Hard | Geen LLM inference |</p>
+<p>| Model weights storage | Hard | Geen model loading |</p>
+<p>| Container runtime | Hard | Geen sandboxing |</p>
+<p>| Network (intern) | Hard | Geen communicatie tussen lagen |</p>
+<p>| Externe model API&#x27;s | Soft | Fallback naar lokale modellen |</p>
+<p>---</p>
+<h3>Decisions Made</h3>
+<p>| Beslissing | Argumentatie |</p>
+<p>|------------|--------------|</p>
+<p>| **vLLM/TGI voor inference** | Throughput &gt; latency voor batch |</p>
+<p>| **gVisor/Firecracker voor sandbox** | Veiligheid &gt; performance |</p>
+<p>| **Kubernetes voor orchestratie** | Ecosysteem vs custom solution |</p>
+<p>| **Spot instances voor cost** | Besparing &gt; availability risk |</p>
+<p>---</p>
+<h3>Decision Locked</h3>
+<p>**Owner:** Fea  </p>
+<p>**Status:** Active  </p>
+<p>**Version:** 2.0.0  </p>
+<p>**Last Updated:** 2026-03-22</p>
+<p>---</p>
+<p>**Einde Block 07**</p>
+<h2>OpenClaw Integration Flow</h2>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>|  Worker Result |-----&gt;|  OpenClaw      |-----&gt;|  Platform      |</p>
+<p>|  (Output)      |      |  (M07)         |      |  Runtime       |</p>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>                               |</p>
+<p>                               v</p>
+<p>                        +----------------+</p>
+<p>                        |  Systemd       |</p>
+<p>                        |  Services      |</p>
+<p>                        +----------------+</p>
+<p>                               |</p>
+<p>                               v</p>
+<p>                        +----------------+</p>
+<p>                        |  Hardened      |</p>
+<p>                        |  Runner        |</p>
+<p>                        +----------------+</p>
+    </div>
+  </div>
+</body>
+</html>

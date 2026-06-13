@@ -1,0 +1,70 @@
+{
+  "project_naam": "TestWebshop",
+  "type": "ecommerce",
+  "beschrijving": "Test webshop voor ARC AI Agents fabriek",
+  "features": [
+    "producten",
+    "winkelwagen",
+    "checkout",
+    "orders"
+  ],
+  "kleurenschema": "goud en zwart",
+  "domein": "testwebshop.vercel.app",
+  "template": "template-ecommerce",
+  "stack": "React+FastAPI+Stripe",
+  "admin_panel": true,
+  "website_agent": true,
+  "pricing": {
+    "tier": 2,
+    "min": 3000,
+    "max": 8000
+  },
+  "aangemaakt": "2026-06-13T03:23:41.486571",
+  "status": "OPGELEVERD",
+  "sentinels": {
+    "forge": "PENDING",
+    "axon": "DONE",
+    "nero": "GROEN",
+    "ventura": "PENDING",
+    "clio": "DONE"
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "/home/prime/arc_ai_angels/projects/website_builds/testwebshop/database/testwebshop.db",
+    "tables": [
+      "users",
+      "products",
+      "categories",
+      "orders",
+      "order_items",
+      "cart"
+    ],
+    "provisioned_at": "2026-06-13T03:23:41.551468",
+    "seeded": [
+      "demo product + categorieën"
+    ],
+    "seeded_at": "2026-06-13T03:23:41.586246"
+  },
+  "payment": {
+    "provider": "stripe",
+    "type": "checkout",
+    "configured_at": "2026-06-13T03:23:42.293778",
+    "test_mode": true
+  },
+  "security": {
+    "status": "GROEN",
+    "kritieke_issues": 0,
+    "warnings": 0,
+    "rapport": "/home/prime/arc_ai_angels/projects/website_builds/testwebshop/SECURITY_RAPPORT.md",
+    "gescand_op": "2026-06-13T04:21:34.075269",
+    "deploy_goedgekeurd": true
+  },
+  "docs": {
+    "dir": "/home/prime/arc_ai_angels/projects/website_builds/testwebshop/docs",
+    "handoff": "/home/prime/arc_ai_angels/projects/website_builds/testwebshop/docs/HANDOFF.md",
+    "deployment": "/home/prime/arc_ai_angels/projects/website_builds/testwebshop/docs/DEPLOYMENT.md",
+    "generated_at": "2026-06-13T05:00:06.182201",
+    "sop": "/home/prime/arc_ai_angels/projects/website_builds/testwebshop/docs/SOP.md"
+  },
+  "opgeleverd_op": "2026-06-13T05:00:20.258729"
+}

@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "id": "arc-search-283edc74-3ebe-447a-b596-1f66cfd54f33",
+  "provider": "tavily",
+  "preset": "docs",
+  "query": "tavily quickstart",
+  "effectiveQuery": "tavily quickstart documentation OR docs OR api OR reference",
+  "maxResults": 5,
+  "completedAt": "2026-04-05T01:17:19Z",
+  "result": {
+    "query": "tavily quickstart documentation OR docs OR api OR reference",
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://docs.tavily.com/documentation/quickstart",
+        "title": "Quickstart - Tavily Docs",
+        "content": "Tavily Docs home pagelight logodark logo. ##### Getting Started. * Get your free Tavily API key. Start searching with Tavily in under 5 minutes. ## ​ Get your free Tavily API key. Head to the Tavily Platform and sign in (or create an account). Then, copy one of your API keys from your dashboard. ## Get your free API key. You get 1,000 free API Credits every month. ## ​ Install Tavily. Install the Tavily SDK in your language of choice. pip install tavily-python pip  install tavily-python. ## ​ Start searching with Tavily. Run your first Tavily Search in 4 lines of code. Simply replace the API key in this snippet with your own. from tavily import TavilyClient from  tavily import  TavilyClient tavily_client = TavilyClient(api_key=\"tvly-YOUR_API_KEY\") tavily_client = TavilyClient(api_key =\"tvly-YOUR_API_KEY\")response = tavily_client.search(\"Who is Leo Messi?\") response = tavily_client.search(\"Who is Leo Messi?\") print(response) print(response). That’s all it takes to start using Tavily’s basic features!",
+        "score": 0.9999918,
+        "raw_content": null
+      },
+      {
+        "url": "https://docs.tavily.com/sdk/javascript/quick-start",
+        "title": "Quickstart - Tavily Docs",
+        "content": "* [Introduction](/documentation/api-reference/introduction). Search](/documentation/api-reference/endpoint/search). Extract](/documentation/api-reference/endpoint/extract). Crawl](/documentation/api-reference/endpoint/crawl). Map](/documentation/api-reference/endpoint/map). Usage](/documentation/api-reference/endpoint/usage). Integrate Tavily’s powerful APIs natively in your JavaScript/TypeScript projects. Looking for the JavaScript SDK Reference? Head to our [JavaScript SDK Reference](/sdk/javascript/reference) and learn how to use `tavily-js`. Tavily’s JavaScript SDK allows for easy interaction with the Tavily API, offering the full range of our search and extract functionalities directly from your JavaScript and TypeScript programs. You can install the Tavily JavaScript SDK using the following:. const { tavily } = require(\"@tavily/core\") const { tavily } =  require(\"@tavily/core\") const tvly = tavily({ apiKey: \"tvly-YOUR_API_KEY\" }); const  tvly =  tavily({ apiKey: \"tvly-YOUR_API_KEY\" });const response = await client.crawl(\"https://docs.tavily.com\", { instructions: \"Find all pages on the Python SDK\" }); const  response =  await  client. crawl(\"https://docs.tavily.com\", { instructions:  \"Find all pages on the Python SDK\" }); console.log(response); console. Our JavaScript SDK supports the full feature range of our [REST API](/documentation/api-reference/introduction).",
+        "score": 0.99996626,
+        "raw_content": null
+      },
+      {
+        "url": "https://docs.tavily.com/documentation/api-reference/endpoint/usage",
+        "title": "Usage - Tavily Docs",
+        "content": "##### API Reference. ##### Enterprise API Reference. ##### Python SDK. ##### JavaScript SDK. ##### Best Practices. --url https://api.tavily.com/usage \\. # Usage. Get API key and account usage details. --url https://api.tavily.com/usage \\. #### Authorizations. Bearer authentication header in the form Bearer , where  is your Tavily API key (e.g., Bearer tvly-YOUR\\_API\\_KEY). #### Headers. Optional project ID to scope the usage query to a specific project. #### Response. Account plan and usage information.",
+        "score": 0.9999465,
+        "raw_content": null
+      },
+      {
+        "url": "https://docs.tavily.com/sdk/python/quick-start",
+        "title": "Quickstart - Tavily Docs",
+        "content": "##### Python SDK. Integrate Tavily’s powerful APIs natively in your Python apps. Looking for the Python SDK Reference? Head to our Python SDK Reference and learn how to use `tavily-python`. The Python SDK allows for easy interaction with the Tavily API, offering the full range of our search functionality directly from your Python programs. `/tavily-ai/tavily-python`GitHub Repo stars. You can install the Tavily Python SDK using the following:. With Tavily’s Python SDK, you can search the web in only 4 lines of code:. from tavily import TavilyClient from  tavily import  TavilyClient tavily_client = TavilyClient(api_key=\"tvly-YOUR_API_KEY\") tavily_client = TavilyClient(api_key =\"tvly-YOUR_API_KEY\")response = tavily_client.search(\"Who is Leo Messi?\") response = tavily_client.search(\"Who is Leo Messi?\") print(response) print(response). from tavily import TavilyClient from  tavily import  TavilyClient tavily_client = TavilyClient(api_key=\"tvly-YOUR_API_KEY\") tavily_client = TavilyClient(api_key =\"tvly-YOUR_API_KEY\")response = tavily_client.crawl(\"https://docs.tavily.com\", instructions=\"Find all pages on the Python SDK\") response = tavily_client.crawl(\"https://docs.tavily.com\", instructions = \"Find all pages on the Python SDK\") print(response) print(response). Our Python SDK supports the full feature range of our REST API, and more.",
+        "score": 0.99992037,
+        "raw_content": null
+      },
+      {
+        "url": "https://docs.tavily.com/documentation/api-reference/introduction",
+        "title": "Introduction - Tavily Docs",
+        "content": "The base URL for all requests to the Tavily API is:. All Tavily endpoints are authenticated using API keys. curl -X POST https://api.tavily.com/search \\ curl -X  POST https://api.tavily.com/search  \\ -H \"Content-Type: application/json\" \\ -H \"Content-Type: application/json\"  \\ -H \"Authorization: Bearer tvly-YOUR_API_KEY\" \\ -H \"Authorization: Bearer tvly-YOUR_API_KEY\"  \\ -d '{\"query\": \"Who is Leo Messi?\"}' -d '{\"query\": \"Who is Leo Messi?\"}'. **`/search`**Tavily’s powerful web search API. **`/extract`**Tavily’s powerful content extraction API. You can optionally attach a Project ID to your API requests to organize and track usage by project. This is useful when a single API key is used across multiple projects or applications. curl -X POST https://api.tavily.com/search \\ curl -X  POST https://api.tavily.com/search  \\ -H \"Content-Type: application/json\" \\ -H \"Content-Type: application/json\"  \\ -H \"Authorization: Bearer tvly-YOUR_API_KEY\" \\ -H \"Authorization: Bearer tvly-YOUR_API_KEY\"  \\ -H \"X-Project-ID: your-project-id\" \\ -H \"X-Project-ID: your-project-id\"  \\ -d '{\"query\": \"Who is Leo Messi?\"}' -d '{\"query\": \"Who is Leo Messi?\"}'. * An API key can be associated with multiple projects.",
+        "score": 0.99984527,
+        "raw_content": null
+      }
+    ],
+    "response_time": 0.74,
+    "request_id": "264e577c-2619-4d3f-99ea-37c2c025fd41"
+  }
+}

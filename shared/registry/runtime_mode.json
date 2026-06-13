@@ -1,0 +1,47 @@
+{
+  "mode": "test",
+  "safeMode": false,
+
+  "modes": {
+    "build": {
+      "description": "Buildfase voor structuur, markdown, configuratie en interne uitlijning.",
+      "internetEnabled": false,
+      "sandboxEnabled": true,
+      "allowAgentFileWrites": true,
+      "allowConfigWrites": true,
+      "strictBudgetControl": false,
+      "maxRetriesPerTask": 2,
+      "maxParallelTasks": 3
+    },
+    "test": {
+      "description": "Testfase voor gecontroleerde end-to-end validatie zonder volledige live-vrijheid.",
+      "internetEnabled": true,
+      "sandboxEnabled": true,
+      "allowAgentFileWrites": true,
+      "allowConfigWrites": true,
+      "strictBudgetControl": true,
+      "maxRetriesPerTask": 2,
+      "maxParallelTasks": 5
+    },
+    "live": {
+      "description": "Live operatie met striktere governance, lagere schrijfvrijheid en kostencontrole.",
+      "internetEnabled": true,
+      "sandboxEnabled": true,
+      "allowAgentFileWrites": false,
+      "allowConfigWrites": false,
+      "strictBudgetControl": true,
+      "maxRetriesPerTask": 1,
+      "maxParallelTasks": 8
+    }
+  },
+
+  "safeModePolicy": {
+    "internetEnabled": false,
+    "sandboxEnabled": true,
+    "allowAgentFileWrites": false,
+    "allowConfigWrites": false,
+    "strictBudgetControl": true,
+    "maxRetriesPerTask": 1,
+    "maxParallelTasks": 2
+  }
+}

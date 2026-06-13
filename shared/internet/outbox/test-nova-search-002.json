@@ -1,0 +1,43 @@
+{
+  "id": "test-nova-search-002",
+  "agent": "nova",
+  "providerUsed": "tavily",
+  "type": "search",
+  "status": "completed",
+  "requestedAt": "2026-04-04T21:05:00Z",
+  "completedAt": "2026-04-04T20:56:49Z",
+  "query": "AI agents trends 2026 summary",
+  "url": null,
+  "result": {
+    "query": "AI agents trends 2026 summary",
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://blog.datwave.ai/blog/2026-ai-agent-trends",
+        "title": "2026 AI Agent Trends to watch: the guide to Agentic Transformation",
+        "content": "# 2026 AI Agent Trends to watch: the guide to Agentic Transformation. Simple prompts are giving way to the Agent Leap. By adopting an intent-based approach, your employees stop managing tasks and start orchestrating AI agents, leveraging verifiable internal data to drive real-world actions. #### Inside the 2026 AI Agent strategy. * Agents for your customers: delivering concierge-like experiences where AI remembers preferences and past conversations to offer true one-to-one personalization. * Broad adoption: 52% of executives in organizations using generative AI already have AI agents in production. * ROI: 88% of agentic AI early adopters are seeing a positive ROI on at least one generative AI use case. As a Google Cloud partner, Datwave is committed to providing the resources and expertise needed to navigate this agentic era. We design custom AI agents that bridge the gap between Google Cloud tools and your business goals to drive measurable innovation. ### Explore the full AI Agent Trends report.",
+        "score": 0.91563576,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation",
+        "title": "Top Agentic AI Trends to Watch in 2026 - CloudKeeper",
+        "content": "[Skip to main content](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#main-content). *   [CloudKeeper LensGPT](https://www.cloudkeeper.com/cloudkeeper-lensgpt)Agentic AI FinOps Platform. [](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation). *   [Introduction](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#toc-introduction). *   [What Is Agentic AI](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#toc-what-is-agentic-ai). *   [Why 2026 Marks a Structural Shift](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#toc-why-2026-marks-a-structural-shift). *   [Top Agentic AI Trends to Watch in 2026](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#toc-top-agentic-ai-trends-to-watch-in-2026). Generative AI](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#toc-agentic-ai-vs-generative-ai). *   [Preparing Enterprises for Agentic AI at Scale](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#toc-preparing-enterprises-for-agentic-ai-at-scale). *   [Agentic AI in Action: Cloud Cost Optimization with CloudKeeper](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#toc-agentic-ai-in-action-cloud-cost-optimization-with-cloudkeeper). _(Recommended reading:_[_Everything You Need to Know About Agentic AI_](https://www.cloudkeeper.com/insights/blog/everything-you-need-know-about-agentic-ai)_)_. These AI agents manage functions such as [cloud cost optimization](https://www.cloudkeeper.com/), security incident response, and financial monitoring without waiting for human prompts. Enterprises operating across [multi-cloud](https://www.cloudkeeper.com/glossary/multi-cloud-cost-management) and hybrid setups rely on Agentic AI to coordinate AI agents responsible for cost, performance, security, and compliance simultaneously. Agentic AI systems gain significant effectiveness when connected to [real-time observability across cloud, IT and financial environments](https://www.cloudkeeper.com/cloudkeeper-lens). [LensGPT uses AI agents to analyze cloud usage data, surface cost drivers, and provide contextual insights](https://www.cloudkeeper.com/cloudkeeper-lensgpt) and recommendations aligned with governance policies. [Connect with us](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation). [Read More](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#). [Read Less](https://www.cloudkeeper.com/insights/blog/top-agentic-ai-trends-watch-2026-how-ai-agents-are-redefining-enterprise-automation#). [](https://www.cloudkeeper.com/insights/blog/generative-ai-agentic-ai-finops-leap-towards-autonomous-intelligence).",
+        "score": 0.9123193,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.linkedin.com/pulse/google-just-predicted-5-ai-agent-trends-2026-heres-what-ben-kalkman-ugbnc",
+        "title": "Google Just Predicted 5 AI Agent Trends for 2026. Here's What I'm ...",
+        "content": "# Google Just Predicted 5 AI Agent Trends for 2026. Last week, I was testing an AI agent workflow for a Rocket Media client—trying to get multiple AI systems to hand off tasks to each other without human intervention. So when Google says \"AI agents will transform how we work in 2026,\" I have thoughts. ### What Google Means by \"AI Agents\". ### Trend 1: AI Agents Will Make Everyone More Productive. Google's Take: AI agents will handle alert triage and investigation in Security Operations Centers (SOCs), allowing human analysts to focus on threat hunting and defense development. Google's predictions about AI agents transforming work in 2026 are probably accurate. I've been testing AI agents across multiple businesses for years now. I'm curious what you're seeing with AI agents in your work. The gap between \"technically possible\" and \"actually works on a Tuesday afternoon\" is the most honest framing I have seen about agentic AI.",
+        "score": 0.9108078,
+        "raw_content": null
+      }
+    ],
+    "response_time": 0.83,
+    "request_id": "7fd2f5f5-9d57-4fee-9547-13ea5c26efff"
+  },
+  "error": null
+}

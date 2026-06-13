@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>data_memory · The Arc Strategic Control Center</title>
+
+<style>
+/* Unified Navigation */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:color-mix(in oklab,var(--panel) 95%, black 5%);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topnav-inner{
+  max-width:1320px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;gap:16px;height:60px;
+}
+.nav-logo{
+  font-size:18px;font-weight:900;color:var(--accent);
+  text-decoration:none;white-space:nowrap;
+}
+.nav-logo:hover{color:var(--accent2);}
+.nav-chapters{
+  display:flex;gap:4px;flex:1;overflow-x:auto;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.nav-chapters::-webkit-scrollbar{display:none;}
+.nav-chapters a{
+  text-decoration:none;color:var(--muted);font-size:12px;
+  padding:6px 10px;border-radius:6px;white-space:nowrap;
+  border:1px solid transparent;transition:all .2s;
+}
+.nav-chapters a:hover,.nav-chapters a.active{
+  color:var(--text);background:var(--panel2);border-color:var(--line2);
+}
+.nav-home{
+  text-decoration:none;color:var(--muted);font-size:13px;
+  padding:6px 12px;border-radius:6px;border:1px solid var(--line2);
+  background:var(--panel2);white-space:nowrap;
+}
+.nav-home:hover{color:var(--text);border-color:var(--accent);}
+body{padding-top:60px !important;}
+
+/* Mermaid diagrammen */
+.mermaid{
+  background:var(--panel2);border:1px solid var(--line);
+  border-radius:12px;padding:16px;margin:16px 0;
+}
+
+.block-link{
+  color:inherit;
+  text-decoration:none;
+  font-weight:800;
+}
+.block-link:hover{
+  text-decoration:underline;
+}
+
+</style>
+
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters"><a href="./platform_runtime.html" class="" title="Platform & Runtime">Platform & Runtime</a><a href="./security_hardening.html" class="" title="Security Hardening">Security Hardening</a><a href="./model_runtime.html" class="" title="Model Runtime & Providers">Model Runtime & Prov</a><a href="./agent_logic.html" class="" title="Agent Logic, Skills & Swarm">Agent Logic, Skills </a><a href="./data_memory.html" class="active" title="Data & Memory Architecture">Data & Memory Arch</a><a href="./observability.html" class="" title="Observability & API Cost Control">Observability & API </a><a href="./control_center.html" class="" title="Strategic Control Center UI">Strategic Center UI</a><a href="./mission_control_ops.html" class="" title="Mission Control & Operations Orchestration">Mission Control & Op</a></div>
+    <a class="nav-home" href="../index.html">Dashboard</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+<div class="main">
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel" style="--chapter-color:#4ea8de;">
+        <h1>Data &amp; Memory Architecture</h1>
+        <p class="subtitle">Databases for agents, memory and system state</p>
+        <div class="section-intro">Dit hoofdstuk definieert de data- en memorylaag van The Arc: agent management database, memory database, retrieval, embeddings en seed knowledge.</div>
+        
+        <div class="grid-2">
+          <div>
+            <h3>Goal</h3>
+            <p class="section-intro">Agents voorzien van consistente state, geheugen en bestuurbare data-architectuur.</p>
+          </div>
+          <div>
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Status</div>
+                <div class="kpi-value" style="color:#4ea8de;">COMPLETED</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Progress</div>
+                <div class="kpi-value">100%</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Blocks</div>
+                <div class="kpi-value">5/5</div>
+              </div>
+            </div>
+            <div class="pbar" style="margin-top:16px;"><div style="width:100%;background:#4ea8de;"></div></div>
+          </div>
+        </div>
+      </div>
+      
+      
+<section class="cluster-card" style="--cluster-color:#4ea8de">
+  <div class="cluster-top">
+    <div>
+      <h3>Agent DB + Memory Layer</h3>
+      <div class="cluster-meta">5 blocks · 5 done</div>
+      <div class="pbar"><div style="width:100%;"></div></div>
+    </div>
+    <div class="cluster-side">
+      <div class="kpi-label">Status</div>
+      <div class="kpi-value" style="color:#4ea8de;">COMPLETED</div>
+    </div>
+  </div>
+  <div class="block-grid">
+    
+<div class="block-card" style="--block-color:#8ee3f5">
+  <div class="block-top">
+    <div>
+      <div class="block-num">B17</div>
+      <div class="block-title"><a href="./blocks/data_memory/b17.html" style="color:inherit;text-decoration:none;">Agent management schema</a></div>
+    </div>
+    <span class="badge finished">Finished</span>
+  </div>
+  <div class="block-overview">Klik om block details te zien.</div>
+  <div class="block-progress">
+    <div class="smallbar"><div style="width:100%;background:linear-gradient(90deg, color-mix(in oklab,var(--block-color) 70%, transparent), var(--block-color));"></div></div>
+    <div class="pct">100%</div>
+  </div>
+</div>
+
+
+<div class="block-card" style="--block-color:#9b7cff">
+  <div class="block-top">
+    <div>
+      <div class="block-num">B18</div>
+      <div class="block-title"><a href="./blocks/data_memory/b18.html" style="color:inherit;text-decoration:none;">Memory architecture</a></div>
+    </div>
+    <span class="badge finished">Finished</span>
+  </div>
+  <div class="block-overview">Klik om block details te zien.</div>
+  <div class="block-progress">
+    <div class="smallbar"><div style="width:100%;background:linear-gradient(90deg, color-mix(in oklab,var(--block-color) 70%, transparent), var(--block-color));"></div></div>
+    <div class="pct">100%</div>
+  </div>
+</div>
+
+
+<div class="block-card" style="--block-color:#3fe3b5">
+  <div class="block-top">
+    <div>
+      <div class="block-num">B19</div>
+      <div class="block-title"><a href="./blocks/data_memory/b19.html" style="color:inherit;text-decoration:none;">Embedding/vector strategy</a></div>
+    </div>
+    <span class="badge finished">Finished</span>
+  </div>
+  <div class="block-overview">Klik om block details te zien.</div>
+  <div class="block-progress">
+    <div class="smallbar"><div style="width:100%;background:linear-gradient(90deg, color-mix(in oklab,var(--block-color) 70%, transparent), var(--block-color));"></div></div>
+    <div class="pct">100%</div>
+  </div>
+</div>
+
+
+<div class="block-card" style="--block-color:#ffb84d">
+  <div class="block-top">
+    <div>
+      <div class="block-num">B20</div>
+      <div class="block-title"><a href="./blocks/data_memory/b20.html" style="color:inherit;text-decoration:none;">Shared world memory</a></div>
+    </div>
+    <span class="badge finished">Finished</span>
+  </div>
+  <div class="block-overview">Klik om block details te zien.</div>
+  <div class="block-progress">
+    <div class="smallbar"><div style="width:100%;background:linear-gradient(90deg, color-mix(in oklab,var(--block-color) 70%, transparent), var(--block-color));"></div></div>
+    <div class="pct">100%</div>
+  </div>
+</div>
+
+
+<div class="block-card" style="--block-color:#ff4d6d">
+  <div class="block-top">
+    <div>
+      <div class="block-num">B21</div>
+      <div class="block-title"><a href="./blocks/data_memory/b21.html" style="color:inherit;text-decoration:none;">Per-agent memory links</a></div>
+    </div>
+    <span class="badge finished">Finished</span>
+  </div>
+  <div class="block-overview">Klik om block details te zien.</div>
+  <div class="block-progress">
+    <div class="smallbar"><div style="width:100%;background:linear-gradient(90deg, color-mix(in oklab,var(--block-color) 70%, transparent), var(--block-color));"></div></div>
+    <div class="pct">100%</div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+      
+      <div class="footer-space"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const root = document.documentElement;
+const themeBtn = document.getElementById("themeBtn");
+if(themeBtn){
+  themeBtn.addEventListener("click", ()=>{
+    const cur = root.getAttribute("data-theme") || "dark";
+    const next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("arc_scc_theme", next);
+  });
+}
+</script>
+
+
+
+</body>
+</html>

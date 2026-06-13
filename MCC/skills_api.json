@@ -1,0 +1,433 @@
+{
+  "skills": [
+    {
+      "id": "healthcheck",
+      "name": "Healthcheck",
+      "category": "system",
+      "description": "Systeem gezondheidscheck \u2014 SSH, firewall, updates, beveiliging en backup status bewaken",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "nova",
+        "flux",
+        "flux_core",
+        "cortexia",
+        "forge",
+        "nero",
+        "ventura",
+        "axon",
+        "clio",
+        "finoria",
+        "vector",
+        "kairo",
+        "kenzo",
+        "odis",
+        "zion",
+        "saelia",
+        "tharos",
+        "sora",
+        "arix",
+        "enki",
+        "daxio",
+        "lumeria",
+        "kresta",
+        "elora",
+        "luvia",
+        "nura",
+        "vondra",
+        "fluentia",
+        "draven",
+        "solis",
+        "orizon",
+        "unia",
+        "zena"
+      ],
+      "agentCount": 33
+    },
+    {
+      "id": "wiki-maintainer",
+      "name": "Wiki Maintainer",
+      "category": "knowledge",
+      "description": "Wiki kennisbase aanmaken, onderhouden en structureren",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "nova",
+        "flux",
+        "cortexia",
+        "forge",
+        "nero",
+        "ventura",
+        "axon",
+        "clio",
+        "finoria",
+        "vector",
+        "kairo",
+        "kenzo",
+        "odis",
+        "zion",
+        "saelia",
+        "tharos",
+        "sora",
+        "arix",
+        "enki",
+        "daxio",
+        "lumeria",
+        "kresta",
+        "elora",
+        "luvia",
+        "nura",
+        "vondra",
+        "fluentia",
+        "draven",
+        "solis",
+        "orizon",
+        "unia",
+        "zena"
+      ],
+      "agentCount": 32
+    },
+    {
+      "id": "taskflow",
+      "name": "Taskflow",
+      "category": "workflow",
+      "description": "Taakbeheer workflows \u2014 taken aanmaken, prioriteren en opvolgen",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "nova",
+        "flux",
+        "flux_core",
+        "cortexia",
+        "axon",
+        "finoria",
+        "saelia",
+        "lumeria",
+        "fluentia"
+      ],
+      "agentCount": 9
+    },
+    {
+      "id": "taskflow-inbox-triage",
+      "name": "Taskflow Inbox Triage",
+      "category": "workflow",
+      "description": "Inbox prioritering \u2014 inkomende taken sorteren op urgentie en relevantie",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "nova",
+        "flux",
+        "axon",
+        "finoria"
+      ],
+      "agentCount": 4
+    },
+    {
+      "id": "skill-creator",
+      "name": "Skill Creator",
+      "category": "meta",
+      "description": "Nieuwe skills aanmaken en bestaande skills verbeteren",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "flux",
+        "fluentia"
+      ],
+      "agentCount": 2
+    },
+    {
+      "id": "tavily",
+      "name": "Tavily",
+      "category": "search",
+      "description": "Tavily web search workflow \u2014 gestructureerde research met bronvermelding",
+      "source": "openclaw-extra",
+      "status": "active",
+      "usedBy": [
+        "vector",
+        "kairo",
+        "saelia",
+        "tharos",
+        "sora",
+        "arix",
+        "daxio",
+        "lumeria",
+        "kresta",
+        "elora",
+        "luvia",
+        "vondra",
+        "draven",
+        "solis",
+        "orizon",
+        "zena"
+      ],
+      "agentCount": 16
+    },
+    {
+      "id": "browser-automation",
+      "name": "Browser Automation",
+      "category": "web",
+      "description": "Web pagina's besturen \u2014 multi-step flows, login checks en tab management",
+      "source": "openclaw-extra",
+      "status": "active",
+      "usedBy": [
+        "forge",
+        "tharos",
+        "arix",
+        "elora",
+        "draven"
+      ],
+      "agentCount": 5
+    },
+    {
+      "id": "diagram-maker",
+      "name": "Diagram Maker",
+      "category": "visual",
+      "description": "SVG/HTML diagrammen maken voor architectuur, flows en concepten",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "clio",
+        "saelia",
+        "sora",
+        "lumeria",
+        "kresta",
+        "luvia",
+        "orizon"
+      ],
+      "agentCount": 7
+    },
+    {
+      "id": "node-inspect-debugger",
+      "name": "Node Inspect Debugger",
+      "category": "engineering",
+      "description": "Node.js debugging via inspector protocol",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "cortexia",
+        "forge"
+      ],
+      "agentCount": 2
+    },
+    {
+      "id": "python-debugpy",
+      "name": "Python Debugpy",
+      "category": "engineering",
+      "description": "Python debugging via debugpy protocol",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "forge"
+      ],
+      "agentCount": 1
+    },
+    {
+      "id": "tmux",
+      "name": "Tmux",
+      "category": "engineering",
+      "description": "Terminal sessie beheer via tmux \u2014 meerdere sessies parallel beheren",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "cortexia",
+        "forge",
+        "nero",
+        "ventura",
+        "axon"
+      ],
+      "agentCount": 5
+    },
+    {
+      "id": "obsidian-vault-maintainer",
+      "name": "Obsidian Vault Maintainer",
+      "category": "knowledge",
+      "description": "Obsidian vault onderhouden \u2014 notities, links en kennisstructuur beheren",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [
+        "enki",
+        "nura"
+      ],
+      "agentCount": 2
+    },
+    {
+      "id": "openai-whisper-api",
+      "name": "Openai Whisper Api",
+      "category": "voice",
+      "description": "Speech-to-text via OpenAI Whisper API",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [],
+      "agentCount": 0
+    },
+    {
+      "id": "canvas",
+      "name": "Canvas",
+      "category": "visual",
+      "description": "HTML presentaties op OpenClaw nodes tonen en beheren",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [],
+      "agentCount": 0
+    },
+    {
+      "id": "spike",
+      "name": "Spike",
+      "category": "research",
+      "description": "Experimentele taken uitvoeren en nieuwe aanpakken testen",
+      "source": "openclaw-bundled",
+      "status": "active",
+      "usedBy": [],
+      "agentCount": 0
+    }
+  ],
+  "domains": [
+    {
+      "id": "core",
+      "name": "Core",
+      "agents": [
+        "nova",
+        "flux",
+        "flux_core"
+      ],
+      "skills": [
+        "wiki-maintainer",
+        "taskflow-inbox-triage",
+        "healthcheck",
+        "taskflow",
+        "skill-creator"
+      ],
+      "skillCount": 5
+    },
+    {
+      "id": "helix",
+      "name": "Helix",
+      "agents": [
+        "cortexia",
+        "forge",
+        "nero",
+        "ventura",
+        "axon",
+        "clio"
+      ],
+      "skills": [
+        "wiki-maintainer",
+        "node-inspect-debugger",
+        "tmux",
+        "taskflow-inbox-triage",
+        "python-debugpy",
+        "diagram-maker",
+        "healthcheck",
+        "browser-automation",
+        "taskflow"
+      ],
+      "skillCount": 9
+    },
+    {
+      "id": "finix",
+      "name": "Finix",
+      "agents": [
+        "finoria",
+        "vector",
+        "kairo",
+        "kenzo",
+        "odis",
+        "zion"
+      ],
+      "skills": [
+        "wiki-maintainer",
+        "taskflow-inbox-triage",
+        "tavily",
+        "healthcheck",
+        "taskflow"
+      ],
+      "skillCount": 5
+    },
+    {
+      "id": "matrix",
+      "name": "Matrix",
+      "agents": [
+        "saelia",
+        "tharos",
+        "sora",
+        "arix",
+        "enki",
+        "daxio"
+      ],
+      "skills": [
+        "wiki-maintainer",
+        "diagram-maker",
+        "obsidian-vault-maintainer",
+        "tavily",
+        "healthcheck",
+        "browser-automation",
+        "taskflow"
+      ],
+      "skillCount": 7
+    },
+    {
+      "id": "quantix",
+      "name": "Quantix",
+      "agents": [
+        "lumeria",
+        "kresta",
+        "elora",
+        "luvia",
+        "nura",
+        "vondra"
+      ],
+      "skills": [
+        "wiki-maintainer",
+        "diagram-maker",
+        "obsidian-vault-maintainer",
+        "tavily",
+        "healthcheck",
+        "browser-automation",
+        "taskflow"
+      ],
+      "skillCount": 7
+    },
+    {
+      "id": "zenix",
+      "name": "Zenix",
+      "agents": [
+        "fluentia",
+        "draven",
+        "solis",
+        "orizon",
+        "unia",
+        "zena"
+      ],
+      "skills": [
+        "wiki-maintainer",
+        "diagram-maker",
+        "tavily",
+        "healthcheck",
+        "browser-automation",
+        "taskflow",
+        "skill-creator"
+      ],
+      "skillCount": 7
+    }
+  ],
+  "catalog": {
+    "total": 15,
+    "categories": [
+      "workflow",
+      "knowledge",
+      "research",
+      "meta",
+      "visual",
+      "system",
+      "web",
+      "search",
+      "voice",
+      "engineering"
+    ],
+    "sources": [
+      "openclaw-bundled",
+      "openclaw-extra",
+      "custom"
+    ]
+  }
+}

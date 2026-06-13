@@ -1,0 +1,13 @@
+{
+  "name": "arc-ai-angels-mcc-backend",
+  "version": "1.0.0",
+  "description": "Canon & Diagrams API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

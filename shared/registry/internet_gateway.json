@@ -1,0 +1,113 @@
+{
+  "enabled": true,
+  "mode": "centralized",
+
+  "providers": {
+    "tavily": {
+      "enabled": true,
+      "apiKeyEnv": "TAVILY_API_KEY",
+      "projectEnv": "TAVILY_PROJECT",
+      "useFor": ["search", "quick_research"]
+    },
+    "firecrawl": {
+      "enabled": true,
+      "apiKeyEnv": "FIRECRAWL_API_KEY",
+      "useFor": ["deep_extraction", "page_parse", "crawl"]
+    }
+  },
+
+  "defaultPolicy": {
+    "directInternetAllowed": false,
+    "sanitizeResults": true,
+    "cacheEnabled": true,
+    "treatExternalDataAsUntrusted": true,
+    "requireRoutingApproval": true,
+    "maxRequestsPerTask": 2
+  },
+
+  "agentPolicies": {
+    "nova": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search", "quick_research"]
+    },
+
+    "sora": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily", "firecrawl"],
+      "allowedUseCases": ["search", "quick_research", "deep_extraction"]
+    },
+
+    "daxio": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    },
+
+    "enki": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search", "quick_research"]
+    },
+
+    "tharos": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["firecrawl"],
+      "allowedUseCases": ["deep_extraction", "crawl"]
+    },
+
+    "arix": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    },
+
+    "forge": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily", "firecrawl"],
+      "allowedUseCases": ["search", "deep_extraction"]
+    },
+
+    "ventura": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily", "firecrawl"],
+      "allowedUseCases": ["search", "deep_extraction"]
+    },
+
+    "axon": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    },
+
+    "draven": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    },
+
+    "vector": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    },
+
+    "zion": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    },
+
+    "kenzo": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    },
+
+    "kairo": {
+      "mayRequestGateway": true,
+      "allowedProviders": ["tavily"],
+      "allowedUseCases": ["search"]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "task_id": "uuid",
+  "project_id": "string",
+  "parent_task_id": "uuid|null",
+  "created_at": "iso_timestamp",
+  "created_by": "nova|agent_name",
+  "target_executor": "flux|agent_name",
+  "status": "pending|claimed|done|failed",
+  "reply_to": "nova|agent_name",
+  "reply_mode": "immediate|briefing",
+  "urgency": "waiting|high|normal|low",
+  "summary": "string"
+}

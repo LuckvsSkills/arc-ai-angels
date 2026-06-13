@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "id": "arc-search-01bbc3c0-d0cd-4da1-88c0-5dc1a5763dde",
+  "provider": "tavily",
+  "query": "AI agent trends 2026 summary",
+  "maxResults": 3,
+  "completedAt": "2026-04-05T00:32:46Z",
+  "result": {
+    "query": "AI agent trends 2026 summary",
+    "response_time": 0.68,
+    "follow_up_questions": null,
+    "answer": null,
+    "images": [],
+    "results": [
+      {
+        "url": "https://huryn.medium.com/google-just-revealed-5-ai-agent-trends-that-will-change-how-you-work-in-2026-22f6434f3450",
+        "title": "Google Just Revealed 5 AI Agent Trends That Will Change How You ...",
+        "content": "The biggest gains in 2026 won't come from raw model upgrades. They'll come from better orchestration, clearer intent, tighter evals, and teams",
+        "score": 0.99989367,
+        "raw_content": null
+      },
+      {
+        "url": "https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/",
+        "title": "AI Agent Adoption 2026: What the Data Shows | Gartner, IDC - Joget",
+        "content": "[![Image 6](https://joget.com/wp-content/themes/jogetter/img/feather-search.svg)](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/#). *   [AI Agent Builder](https://joget.com/joget-ai-agent-builder/). [![Image 7](https://joget.com/wp-content/themes/jogetter/img/icons/search.png)](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/#)[Start Free Trial ![Image 8](https://joget.com/wp-content/themes/jogetter/img/icons/redirect%20icon.png)](https://www.joget.org/get-started/). ![Image 9: AI Agent Adoption in 2026: What the Data Shows](https://joget.com/wp-content/uploads/2026/02/4.png). # [AI agents](https://joget.com/agentic-ai-the-next-big-thing-in-ai/) are moving out of the lab and into business operations. ![Image 11](https://joget.com/wp-content/uploads/2026/02/Multi-AI-Agents-1920x1047.png). Both Gartner and [**Forrester**](https://www.forrester.com/blogs/predictions-2026-ai-moves-from-hype-to-hard-hat-work/)**emphasize that employees need training in how to design agent workflows**, supervise their operation, and collaborate effectively with automated systems. Visual, no-code platforms like Joget, with its [Joget AI Agent Builder](https://joget.com/joget-ai-agent-builder/), are changing who can build autonomous systems. *   [Share on X (Opens in new window)X](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/?share=twitter&nb=1). *   [Share on Facebook (Opens in new window)Facebook](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/?share=facebook&nb=1). [![Image 14: Vibe-Composition-Joget-AI-Designer-Press-Release](https://i0.wp.com/joget.com/wp-content/uploads/2025/12/Vibe-Composition-Joget-AI-Designer-Press-Release-Banner.png?resize=350%2C200&ssl=1)](https://joget.com/joget-combines-vibe-composition-with-agentic-ai-for-secure-enterprise-grade-application-development/ \"Joget Combines Vibe Composition with Agentic AI for Secure, Enterprise-Grade Application Development\"). *   [![Image 16](https://joget.com/wp-content/themes/jogetter/img/social/whatsapp.svg)](whatsapp://send?text=https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/%20https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/). *   [![Image 18](https://joget.com/wp-content/themes/jogetter/img/social/tweet.svg)](https://twitter.com/intent/tweet?text=AI%20Agent%20Adoption%20in%202026:%20What%20the%20Data%20Shows&url=https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/&via=wpvkp). *   [![Image 19](https://joget.com/wp-content/themes/jogetter/img/social/linkedin.svg)](https://www.linkedin.com/shareArticle?mini=true&url=https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/&title=AI%20Agent%20Adoption%20in%202026:%20What%20the%20Data%20Shows). [###### julianjohari](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/#). February 20, 2026 | [julianjohari](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/#). [Read](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/). December 19, 2025 | [Joget, Inc.](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/#). [Read](https://joget.com/joget-combines-vibe-composition-with-agentic-ai-for-secure-enterprise-grade-application-development/). December 2, 2025 | [Joget, Inc.](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/#). *   [Agentic AI](https://joget.com/tag/agentic-ai/). *   [AI Agent](https://joget.com/tag/ai-agent/). *   [Joget AI Agent](https://joget.com/tag/joget-ai-agent/).",
+        "score": 0.99980587,
+        "raw_content": null
+      },
+      {
+        "url": "https://www.ibm.com/think/news/ai-tech-trends-predictions-2026",
+        "title": "The trends that will shape AI and tech in 2026 - IBM",
+        "content": "Think about it: a year ago, we were discussing how ChatGPT wasn’t able to [count](https://community.openai.com/t/incorrect-count-of-r-characters-in-the-word-strawberry/829618) the number of “r”s in “strawberry.” Reasoning models from Chinese frontier labs (like [DeepSeek-R1](https://www.ibm.com/think/news/deepseek-r1-ai)) hadn’t taken the world by storm, and neither had open-source reasoning agents. “The most significant trend we see emerging next year is the shift from AI experimentation and excitement to private and secure deployments with real ROI expectations within enterprises,” [David Lanstein](https://www.linkedin.com/in/david-lanstein-9918305/), Cofounder and CEO of [Atolio](https://www.atolio.com/), told _IBM Think_. “In the coming years, agentic AI and other non-human identities will outnumber human users in the organization significantly,” [Shlomi Yanai](https://www.linkedin.com/in/shlomiyanai/), CEO and Cofounder at [AuthMind](https://www.authmind.com/), told _IBM Think_. “The most powerful trend I see for next year is AI tackling complex enterprise workflows,” said [Steven Aberle](https://www.linkedin.com/in/steven-aberle/), Founder of [Rohirrim](https://rohirrim.ai/), an AI-native startup focused on complete procurement ecosystems, in an interview with _IBM Think_. “The massive middle of the enterprise bell curve begins to move from experimentation to production-grade systems,” said [Tomás Hernando Kofman](https://www.linkedin.com/in/tomashk/), Cofounder of [Not Diamond](https://www.notdiamond.ai/), a multi-model AI infrastructure platform, in an interview with _IBM Think_.",
+        "score": 0.99979657,
+        "raw_content": null
+      }
+    ],
+    "request_id": "3fcb72f8-2549-48d9-a841-8bdc3ae6619b"
+  }
+}

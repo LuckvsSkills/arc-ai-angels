@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-preset="obsidian_gold">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Specialist Teams (Sentinel) — The Arc Strategic Control Center</title>
+<style>
+
+:root{
+  --bg0:#0b0b0c;
+  --bg1:#0f0f11;
+  --panel:#161618;
+  --panel2:#1c1c20;
+  --card:#232329;
+  --line:rgba(255,255,255,.10);
+  --text:#eef4fb;
+  --muted:#c3d0e3;
+  --muted2:#95a7c2;
+
+  --accent:#d6b35e;
+  --accent2:#f0d18a;
+  --accentGlow:rgba(240,209,138,.20);
+
+  --runtime:#36c9ff;
+  --security:#3fe3b5;
+  --models:#9b7cff;
+  --memory:#4ea8de;
+  --swarm:#ff4d6d;
+  --observe:#ff9f43;
+  --ui:#d6b35e;
+  --command:#7fb8ff;
+}
+
+[data-theme="light"]{
+  --bg0:#f8fbff;
+  --bg1:#f2f7fd;
+  --panel:#ffffff;
+  --panel2:#edf4fb;
+  --card:#ffffff;
+  --line:rgba(16,24,40,.10);
+  --text:#132033;
+  --muted:#51627b;
+  --muted2:#6d7f99;
+  --accentGlow:rgba(214,179,94,.10);
+}
+
+[data-preset="obsidian_gold"]{
+  --accent:#d6b35e; --accent2:#f0d18a; --accentGlow:rgba(240,209,138,.20);
+}
+[data-preset="graphite_cyan"]{
+  --accent:#36c9ff; --accent2:#92e8ff; --accentGlow:rgba(54,201,255,.14);
+}
+[data-preset="midnight_purple"]{
+  --accent:#9b7cff; --accent2:#c9b8ff; --accentGlow:rgba(155,124,255,.14);
+}
+[data-preset="slate_teal"]{
+  --accent:#2fd3c5; --accent2:#93fff4; --accentGlow:rgba(47,211,197,.12);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at 85% -10%, var(--accentGlow), transparent 60%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in oklab,var(--panel) 82%, transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;
+}
+.logo{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.2px;
+}
+.logo-sub{
+  font-size:13px;
+  color:var(--muted2);
+  margin-top:4px;
+}
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.nav a,.btn,select{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:14px;
+  padding:9px 13px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--panel2) 74%, transparent);
+  cursor:pointer;
+}
+
+.hero{
+  padding:54px 0 20px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:18px;
+}
+@media (max-width: 980px){
+  .hero-grid{grid-template-columns:1fr}
+}
+
+.panel{
+  background:color-mix(in oklab,var(--panel) 88%, transparent);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 18px 48px rgba(0,0,0,.18);
+}
+.panel:before{
+  content:"";
+  position:absolute;inset:-1px;
+  background:
+    radial-gradient(640px 220px at 0% 0%, var(--accentGlow), transparent 60%);
+  opacity:.95;
+  pointer-events:none;
+}
+.panel>*{position:relative}
+
+h1{
+  margin:0;
+  font-size:48px;
+  line-height:1.05;
+  letter-spacing:.2px;
+}
+.hero p{
+  margin:14px 0 0;
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
+.kpi{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+.kpi-box{
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--panel2) 78%, transparent);
+  padding:14px;
+}
+.kpi-label{font-size:13px;color:var(--muted2)}
+.kpi-value{font-size:18px;font-weight:900;margin-top:4px}
+
+.section{
+  padding:8px 0 0;
+}
+.section h2{
+  font-size:30px;
+  margin:0 0 16px;
+}
+.section-intro{
+  color:var(--muted);
+  font-size:17px;
+  margin:0 0 14px;
+  line-height:1.7;
+}
+
+.chapter-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+@media (max-width:1100px){.chapter-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.chapter-grid{grid-template-columns:1fr}}
+
+.chapter-card{
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--card) 92%, transparent);
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:0 12px 28px rgba(0,0,0,.14);
+  transition:transform .15s ease, border-color .15s ease;
+}
+.chapter-card:hover{
+  transform:translateY(-3px);
+  border-color:color-mix(in oklab,var(--c) 45%, var(--line));
+}
+.chapter-card:before{
+  content:"";
+  position:absolute;left:0;top:0;right:0;height:4px;
+  background:linear-gradient(90deg, transparent, var(--c), transparent);
+  opacity:.95;
+}
+.chapter-card:after{
+  content:"";
+  position:absolute;inset:-1px;
+  background:radial-gradient(560px 220px at 0% 0%, color-mix(in oklab,var(--c) 18%, transparent), transparent 62%);
+  pointer-events:none;
+}
+.chapter-card>*{position:relative}
+.chapter-title{
+  font-size:21px;
+  font-weight:900;
+  margin:0;
+}
+.chapter-desc{
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+}
+.meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:12px;
+  margin-top:14px;
+  color:var(--muted2);
+  font-size:14px;
+}
+.pbar{
+  margin-top:10px;
+  height:14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  background:color-mix(in oklab,var(--panel2) 76%, transparent);
+}
+.pbar > div{
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg, color-mix(in oklab,var(--c) 68%, transparent), color-mix(in oklab,var(--c) 95%, white 8%));
+  box-shadow:0 0 0 4px color-mix(in oklab,var(--c) 14%, transparent);
+}
+
+.layout-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+@media (max-width:980px){.layout-grid{grid-template-columns:1fr}}
+
+.svg-card{
+  background:color-mix(in oklab,var(--panel) 90%, transparent);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 18px 48px rgba(0,0,0,.18);
+}
+.svg-card h3{
+  margin:0 0 10px;
+  font-size:24px;
+  line-height:1.2;
+}
+.svg-card p{
+  margin:0 0 16px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+}
+.svg-card svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.step-list{
+  display:grid;
+  gap:12px;
+}
+.step{
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:color-mix(in oklab,var(--panel2) 76%, transparent);
+  padding:14px 16px;
+  font-size:17px;
+  font-weight:800;
+}
+.footer-space{height:36px}
+
+
+/* Sidebar addon voor master.css */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--panel, #1a1a2e);
+    border-right: 1px solid var(--line, rgba(255,255,255,.1));
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar-header h2 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+
+.sidebar-header a {
+    color: var(--accent, #d6b35e);
+    text-decoration: none;
+}
+
+.chapter {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.chapter.active {
+    background: rgba(214, 179, 94, 0.1);
+    border-left: 3px solid var(--accent, #d6b35e);
+}
+
+.chapter h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chapter h3 a {
+    color: var(--text, #eef4fb);
+    text-decoration: none;
+}
+
+.block-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.block-list li {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.block-list a {
+    color: var(--muted, #a8b7d1);
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.block-list a:hover {
+    color: var(--accent, #d6b35e);
+    background: rgba(255,255,255,0.05);
+}
+
+/* Body shift voor sidebar */
+body.with-sidebar {
+    margin-left: 280px !important;
+}
+
+/* Topbar fix voor sidebar */
+.topbar {
+    margin-left: 280px !important;
+    width: calc(100% - 280px) !important;
+}
+
+</style>
+</head>
+<body class="with-sidebar">
+
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <h2><a href="../../index.html">The Arc Strategic Control Center</a></h2>
+        <div class="logo-sub">Architecture, Governance & Deployment Hub</div>
+    </div>
+    <div class="sidebar-content">
+
+        <div class="chapter ">
+            <h3><a href="../platform_runtime.html">Platform & Runtime</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-01-openclaw-core-installatie.html">Block 01: OpenClaw core installatie</a></li>
+
+                <li><a href="block-02-systemd-runtime-services.html">Block 02: Systemd runtime services</a></li>
+
+                <li><a href="block-03-hardened-agent-runner.html">Block 03: Hardened agent runner</a></li>
+
+                <li><a href="block-04-central-env--allowlists.html">Block 04: Central env + allowlists</a></li>
+
+                <li><a href="block-05-linux-user-isolation.html">Block 05: Linux user isolation</a></li>
+
+                <li><a href="block-06-worker-skeleton-cluster.html">Block 06: Worker skeleton cluster</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../security_hardening.html">Security Hardening</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-07-baseline-inventory.html">Block 07: Baseline inventory</a></li>
+
+                <li><a href="block-08-monitoring--runtime-safety.html">Block 08: Monitoring / runtime safety</a></li>
+
+                <li><a href="block-09-incident-response--kill-switch.html">Block 09: Incident response / kill switch</a></li>
+
+                <li><a href="block-10-secrets-hardening.html">Block 10: Secrets hardening</a></li>
+
+                <li><a href="block-11-internet--egress-policy.html">Block 11: Internet / egress policy</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter active">
+            <h3><a href="../model_runtime.html">Model Runtime & Providers</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-01-model-runtime-architecture.html">Block 01: Model runtime architecture</a></li>
+
+                <li><a href="block-02-gateway--intake-protocol-nova.html">Block 02: Gateway & Intake Protocol (Nova)</a></li>
+
+                <li><a href="block-03-master-orchestrator-flux.html">Block 03: Master Orchestrator (Flux)</a></li>
+
+                <li><a href="block-04-domain-intelligence-layer-omni.html">Block 04: Domain Intelligence Layer (Omni)</a></li>
+
+                <li><a href="block-05-specialist-teams-sentinel.html">Block 05: Specialist Teams (Sentinel)</a></li>
+
+                <li><a href="block-06-execution-workers.html">Block 06: Execution Workers</a></li>
+
+                <li><a href="block-07-openclaw-integration.html">Block 07: OpenClaw Integration</a></li>
+
+                <li><a href="block-08-direct-interface--command-routing.html">Block 08: Direct interface & command routing</a></li>
+
+                <li><a href="block-09-team--subagent-architecture.html">Block 09: Team & subagent architecture</a></li>
+
+                <li><a href="block-10-flux-orchestration-map.html">Block 10: Flux orchestration map</a></li>
+
+                <li><a href="block-11-model-governance-matrix.html">Block 11: Model governance matrix</a></li>
+
+                <li><a href="block-12-agent-build-blueprint.html">Block 12: Agent build blueprint</a></li>
+
+                <li><a href="block-13-agent-communication--memory-topology.html">Block 13: Agent communication & memory topology</a></li>
+
+                <li><a href="block-14-flux-sentinel-integration.html">Block 14: Flux sentinel integration</a></li>
+
+                <li><a href="block-15-sentinel-protocol-enrichment.html">Block 15: Sentinel protocol enrichment</a></li>
+
+                <li><a href="block-16-task-queue-structure.html">Block 16: Task queue structure</a></li>
+
+                <li><a href="block-17-flux-routing-blueprint.html">Block 17: Flux routing blueprint</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../agent_logic.html">Agent Logic, Skills & Swarm</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-22-agent-roles-framework.html">Block 22: Agent roles framework</a></li>
+
+                <li><a href="block-23-communication-protocol.html">Block 23: Communication protocol</a></li>
+
+                <li><a href="block-24-workflow-dispatcher.html">Block 24: Workflow dispatcher</a></li>
+
+                <li><a href="block-25-skill-registry.html">Block 25: Skill registry</a></li>
+
+                <li><a href="block-26-swarm-coordination.html">Block 26: Swarm coordination</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../data_memory.html">Data & Memory Architecture</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-17-agent-management-schema.html">Block 17: Agent management schema</a></li>
+
+                <li><a href="block-18-memory-architecture.html">Block 18: Memory architecture</a></li>
+
+                <li><a href="block-19-embeddingvector-strategy.html">Block 19: Embedding/vector strategy</a></li>
+
+                <li><a href="block-20-shared-world-memory.html">Block 20: Shared world memory</a></li>
+
+                <li><a href="block-21-per-agent-memory-links.html">Block 21: Per-agent memory links</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../observability.html">Observability & API Cost Control</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-27-api-inventory.html">Block 27: API inventory</a></li>
+
+                <li><a href="block-28-usage-ledger.html">Block 28: Usage ledger</a></li>
+
+                <li><a href="block-29-cost-calculations.html">Block 29: Cost calculations</a></li>
+
+                <li><a href="block-30-latencyerror-tracing.html">Block 30: Latency/error tracing</a></li>
+
+                <li><a href="block-31-per-agent--per-workflow-reporting.html">Block 31: Per agent / per workflow reporting</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../control_center.html">Strategic Control Center UI</a></h3>
+            <ul class="block-list">
+
+                <li><a href="block-32-homepage-dashboard.html">Block 32: Homepage dashboard</a></li>
+
+                <li><a href="block-33-chapter-pages.html">Block 33: Chapter pages</a></li>
+
+                <li><a href="block-34-prompt-library.html">Block 34: Prompt library</a></li>
+
+                <li><a href="block-35-progress-visualization.html">Block 35: Progress visualization</a></li>
+
+                <li><a href="block-36-operations-ready-layout.html">Block 36: Operations-ready layout</a></li>
+
+            </ul>
+        </div>
+
+        <div class="chapter ">
+            <h3><a href="../mission_control_ops.html">Mission Control & Operations Orchestration</a></h3>
+            <ul class="block-list">
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div>
+        <div class="logo">The Arc Strategic Control Center</div>
+        <div class="logo-sub">Architecture, Governance & Deployment Hub</div>
+      </div>
+      <div class="nav">
+        <a href="../index.html">Home</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 100px;">
+
+
+    
+
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../model_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Model Runtime &amp; Providers · M05</div>
+    </div>
+
+    <div class="hero">
+      <h1>Model Runtime &amp; Providers</h1>
+      <h2>Block 05 — Specialist Teams (Sentinel)</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>Sentinel is de **specialistische uitvoeringslaag** binnen ARC AI Agents. Waar Omni domein-kennis beheert, bevat Sentinel de **operationele expertise** voor specifieke taken.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Expert Coordination** | Beheer teams van gespecialiseerde Workers |</p>
+<p>| **Skill Matching** | Match taak-specificaties met Worker capabilities |</p>
+<p>| **Quality Control** | Eerste validatie van Worker output |</p>
+<p>| **Error Handling** | Lokaal herstel voordat escalatie naar Flux |</p>
+<p>Sentinel-teams zijn **verticaal gespecialiseerd** (bijv. code, design, data) en **horizontaal gestructureerd** (lead + specialists + juniors).</p>
+<p>---</p>
+<h3>System Context</h3>
+<p>**Positionering:**</p>
+<ul>
+<li>**Parent:** Omni (ontvangt Task Specs)</li>
+<li>**Children:** Workers (concrete uitvoering)</li>
+<li>**Peers:** Andere Sentinel teams (load balancing, failover)</li>
+</ul>
+<p>---</p>
+<h3>Concrete Structure</h3>
+<p>Sentinel bestaat uit 4 kerncomponenten:</p>
+<p>#### 5.1 Team Organisatie</p>
+<p>| Rol | Verantwoordelijkheid | Worker Type |</p>
+<p>|-----|---------------------|-------------|</p>
+<p>| **Lead** | Review, architectuur beslissingen, escalatie | Senior Worker |</p>
+<p>| **Senior** | Complexe taken, mentoring, kwaliteit | Specialized Worker |</p>
+<p>| **Junior** | Standaard taken, ondersteuning, learning | General Worker |</p>
+<p>#### 5.2 Sentinel Teams Registry</p>
+<p>| Team ID | Domein | Specialisaties | Workers |</p>
+<p>|---------|--------|--------------|---------|</p>
+<p>| sentinel_code_team | Software | Python, JS, Go, Rust, SQL | 3 senior, 5 junior |</p>
+<p>| sentinel_design_team | Visual | UI/UX, branding, illustration | 2 senior, 3 junior |</p>
+<p>| sentinel_data_team | Analytics | SQL, Python, visualization | 2 senior, 4 junior |</p>
+<p>| sentinel_security_team | Security | Audits, pentest, compliance | 2 senior, 2 junior |</p>
+<p>| sentinel_copy_team | Content | SEO, technical writing, tone | 2 senior, 3 junior |</p>
+<p>#### 5.3 Task Distribution Engine</p>
+<p>Wijs taak toe op basis van:</p>
+<ul>
+<li>Vereiste skills (filter)</li>
+<li>Huidige load (50% weight)</li>
+<li>Expertise match (40% weight)</li>
+<li>Recency factor (10% weight)</li>
+<li>Backup Worker selectie</li>
+</ul>
+<p>#### 5.4 Quality Gate</p>
+<p>Eerste controle voor terugkeer naar Omni:</p>
+<ul>
+<li>Automated checks (syntax, tests, linting)</li>
+<li>Lead review voor complexiteit &gt; 3</li>
+<li>Security scan voor gevoelige code</li>
+<li>Performance benchmarks</li>
+</ul>
+<h3>Flows</h3>
+<p>#### 5.1 Standard Task Execution</p>
+<p>#### 5.2 Multi-Worker Parallel Task</p>
+<h3>Flows</h3>
+<p>#### 5.1 Standard Task Execution</p>
+<p>#### 5.2 Multi-Worker Parallel Task</p>
+<h3>Relaties met andere ARC-lagen</h3>
+<p>| Laag | Interface | Data |</p>
+<p>|------|-----------|------|</p>
+<p>| **Omni** | Input/Output | Task Specs / Results |</p>
+<p>| **Workers** | Command/Response | Execution commands / Output |</p>
+<p>| **Flux** | Escalatie only | Bij failures na retry |</p>
+<p>| **Andere Sentinel** | Failover | Task overname bij overload |</p>
+<p>---</p>
+<h3>Decision Logic</h3>
+<p>| Beslissing | Input | Output |</p>
+<p>|------------|-------|--------|</p>
+<p>| **Welke Worker?** | Skills nodig, huidige load, expertise | Worker ID + backup ID |</p>
+<p>| **Review nodig?** | Complexity, security flag, historie | Boolean + reviewer assignment |</p>
+<p>| **Retry of escalatie?** | Failure type, retry count, impact | &quot;retry&quot; / &quot;escalate_to_flux&quot; / &quot;fail_fast&quot; |</p>
+<p>| **Parallel of sequentieel?** | Sub-task dependencies | Execution graph |</p>
+<p>---</p>
+<h3>Rules &amp; Constraints</h3>
+<p>| Regel | Rationale |</p>
+<p>|-------|-----------|</p>
+<p>| **R1:** Elke taak heeft minimaal 1 backup Worker | Voorkomt single point of failure |</p>
+<p>| **R2:** Lead review verplicht voor complexity &gt; 3 | Kwaliteitshandhaving |</p>
+<p>| **R3:** Worker timeout strikt gehandhaafd | Voorkomt resource starvation |</p>
+<p>| **R4:** Sentinel mag nooit direct naar Fea | Altijd via Omni→Flux |</p>
+<p>| **R5:** Worker attribution altijd gelogd | Accountability, debugging, learning |</p>
+<p>---</p>
+<h3>Dependencies</h3>
+<p>| Component | Type | Impact |</p>
+<p>|-----------|------|--------|</p>
+<p>| Worker pool | Hard | Geen uitvoering mogelijk |</p>
+<p>| Task queue | Hard | Backlog opbouwen |</p>
+<p>| Omni specificaties | Hard | Geen richting zonder STS |</p>
+<p>| Lead Worker availability | Soft | Review queue opbouwen |</p>
+<p>---</p>
+<h3>Decisions Made</h3>
+<p>| Beslissing | Argumentatie |</p>
+<p>|------------|--------------|</p>
+<p>| **Team hierarchie** | Lead/Senior/Junior voor kwaliteit en schaalbaarheid |</p>
+<p>| **Skill-based routing** | Precieze matching taak-capability |</p>
+<p>| **Automated + human review** | Balans tussen snelheid en kwaliteit |</p>
+<p>---</p>
+<h3>Decision Locked</h3>
+<p>**Owner:** Fea  </p>
+<p>**Status:** Active  </p>
+<p>**Version:** 2.0.0  </p>
+<p>**Last Updated:** 2026-03-22</p>
+<p>---</p>
+<p>**Einde Block 05**</p>
+<h2>Team Dispatch Flow</h2>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>|  Omni Task     |-----&gt;|  Sentinel      |-----&gt;|  Team Router   |</p>
+<p>|  (Enriched)    |      |  (M05)         |      |  (Classifier)  |</p>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>                               |</p>
+<p>                    +----------+----------+</p>
+<p>                    |                     |</p>
+<p>                    v                     v</p>
+<p>             +------------+        +------------+</p>
+<p>             |  Domain A  |        |  Domain B  |</p>
+<p>             |  Team      |        |  Team      |</p>
+<p>             +------------+        +------------+</p>
+<p>                    |                     |</p>
+<p>                    v                     v</p>
+<p>             +------------+        +------------+</p>
+<p>             |  Workers   |        |  Workers   |</p>
+<p>             +------------+        +------------+</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

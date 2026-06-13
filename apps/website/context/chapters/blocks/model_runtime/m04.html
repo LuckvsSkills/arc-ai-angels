@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Model Runtime &amp; Providers — Domain Intelligence Layer (Omni)</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: rgba(255,255,255,.10);
+      --text: #eef4ff;
+      --muted: #a8b7d1;
+      --accent: #9b7cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 35%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1324 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .backlink {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, var(--panel)) 0%, var(--panel) 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      margin-bottom: 22px;
+    }
+    .content {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(24px, 2.6vw, 30px);
+      line-height: 1.2;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 30px 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+    p, li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    ul, ol {
+      margin: 0 0 18px 24px;
+      padding: 0;
+    }
+    pre {
+      margin: 16px 0 22px;
+      padding: 18px 20px;
+      background: #0a0f1a;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 18px;
+      overflow: auto;
+      color: #eaf1ff;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 720px) {
+      .content, .hero { padding: 22px; }
+      p, li { font-size: 17px; }
+      h3 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="nav-logo" href="../../../index.html">🏠 Arc SCC</a>
+    <div class="nav-chapters">
+      <a href="../../platform_runtime.html">Platform & Runtime</a>
+      <a href="../../security_hardening.html">Security Hardening</a>
+      <a href="../../model_runtime.html">Model Runtime</a>
+      <a href="../../agent_logic.html">Agent Logic</a>
+      <a href="../../data_memory.html" class="active">Data Memory</a>
+      <a href="../../observability.html">Observability</a>
+      <a href="../../control_center.html">Control Center</a>
+      <a href="../../mission_control_ops.html">Mission Control</a>
+    </div>
+    <a class="nav-home" href="../../../index.html">Dashboard</a>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="backlink" href="../../model_runtime.html">← Terug naar hoofdstuk</a>
+      <div class="meta">Model Runtime &amp; Providers · M04</div>
+    </div>
+
+    <div class="hero">
+      <h1>Model Runtime &amp; Providers</h1>
+      <h2>Block 04 — Domain Intelligence Layer (Omni)</h2>
+    </div>
+
+    <div class="content">
+      <p>---</p>
+<h3>Purpose</h3>
+<p>Omni is de **domeinexpertise laag**. Waar Flux beslist *wat* er moet gebeuren, bepaalt Omni *hoe* het binnen een specifiek vakgebied wordt uitgevoerd.</p>
+<p>| Aspect | Functie |</p>
+<p>|--------|---------|</p>
+<p>| **Domain Translation** | Vertaal intentie naar domein-specifieke taak |</p>
+<p>| **Knowledge Retrieval** | Haal relevante domein-kennis op |</p>
+<p>| **Specialist Routing** | Bepaal welk Sentinel-team en welke Workers |</p>
+<p>| **Quality Calibration** | Domein-specifieke kwaliteitscriteria |</p>
+<p>---</p>
+<h3>System Context</h3>
+<p>Flux → Omni → Sentinel</p>
+<p>---</p>
+<h3>Concrete Structure</h3>
+<p>#### 4.1 Domain Parser</p>
+<p>Analyseert RDO, extract domein-entiteiten.</p>
+<p>#### 4.2 Knowledge Retriever</p>
+<p>Query vector DB + graph voor context.</p>
+<p>#### 4.3 Task Decomposer</p>
+<p>Splits complexe taken in Sentinel-taken.</p>
+<p>---</p>
+<h3>Rules</h3>
+<ul>
+<li>R1: Omni communiceert nooit direct naar Fea</li>
+<li>R2: Knowledge retrieval max 500ms</li>
+<li>R3: Task specs immutable na dispatch</li>
+<li>R4: Minimaal 2 Sentinel teams per Omni</li>
+</ul>
+<p>---</p>
+<h3>Decision Locked</h3>
+<p>Owner: Fea  </p>
+<p>Status: Active  </p>
+<p>Version: 2.0.0</p>
+<h3>Concrete Structure</h3>
+<p>Omni bestaat uit 5 kerncomponenten:</p>
+<p>#### 4.1 Domain Instanties</p>
+<p>| Omni ID | Domein | Specialisatie | Sentinel Teams |</p>
+<p>|---------|--------|---------------|----------------|</p>
+<p>| omni_technical_01 | Software Engineering | Code, architecture, DevOps | code_team, infra_team, security_team |</p>
+<p>| omni_creative_01 | Content &amp; Design | Copy, visuals, UX, branding | copy_team, design_team, ux_team |</p>
+<p>| omni_data_01 | Data &amp; Analytics | SQL, ML, BI, pipelines | analytics_team, ml_team, viz_team |</p>
+<p>| omni_security_01 | Security &amp; Compliance | Audits, policies, threats | audit_team, threat_team, policy_team |</p>
+<p>| omni_general_01 | Algemene kennis | Geen diepe specialisatie | general_team |</p>
+<p>#### 4.2 Domain Parser</p>
+<p>Analyseer RDO, extract domein-specifieke entiteiten.</p>
+<p>#### 4.3 Knowledge Retriever</p>
+<p>Multi-stage retrieval uit Vector Store, Graph DB, Live APIs.</p>
+<p>#### 4.4 Task Decomposer</p>
+<p>Splits complexe taken in Sentinel-taken met dependencies.</p>
+<p>#### 4.5 Specification Builder</p>
+<p>Output: Sentinel Task Specs (STS) met domein-specifieke criteria.</p>
+<h3>Flows</h3>
+<p>#### 4.1 Standard Domain Processing</p>
+<p>#### 4.2 Cross-Domain Request</p>
+<h3>Relaties met andere ARC-lagen</h3>
+<p>| Laag | Relatie | Mechanisme |</p>
+<p>|------|---------|------------|</p>
+<p>| **Flux** | Parent/Consumer | Ontvangt RDO, returnt Result+Quality |</p>
+<p>| **Sentinel** | Child/Dispatcher | Stuurt Task Specs, ontvangt uitvoering |</p>
+<p>| **Andere Omni** | Peer/Coordinator | Via Flux voor cross-domain |</p>
+<p>| **Knowledge Stores** | Data dependency | Vector DB, Graph DB, API clients |</p>
+<p>---</p>
+<h3>Decision Logic</h3>
+<p>| Beslissing | Input | Output |</p>
+<p>|------------|-------|--------|</p>
+<p>| **Welke Sentinel teams?** | Task type + complexity + beschikbaarheid | Team ID lijst met prioriteit |</p>
+<p>| **Welke knowledge bronnen?** | Entity types + urgency | Geprioriteerde retrieval strategie |</p>
+<p>| **Hoe decomponeren?** | Complexity score + dependencies | Task graph (parallel/sequential) |</p>
+<p>| **Quality threshold?** | Domein + user tier + request type | Minimale acceptatie scores |</p>
+<p>---</p>
+<h3>Rules &amp; Constraints</h3>
+<p>| Regel | Rationale |</p>
+<p>|-------|-----------|</p>
+<p>| **R1:** Omni mag nooit direct naar Fea communiceren | Altijd via Flux voor context-integriteit |</p>
+<p>| **R2:** Knowledge retrieval max 500ms | Voorkomt timeout cascade |</p>
+<p>| **R3:** Task specs zijn immutable na dispatch | Consistentie in uitvoering |</p>
+<p>| **R4:** Elke Omni heeft minimaal 2 Sentinel teams | Redundantie voor load balancing |</p>
+<p>| **R5:** Cross-domain requests expliciet markeren | Flux weet dat aggregatie nodig is |</p>
+<p>---</p>
+<h3>Dependencies</h3>
+<p>| Component | Type | Fallback |</p>
+<p>|-----------|------|----------|</p>
+<p>| Vector Store | Hard | Generieke prompts zonder context |</p>
+<p>| Graph DB | Soft | Alleen vector search |</p>
+<p>| Sentinel queues | Hard | Queue in backlog, alert operators |</p>
+<p>| Live APIs | Soft | Cached versies (max 24u oud) |</p>
+<p>---</p>
+<h3>Decisions Made</h3>
+<p>| Beslissing | Argumentatie |</p>
+<p>|------------|--------------|</p>
+<p>| **Multi-stage retrieval** | Balans tussen snelheid (vector) en diepgang (graph) |</p>
+<p>| **Domein-specifieke instanties** | Expertise concentratie vs generalisatie |</p>
+<p>| **Immutable task specs** | Voorkomt wijzigingen tijdens uitvoering |</p>
+<p>---</p>
+<h3>Decision Locked</h3>
+<p>**Owner:** Fea  </p>
+<p>**Status:** Active  </p>
+<p>**Version:** 2.0.0  </p>
+<p>**Last Updated:** 2026-03-22</p>
+<p>---</p>
+<p>**Einde Block 04**</p>
+<h2>Domain Knowledge Flow</h2>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>|   Flux Task    |-----&gt;|  Omni Engine   |-----&gt;|  Domain DB     |</p>
+<p>|   (Intent)     |      |   (M04)        |      |  (Knowledge)   |</p>
+<p>+----------------+      +----------------+      +----------------+</p>
+<p>                               |</p>
+<p>                               v</p>
+<p>                        +----------------+</p>
+<p>                        |  Context       |</p>
+<p>                        |  Enrichment    |</p>
+<p>                        +----------------+</p>
+<p>                               |</p>
+<p>                               v</p>
+<p>                        +----------------+</p>
+<p>                        |  Enriched Task |</p>
+<p>                        |  to Sentinel   |</p>
+<p>                        +----------------+</p>
+    </div>
+  </div>
+</body>
+</html>
