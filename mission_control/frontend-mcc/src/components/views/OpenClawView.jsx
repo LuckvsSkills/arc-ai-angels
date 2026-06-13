@@ -112,18 +112,19 @@ export default function OpenClawView({ theme }) {
 
   const load = useCallback(async () => {
     setLoading(true)
-    const [status, sysinfo, registry, telegram, models, memory, logs] = await Promise.all([
+    const [status, sysinfo, registry, telegram, models, memory, logs, runtimeStatus] = await Promise.all([
       fetch('/api/openclaw/status').then(r => r.json()).catch(() => ({})),
       fetch('/api/openclaw/sysinfo').then(r => r.json()).catch(() => ({})),
       fetch('/api/openclaw/registry').then(r => r.json()).catch(() => ({ agents: [] })),
       fetch('/api/openclaw/telegram').then(r => r.json()).catch(() => ({})),
+      fetch('/api/openclaw/runtime-status').then(r => r.json()).catch(() => ({runtime: 'unknown'})),
       fetch('/api/models/overview').then(r => r.json()).catch(() => ({ agents: [] })),
       fetch('/api/openclaw/memory').then(r => r.json()).catch(() => ({ databases: [] })),
       fetch('/api/openclaw/logs/recent').then(r => r.json()).catch(() => ({ logs: [] })),
     ])
     const sessions = parseSessions(status.raw || '')
     const heartbeats = parseHeartbeats(status.raw || '')
-    setData({ status, sysinfo, registry, telegram, models, memory, logs, sessions, heartbeats })
+    setData({ status, sysinfo, registry, telegram, models, memory, logs, runtimeStatus, sessions, heartbeats })
     setLastRefresh(new Date())
     setLoading(false)
   }, [])
@@ -248,8 +249,9 @@ export default function OpenClawView({ theme }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
 
             {/* Status strip */}
-            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: 10 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(5,1fr)', gap: 10 }}>
               {[
+                { l: 'Runtime', v: data.runtimeStatus?.runtime || '—', c: data.runtimeStatus?.runtime === 'running' ? '#22c55e' : '#ef4444', sub: 'OpenClaw engine', icon: 'ti-cpu' },
                 { l: 'Gateway', v: status.gateway || '—', c: SC(status.gateway), sub: 'ws://127.0.0.1:18789', icon: 'ti-server' },
                 { l: 'Telegram', v: status.telegram || '—', c: SC(status.telegram), sub: `@${data.telegram?.bot?.username || '—'}`, icon: 'ti-brand-telegram' },
                 { l: 'Actieve sessies', v: sessions.length, c: '#22c55e', sub: `${cronSessions.length} HARNAS · ${mainSessions.length} direct`, icon: 'ti-messages' },

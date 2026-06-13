@@ -201,3 +201,21 @@ async def do_update():
         return {"ok": True, "output": r.stdout + r.stderr}
     except Exception as e:
         return {"ok": False, "error": str(e)}
+
+@router.get("/openclaw/runtime-status")
+async def get_runtime_status():
+    try:
+        result = subprocess.run(
+            ["openclaw", "gateway", "status"],
+            capture_output=True, text=True, timeout=10
+        )
+        output = result.stdout + result.stderr
+        runtime = "running" if "state active" in output or "sub running" in output else "stopped"
+        telegram_ok = "allowFrom" in open(os.path.expanduser("~/.openclaw/openclaw.json")).read()
+        return {
+            "runtime": runtime,
+            "telegram": "connected" if telegram_ok else "disconnected",
+            "raw": output
+        }
+    except Exception as e:
+        return {"runtime": "unknown", "error": str(e)}
