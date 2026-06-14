@@ -84,6 +84,8 @@ def kloon_template(template_naam, code_dir):
         log(f'❌ Clone mislukt: {result.stderr.strip()}')
         return False
     shutil.rmtree(f'{code_dir}/.git', ignore_errors=True)
+    import time
+    time.sleep(0.5)
     log(f'✅ Template gekloond: {template_naam}')
     return True
 
