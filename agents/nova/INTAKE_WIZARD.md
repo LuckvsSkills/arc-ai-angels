@@ -78,13 +78,17 @@ D) Vertrouwd en zakelijk (blauw, grijs, formeel)
 E) Warm en persoonlijk (aardetinten, organisch)
 F) 🎲 Laat de fabriek beslissen
 
-Mapping naar kleurenschema:
-A → wit en grijs
-B → goud en zwart (ARC default)
-C → blauw en wit of paars
-D → blauw en grijs
-E → groen en wit of aardetinten
-F → fabriek kiest op basis van type
+Mapping naar kleurenschema (gebruik EXACT deze waarden in PROJECT_BRIEF.json → kleurenschema):
+A → minimalistisch
+B → luxe
+C → speels
+D → zakelijk
+E → organisch
+F → fabriek kiest op basis van type (kies meest logische uit: minimalistisch, luxe, speels, zakelijk, organisch, tech)
+
+BELANGRIJK: kleurenschema moet ALTIJD exact een van deze 6 woorden zijn:
+minimalistisch, luxe, zakelijk, speels, organisch, tech
+Nooit vrije tekst zoals "groen en wit" — dit breekt de stijl-injectie van Forge.
 
 ---
 
