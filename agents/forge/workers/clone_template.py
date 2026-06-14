@@ -36,6 +36,7 @@ TEMPLATE_MAP = {
     'dashboard':   'template-dashboard',
     'directory':   'template-directory',
     'api':         'template-api',
+    'bakkerij':    'template-bakkerij',
 }
 
 STIJL_VARS = {
