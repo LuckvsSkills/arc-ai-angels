@@ -171,6 +171,14 @@ def main():
     injecteer_stijl(code_dir, stijl, naam)
     personaliseer(code_dir, naam, beschrijving)
 
+    # Retry personalisatie als 0 bestanden zijn bijgewerkt (intermitterend timing-issue)
+    test_file = f'{code_dir}/frontend/index.html'
+    if os.path.exists(test_file):
+        with open(test_file) as f:
+            if '{{PROJECT_NAAM}}' in f.read():
+                log('⚠️  Placeholders nog aanwezig, retry personalisatie...')
+                personaliseer(code_dir, naam, beschrijving)
+
     brief['code_dir'] = code_dir
     brief.setdefault('sentinels', {})['forge'] = 'CLONE_DONE'
     with open(brief_path, 'w') as f:
