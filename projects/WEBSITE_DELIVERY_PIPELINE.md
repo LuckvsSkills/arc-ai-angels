@@ -234,3 +234,25 @@ Dit type bestaat NIET als directe clone en moet zelf ontworpen worden door de tw
 4. Wijnhandel/delicatessen — geschenkpakketten op bestelling (kalender) + losse flessen (voorraad)
 
 BELANGRIJKSTE OPEN TAAK: Kwik-Fit kalender-component onderzoeken (hoe toont het beschikbare dagen, hoe werkt de UI) en deze techniek bouwen — ontbreekt nog volledig in huidige template-bakkerij.
+
+---
+
+## SPECIALE WENS: SPORT/ODDS-VERGELIJKINGSSITE (Fea)
+
+Fea wil een sportwebsite met de structuur van oddsportal.com als basis.
+Type: DIRECTORY met comparison-aggregator structuur.
+
+Kenmerken om te clonen:
+- Categorie-hiërarchie: sport -> land -> competitie (drill-down navigatie)
+- Per item (wedstrijd) een data-rij/tabel met meerdere kolommen (verschillende aanbieders/odds naast elkaar)
+- Tools/widgets: bet calculator, value bets, dropping odds, standings
+- Live data updates (scores, odds) - zie fetch_sports_data tool die al beschikbaar is in Claude voor live sportdata
+
+DIRECTORY referenties (totaal 5 voor dit type, oddsportal als hoofdreferentie voor Fea's sportsite):
+1. yelp.com - zoek + categorie + kaart + reviews
+2. g2.com - software-directory, categorie-filters, reviews/ratings
+3. producthunt.com/topics - categorie-gedreven directory
+4. clutch.co - bureaus/diensten-directory, filter op locatie/type
+5. oddsportal.com - HOOFDREFERENTIE voor sportsite: categorie-hierarchie + multi-kolom vergelijkingstabel + tools
+
+ACTIE: dit kan een apart project worden (sportsite voor Fea), los van de generieke directory-template voor klanten. Mogelijk wordt directory-template uitgebreid met een "comparison-tabel" module die ook voor andere sectoren (verzekeringen, energie, hotels) bruikbaar is.
