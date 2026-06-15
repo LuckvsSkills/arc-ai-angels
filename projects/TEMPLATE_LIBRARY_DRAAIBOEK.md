@@ -1,12 +1,14 @@
-# Hoofdproject: Website Template Bibliotheek — 52 Templates in 4 Maanden
+# Hoofdproject: Website Template Library — 52 Templates in 4 Maanden
+
+**Hoofduitvoerder: Forge** (alle 52 templates, bouwproces stappen 1-7, GitHub repos, clone_template.py integratie)
 
 ## DOEL
-Forge bouwt een bibliotheek van 52 kant-en-klare, high-end website-templates
+Forge bouwt een library van 52 kant-en-klare, high-end website-templates
 (12 types x 4 stijlvarianten + 1 hybride-retail type x 4 sectorvarianten).
 Resultaat: als een klantverzoek binnenkomt, kiest Forge het juiste type + stijl
-uit de bibliotheek en personaliseert deze SNEL naar een MVP voor de klant.
+uit de library en personaliseert deze SNEL naar een MVP voor de klant.
 
-Tot de bibliotheek compleet is, is elk klantverzoek nog handmatig/intensief werk
+Tot de library compleet is, is elk klantverzoek nog handmatig/intensief werk
 voor Forge (zoals nu). Na 4 maanden is het grotendeels kiezen + personaliseren.
 
 ---
@@ -127,7 +129,7 @@ die Forge per template markeert (stap 4 in bouwproces hierboven).
 
 ## MCC PROJECT-TAB: HOE DIT PROJECT ERIN KOMT
 
-Dit hoofdproject ("Website Template Bibliotheek - 52 Templates") wordt 1 INTERN PROJECT
+Dit hoofdproject ("Website Template Library - 52 Templates") wordt 1 INTERN PROJECT
 in de MCC Project-tab, met:
 - Hoofdstatus: In Progress (Maand 1 bezig)
 - Subtaken: 52 templates, elk als checklist-item met status (Open/Bezig/Klaar)
