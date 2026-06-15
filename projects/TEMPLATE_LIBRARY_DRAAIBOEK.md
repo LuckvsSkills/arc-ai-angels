@@ -156,3 +156,28 @@ TE BOUWEN (volgende sessie): data-model voor dit project + subtaken, Kanban-weer
 2. Dit hoofdproject + 52 subtaken erin laden
 3. Start Maand 1 #1: landing-V1 (notion) - referentie-analyse + herbouw als pilot
 3b. Parallel: backend-stack keuze (Supabase vs Pocketbase) - kort onderzoek
+
+---
+
+## ROADMAP (NIET NU BOUWEN - toekomstige stappen)
+
+Deze punten zijn bewust NOG NIET in uitvoering. Ze staan hier zodat ze niet vergeten
+worden en op het juiste moment opgepakt kunnen worden.
+
+### Roadmap-item 1: MCC Project-tab
+Status: IDEE / TOEKOMST, geen bouwwerk gepland voor nu.
+Wat het moet worden (als het wordt opgepakt):
+- Kanban-overzicht (Open/Bezig/Klaar) voor projecten
+- Filter: Klant-projecten vs Interne projecten
+- Dit Template Library project als 1 kaart met 52 subtaken
+- Per project: detailpagina met type, stappen, voortgang, voortgangsbalk/flowchart
+- Fea kan hier instructies achterlaten die Forge oppikt (alternatief voor Telegram bij dit project)
+
+Trigger om dit op te pakken: zodra de huidige prioriteiten (Maand 1 templates, backend-stack
+keuze, Kwik-Fit kalender) voldoende voortgang hebben, OF wanneer het missen van een
+projectoverzicht echt gaat knellen in de dagelijkse workflow.
+
+### Roadmap-item 2: 24-uur klant-MVP flow (DEEL A oorspronkelijk draaiboek)
+Status: DOEL/EINDRESULTAAT van dit hele project, niet iets om nu te bouwen.
+Wordt relevant zodra de 52-template library compleet is (eind Maand 4) of grotendeels
+(bv. na Maand 1, met 13 templates als interim-aanbod).
