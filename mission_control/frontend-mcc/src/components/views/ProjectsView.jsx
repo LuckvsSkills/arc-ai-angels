@@ -3,19 +3,22 @@ import React, { useState } from 'react'
 const PROJECTS = [
   {
     id: 'P1',
-    title: 'Website Factory',
+    title: 'Website Factory — Template Library',
     status: 'BEZIG',
     revenue: '€500 – €10.000+/site',
-    description: 'Volledig autonome website fabriek. Agents bouwen, deployen en beheren websites op verzoek vanuit GitHub templates.',
-    lead: 'Cortexia',
+    description: 'Volledig autonome website fabriek. 13 templates klaar en getest. Doel: library van 52 high-end templates (12 types x 4 stijlvarianten + 1 hybride-retail x 4 sectoren) zodat Forge klantverzoeken razendsnel naar een MVP kan vertalen.',
+    lead: 'Forge',
     domain: 'Helix/Tech',
+    progress: { huidig: 13, totaal: 52, fase: 'Maand 1 - Stijl V1 herbouw' },
     phases: [
-      { name: 'GitHub Templates (10x)', status: '🔴' },
-      { name: 'Prijslijst vastleggen', status: '🔴' },
-      { name: 'Helix agents configureren', status: '🟡' },
-      { name: 'Nova + Flux routing', status: '🔴' },
-      { name: 'Test run', status: '🔴' },
-      { name: 'Productie', status: '🔴' },
+      { name: '13 basis-templates gebouwd en getest', status: '🟢' },
+      { name: 'Responsive QA (5/13 templates: hamburger/scroll-fix)', status: '🟡' },
+      { name: 'Clone-referenties bepaald (52 sites, zie Masterplan)', status: '🟢' },
+      { name: 'Maand 1: 13 templates herbouwen naar V1-referenties', status: '🔴' },
+      { name: 'Backend-architectuur (Supabase/Pocketbase keuze)', status: '🔴' },
+      { name: 'Hybride-retail kalender-component (Kwik-Fit techniek)', status: '🔴' },
+      { name: 'Maand 2-4: V2, V3, V4 templates', status: '🔴' },
+      { name: 'MCC Project-tab uitbreiden (roadmap)', status: '🔴' },
     ],
     metrics: [
       { label: 'Bouwtijd doel', value: '< 2 uur' },
@@ -23,8 +26,13 @@ const PROJECTS = [
       { label: 'Kwaliteit doel', value: '> 90/100' },
       { label: 'Sites per dag', value: '3+' },
     ],
-    templates: ['landing','portfolio','blog','saas','ecommerce','directory','marketplace','dashboard','community','booking'],
-    agents: ['Cortexia','Forge','Axon','Nero','Ventura','Clio'],
+    templates: ['landing','portfolio','blog','bedrijf','ecommerce','bakkerij','booking','marketplace','saas','community','dashboard','directory','api'],
+    agents: ['Forge (hoofduitvoerder)','Cortexia','Axon','Nero','Ventura','Clio'],
+    documents: [
+      { label: 'Pipeline (A-Z flow)', file: 'WEBSITE_DELIVERY_PIPELINE.md' },
+      { label: 'Masterplan (52 templates)', file: 'MASTERPLAN_52_TEMPLATES.md' },
+      { label: 'Draaiboek (bouwvolgorde)', file: 'TEMPLATE_LIBRARY_DRAAIBOEK.md' },
+    ],
   }
 ]
 
@@ -81,6 +89,38 @@ export default function ProjectsView({ theme }) {
           <div style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'8px 16px',background:`${t.accent||'#c9a84c'}15`,border:`1px solid ${t.accent||'#c9a84c'}40`,borderRadius:'8px',marginBottom:'28px'}}>
             <span style={{fontSize:'14px',fontWeight:'600',color:t.accent||'#c9a84c'}}>{project.revenue}</span>
           </div>
+
+          {/* Voortgang Library */}
+          {project.progress && (
+            <div style={{marginBottom:'28px'}}>
+              <div style={{fontSize:'12px',fontWeight:'600',color:t.textMuted||'#666',textTransform:'uppercase',letterSpacing:'0.08em',marginBottom:'12px'}}>Voortgang Template Library</div>
+              <div style={{padding:'14px 16px',background:t.bg2||'#111',borderRadius:'8px',border:`1px solid ${t.border||'#333'}`}}>
+                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'8px'}}>
+                  <span style={{fontSize:'13px',color:t.text||'#e2e8f0'}}>{project.progress.fase}</span>
+                  <span style={{fontSize:'13px',fontWeight:'700',color:t.accent||'#c9a84c'}}>{project.progress.huidig}/{project.progress.totaal}</span>
+                </div>
+                <div style={{width:'100%',height:'8px',background:`${t.border||'#333'}`,borderRadius:'999px',overflow:'hidden'}}>
+                  <div style={{width:`${(project.progress.huidig/project.progress.totaal)*100}%`,height:'100%',background:t.accent||'#c9a84c'}}/>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Documenten */}
+          {project.documents && (
+            <div style={{marginBottom:'28px'}}>
+              <div style={{fontSize:'12px',fontWeight:'600',color:t.textMuted||'#666',textTransform:'uppercase',letterSpacing:'0.08em',marginBottom:'12px'}}>Documenten</div>
+              <div style={{display:'flex',flexDirection:'column',gap:'8px'}}>
+                {project.documents.map((doc, i) => (
+                  <a key={i} href={`https://github.com/LuckvsSkills/arc-ai-angels/blob/master/projects/${doc.file}`} target="_blank" rel="noopener noreferrer"
+                    style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'10px 14px',background:t.bg2||'#111',borderRadius:'8px',border:`1px solid ${t.border||'#333'}`,textDecoration:'none',color:t.text||'#e2e8f0',fontSize:'13px'}}>
+                    <span>{doc.label}</span>
+                    <span style={{fontSize:'11px',color:t.textMuted||'#666'}}>{doc.file} ↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Fases */}
           <div style={{marginBottom:'28px'}}>
