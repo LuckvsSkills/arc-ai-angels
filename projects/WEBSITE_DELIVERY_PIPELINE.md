@@ -209,3 +209,28 @@ Werkwijze volgende sessie:
 4. Animatie-laag toevoegen (fase 4)
 5. Responsive QA-checklist + uitvoeren op alle templates
 6. Live previews deployen (Vercel) voor visuele review
+
+---
+
+## TEMPLATE-CATEGORIEËN: CLONE-FÄHIG vs HYBRIDE-RETAIL
+
+Na onderzoek blijkt 12 van de 13 templates direct 1-op-1 te clonen zijn vanuit bestaande high-end referentiesites. Eén type (bakkerij) is een COMPOSIET van twee winkelconcepten en heeft geen directe clone-referentie.
+
+### CLONE-FÄHIG (12 types)
+Elk type krijgt 4 high-end referentiesites. Klant kiest uit 4 kant-en-klare designs.
+Status: research loopt (batch 1-2 grotendeels bepaald, batch 3-4 nog te doen).
+
+### HYBRIDE-RETAIL (1 type — was "bakkerij")
+Dit type combineert TWEE concepten in één site:
+1. KALENDER/AGENDA-component (referentie: Kwik-Fit afsprakensysteem — dienst kiezen, kalender met beschikbare dagen tonen, reserveren)
+2. VOORRAAD-RETAIL component (bestaande ecommerce-logica: direct besteld, geen wachttijd)
+
+Dit type bestaat NIET als directe clone en moet zelf ontworpen worden door de twee componenten te combineren.
+
+4 sector-varianten voor dit hybride-type:
+1. Bakkerij — taarten/vlaaien op bestelling (kalender) + brood/bakingrediënten (voorraad)
+2. Bloemist — boeketten op bezorgdag (kalender) + cadeauartikelen/vazen (voorraad)
+3. Slagerij/traiteur — bestelschotels voor feesten (kalender) + vleeswaren kant-en-klaar (voorraad)
+4. Wijnhandel/delicatessen — geschenkpakketten op bestelling (kalender) + losse flessen (voorraad)
+
+BELANGRIJKSTE OPEN TAAK: Kwik-Fit kalender-component onderzoeken (hoe toont het beschikbare dagen, hoe werkt de UI) en deze techniek bouwen — ontbreekt nog volledig in huidige template-bakkerij.
