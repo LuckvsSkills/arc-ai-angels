@@ -63,6 +63,41 @@
 
 ---
 
+
+### Matrix Domain ✅
+- [x] Saelia — coordinate_intelligence.py
+- [x] Arix — run_research.py
+- [x] Daxio — detect_signals.py
+- [x] Enki — structure_knowledge.py
+- [x] Sora — run_synthesis.py
+- [x] Tharos — strategic_analysis.py
+
+### Quantix Domain ✅
+- [x] Lumeria — coordinate_data.py
+- [x] Elora — run_data_research.py
+- [x] Kresta — run_analytics.py
+- [x] Luvia — run_forecast.py
+- [x] Nura — manage_knowledge.py
+- [x] Vondra — detect_data_signals.py
+
+### Zenix Domain ✅
+- [x] Fluentia — coordinate_language.py
+- [x] Draven — write_copy.py
+- [x] Orizon — run_strategy.py
+- [x] Solis — write_story.py
+- [x] Unia — run_editorial.py
+- [x] Zena — run_localization.py
+
+### Finix aanvulling ✅
+- [x] Vector — run_finance_strategy.py (gemist in eerste pass)
+
+### Alle 5 domains COMPLEET ✅
+- [x] Helix (Cortexia + 5 sentinels) — skills + workers
+- [x] Finix (Finoria + 5 sentinels incl. Vector) — skills + workers
+- [x] Matrix (Saelia + 5 sentinels) — workers
+- [x] Quantix (Lumeria + 5 sentinels) — workers
+- [x] Zenix (Fluentia + 5 sentinels) — workers
+
 ## 🔴 OPEN / VOLGENDE CHAT
 
 ### Website Factory (volgende chat: Template Library bouwen)
