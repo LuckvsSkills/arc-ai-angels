@@ -20,7 +20,7 @@ const TASK_LABEL = {
   overgeslagen: 'N.v.t.',
 }
 
-const API_BASE = 'http://localhost:8000/api'
+const API_BASE = '/api'
 
 export default function ProjectsView({ theme }) {
   const t = theme?.colors || {}
