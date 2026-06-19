@@ -1,0 +1,41 @@
+{
+  "project_id": "template-library",
+  "naam": "Template Library",
+  "type": "intern",
+  "template_type": "intern",
+  "locked": false,
+  "lock_hint": "",
+  "status": "in_uitvoering",
+  "fase": 2,
+  "fase_naam": "Uitvoering",
+  "aangemaakt": "2026-06-15T00:00:00",
+  "laatste_update": "2026-06-19T04:59:28+02:00",
+  "sla_deadline": "2026-10-15T00:00:00",
+  "lead_agent": "forge",
+  "agents": ["forge"],
+  "tasks": {
+    "forge": {
+      "status": "in_progress",
+      "gestart": "2026-06-15T00:00:00",
+      "voltooid": null,
+      "notitie": "5/52 V1-templates klaar: landing, portfolio, blog, bedrijf, ecommerce. Maand 1 loopt."
+    }
+  },
+  "live_url": null,
+  "notion_page_url": null,
+  "notities": [
+    {
+      "tekst": "Project gestart: 4-maanden plan, 13 types x 4 stijlvarianten + hybride-retail. Zie TEMPLATE_LIBRARY_DRAAIBOEK.md voor volledige bouwvolgorde.",
+      "agent": "fea",
+      "timestamp": "2026-06-15T00:00:00"
+    }
+  ],
+  "fases_voltooid": [0, 1],
+  "voortgang_templates": {
+    "totaal": 52,
+    "klaar": 5,
+    "huidige_maand": 1,
+    "huidige_variant": "V1",
+    "klaar_lijst": ["landing-v1", "portfolio-v1", "blog-v1", "bedrijf-v1", "ecommerce-v1"]
+  }
+}
