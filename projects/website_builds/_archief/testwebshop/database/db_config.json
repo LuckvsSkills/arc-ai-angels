@@ -1,0 +1,13 @@
+{
+  "type": "sqlite",
+  "path": "/home/prime/arc_ai_angels/projects/website_builds/testwebshop/database/testwebshop.db",
+  "tables": [
+    "users",
+    "products",
+    "categories",
+    "orders",
+    "order_items",
+    "cart"
+  ],
+  "aangemaakt": "2026-06-13T03:23:41.551105"
+}
