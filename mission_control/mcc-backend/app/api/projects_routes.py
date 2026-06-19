@@ -28,6 +28,8 @@ def scan_projects() -> list:
         if not base_dir.exists():
             continue
         for project_dir in sorted(base_dir.iterdir()):
+            if project_dir.name.startswith('_'):
+                continue  # sla archief/private mappen over
             status_file = project_dir / 'PROJECT_STATUS.json'
             brief_file = project_dir / 'PROJECT_BRIEF.json'
             if not status_file.exists():
