@@ -1,19 +1,19 @@
-# Task — CLIO — TestWebshop
+# Task — CORTEXIA — TestWebshop
 
-Task ID: CLIO-TESTWEBSHOP-001
+Task ID: CORTEXIA-TESTWEBSHOP-001
 Project ID: testwebshop
 Project Naam: TestWebshop
 Template Type: ecommerce
 Priority: HIGH
-Status: WACHT_OP
-Owner: clio
+Status: DONE
+Owner: cortexia
 Assigned By: cortexia
 Created At: 2026-06-19
 Project Dir: /home/prime/arc_ai_angels/projects/website_builds/testwebshop
 Brief: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_BRIEF.json
 Status File: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_STATUS.json
 
-Dependencies: ['ventura']
+Dependencies: geen
 Parallel Met: geen
 
 ## Next Step

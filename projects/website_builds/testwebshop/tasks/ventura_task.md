@@ -1,12 +1,26 @@
-Task ID: VENTURA-DEPLOY-TESTWEBSHOP-001
-Title: Deploy naar Vercel — TestWebshop
-Summary: Website deployen, domein koppelen, SSL activeren, health check uitvoeren.
+# Task — VENTURA — TestWebshop
+
+Task ID: VENTURA-TESTWEBSHOP-001
+Project ID: testwebshop
+Project Naam: TestWebshop
+Template Type: ecommerce
 Priority: HIGH
-Status: PENDING — wacht op Nero groen licht
+Status: WACHT_OP
+Owner: ventura
 Assigned By: cortexia
-Created At: 2026-06-13
+Created At: 2026-06-19
 Project Dir: /home/prime/arc_ai_angels/projects/website_builds/testwebshop
 Brief: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_BRIEF.json
-Next Step: bash /home/prime/arc_ai_angels/agents/ventura/workers/provision_cloud_service.sh /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_BRIEF.json
+Status File: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_STATUS.json
+
+Dependencies: ['forge', 'axon']
+Parallel Met: geen
+
+## Next Step
+Lees PROJECT_STATUS.json, check of dependencies done zijn, voer taak uit, update status.
+
+## Taakomschrijving
+Zie PROJECT_SOP.md voor agent-verantwoordelijkheden per fase.
+
 Result Summary:
 Completion Validated By:

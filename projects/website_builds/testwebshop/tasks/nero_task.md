@@ -1,12 +1,26 @@
-Task ID: NERO-SECURITY-TESTWEBSHOP-001
-Title: Security audit — TestWebshop
-Summary: Template scannen op security issues, hardening uitvoeren, groen licht geven voor deploy.
+# Task — NERO — TestWebshop
+
+Task ID: NERO-TESTWEBSHOP-001
+Project ID: testwebshop
+Project Naam: TestWebshop
+Template Type: ecommerce
 Priority: HIGH
-Status: PENDING — wacht op Forge
+Status: PARALLEL_MET
+Owner: nero
 Assigned By: cortexia
-Created At: 2026-06-13
+Created At: 2026-06-19
 Project Dir: /home/prime/arc_ai_angels/projects/website_builds/testwebshop
 Brief: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_BRIEF.json
-Next Step: python3 /home/prime/arc_ai_angels/agents/nero/workers/scan_template_security.py /home/prime/arc_ai_angels/projects/website_builds/testwebshop
+Status File: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_STATUS.json
+
+Dependencies: geen
+Parallel Met: ['forge']
+
+## Next Step
+Lees PROJECT_STATUS.json, check of dependencies done zijn, voer taak uit, update status.
+
+## Taakomschrijving
+Zie PROJECT_SOP.md voor agent-verantwoordelijkheden per fase.
+
 Result Summary:
 Completion Validated By:

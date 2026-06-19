@@ -287,3 +287,176 @@ Toont:
 - Filter: Klant / Intern / Alle
 - Klik op project → detailpagina met agent-tasks, documenten, tijdlijn
 
+
+---
+
+## PROJECT IDENTITEIT — WAT MAAKT IETS EEN PROJECT?
+
+Een project bestaat officieel zodra het een PROJECT_STATUS.json heeft.
+Zonder dat bestand is het geen project maar een losse map/notitie.
+
+### Project-identiteit bestaat uit 4 lagen:
+
+**Laag 1 — Identiteit (WAT is het?)**
+Vastgelegd in PROJECT_BRIEF.json (onveranderlijk na aanmaken):
+- project_id: unieke slug (bv. "testwebshop")
+- naam: leesbare naam (bv. "TestWebshop")
+- type: klant of intern
+- template_type: welk type website (ecommerce, landing, etc.)
+- beschrijving: 1-2 zinnen wat het project is
+- klant: naam/contactinfo (klant-projecten)
+- aangemaakt_door: Nova (klant) of Fea (intern)
+
+**Laag 2 — Voortgang (WAAR staat het?)**
+Vastgelegd in PROJECT_STATUS.json (dynamisch, agents schrijven hiernaar):
+- fase: 0-5 (Intake/Setup/Uitvoering/QA/Deploy/Nazorg)
+- status: open/in_uitvoering/geblokkeerd/live/afgesloten
+- tasks: per agent open/in_progress/wacht_op/done
+- sla_deadline: wanneer moet het klaar zijn
+- laatste_update: wanneer is er voor het laatst iets veranderd
+- live_url: eindresultaat
+
+**Laag 3 — Documentatie (WAT is er gedaan?)**
+Vastgelegd in docs/ map:
+- HANDOFF.md: overdracht aan klant (fase 4)
+- QA_RAPPORT.md: kwaliteitscheck (fase 3)
+- SECURITY_RAPPORT.md: veiligheidscheck (fase 2/3)
+- DEPLOYMENT.md: deploy-instructies (fase 4)
+- NOTITIES.md: lopende aantekeningen agents
+
+**Laag 4 — Code & Data (WAT is er gebouwd?)**
+- code/: website-code
+- database/: database-configuratie
+- tasks/: per-agent taakbestanden
+
+---
+
+## VERVOLGSTAPPEN PER FASE — BESLISBOOM
+
+### Hoe weet een agent wat hij moet doen?
+START HARNAS-run
+
+│
+
+├── Lees alle PROJECT_STATUS.json bestanden
+
+│
+
+├── Voor elk project:
+
+│   ├── Ben ik betrokken agent? (zit ik in "agents" lijst?)
+
+│   │   └── Nee → skip dit project
+
+│   │
+
+│   ├── Wat is mijn task-status?
+
+│   │   ├── "done" → skip, niets meer te doen
+
+│   │   ├── "overgeslagen" → skip
+
+│   │   ├── "geblokkeerd" → escaleer naar Cortexia/Flux
+
+│   │   ├── "in_progress" → hervat taak, check of klaar
+
+│   │   ├── "wacht_op" → check of alle wacht_op agents "done" zijn
+
+│   │   │   ├── Niet allemaal done → skip, wacht op volgende run
+
+│   │   │   └── Allemaal done → zet status "in_progress", start taak
+
+│   │   └── "open" of "parallel_met" → start direct
+
+│   │
+
+│   └── Na voltooiing:
+
+│       ├── Zet eigen status op "done"
+
+│       ├── Schrijf timestamp + notitie in task-entry
+
+│       ├── Update PROJECT_STATUS.json "laatste_update"
+
+│       └── Check: zijn ALLE agents done? → update fase + status
+
+│
+
+└── Einde HARNAS-run
+
+### Fase-overgang: wanneer gaat een project naar de volgende fase?
+Fase 0 → 1: PROJECT_BRIEF.json aangemaakt + Nova heeft gerouteerd naar Flux
+
+Fase 1 → 2: Cortexia heeft tasks aangemaakt (cortexia_task status: done)
+
+Fase 2 → 3: Forge + Axon + Nero allemaal done
+
+Fase 3 → 4: QA_RAPPORT.md aangemaakt + Forge/Nero/Clio QA-tasks done
+
+Fase 4 → 5: live_url ingevuld in PROJECT_STATUS.json + klant geïnformeerd
+
+Fase 5:     Doorlopend, project blijft "live" tot afgesloten
+
+---
+
+## PROJECT DOCUMENTATIE — WAT HOORT ALTIJD BIJ EEN PROJECT?
+
+### Verplichte documenten (altijd aanwezig)
+| Bestand | Aangemaakt door | Wanneer | Inhoud |
+|---|---|---|---|
+| PROJECT_BRIEF.json | Nova | Fase 0 | Intake-output, onveranderlijk |
+| PROJECT_STATUS.json | Cortexia | Fase 1 | Machine-leesbare voortgang |
+| tasks/[agent]_task.md | Cortexia | Fase 1 | Per-agent taakomschrijving |
+
+### Optionele documenten (per project-type)
+| Bestand | Aangemaakt door | Wanneer | Inhoud |
+|---|---|---|---|
+| docs/SECURITY_RAPPORT.md | Nero | Fase 2/3 | Security-bevindingen |
+| docs/QA_RAPPORT.md | Forge/Nero | Fase 3 | Responsive + security QA |
+| docs/HANDOFF.md | Clio | Fase 4 | Overdracht aan klant |
+| docs/DEPLOYMENT.md | Ventura | Fase 4 | Deploy-instructies + URL |
+| docs/NOTITIES.md | Alle agents | Doorlopend | Aantekeningen + beslissingen |
+
+### Hoe navigeer je door een project? (voor Fea in MCC)
+MCC Projects-tab
+
+│
+
+├── Zijbalk: lijst alle projecten (kaarten)
+
+│   ├── Filter: Klant / Intern / Alle
+
+│   ├── Sortering: fase / SLA-deadline / laatste update
+
+│   └── Locked projecten: grijs blok met 🔒
+
+│
+
+└── Detailpagina (klik op project)
+
+├── Header: naam, type, fase, SLA-status, lead agent
+
+├── Voortgangsbalk: fase X/6
+
+├── Agent-tasks: per agent status + tijdstip
+
+├── Documenten: klikbare links naar docs/
+
+├── Tijdlijn: wanneer is elke fase gestart/voltooid
+
+└── Acties: Lock/Unlock, Notitie toevoegen, Fase forceren
+
+---
+
+## PROJECT AFSLUITEN
+
+Een project wordt afgesloten wanneer:
+- Fase 5 actief is (live)
+- Klant heeft bevestigd (of 30 dagen na oplevering zonder klacht)
+- Alle tasks done
+
+Afsluiting:
+1. Cortexia zet PROJECT_STATUS.json status op "afgesloten"
+2. Map blijft bewaard in projects/website_builds/ (nooit verwijderen)
+3. MCC toont project als "Afgesloten" (apart filter)
+4. Project kan op elk moment heropend worden (nazorg/updates)

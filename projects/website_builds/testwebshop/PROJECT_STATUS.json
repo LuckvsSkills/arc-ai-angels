@@ -1,0 +1,81 @@
+{
+  "project_id": "testwebshop",
+  "naam": "TestWebshop",
+  "type": "klant",
+  "template_type": "ecommerce",
+  "locked": false,
+  "lock_hint": "",
+  "status": "in_uitvoering",
+  "fase": 2,
+  "fase_naam": "Uitvoering",
+  "aangemaakt": "2026-06-19T04:01:45.944877",
+  "laatste_update": "2026-06-19T04:01:45.944877",
+  "sla_deadline": "2026-06-20T04:01:45.944877",
+  "lead_agent": "cortexia",
+  "agents": [
+    "cortexia",
+    "forge",
+    "axon",
+    "nero",
+    "ventura",
+    "clio"
+  ],
+  "tasks": {
+    "cortexia": {
+      "status": "done",
+      "gestart": "2026-06-19T04:01:45.944877",
+      "voltooid": "2026-06-19T04:01:45.944877",
+      "notitie": "Project geïnitialiseerd via init_project.py"
+    },
+    "forge": {
+      "status": "open",
+      "gestart": null,
+      "voltooid": null,
+      "notitie": ""
+    },
+    "axon": {
+      "status": "wacht_op",
+      "gestart": null,
+      "voltooid": null,
+      "notitie": "",
+      "wacht_op": [
+        "forge"
+      ]
+    },
+    "nero": {
+      "status": "parallel_met",
+      "gestart": null,
+      "voltooid": null,
+      "notitie": "",
+      "parallel_met": [
+        "forge"
+      ]
+    },
+    "ventura": {
+      "status": "wacht_op",
+      "gestart": null,
+      "voltooid": null,
+      "notitie": "",
+      "wacht_op": [
+        "forge",
+        "axon"
+      ]
+    },
+    "clio": {
+      "status": "wacht_op",
+      "gestart": null,
+      "voltooid": null,
+      "notitie": "",
+      "wacht_op": [
+        "ventura"
+      ]
+    }
+  },
+  "live_url": null,
+  "notion_page_url": null,
+  "notities": [],
+  "fases_voltooid": [
+    0,
+    1
+  ]
+}

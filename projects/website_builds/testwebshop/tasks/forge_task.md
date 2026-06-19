@@ -1,12 +1,26 @@
-Task ID: FORGE-WEBSITE-TESTWEBSHOP-001
-Title: Website bouwen — TestWebshop
-Summary: Clone template-ecommerce, personaliseer op basis van PROJECT_BRIEF.json, bouw admin panel indien vereist.
+# Task — FORGE — TestWebshop
+
+Task ID: FORGE-TESTWEBSHOP-001
+Project ID: testwebshop
+Project Naam: TestWebshop
+Template Type: ecommerce
 Priority: HIGH
 Status: OPEN
+Owner: forge
 Assigned By: cortexia
-Created At: 2026-06-13
+Created At: 2026-06-19
 Project Dir: /home/prime/arc_ai_angels/projects/website_builds/testwebshop
 Brief: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_BRIEF.json
-Next Step: python3 /home/prime/arc_ai_angels/agents/forge/workers/clone_template.py /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_BRIEF.json
+Status File: /home/prime/arc_ai_angels/projects/website_builds/testwebshop/PROJECT_STATUS.json
+
+Dependencies: geen
+Parallel Met: geen
+
+## Next Step
+Lees PROJECT_STATUS.json, check of dependencies done zijn, voer taak uit, update status.
+
+## Taakomschrijving
+Zie PROJECT_SOP.md voor agent-verantwoordelijkheden per fase.
+
 Result Summary:
 Completion Validated By:
