@@ -26,6 +26,7 @@ from app.api.system_routes  import router as system_router
 from app.api.cost_routes    import router as cost_router
 from app.api.tasks_api_routes import router as tasks_api_router
 from app.api.skills_approval_routes import router as skills_approval_router
+from app.api.projects_routes import router as projects_router
 
 app.include_router(agents_router,   prefix="/api")
 app.include_router(memory_router,   prefix="/api")
@@ -41,6 +42,7 @@ app.include_router(system_router, prefix="/api")
 app.include_router(cost_router, prefix="/api")
 app.include_router(tasks_api_router, prefix="/api")
 app.include_router(skills_approval_router, prefix="/api")
+app.include_router(projects_router,  prefix="/api")
 app.include_router(auth_router)
 app.include_router(model_router,    prefix="")
 
@@ -74,31 +76,6 @@ async def get_task(task_id: str):
 async def alerts():
     return {"alerts":[],"total_count":0}
 
-@app.get("/api/projects")
-async def projects():
-    import glob, re
-    projects_dir = f"{BASE_DIR}/projects"
-    projects = []
-    for f in sorted(glob.glob(f"{projects_dir}/PROJECT_[0-9]*.md")):
-        if "IDEAS" in f: continue
-        try:
-            content = open(f).read()
-            title = re.search(r"^#\s+PROJECT\s+\d+\s+[—-]\s+(.+)$", content, re.MULTILINE)
-            status = re.search(r"Status:\s*(.*)", content)
-            revenue = re.search(r"Revenue:\s*(.*)", content)
-            lead = re.search(r"Lead:\s*(.*)", content)
-            pid = os.path.basename(f).replace(".md","")
-            projects.append({
-                "id": pid,
-                "title": title.group(1).strip() if title else pid,
-                "status": status.group(1).strip() if status else "ONBEKEND",
-                "revenue": revenue.group(1).strip() if revenue else "-",
-                "lead": lead.group(1).strip() if lead else "-",
-                "file": os.path.basename(f),
-                "content": content[:500]
-            })
-        except: pass
-    return {"projects": projects, "total_count": len(projects)}
 
 @app.get("/api/reload")
 async def reload():
