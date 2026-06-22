@@ -1,12 +1,18 @@
 ---
 name: daily-wrap-up
-description: "Procedures for daily wrap-up to track journal entries and completed tasks."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-11" } }
+description: "Systematic procedure for completing daily wrap-up tasks including task updates and insights in the m"
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-22" } }
 ---
-# Daily Wrap-Up Process for Kairo
+# Daily Wrap-Up Procedure
 
-Procedures for daily wrap-up to track journal entries and completed tasks.
+Systematic procedure for completing daily wrap-up tasks including task updates and insights in the memory.
 
 ## Workflow
 
-1. Consolidate open JOURNAL entries into MEMORY.md. 2. Close completed TASKS. 3. Briefly note actions taken in MEMORY.md. 4. Do not send a Telegram message; let Nova handle status updates.
+1. **Dag Afsluiting:**  
+   - Update TASKS.md with completed, in-progress, and blocked tasks.  
+   - Record any blocked reasons if applicable.  
+2. **Memory Update:**  
+   - Update MEMORY.md with key learnings and remove outdated information.  
+3. **Rapportage:**  
+   - Report daily results in a concise format to the Omni Lead.

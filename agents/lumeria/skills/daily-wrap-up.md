@@ -1,12 +1,20 @@
 ---
 name: daily-wrap-up
-description: "Workflow for executing the daily wrap-up for the Lumeria project."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-11" } }
+description: "A structured process to complete daily tasks, update memory, and report to Flux."
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-22" } }
 ---
-# Daily Wrap-Up Procedure
+# Dagafsluiting Workflow
 
-Workflow for executing the daily wrap-up for the Lumeria project.
+A structured process to complete daily tasks, update memory, and report to Flux.
 
 ## Workflow
 
-1. Consolidate open JOURNAL entries into MEMORY.md. 2. Close completed TASKS. 3. Summarize actions taken in MEMORY.md. 4. Avoid sending Telegram messages; gather all statuses for a consolidated overview.
+1. **DAG AFSLUITING:**  
+   - **Voltooid:** Update TASKS.md with completed tasks.  
+   - **Lopend:** Update Next Step with ongoing tasks.  
+   - **Geblokkeerd:** Note Blocked Reason for any blocked tasks.  
+2. **MEMORY UPDATE:**  
+   - Document learnings in MEMORY.md.  
+   - Remove outdated information.  
+3. **RAPPORTAGE:**  
+   - Send a concise report to Flux summarizing completed tasks, ongoing tasks, and anything needing attention.

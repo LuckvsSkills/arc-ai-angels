@@ -1,15 +1,23 @@
 ---
 name: daily-wrap-up
-description: "A structured process to execute daily wrap-ups for project reflection and status tracking."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-11" } }
+description: "A workflow for concluding daily tasks and documenting learning insights."
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-22" } }
 ---
-# Daily Wrap-Up Procedure
+# Daily Wrap-Up Process
 
-A structured process to execute daily wrap-ups for project reflection and status tracking.
+A workflow for concluding daily tasks and documenting learning insights.
 
 ## Workflow
 
-1. Consolidate open JOURNAL entries into MEMORY.md.
-2. Mark completed TASKS as done.
-3. Briefly note what has been accomplished in MEMORY.md.
-4. Avoid sending Telegram messages for the wrap-up; rely on Nova for status compilation.
+1. **Dagafsluiting:**  
+   - Update `TASKS.md`:  
+     - Mark completed tasks as DONE.  
+     - Record ongoing tasks.  
+     - Note any blocked tasks with reasons.  
+2. **Memory Update:**  
+   - Update `MEMORY.md`:  
+     - Document new insights.  
+     - Remove outdated information.  
+3. **Rapportage:**  
+   - Report daily results to Omni Lead:  
+     - Keep it concise and factual.
