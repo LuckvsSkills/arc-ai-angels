@@ -1,23 +1,22 @@
 ---
 name: daily-wrap-up
-description: "A workflow for concluding daily tasks and documenting learning insights."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-22" } }
+description: "Includes a two-step process for daily task review and consolidation of learnings."
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-25" } }
 ---
-# Daily Wrap-Up Process
+# Morning PREP & CONSOLIDATE Workflow
 
-A workflow for concluding daily tasks and documenting learning insights.
+Includes a two-step process for daily task review and consolidation of learnings.
 
 ## Workflow
 
-1. **Dagafsluiting:**  
-   - Update `TASKS.md`:  
-     - Mark completed tasks as DONE.  
-     - Record ongoing tasks.  
-     - Note any blocked tasks with reasons.  
-2. **Memory Update:**  
-   - Update `MEMORY.md`:  
-     - Document new insights.  
-     - Remove outdated information.  
-3. **Rapportage:**  
-   - Report daily results to Omni Lead:  
-     - Keep it concise and factual.
+1. **Morning PREP:**  
+   - Read `MEMORY.md`:  
+     - Identify core learnings.  
+     - Review tasks in `TASKS.md`: check active and blocked tasks.  
+     - Create a mental overview for the day.  
+ 2. **CONSOLIDATE:**  
+   - Process learnings from yesterday in `MEMORY.md`.  
+   - Close completed tasks in `TASKS.md` (status DONE + result_summary).  
+   - Update ongoing tasks with the latest status.  
+   - Report daily overview to lead agent: keep it concise.  
+   - Avoid using complex tools in this phase.

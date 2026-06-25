@@ -1,15 +1,12 @@
 ---
 name: ai-news-insights
-description: "Gather and summarize current news and insights from various AI news sources."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-22" } }
+description: "Steps for daily task wrap-up, memory updates, and reporting."
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-25" } }
 ---
-# AI News Insights Collection
+# Daily Wrap-Up Procedure
 
-Gather and summarize current news and insights from various AI news sources.
+Steps for daily task wrap-up, memory updates, and reporting.
 
 ## Workflow
 
-1. Gather AI news from leading websites like TechCrunch, Times of AI, and Reuters.
-2. Extract key insights related to advancements in AI technologies and applications.
-3. Analyze trends affecting industries like finance, healthcare, and marketing.
-4. Summarize findings for review and action planning.
+1. FINALIZE TASKS: Update TASKS.md with completed tasks, pending tasks, and any blocked reasons. 2. UPDATE MEMORY: Reflect on learnings in MEMORY.md, removing outdated information. 3. REPORT: Send a concise report to Flux summarizing completed tasks, ongoing tasks, and any issues requiring attention.

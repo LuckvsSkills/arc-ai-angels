@@ -1,21 +1,21 @@
 ---
 name: daily-prep
-description: "A workflow for daily preparation and task management in OpenClaw."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-22" } }
+description: "Add procedures for day closure, memory updates, and reporting."
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-25" } }
 ---
-# Daily Preparation and Consolidation Workflow
+# Daily Wrap-Up Procedure
 
-A workflow for daily preparation and task management in OpenClaw.
+Add procedures for day closure, memory updates, and reporting.
 
 ## Workflow
 
-- **Step 1: PREP**
-    - Read `MEMORY.md`. Reflect on key learnings.
-    - Check `TASKS.md`. Identify active and blocked tasks.
-    - Create a mental overview of the day's tasks.
-- **Step 2: CONSOLIDATE**
-    - Process learnings from yesterday into `MEMORY.md`.
-    - Mark completed tasks in `TASKS.md` (status DONE + result_summary).
-    - Update remaining tasks with the latest status.
-    - Report daily overview to the lead agent concisely. 
-    - Avoid using expensive tools during this phase.
+**Step 3: WRAP-UP**
+- **DAY CLOSURE:**
+    - Identify completed tasks and update `TASKS.md` with status DONE.
+    - Check for in-progress tasks and update their next steps.
+    - Note any blocked tasks with reasons.
+- **MEMORY UPDATE:**
+    - Reflect on learnings of the day and update `MEMORY.md` with new insights.
+    - Remove outdated information.
+- **REPORTING:**
+    - Report daily results concisely to the Omni Lead.
