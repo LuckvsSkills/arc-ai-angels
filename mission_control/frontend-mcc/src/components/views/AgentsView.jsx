@@ -80,10 +80,8 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     const s = stateRef.current
     s.rotY=0; s.rotX=0; s.velY=0; s.velX=0; s.rotDir=rotDir
 
-    let granted = false
     const renderId = color + shape + kernStyle
-    requestRenderer(renderId, (ok) => { granted = ok })
-    if (!granted) return
+    requestRenderer(renderId, () => {})
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(42,1,0.1,100)
