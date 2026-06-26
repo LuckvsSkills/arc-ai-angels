@@ -40,16 +40,13 @@ const SHAPES = ['sphere','box','octahedron','tetrahedron','cone','dodecahedron',
 
 // WebGL context manager — max 8 tegelijk
 const activeRenderers = new Set()
-const MAX_RENDERERS = 12
+const MAX_RENDERERS = 32
 const pendingQueue = []
 
 function requestRenderer(id, callback) {
-  if (activeRenderers.size < MAX_RENDERERS) {
-    activeRenderers.add(id)
-    callback(true)
-  } else {
-    pendingQueue.push({ id, callback })
-  }
+  // Altijd toestaan — 32 agents passen in moderne GPU
+  activeRenderers.add(id)
+  callback(true)
 }
 
 function releaseRenderer(id) {
