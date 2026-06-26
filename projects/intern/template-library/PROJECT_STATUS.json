@@ -3,16 +3,18 @@
   "naam": "Template Library",
   "type": "intern",
   "template_type": "intern",
-  "locked": false,
+  "locked": true,
   "lock_hint": "",
   "status": "in_uitvoering",
   "fase": 2,
   "fase_naam": "Uitvoering",
   "aangemaakt": "2026-06-15T00:00:00",
-  "laatste_update": "2026-06-19T04:59:28+02:00",
+  "laatste_update": "2026-06-26T17:53:45.607947",
   "sla_deadline": "2026-10-15T00:00:00",
   "lead_agent": "forge",
-  "agents": ["forge"],
+  "agents": [
+    "forge"
+  ],
   "tasks": {
     "forge": {
       "status": "in_progress",
@@ -30,12 +32,21 @@
       "timestamp": "2026-06-15T00:00:00"
     }
   ],
-  "fases_voltooid": [0, 1],
+  "fases_voltooid": [
+    0,
+    1
+  ],
   "voortgang_templates": {
     "totaal": 52,
     "klaar": 5,
     "huidige_maand": 1,
     "huidige_variant": "V1",
-    "klaar_lijst": ["landing-v1", "portfolio-v1", "blog-v1", "bedrijf-v1", "ecommerce-v1"]
+    "klaar_lijst": [
+      "landing-v1",
+      "portfolio-v1",
+      "blog-v1",
+      "bedrijf-v1",
+      "ecommerce-v1"
+    ]
   }
 }
