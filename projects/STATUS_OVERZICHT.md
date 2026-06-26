@@ -98,6 +98,17 @@
 - [x] Quantix (Lumeria + 5 sentinels) — workers
 - [x] Zenix (Fluentia + 5 sentinels) — workers
 
+
+### Project Management Systeem ✅
+- [x] PROJECT_SOP.md (462 regels) — parallelle werkwijze, project-identiteit, beslisboom, lock-systeem, Notion-advies
+- [x] init_project.py (Cortexia worker) — automatische project-initialisatie met dependency/parallel-logica
+- [x] projects_routes.py (backend API) — GET/PATCH/lock/unlock/notities endpoints
+- [x] ProjectsView.jsx — dynamisch, PIN-beveiligd lock/unlock, filter klant/intern, agent-tasks, SLA, voortgang
+- [x] Template Library als officieel intern project in MCC (5/52 klaar, Forge in_progress)
+- [x] Test-projecten gearchiveerd naar _archief/
+- [x] mcc-backend crash-loop opgelost (stabiel draaiend via systemd)
+- [x] PIN gewijzigd naar 5076 via systemd Environment variabele
+
 ## 🔴 OPEN / VOLGENDE CHAT
 
 ### Website Factory (volgende chat: Template Library bouwen)

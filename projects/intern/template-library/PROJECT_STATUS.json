@@ -3,13 +3,13 @@
   "naam": "Template Library",
   "type": "intern",
   "template_type": "intern",
-  "locked": false,
+  "locked": true,
   "lock_hint": "",
   "status": "in_uitvoering",
   "fase": 2,
   "fase_naam": "Uitvoering",
   "aangemaakt": "2026-06-15T00:00:00",
-  "laatste_update": "2026-06-27T01:15:02.034106",
+  "laatste_update": "2026-06-27T01:22:13.151962",
   "sla_deadline": "2026-10-15T00:00:00",
   "lead_agent": "forge",
   "agents": [
@@ -48,5 +48,6 @@
       "bedrijf-v1",
       "ecommerce-v1"
     ]
-  }
+  },
+  "_locked_status": "in_uitvoering"
 }
