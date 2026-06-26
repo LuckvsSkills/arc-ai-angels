@@ -44,7 +44,7 @@ export default function ProjectsView({ theme }) {
 
   const project = projects.find(p => p.project_id === selectedId)
   // Project is locked als locked=true EN status='locked' (server stuurt dit terug)
-  const isLocked = project?.locked === true && project?.status === 'locked'
+  const isLocked = project?.locked === true
 
   const handleUnlock = () => {
     fetch(`${API_BASE}/projects/${selectedId}/unlock`, {
@@ -114,7 +114,7 @@ export default function ProjectsView({ theme }) {
           Projecten {loading?'(laden...)':`(${projects.length})`}
         </div>
         {projects.map(p => {
-          const locked = p.status === 'locked'
+          const locked = p.locked === true
           const sla = slaKleur(p)
           return (
             <div key={p.project_id}

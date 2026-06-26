@@ -161,6 +161,13 @@ def update_project(project_id: str, body: dict):
                     if key in allowed:
                         data[key] = val
 
+                # Sync status met locked veld
+                if 'locked' in body:
+                    if body['locked'] and data.get('status') != 'afgesloten':
+                        data['_locked_status'] = data.get('status', 'in_uitvoering')
+                    elif not body['locked'] and '_locked_status' in data:
+                        data['status'] = data.pop('_locked_status', data.get('status'))
+
                 data['laatste_update'] = datetime.now().isoformat()
 
                 with open(status_file, 'w') as f:
