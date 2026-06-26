@@ -22,6 +22,7 @@ export default function ProjectsView({ theme }) {
   const [showLockModal, setShowLockModal] = useState(false)
   const [lockPin, setLockPin] = useState('')
   const [lockError, setLockError] = useState('')
+  const [unlockedIds, setUnlockedIds] = useState(new Set())
 
   const loadProjects = () => {
     fetch(`${API_BASE}/projects?filter=${filter}`)
@@ -44,7 +45,7 @@ export default function ProjectsView({ theme }) {
 
   const project = projects.find(p => p.project_id === selectedId)
   // Project is locked als locked=true EN status='locked' (server stuurt dit terug)
-  const isLocked = project?.locked === true
+  const isLocked = project?.locked === true && !unlockedIds.has(selectedId)
 
   const handleUnlock = () => {
     fetch(`${API_BASE}/projects/${selectedId}/unlock`, {
@@ -53,7 +54,7 @@ export default function ProjectsView({ theme }) {
       body: JSON.stringify({ pin: pinInput })
     })
       .then(r => { if (!r.ok) throw new Error('fout'); return r.json() })
-      .then(() => { setPinError(''); setPinInput(''); loadProjects() })
+      .then(() => { setPinError(''); setPinInput(''); setUnlockedIds(prev => new Set([...prev, selectedId])); loadProjects() })
       .catch(() => setPinError('Onjuiste PIN, probeer opnieuw'))
   }
 
@@ -114,7 +115,7 @@ export default function ProjectsView({ theme }) {
           Projecten {loading?'(laden...)':`(${projects.length})`}
         </div>
         {projects.map(p => {
-          const locked = p.locked === true
+          const locked = p.locked === true && !unlockedIds.has(p.project_id)
           const sla = slaKleur(p)
           return (
             <div key={p.project_id}
