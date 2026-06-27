@@ -548,7 +548,7 @@ export default function AgentsView({ theme }) {
   const [filter, setFilter] = useState('all')
   const [search, setSearch] = useState('')
   const [winW, setWinW] = useState(window.innerWidth)
-  const scrollRef = React.useRef(null)
+  const [scrollEl, setScrollEl] = React.useState(null)
   const isMobile = winW < 768
 
   useEffect(() => {
@@ -581,10 +581,10 @@ export default function AgentsView({ theme }) {
           ))}
         </div>
       </div>
-      <div ref={scrollRef} style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
+      <div ref={el => { if (el && !scrollEl) setScrollEl(el) }} style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
         <div style={{display:'grid',gridTemplateColumns:`repeat(auto-fill,minmax(${isMobile?'100%':'280px'},1fr))`,gap:'12px'}}>
           {filtered.map((agent, idx) => (
-            <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx} scrollRoot={scrollRef.current}/>
+            <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx} scrollRoot={scrollEl}/>
           ))}
         </div>
       </div>
