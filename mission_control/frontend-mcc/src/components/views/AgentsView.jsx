@@ -44,8 +44,12 @@ const MAX_RENDERERS = 32
 const pendingQueue = []
 
 function requestRenderer(id, callback) {
-  activeRenderers.add(id)
-  callback(true)
+  if (activeRenderers.size < MAX_RENDERERS) {
+    activeRenderers.add(id)
+    callback(true)
+  } else {
+    pendingQueue.push({ id, callback })
+  }
 }
 
 function releaseRenderer(id) {
@@ -73,9 +77,8 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
   const stateRef = useRef({ animId:null, mouseX:0, mouseY:0, hovering:false, returning:false, rotY:0, rotX:0, velY:0.03, velX:0 })
 
   useEffect(() => {
-    const init = () => {
-      const el = mountRef.current
-      if (!el) { requestAnimationFrame(init); return }
+    const el = mountRef.current
+    if (!el) return
     const W = 180, H = 180
     const s = stateRef.current
     s.rotY=0; s.rotX=0; s.velY=0; s.velX=0; s.rotDir=rotDir
@@ -355,8 +358,6 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     el.addEventListener('touchmove',onTouch,{passive:false})
     el.addEventListener('touchend',onTouchEnd,{passive:true})
 
-    }
-    requestAnimationFrame(init)
     return () => {
       cancelAnimationFrame(s.animId)
       clearTimeout(controlTimer)
@@ -373,7 +374,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
 
   const containerRef = useRef(null)
-  const [shouldRender, setShouldRender] = React.useState(true)
+  const [shouldRender, setShouldRender] = React.useState(agentIndex < 32)
   const rendered = useRef(false)
 
   useEffect(() => {
