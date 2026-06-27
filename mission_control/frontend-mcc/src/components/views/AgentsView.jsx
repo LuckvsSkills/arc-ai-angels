@@ -40,7 +40,7 @@ const SHAPES = ['sphere','box','octahedron','tetrahedron','cone','dodecahedron',
 
 // WebGL context manager — max 8 tegelijk
 const activeRenderers = new Set()
-const MAX_RENDERERS = 32
+const MAX_RENDERERS = 12
 const pendingQueue = []
 
 function requestRenderer(id, callback) {
@@ -75,7 +75,6 @@ const EYE_STYLES  = ['scanner','hex','diamond','visor','orb','cross']
 function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, agentIndex = 99, rotDir = -1 }) {
   const mountRef = useRef(null)
   const stateRef = useRef({ animId:null, mouseX:0, mouseY:0, hovering:false, returning:false, rotY:0, rotX:0, velY:0.03, velX:0 })
-  const [shouldRender, setShouldRender] = React.useState(agentIndex < 32)
 
   useEffect(() => {
     const el = mountRef.current
@@ -84,7 +83,10 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     const s = stateRef.current
     s.rotY=0; s.rotX=0; s.velY=0; s.velX=0; s.rotDir=rotDir
 
-    requestRenderer(color + shape + kernStyle, () => {})
+    let granted = false
+    const renderId = color + shape + kernStyle
+    requestRenderer(renderId, (ok) => { granted = ok })
+    if (!granted) return
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(42,1,0.1,100)
@@ -372,9 +374,10 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       if (el.contains(renderer.domElement)) el.removeChild(renderer.domElement)
       releaseRenderer(color + shape + kernStyle)
     }
-  }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle, shouldRender])
+  }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
 
   const containerRef = useRef(null)
+  const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
   const rendered = useRef(false)
 
   useEffect(() => {
