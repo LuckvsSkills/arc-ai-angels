@@ -370,7 +370,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
   return (
     <div style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
-      <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
+      <div ref={startRender} style={{width:'180px',height:'180px'}}/>
     </div>
   )
 }
