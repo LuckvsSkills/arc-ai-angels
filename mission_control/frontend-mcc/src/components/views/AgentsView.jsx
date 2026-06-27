@@ -368,27 +368,14 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       releaseRenderer(color + shape + kernStyle)
     }
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
-
-  const containerRef = useRef(null)
-  const [shouldRender, setShouldRender] = React.useState(agentIndex < 12)
-  const rendered = useRef(false)
-
+  const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
   useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !rendered.current) {
-        rendered.current = true
-        setShouldRender(true)
-        obs.disconnect()
-      }
-    }, { root: scrollRoot, rootMargin: '200px 0px', threshold: 0 })
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [scrollRoot])
-
+    if (shouldRender) return
+    const timer = setTimeout(() => setShouldRender(true), agentIndex * 100)
+    return () => clearTimeout(timer)
+  }, [])
   return (
-    <div ref={containerRef} style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
+    <div style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
       {shouldRender
         ? <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
         : <div style={{width:'180px',height:'180px',display:'flex',alignItems:'center',justifyContent:'center'}}>
@@ -397,6 +384,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       }
     </div>
   )
+}
 }
 
 function ColorPick({ label, value, onChange, t }) {
