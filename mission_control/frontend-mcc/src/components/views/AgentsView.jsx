@@ -385,7 +385,6 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     </div>
   )
 }
-}
 
 function ColorPick({ label, value, onChange, t }) {
   return (
