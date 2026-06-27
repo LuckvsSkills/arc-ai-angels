@@ -68,15 +68,13 @@ function useAgentPrefs(id) {
 const KERN_STYLES = ['metallic','chrome','crystal','plasma','matte','hologram']
 const EYE_STYLES  = ['scanner','hex','diamond','visor','orb','cross']
 
-function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, agentIndex = 99, rotDir = -1, scrollRoot = null }) {
+function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, agentIndex = 99, rotDir = -1 }) {
   const mountRef = useRef(null)
   const stateRef = useRef({ animId:null, mouseX:0, mouseY:0, hovering:false, returning:false, rotY:0, rotX:0, velY:0.03, velX:0 })
-  const startRender = React.useCallback((el) => { if (el) mountRef.current = el }, [])
 
   useEffect(() => {
-    const run = () => {
     const el = mountRef.current
-    if (!el) { setTimeout(run, 50); return }
+    if (!el) return
     const W = 180, H = 180
     const s = stateRef.current
     s.rotY=0; s.rotX=0; s.velY=0; s.velX=0; s.rotDir=rotDir
@@ -356,8 +354,6 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     el.addEventListener('touchmove',onTouch,{passive:false})
     el.addEventListener('touchend',onTouchEnd,{passive:true})
 
-    }
-    run()
     return () => {
       cancelAnimationFrame(s.animId)
       clearTimeout(controlTimer)
@@ -372,9 +368,33 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       releaseRenderer(color + shape + kernStyle)
     }
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
+
+  const containerRef = useRef(null)
+  const [shouldRender, setShouldRender] = React.useState(true)
+  const rendered = useRef(false)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !rendered.current) {
+        rendered.current = true
+        setShouldRender(true)
+        obs.disconnect()
+      }
+    }, { rootMargin: '400px 0px', threshold: 0 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
-    <div style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
-      <div ref={startRender} style={{width:'180px',height:'180px'}}/>
+    <div ref={containerRef} style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
+      {shouldRender
+        ? <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
+        : <div style={{width:'180px',height:'180px',display:'flex',alignItems:'center',justifyContent:'center'}}>
+            <div style={{width:'80px',height:'80px',borderRadius:'50%',background:`radial-gradient(circle at 35% 30%, ${color}60, ${color}20)`,border:`2px solid ${color}40`,boxShadow:`0 0 15px ${glowColor}30`}}/>
+          </div>
+      }
     </div>
   )
 }
@@ -390,7 +410,7 @@ function ColorPick({ label, value, onChange, t }) {
   )
 }
 
-function AgentCard({ agent, theme, isSelected, onClick, agentIndex, scrollRoot }) {
+function AgentCard({ agent, theme, isSelected, onClick, agentIndex }) {
   const t = theme?.colors || {}
   const [prefs, savePrefs] = useAgentPrefs(agent.id)
   const [showEditor, setShowEditor] = useState(false)
@@ -415,7 +435,7 @@ function AgentCard({ agent, theme, isSelected, onClick, agentIndex, scrollRoot }
     }}>
       <div onClick={onClick} style={{cursor:'pointer',padding:'14px 16px'}}>
         <div style={{display:'flex',alignItems:'flex-start',gap:'16px',flexWrap:'wrap'}}>
-        <AgentCanvas color={kernColor} glowColor={glowColor} eyeColor={eyeColor} shape={shape} kernStyle={kernStyle} eyeStyle={eyeStyle} agentIndex={agentIndex} rotDir={rotDir} scrollRoot={scrollRoot}/>
+        <AgentCanvas color={kernColor} glowColor={glowColor} eyeColor={eyeColor} shape={shape} kernStyle={kernStyle} eyeStyle={eyeStyle} agentIndex={agentIndex} rotDir={rotDir}/>
         <div style={{flex:1,minWidth:'160px'}}>
           {/* Naam + status */}
           <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'6px'}}>
@@ -528,7 +548,6 @@ export default function AgentsView({ theme }) {
   const [filter, setFilter] = useState('all')
   const [search, setSearch] = useState('')
   const [winW, setWinW] = useState(window.innerWidth)
-  const [scrollEl, setScrollEl] = React.useState(null)
   const isMobile = winW < 768
 
   useEffect(() => {
@@ -561,10 +580,10 @@ export default function AgentsView({ theme }) {
           ))}
         </div>
       </div>
-      <div ref={el => { if (el && !scrollEl) setScrollEl(el) }} style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
+      <div style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
         <div style={{display:'grid',gridTemplateColumns:`repeat(auto-fill,minmax(${isMobile?'100%':'280px'},1fr))`,gap:'12px'}}>
           {filtered.map((agent, idx) => (
-            <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx} scrollRoot={scrollEl}/>
+            <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx}/>
           ))}
         </div>
       </div>
