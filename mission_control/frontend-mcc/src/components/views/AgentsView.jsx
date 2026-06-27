@@ -73,8 +73,9 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
   const stateRef = useRef({ animId:null, mouseX:0, mouseY:0, hovering:false, returning:false, rotY:0, rotX:0, velY:0.03, velX:0 })
 
   useEffect(() => {
-    const el = mountRef.current
-    if (!el) return
+    const init = () => {
+      const el = mountRef.current
+      if (!el) { requestAnimationFrame(init); return }
     const W = 180, H = 180
     const s = stateRef.current
     s.rotY=0; s.rotX=0; s.velY=0; s.velX=0; s.rotDir=rotDir
@@ -354,6 +355,8 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     el.addEventListener('touchmove',onTouch,{passive:false})
     el.addEventListener('touchend',onTouchEnd,{passive:true})
 
+    }
+    requestAnimationFrame(init)
     return () => {
       cancelAnimationFrame(s.animId)
       clearTimeout(controlTimer)
