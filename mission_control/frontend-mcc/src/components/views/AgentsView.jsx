@@ -368,20 +368,9 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       releaseRenderer(color + shape + kernStyle)
     }
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
-  const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
-  useEffect(() => {
-    if (shouldRender) return
-    const timer = setTimeout(() => setShouldRender(true), agentIndex * 100)
-    return () => clearTimeout(timer)
-  }, [])
   return (
     <div style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
-      {shouldRender
-        ? <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
-        : <div style={{width:'180px',height:'180px',display:'flex',alignItems:'center',justifyContent:'center'}}>
-            <div style={{width:'80px',height:'80px',borderRadius:'50%',background:`radial-gradient(circle at 35% 30%, ${color}60, ${color}20)`,border:`2px solid ${color}40`,boxShadow:`0 0 15px ${glowColor}30`}}/>
-          </div>
-      }
+      <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
     </div>
   )
 }
