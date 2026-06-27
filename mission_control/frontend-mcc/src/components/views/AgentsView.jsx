@@ -40,16 +40,12 @@ const SHAPES = ['sphere','box','octahedron','tetrahedron','cone','dodecahedron',
 
 // WebGL context manager — max 8 tegelijk
 const activeRenderers = new Set()
-const MAX_RENDERERS = 12
+const MAX_RENDERERS = 32
 const pendingQueue = []
 
 function requestRenderer(id, callback) {
-  if (activeRenderers.size < MAX_RENDERERS) {
-    activeRenderers.add(id)
-    callback(true)
-  } else {
-    pendingQueue.push({ id, callback })
-  }
+  activeRenderers.add(id)
+  callback(true)
 }
 
 function releaseRenderer(id) {
@@ -72,7 +68,7 @@ function useAgentPrefs(id) {
 const KERN_STYLES = ['metallic','chrome','crystal','plasma','matte','hologram']
 const EYE_STYLES  = ['scanner','hex','diamond','visor','orb','cross']
 
-function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, agentIndex = 99, rotDir = -1 }) {
+function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, agentIndex = 99, rotDir = -1, scrollRoot = null }) {
   const mountRef = useRef(null)
   const stateRef = useRef({ animId:null, mouseX:0, mouseY:0, hovering:false, returning:false, rotY:0, rotX:0, velY:0.03, velX:0 })
 
@@ -83,10 +79,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     const s = stateRef.current
     s.rotY=0; s.rotX=0; s.velY=0; s.velX=0; s.rotDir=rotDir
 
-    let granted = false
-    const renderId = color + shape + kernStyle
-    requestRenderer(renderId, (ok) => { granted = ok })
-    if (!granted) return
+    requestRenderer(color + shape + kernStyle, () => {})
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(42,1,0.1,100)
@@ -377,7 +370,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
 
   const containerRef = useRef(null)
-  const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
+  const [shouldRender, setShouldRender] = React.useState(agentIndex < 12)
   const rendered = useRef(false)
 
   useEffect(() => {
@@ -389,7 +382,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
         setShouldRender(true)
         obs.disconnect()
       }
-    }, { rootMargin: '400px 0px', threshold: 0 })
+    }, { root: scrollRoot, rootMargin: '200px 0px', threshold: 0 })
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
@@ -417,7 +410,7 @@ function ColorPick({ label, value, onChange, t }) {
   )
 }
 
-function AgentCard({ agent, theme, isSelected, onClick, agentIndex }) {
+function AgentCard({ agent, theme, isSelected, onClick, agentIndex, scrollRoot }) {
   const t = theme?.colors || {}
   const [prefs, savePrefs] = useAgentPrefs(agent.id)
   const [showEditor, setShowEditor] = useState(false)
@@ -442,7 +435,7 @@ function AgentCard({ agent, theme, isSelected, onClick, agentIndex }) {
     }}>
       <div onClick={onClick} style={{cursor:'pointer',padding:'14px 16px'}}>
         <div style={{display:'flex',alignItems:'flex-start',gap:'16px',flexWrap:'wrap'}}>
-        <AgentCanvas color={kernColor} glowColor={glowColor} eyeColor={eyeColor} shape={shape} kernStyle={kernStyle} eyeStyle={eyeStyle} agentIndex={agentIndex} rotDir={rotDir}/>
+        <AgentCanvas color={kernColor} glowColor={glowColor} eyeColor={eyeColor} shape={shape} kernStyle={kernStyle} eyeStyle={eyeStyle} agentIndex={agentIndex} rotDir={rotDir} scrollRoot={scrollRoot}/>
         <div style={{flex:1,minWidth:'160px'}}>
           {/* Naam + status */}
           <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'6px'}}>
@@ -555,6 +548,7 @@ export default function AgentsView({ theme }) {
   const [filter, setFilter] = useState('all')
   const [search, setSearch] = useState('')
   const [winW, setWinW] = useState(window.innerWidth)
+  const scrollRef = React.useRef(null)
   const isMobile = winW < 768
 
   useEffect(() => {
@@ -587,10 +581,10 @@ export default function AgentsView({ theme }) {
           ))}
         </div>
       </div>
-      <div style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
+      <div ref={scrollRef} style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
         <div style={{display:'grid',gridTemplateColumns:`repeat(auto-fill,minmax(${isMobile?'100%':'280px'},1fr))`,gap:'12px'}}>
           {filtered.map((agent, idx) => (
-            <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx}/>
+            <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx} scrollRoot={scrollRef.current}/>
           ))}
         </div>
       </div>
