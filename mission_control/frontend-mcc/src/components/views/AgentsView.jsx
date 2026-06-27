@@ -371,7 +371,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       if (el.contains(renderer.domElement)) el.removeChild(renderer.domElement)
       releaseRenderer(color + shape + kernStyle)
     }
-  }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
+  }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle, shouldRender])
 
   const containerRef = useRef(null)
   const [shouldRender, setShouldRender] = React.useState(agentIndex < 32)
