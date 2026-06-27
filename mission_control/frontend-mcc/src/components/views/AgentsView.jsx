@@ -385,7 +385,7 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
     }, { root: scrollRoot, rootMargin: '200px 0px', threshold: 0 })
     obs.observe(el)
     return () => obs.disconnect()
-  }, [])
+  }, [scrollRoot])
 
   return (
     <div ref={containerRef} style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
