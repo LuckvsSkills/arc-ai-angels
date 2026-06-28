@@ -570,7 +570,7 @@ export default function AgentsView({ theme }) {
   })
 
   return (
-    <div style={{height:'100%',display:'flex',flexDirection:'column',overflow:'hidden'}}>
+    <div style={{height:'100%',display:'flex',flexDirection:'column',overflow:'auto'}}>
       <div style={{padding:'12px 16px',borderBottom:`1px solid ${t.border}`,flexShrink:0}}>
         <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'10px',flexWrap:'wrap',gap:'8px'}}>
           <h2 style={{margin:0,fontSize:'16px',color:t.text,fontWeight:'500'}}>
@@ -587,7 +587,7 @@ export default function AgentsView({ theme }) {
           ))}
         </div>
       </div>
-      <div style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
+      <div style={{flex:1,overflow:'visible',padding:'12px 16px'}}>
         <div style={{display:'grid',gridTemplateColumns:`repeat(auto-fill,minmax(${isMobile?'100%':'280px'},1fr))`,gap:'12px'}}>
           {filtered.map((agent, idx) => (
             <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx}/>
