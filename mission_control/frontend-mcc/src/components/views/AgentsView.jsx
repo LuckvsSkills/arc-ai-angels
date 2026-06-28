@@ -38,25 +38,25 @@ const AGENTS = [
 
 const SHAPES = ['sphere','box','octahedron','tetrahedron','cone','dodecahedron','cylinder','torus','icosahedron']
 
-// WebGL context pool — max 14 actief (Chrome limiet is 16)
-const MAX_CONTEXTS = 14
-const activeContexts = new Map()
-const waitingQueue = []
+// WebGL context manager — max 8 tegelijk
+const activeRenderers = new Set()
+const MAX_RENDERERS = 12
+const pendingQueue = []
 
 function requestRenderer(id, callback) {
-  if (activeContexts.size < MAX_CONTEXTS) {
-    activeContexts.set(id, null)
+  if (activeRenderers.size < MAX_RENDERERS) {
+    activeRenderers.add(id)
     callback(true)
   } else {
-    waitingQueue.push({ id, callback })
+    pendingQueue.push({ id, callback })
   }
 }
 
 function releaseRenderer(id) {
-  activeContexts.delete(id)
-  if (waitingQueue.length > 0) {
-    const next = waitingQueue.shift()
-    activeContexts.set(next.id, null)
+  activeRenderers.delete(id)
+  if (pendingQueue.length > 0) {
+    const next = pendingQueue.shift()
+    activeRenderers.add(next.id)
     next.callback(true)
   }
 }
@@ -375,32 +375,28 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       releaseRenderer(color + shape + kernStyle)
     }
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
+
   const containerRef = useRef(null)
-  const [visible, setVisible] = React.useState(false)
+  const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
+  const rendered = useRef(false)
 
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-    const root = document.getElementById('mcc-scroll')
     const obs = new IntersectionObserver(([entry]) => {
-      setVisible(entry.isIntersecting)
-    }, { root, rootMargin: '200px 0px', threshold: 0 })
+      if (entry.isIntersecting && !rendered.current) {
+        rendered.current = true
+        setShouldRender(true)
+        obs.disconnect()
+      }
+    }, { rootMargin: '400px 0px', threshold: 0 })
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
 
-  useEffect(() => {
-    const id = color + shape + kernStyle + agentIndex
-    if (visible) {
-      requestRenderer(id, () => {})
-    } else {
-      releaseRenderer(id)
-    }
-  }, [visible])
-
   return (
     <div ref={containerRef} style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
-      {visible
+      {shouldRender
         ? <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
         : <div style={{width:'180px',height:'180px',display:'flex',alignItems:'center',justifyContent:'center'}}>
             <div style={{width:'80px',height:'80px',borderRadius:'50%',background:`radial-gradient(circle at 35% 30%, ${color}60, ${color}20)`,border:`2px solid ${color}40`,boxShadow:`0 0 15px ${glowColor}30`}}/>
@@ -574,7 +570,7 @@ export default function AgentsView({ theme }) {
   })
 
   return (
-    <div style={{height:'100%',display:'flex',flexDirection:'column',overflow:'auto'}}>
+    <div style={{height:'100%',display:'flex',flexDirection:'column',overflow:'hidden'}}>
       <div style={{padding:'12px 16px',borderBottom:`1px solid ${t.border}`,flexShrink:0}}>
         <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'10px',flexWrap:'wrap',gap:'8px'}}>
           <h2 style={{margin:0,fontSize:'16px',color:t.text,fontWeight:'500'}}>
@@ -591,7 +587,7 @@ export default function AgentsView({ theme }) {
           ))}
         </div>
       </div>
-      <div style={{flex:1,overflow:'visible',padding:'12px 16px'}}>
+      <div style={{flex:1,overflow:'auto',padding:'12px 16px'}}>
         <div style={{display:'grid',gridTemplateColumns:`repeat(auto-fill,minmax(${isMobile?'100%':'280px'},1fr))`,gap:'12px'}}>
           {filtered.map((agent, idx) => (
             <AgentCard key={agent.id} agent={agent} theme={theme} isSelected={selected?.id===agent.id} onClick={()=>setSelected(selected?.id===agent.id?null:agent)} agentIndex={idx}/>
