@@ -120,7 +120,7 @@ export default function App() {
         onOpenSettings={() => setSettingsOpen(s => !s)}
       />
 
-      <div style={{flex:1,overflow:'auto',position:'relative'}}>
+      <div id="mcc-scroll" style={{flex:1,overflow:'auto',position:'relative'}}>
         <ErrorBoundary theme={theme}>
           {renderView()}
         </ErrorBoundary>

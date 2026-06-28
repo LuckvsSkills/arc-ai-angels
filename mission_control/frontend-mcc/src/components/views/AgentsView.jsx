@@ -383,13 +383,14 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
+    const root = document.getElementById('mcc-scroll')
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !rendered.current) {
         rendered.current = true
         setShouldRender(true)
         obs.disconnect()
       }
-    }, { rootMargin: '400px 0px', threshold: 0 })
+    }, { root, rootMargin: '200px 0px', threshold: 0 })
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
