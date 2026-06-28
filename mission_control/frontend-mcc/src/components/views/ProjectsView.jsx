@@ -194,8 +194,6 @@ export default function ProjectsView({ theme }) {
         )}
       </div>
 
-      </div>
-      )}
       {/* Detail panel */}
       {project && (!isMobile || showDetail) ? (
         <div style={{flex:1,overflow:'auto',padding:'28px 32px'}}>
