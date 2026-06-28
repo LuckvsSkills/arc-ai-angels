@@ -1,18 +1,21 @@
 ---
 name: openstaande-taken
-description: "Updated steps to include specific report structuring for daily tasks."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-23" } }
+description: "Workflow voor het voorbereiden van dagelijkse taken en geheugenupdates."
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-29" } }
 ---
-# Dag Afsluiting Workflow Update
+# Dagelijkse Voorbereiding Workflow
 
-Updated steps to include specific report structuring for daily tasks.
+Workflow voor het voorbereiden van dagelijkse taken en geheugenupdates.
 
 ## Workflow
 
-### Dag Afsluiting Workflow
-1. **Voltooide Taken**: Update TASKS.md with status DONE for completed tasks, e.g., 'Research Update - DONE'.
-2. **Huidige Taken**: Verify ongoing tasks; report as 'Geen openstaande taken.' if none.
-3. **Geblokkeerde Taken**: Note any blocked tasks with reasons; report as 'Geen.' if none.
-4. **Lessen Gelernt**: Record learnings for the day; mention any insights or areas for improvement such as 'Kansen voor verbetering in AI-assistenten.'
-5. **MEMORY Update**: Update MEMORY.md with any relevant insights and remove outdated content.
-6. **Rapportage naar Flux**: Send a concise report summarizing completed tasks, ongoing status, blocked tasks, and lessons learned.
+### Dagelijkse Voorbereiding Workflow
+1. **Stap 1 - Voorbereiden**:  
+   a. Lees MEMORY.md en noteer kern learnings van de vorige dag.  
+   b. Controleer TASKS.md voor actieve en geblokkeerde taken.  
+   c. Maak een mentaal overzicht van de dag.  
+2. **Stap 2 - Consolideren**:  
+   a. Verwerk learnings in MEMORY.md.  
+   b. Werk afgeronde taken bij in TASKS.md met status DONE.  
+   c. Update openstaande taken met de laatste status.  
+   d. Bereid een overzicht voor van actieve sentinels en lopende taken.

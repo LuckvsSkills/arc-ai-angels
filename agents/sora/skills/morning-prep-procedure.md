@@ -1,12 +1,19 @@
 ---
 name: morning-prep-procedure
-description: "Updates to the procedure based on insights gained from daily summaries and task completions."
-metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-22" } }
+description: "Enhancements to the daily morning preparation workflow reflecting recent practices."
+metadata: { "openclaw": { "emoji": "⭐", "approved_by": "Supreme Fea", "approved_at": "2026-06-29" } }
 ---
-# Daily Summary Insights
+# Updated Workflow Summary
 
-Updates to the procedure based on insights gained from daily summaries and task completions.
+Enhancements to the daily morning preparation workflow reflecting recent practices.
 
 ## Workflow
 
-- Confirm daily summaries in MEMORY.md to reinforce insights and strategies. - Include consolidated key points from previous sessions to maintain knowledge continuity.
+- **STAP 1 — PREP:**  
+  - Review MEMORY.md for core learnings from the previous day.  
+  - Check TASKS.md for active and blocked tasks, creating a mental overview for the day.  
+- **STAP 2 — CONSOLIDATE:**  
+  - Update MEMORY.md with yesterday's learnings.  
+  - Mark completed tasks in TASKS.md as DONE with result_summary.  
+  - Report daily overview to the lead agent concisely.  
+- Confirm daily summaries in MEMORY.md to reinforce insights and strategies, highlighting task tracking improvements and successful communication outcomes.

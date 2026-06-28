@@ -14,6 +14,15 @@ export default function ProjectsView({ theme }) {
   const [modal, setModal] = useState(null) // 'unlock' | 'lock' | null
   const [pin, setPin] = useState('')
   const [pinErr, setPinErr] = useState('')
+  const [winW, setWinW] = useState(window.innerWidth)
+  const [showDetail, setShowDetail] = useState(false)
+  const isMobile = winW < 768
+
+  useEffect(() => {
+    const h = () => setWinW(window.innerWidth)
+    window.addEventListener('resize', h)
+    return () => window.removeEventListener('resize', h)
+  }, [])
 
   const load = () => {
     fetch(`${API}/projects?filter=${filter}`)
@@ -128,7 +137,8 @@ export default function ProjectsView({ theme }) {
       )}
 
       {/* Sidebar */}
-      <div style={{width:'270px',minWidth:'270px',borderRight:`1px solid ${t.border||'#333'}`,overflow:'auto',padding:'16px 0'}}>
+      {(!isMobile || !showDetail) && (
+      <div style={{width:isMobile?'100%':'270px',minWidth:isMobile?'unset':'270px',borderRight:isMobile?'none':`1px solid ${t.border||'#333'}`,overflow:'auto',padding:'16px 0'}}>
         <div style={{padding:'0 12px 12px',display:'flex',gap:'6px'}}>
           {['alle','klant','intern'].map(f => (
             <button key={f} onClick={() => setFilter(f)} style={{
@@ -184,10 +194,19 @@ export default function ProjectsView({ theme }) {
         )}
       </div>
 
+      </div>
+      )}
       {/* Detail panel */}
-      {project ? (
+      {project && (!isMobile || showDetail) ? (
         <div style={{flex:1,overflow:'auto',padding:'28px 32px'}}>
 
+          {isMobile && (
+            <button onClick={() => { setShowDetail(false); setSelectedId(null) }}
+              style={{display:'flex',alignItems:'center',gap:'6px',fontSize:'12px',color:t.textMuted||'#666',
+                background:'transparent',border:'none',cursor:'pointer',padding:'0 0 12px 0'}}>
+              ← Terug naar projecten
+            </button>
+          )}
           {isLocked ? (
             /* LOCKED STATE */
             <div style={{maxWidth:'340px',margin:'60px auto',textAlign:'center'}}>
