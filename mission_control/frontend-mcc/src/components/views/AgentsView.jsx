@@ -38,25 +38,25 @@ const AGENTS = [
 
 const SHAPES = ['sphere','box','octahedron','tetrahedron','cone','dodecahedron','cylinder','torus','icosahedron']
 
-// WebGL context manager — max 8 tegelijk
-const activeRenderers = new Set()
-const MAX_RENDERERS = 12
-const pendingQueue = []
+// WebGL context pool — max 14 actief (Chrome limiet is 16)
+const MAX_CONTEXTS = 14
+const activeContexts = new Map()
+const waitingQueue = []
 
 function requestRenderer(id, callback) {
-  if (activeRenderers.size < MAX_RENDERERS) {
-    activeRenderers.add(id)
+  if (activeContexts.size < MAX_CONTEXTS) {
+    activeContexts.set(id, null)
     callback(true)
   } else {
-    pendingQueue.push({ id, callback })
+    waitingQueue.push({ id, callback })
   }
 }
 
 function releaseRenderer(id) {
-  activeRenderers.delete(id)
-  if (pendingQueue.length > 0) {
-    const next = pendingQueue.shift()
-    activeRenderers.add(next.id)
+  activeContexts.delete(id)
+  if (waitingQueue.length > 0) {
+    const next = waitingQueue.shift()
+    activeContexts.set(next.id, null)
     next.callback(true)
   }
 }
