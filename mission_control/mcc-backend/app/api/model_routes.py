@@ -40,14 +40,40 @@ def read_agent_model_config(agent_id):
     if os.path.exists(models_json):
         try:
             d = json.load(open(models_json, errors="ignore"))
-            result["tierBaseline"] = d.get("tierBaseline", "?")
-            result["baselineModel"] = d.get("baselineModel", "?")
-            result["tierA"] = d.get("tierA", [])
-            result["tierB"] = d.get("tierB", [])
-            result["tierC"] = d.get("tierC", [])
-            result["currentModel"] = d.get("baselineModel", "?")
+            if "tierBaseline" in d:
+                result["tierBaseline"] = d.get("tierBaseline", "?")
+                result["baselineModel"] = d.get("baselineModel", "?")
+                result["tierA"] = d.get("tierA", [])
+                result["tierB"] = d.get("tierB", [])
+                result["tierC"] = d.get("tierC", [])
+                result["currentModel"] = d.get("baselineModel", "?")
         except:
             pass
+
+    # Fallback: lees MODEL.md als geen tier-formaat gevonden
+    if result["tierBaseline"] == "?":
+        import re
+        model_md = f"{base}/MODEL.md"
+        if os.path.exists(model_md):
+            try:
+                md = open(model_md, errors="ignore").read()
+                # Lees Baseline Tier
+                m = re.search(r'\*\*Tier:\*\*\s*([ABC])', md)
+                if m: result["tierBaseline"] = m.group(1)
+                # Lees Baseline Model
+                m = re.search(r'\*\*Model:\*\*\s*(.+)', md)
+                if m:
+                    result["baselineModel"] = m.group(1).strip()
+                    result["currentModel"] = m.group(1).strip()
+                # Lees tiers uit tabel
+                for tier, key in [('A', 'tierA'), ('B', 'tierB'), ('C', 'tierC')]:
+                    rows = re.findall(rf'\|\s*{tier}[^|]*\|\s*([^|]+)\|', md)
+                    if rows:
+                        models = [r.strip() for r in rows[0].split(',') if r.strip() and r.strip() != '—']
+                        if models:
+                            result[key] = models
+            except:
+                pass
     return result
 
 @router.get("/api/models/overview")
