@@ -186,9 +186,10 @@ export default function SchedulerView({ theme }) {
       </div>
 
       {/* ── CONTENT SPLIT ── */}
-      <div style={{flex:1,display:'flex',overflow:'hidden',flexDirection:isMobile&&selected?'column':'row'}}>
+      <div style={{flex:1,display:'flex',overflow:'hidden',flexDirection:'row'}}>
 
         {/* Agent kaarten */}
+        {(!isMobile || !selected) && (
         <div style={{flex:selected&&!isMobile?'0 0 55%':1,overflowY:'auto',padding:isMobile?'12px 14px':'14px 20px',scrollbarWidth:'thin',scrollbarColor:`${acc} transparent`}}>
           <div style={{display:'grid',gridTemplateColumns:isMobile?'1fr':selected?'repeat(auto-fill,minmax(220px,1fr))':'repeat(auto-fill,minmax(240px,1fr))',gap:10}}>
             {filtered.map(agent => {
@@ -236,10 +237,11 @@ export default function SchedulerView({ theme }) {
             })}
           </div>
         </div>
+        )}
 
         {/* Detail panel */}
         {selected && (
-          <div style={{width:isMobile?'100%':'45%',flexShrink:0,borderLeft:isMobile?'none':`1px solid ${t.border}`,borderTop:isMobile?`1px solid ${t.border}`:'none',display:'flex',flexDirection:'column',overflow:'hidden',background:t.bgSecondary}}>
+          <div style={{width:isMobile?'100%':'45%',flexShrink:0,borderLeft:isMobile?'none':`1px solid ${t.border}`,display:'flex',flexDirection:'column',overflow:'hidden',background:t.bgSecondary}}>
             {(() => {
               const color = DC[selected.agent_id] || acc
               const hc = selected.health==='active'?'#22c55e':selected.health==='warning'?'#f59e0b':'#ef4444'
@@ -251,6 +253,7 @@ export default function SchedulerView({ theme }) {
                 <>
                   {/* Detail header */}
                   <div style={{padding:'14px 18px',borderBottom:`1px solid ${t.border}`,flexShrink:0,background:`${color}08`}}>
+                    {isMobile && <button onClick={()=>setSelected(null)} style={{fontSize:12,color:t.textMuted,background:'transparent',border:'none',cursor:'pointer',padding:'0 0 10px 0',display:'block'}}>← Terug naar agents</button>}
                     <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:12}}>
                       <div style={{width:4,height:28,background:color,borderRadius:2}}/>
                       <div style={{flex:1}}>
