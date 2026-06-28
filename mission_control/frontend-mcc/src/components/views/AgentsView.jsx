@@ -75,7 +75,6 @@ const EYE_STYLES  = ['scanner','hex','diamond','visor','orb','cross']
 function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, agentIndex = 99, rotDir = -1 }) {
   const mountRef = useRef(null)
   const stateRef = useRef({ animId:null, mouseX:0, mouseY:0, hovering:false, returning:false, rotY:0, rotX:0, velY:0.03, velX:0 })
-  const [shouldRender, setShouldRender] = React.useState(agentIndex < 8)
 
   useEffect(() => {
     const el = mountRef.current
@@ -376,19 +375,40 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       releaseRenderer(color + shape + kernStyle)
     }
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle, shouldRender])
+  const containerRef = useRef(null)
+  const [visible, setVisible] = React.useState(false)
+
   useEffect(() => {
-    if (agentIndex < 8) return
-    const timer = setTimeout(() => setShouldRender(true), (agentIndex - 7) * 300)
-    return () => clearTimeout(timer)
-  }, [agentIndex])
+    const el = containerRef.current
+    if (!el) return
+    const root = document.getElementById('mcc-scroll')
+    const obs = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting)
+    }, { root, rootMargin: '200px 0px', threshold: 0 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const id = color + shape + kernStyle + agentIndex
+    if (visible) {
+      requestRenderer(id, () => {})
+    } else {
+      releaseRenderer(id)
+    }
+  }, [visible])
+
   return (
-    <div style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
-      {shouldRender
+    <div ref={containerRef} style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
+      {visible
         ? <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
         : <div style={{width:'180px',height:'180px',display:'flex',alignItems:'center',justifyContent:'center'}}>
             <div style={{width:'80px',height:'80px',borderRadius:'50%',background:`radial-gradient(circle at 35% 30%, ${color}60, ${color}20)`,border:`2px solid ${color}40`,boxShadow:`0 0 15px ${glowColor}30`}}/>
           </div>
       }
+    </div>
+  )
+}
     </div>
   )
 }
