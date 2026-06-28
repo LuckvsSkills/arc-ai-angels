@@ -190,7 +190,7 @@ export default function SchedulerView({ theme }) {
       <div style={{flex:1,display:'flex',overflow:'hidden',flexDirection:'row'}}>
 
         {/* Agent kaarten */}
-        {(!isMobile || !showDetail) && <div style={{flex:selected&&!isMobile?'0 0 55%':1,overflowY:'auto',padding:isMobile?'12px 14px':'14px 20px',scrollbarWidth:'thin',scrollbarColor:`${acc} transparent`}}>}
+        {(!isMobile || !showDetail) && (
           <div style={{display:'grid',gridTemplateColumns:isMobile?'1fr':selected?'repeat(auto-fill,minmax(220px,1fr))':'repeat(auto-fill,minmax(240px,1fr))',gap:10}}>
             {filtered.map(agent => {
               const color = DC[agent.agent_id] || acc
@@ -236,7 +236,8 @@ export default function SchedulerView({ theme }) {
               )
             })}
           </div>
-        </div>}
+        </div>
+        )}
 
         {/* Detail panel */}
         {selected && (
