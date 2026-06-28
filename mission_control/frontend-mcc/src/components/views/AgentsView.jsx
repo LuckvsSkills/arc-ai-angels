@@ -375,34 +375,23 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       releaseRenderer(color + shape + kernStyle)
     }
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle])
-
-  const containerRef = useRef(null)
   const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
-  const rendered = useRef(false)
-
   useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-    const root = document.getElementById('mcc-scroll')
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !rendered.current) {
-        rendered.current = true
-        setShouldRender(true)
-        obs.disconnect()
-      }
-    }, { root, rootMargin: '200px 0px', threshold: 0 })
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
-
+    if (agentIndex < 6) return
+    const timer = setTimeout(() => setShouldRender(true), (agentIndex - 5) * 150)
+    return () => clearTimeout(timer)
+  }, [agentIndex])
   return (
-    <div ref={containerRef} style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
+    <div style={{width:'180px',height:'180px',flexShrink:0,cursor:'crosshair',position:'relative'}}>
       {shouldRender
         ? <div ref={mountRef} style={{width:'180px',height:'180px'}}/>
         : <div style={{width:'180px',height:'180px',display:'flex',alignItems:'center',justifyContent:'center'}}>
             <div style={{width:'80px',height:'80px',borderRadius:'50%',background:`radial-gradient(circle at 35% 30%, ${color}60, ${color}20)`,border:`2px solid ${color}40`,boxShadow:`0 0 15px ${glowColor}30`}}/>
           </div>
       }
+    </div>
+  )
+}
     </div>
   )
 }
