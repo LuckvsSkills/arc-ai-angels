@@ -75,6 +75,7 @@ const EYE_STYLES  = ['scanner','hex','diamond','visor','orb','cross']
 function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, agentIndex = 99, rotDir = -1 }) {
   const mountRef = useRef(null)
   const stateRef = useRef({ animId:null, mouseX:0, mouseY:0, hovering:false, returning:false, rotY:0, rotX:0, velY:0.03, velX:0 })
+  const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
 
   useEffect(() => {
     const el = mountRef.current
@@ -375,7 +376,6 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
       releaseRenderer(color + shape + kernStyle)
     }
   }, [color, glowColor, eyeColor, shape, kernStyle, eyeStyle, shouldRender])
-  const [shouldRender, setShouldRender] = React.useState(agentIndex < 6)
   useEffect(() => {
     if (agentIndex < 6) return
     const timer = setTimeout(() => setShouldRender(true), (agentIndex - 5) * 150)
