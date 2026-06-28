@@ -406,6 +406,10 @@ function AgentCanvas({ color, glowColor, eyeColor, shape, kernStyle, eyeStyle, a
             <div style={{width:'80px',height:'80px',borderRadius:'50%',background:`radial-gradient(circle at 35% 30%, ${color}60, ${color}20)`,border:`2px solid ${color}40`,boxShadow:`0 0 15px ${glowColor}30`}}/>
           </div>
       }
+    </div>
+  )
+}
+
 function ColorPick({ label, value, onChange, t }) {
   return (
     <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'6px'}}>
