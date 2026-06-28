@@ -241,7 +241,7 @@ export default function SchedulerView({ theme }) {
 
         {/* Detail panel */}
         {selected && (
-          <div style={{width:isMobile?'100%':'45%',flexShrink:0,borderLeft:isMobile?'none':`1px solid ${t.border}`,display:'flex',flexDirection:'column',overflow:'hidden',background:t.bgSecondary}}>
+          <div style={{width:isMobile?'100%':'45%',flexShrink:0,borderLeft:isMobile?'none':`1px solid ${t.border}`,display:'flex',flexDirection:'column',overflow:isMobile?'auto':'hidden',background:t.bgSecondary}}>
             {(() => {
               const color = DC[selected.agent_id] || acc
               const hc = selected.health==='active'?'#22c55e':selected.health==='warning'?'#f59e0b':'#ef4444'
