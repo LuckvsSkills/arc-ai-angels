@@ -596,7 +596,7 @@ export default function OpenClawView({ theme }) {
             </div>
             <div style={{ background: t.bgSecondary, border: `1px solid ${t.border}`, borderRadius: 12, overflow: 'hidden' }}>
               {/* Header */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px 120px', padding: '8px 16px', background: t.bgTertiary, borderBottom: `1px solid ${t.border}` }}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 80px' : '1fr 120px 120px', padding: '8px 16px', background: t.bgTertiary, borderBottom: `1px solid ${t.border}` }}>
                 {['Agent', 'Bestandsnaam', 'Grootte'].map(h => (
                   <div key={h} style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: t.textMuted }}>{h}</div>
                 ))}
@@ -608,7 +608,7 @@ export default function OpenClawView({ theme }) {
                 const pct = Math.round((db.size_kb / maxKb) * 100)
                 const regAgent = agents.find(a => a.id === db.agent)
                 return (
-                  <div key={db.agent} className="oc-row" style={{ display: 'grid', gridTemplateColumns: '1fr 120px 120px', padding: '10px 16px', borderBottom: `1px solid ${t.border}40`, alignItems: 'center', transition: 'background .12s' }}>
+                  <div key={db.agent} className="oc-row" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 80px' : '1fr 120px 120px', padding: '10px 16px', borderBottom: `1px solid ${t.border}40`, alignItems: 'center', transition: 'background .12s' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <span style={{ fontSize: 14 }}>{regAgent?.emoji || '🤖'}</span>
                       <div>
