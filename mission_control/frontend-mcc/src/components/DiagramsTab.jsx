@@ -160,13 +160,14 @@ export default function DiagramsTab({ theme }) {
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
 
         {/* Sidebar */}
-        {(!isMobile || !showDetail) && <div style={{ width: isMobile?'100%':240, borderRight: isMobile?'none':`1px solid ${t.border}`, overflowY: 'auto', flexShrink: 0 }}>
+        {(!isMobile || !showDetail) && (
+        <div style={{ width: isMobile?'100%':240, borderRight: isMobile?'none':`1px solid ${t.border}`, overflowY: 'auto', flexShrink: 0 }}>
           {filtered.map(diag => {
             const color = CHAPTER_COLORS[diag.chapter] || acc
             const icon = TYPE_ICONS[diag.type] || 'ti-schema'
             const isSelected = selected?.id === diag.id
             return (
-              <div key={diag.id} onClick={() => setSelected(diag)} style={{
+              <div key={diag.id} onClick={() => { setSelected(diag); if(isMobile) setShowDetail(true) }} style={{
                 padding: '10px 14px', cursor: 'pointer',
                 borderBottom: `1px solid ${t.border}`,
                 background: isSelected ? `${color}12` : 'transparent',
@@ -194,8 +195,11 @@ export default function DiagramsTab({ theme }) {
         </div>
 
         {/* Diagram weergave */}
-        {(!isMobile || !showDetail) && null}
-        {(!isMobile || showDetail) && <div style={{ flex: 1, overflowY: 'auto', padding: 20 }}>
+        </div>
+        )}
+        {(!isMobile || showDetail) && (
+        <div style={{ flex: 1, overflowY: 'auto', padding: 20 }}>
+          {isMobile && <button onClick={() => setShowDetail(false)} style={{fontSize:12,color:'#666',background:'transparent',border:'none',cursor:'pointer',padding:'0 0 12px 0',display:'block'}}>← Terug naar diagrammen</button>}
           {selected ? (
             <div>
               {/* Diagram header */}
