@@ -168,10 +168,10 @@ export default function PulseTab({ theme }) {
       </div>
 
       {/* ── MAIN SPLIT ── */}
-      <div style={{ flex: 1, display: 'flex', overflow: 'hidden', flexDirection: isMobile ? 'column' : 'row' }}>
+      <div style={{ flex: 1, display: 'flex', overflow: 'hidden', flexDirection: 'row' }}>
 
         {/* ── DOMEIN HEATMAP ── */}
-        <div style={{ flex: selected ? '0 0 55%' : 1, overflowY: 'auto', padding: '16px 18px', scrollbarWidth: 'thin', scrollbarColor: `${acc} transparent` }}>
+        {(!isMobile || !selected) && <div style={{ flex: selected ? '0 0 55%' : 1, overflowY: 'auto', padding: '16px 18px', scrollbarWidth: 'thin', scrollbarColor: `${acc} transparent` }}>}
           {domains.map(domain => {
             const color = domain.color || DOMAIN_COLORS[domain.id] || acc
             const domainAgents = domain.agents.map(id => getAgent(id)).filter(Boolean)
@@ -204,9 +204,10 @@ export default function PulseTab({ theme }) {
         </div>
 
         {/* ── DETAIL PANEL ── */}
+        }}
         {selected && (
           <div style={{
-            width: isMobile ? '100%' : '45%', flexShrink: 0,
+            width: isMobile ? '100%' : '45%', flexShrink: 0, overflow: isMobile ? 'auto' : undefined,
             borderLeft: isMobile ? 'none' : `1px solid ${t.border}`,
             borderTop: isMobile ? `1px solid ${t.border}` : 'none',
             display: 'flex', flexDirection: 'column', overflow: 'hidden',
