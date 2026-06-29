@@ -329,8 +329,8 @@ export default function SkillsTab({ theme }) {
               )}
             </div>
 
+            )}
             {/* Rechts — skill detail */}
-            {selectedSkill && (
               {(!isMobile || selectedSkill) && (
               <div style={{width:isMobile?'100%':260,flexShrink:0,background:t.bgSecondary,border:`1px solid ${t.border}`,borderRadius:10,padding:'12px 14px',overflowY:'auto',display:'flex',flexDirection:'column',gap:8}}>
                 <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
