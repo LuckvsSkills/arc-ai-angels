@@ -79,6 +79,13 @@ const OR = [
 ]
 
 export default function TiersTab({ theme }) {
+  const [winW, setWinW] = React.useState(window.innerWidth)
+  const isMobile = winW < 768
+  React.useEffect(() => {
+    const h = () => setWinW(window.innerWidth)
+    window.addEventListener('resize', h)
+    return () => window.removeEventListener('resize', h)
+  }, [])
   const t = theme?.colors || {}
   const acc = t.accent || '#c9a84c'
   const [tab, setTab] = useState('agents')
@@ -106,7 +113,7 @@ export default function TiersTab({ theme }) {
           </div>
 
           {/* TIER KAARTEN — groot en opvallend */}
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:12, marginBottom:14 }}>
+          <div style={{ display:'grid', gridTemplateColumns:isMobile?'1fr':'repeat(3,1fr)', gap:12, marginBottom:14 }}>
             {['A','B','C'].map(tier => {
               const info = TIER_CONFIG[tier]
               return (
@@ -158,7 +165,7 @@ export default function TiersTab({ theme }) {
                 <span style={{ fontSize:11, fontWeight:700, color:group.color, textTransform:'uppercase', letterSpacing:'0.1em' }}>{group.label}</span>
                 <div style={{ flex:1, height:1, background:`${group.color}20` }}/>
               </div>
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(140px, 1fr))', gap:8 }}>
+              <div style={{ display:'grid', gridTemplateColumns:isMobile?'repeat(auto-fill, minmax(100px, 1fr))':'repeat(auto-fill, minmax(140px, 1fr))', gap:8 }}>
                 {AGENTS.filter(a => group.agents.includes(a.id)).map(agent => {
                   const domainColor = DC[DO[agent.id]] || acc
                   const tierInfo = TIER_CONFIG[agent.tier]
@@ -233,7 +240,7 @@ export default function TiersTab({ theme }) {
           </div>
 
           {/* TWEE KOLOMMEN */}
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
+          <div style={{ display:'grid', gridTemplateColumns:isMobile?'1fr':'1fr 1fr', gap:16 }}>
 
             {/* DIRECTE PROVIDERS */}
             <div>
