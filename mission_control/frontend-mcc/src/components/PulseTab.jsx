@@ -168,10 +168,10 @@ export default function PulseTab({ theme }) {
       </div>
 
       {/* ── MAIN SPLIT ── */}
-      <div style={{ flex: 1, display: 'flex', overflow: 'hidden', flexDirection: isMobile ? 'column' : 'row' }}>
+      <div style={{ flex: 1, display: 'flex', overflow: 'hidden', flexDirection: 'row' }}>
 
         {/* ── DOMEIN HEATMAP ── */}
-        <div style={{ flex: selected ? '0 0 55%' : 1, overflowY: 'auto', padding: '16px 18px', scrollbarWidth: 'thin', scrollbarColor: `${acc} transparent` }}>
+        {(!isMobile || !selected) && <div style={{ flex: selected ? '0 0 55%' : 1, overflowY: 'auto', padding: '16px 18px', scrollbarWidth: 'thin', scrollbarColor: `${acc} transparent` }}>}
           {domains.map(domain => {
             const color = domain.color || DOMAIN_COLORS[domain.id] || acc
             const domainAgents = domain.agents.map(id => getAgent(id)).filter(Boolean)
@@ -203,13 +203,13 @@ export default function PulseTab({ theme }) {
           })}
         </div>
 
+        {(!isMobile || !selected) && null}
         {/* ── DETAIL PANEL ── */}
         {selected && (
           <div style={{
             width: isMobile ? '100%' : '45%', flexShrink: 0,
             borderLeft: isMobile ? 'none' : `1px solid ${t.border}`,
-            borderTop: isMobile ? `1px solid ${t.border}` : 'none',
-            display: 'flex', flexDirection: 'column', overflow: 'hidden',
+            display: 'flex', flexDirection: 'column', overflow: isMobile ? 'auto' : 'hidden',
             background: t.bgSecondary,
           }}>
             {/* Detail header */}
@@ -219,6 +219,7 @@ export default function PulseTab({ theme }) {
               const sc = successColor(selected.success_rate)
               return (
                 <>
+                  {isMobile && <button onClick={() => { setSelected(null); setMemory(null) }} style={{fontSize:12,color:t.textMuted,background:'transparent',border:'none',cursor:'pointer',padding:'8px 16px 0',display:'block'}}>← Terug</button>}
                   <div style={{ padding: '14px 16px', borderBottom: `1px solid ${t.border}`, flexShrink: 0, background: `${color}08` }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                       <div style={{ width: 3, height: 24, background: color, borderRadius: 2 }} />
