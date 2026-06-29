@@ -203,7 +203,6 @@ export default function PulseTab({ theme }) {
             )
           })}
         </div>
-
         </div>
         )}
         {/* ── DETAIL PANEL ── */}
