@@ -204,9 +204,9 @@ export default function PulseTab({ theme }) {
           })}
         </div>
 
-        {/* ── DETAIL PANEL ── */}
         </div>
         )}
+        {/* ── DETAIL PANEL ── */}
         {selected && (
           <div style={{
             width: isMobile ? '100%' : '45%', flexShrink: 0, overflow: isMobile ? 'auto' : undefined,
