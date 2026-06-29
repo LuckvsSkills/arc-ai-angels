@@ -295,6 +295,7 @@ export default function SkillsTab({ theme }) {
             {/* Midden — skills van geselecteerde agent */}
             {(!isMobile || selectedAgent) && (
             <div style={{flex:1,overflowY:'auto'}}>
+              {isMobile && selectedAgent && <button onClick={() => setSelectedAgent(null)} style={{fontSize:12,color:'#666',background:'transparent',border:'none',cursor:'pointer',padding:'0 0 12px 0',display:'block'}}>← Terug naar agents</button>}
               {!selectedAgent ? (
                 <div style={{textAlign:'center',color:t.textMuted,padding:40,fontSize:12}}>
                   <i className="ti ti-arrow-left" style={{fontSize:24,display:'block',marginBottom:10,opacity:0.3}}/>
