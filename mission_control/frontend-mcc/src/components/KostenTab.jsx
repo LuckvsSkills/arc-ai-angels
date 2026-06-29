@@ -7,6 +7,13 @@ const TOOL_COLORS = {
 }
 
 export default function KostenTab({ theme }) {
+  const [winW, setWinW] = React.useState(window.innerWidth)
+  const isMobile = winW < 768
+  React.useEffect(() => {
+    const h = () => setWinW(window.innerWidth)
+    window.addEventListener('resize', h)
+    return () => window.removeEventListener('resize', h)
+  }, [])
   const t = theme?.colors || {}
   const acc = t.accent || '#c9a84c'
   const [summary, setSummary] = useState(null)
@@ -66,7 +73,7 @@ export default function KostenTab({ theme }) {
           <div style={{display:'flex',flexDirection:'column',gap:14}}>
 
             {/* Totaal kaarten */}
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:10}}>
+            <div style={{display:'grid',gridTemplateColumns:isMobile?'repeat(2,1fr)':'repeat(4,1fr)',gap:10}}>
               {[
                 {l:'LLM Kosten',    v:`€${totals.llm_eur?.toFixed(4)||'0.0000'}`,  c:'#38bdf8', icon:'ti-brain',     sub:'token verbruik'},
                 {l:'Tool Kosten',   v:`€${totals.tool_eur?.toFixed(4)||'0.0000'}`, c:'#f59e0b', icon:'ti-tools',     sub:'API calls'},
@@ -96,7 +103,7 @@ export default function KostenTab({ theme }) {
               ) : (
                 <div style={{display:'flex',flexDirection:'column',gap:6}}>
                   {Object.entries(byTool).map(([tool, data]) => (
-                    <div key={tool} style={{background:`linear-gradient(135deg,#f59e0b15 0%,#f59e0b05 100%)`,border:'1.5px solid #f59e0b30',borderRadius:8,padding:'10px 14px',display:'grid',gridTemplateColumns:'150px 80px 80px 80px 1fr',alignItems:'center',gap:10}}>
+                    <div key={tool} style={{background:`linear-gradient(135deg,#f59e0b15 0%,#f59e0b05 100%)`,border:'1.5px solid #f59e0b30',borderRadius:8,padding:'10px 14px',display:'grid',gridTemplateColumns:isMobile?'1fr':'150px 80px 80px 80px 1fr',alignItems:'center',gap:10}}>
                       <span style={{fontSize:12,fontWeight:700,color:t.text,fontFamily:'monospace'}}>{tool}</span>
                       <span style={{fontSize:11,color:t.textMuted}}>{data.calls} calls</span>
                       <span style={{fontSize:11,color:data.failures>0?'#ef4444':'#22c55e'}}>{data.failures} fouten</span>
@@ -114,7 +121,7 @@ export default function KostenTab({ theme }) {
                 <i className="ti ti-alert-triangle" style={{fontSize:14,color:'#ef4444'}}/>
                 <span style={{fontSize:12,fontWeight:700,color:'#ef4444'}}>Budget Bewaking</span>
               </div>
-              <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:8}}>
+              <div style={{display:'grid',gridTemplateColumns:isMobile?'1fr':'repeat(2,1fr)',gap:8}}>
                 {[
                   {tool:'firecrawl', free:500,  used: byTool.firecrawl?.calls||0, alt:'web-readability'},
                   {tool:'tavily',    free:1000, used: byTool.tavily?.calls||0,    alt:'duckduckgo'},
@@ -171,7 +178,7 @@ export default function KostenTab({ theme }) {
               </div>
               <div style={{display:'flex',flexDirection:'column',gap:8}}>
                 {tiers.tiers.betaald_met_gratis_tier.map(tool => (
-                  <div key={tool.name} style={{background:'linear-gradient(135deg,#f59e0b15 0%,#f59e0b05 100%)',border:'1.5px solid #f59e0b30',borderRadius:10,padding:'12px 14px',display:'grid',gridTemplateColumns:'120px 120px 100px 1fr',alignItems:'center',gap:10}}>
+                  <div key={tool.name} style={{background:'linear-gradient(135deg,#f59e0b15 0%,#f59e0b05 100%)',border:'1.5px solid #f59e0b30',borderRadius:10,padding:'12px 14px',display:'grid',gridTemplateColumns:isMobile?'1fr':'120px 120px 100px 1fr',alignItems:'center',gap:10}}>
                     <span style={{fontSize:12,fontWeight:700,color:t.text,fontFamily:'monospace'}}>{tool.name}</span>
                     <div>
                       <div style={{fontSize:10,color:'#22c55e'}}>{tool.free} gratis/maand</div>
@@ -195,7 +202,7 @@ export default function KostenTab({ theme }) {
               </div>
               <div style={{display:'flex',flexDirection:'column',gap:8}}>
                 {tiers.tiers.betaald_per_gebruik.map(tool => (
-                  <div key={tool.name} style={{background:'linear-gradient(135deg,#ef444415 0%,#ef444405 100%)',border:'1.5px solid #ef444430',borderRadius:10,padding:'12px 14px',display:'grid',gridTemplateColumns:'120px 150px 1fr',alignItems:'center',gap:10}}>
+                  <div key={tool.name} style={{background:'linear-gradient(135deg,#ef444415 0%,#ef444405 100%)',border:'1.5px solid #ef444430',borderRadius:10,padding:'12px 14px',display:'grid',gridTemplateColumns:isMobile?'1fr':'120px 150px 1fr',alignItems:'center',gap:10}}>
                     <span style={{fontSize:12,fontWeight:700,color:t.text,fontFamily:'monospace'}}>{tool.name}</span>
                     <span style={{fontSize:10,color:'#ef4444'}}>{tool.cost}</span>
                     <div style={{display:'flex',alignItems:'center',gap:4}}>
@@ -217,11 +224,11 @@ export default function KostenTab({ theme }) {
             </div>
             {summary?.recent?.length > 0 ? (
               <div style={{display:'flex',flexDirection:'column',gap:5}}>
-                <div style={{display:'grid',gridTemplateColumns:'140px 100px 1fr 80px 80px',gap:8,padding:'6px 12px',fontSize:9,fontWeight:700,color:t.textMuted,textTransform:'uppercase',letterSpacing:'0.07em'}}>
+                <div style={{display:'grid',gridTemplateColumns:isMobile?'1fr 80px':'140px 100px 1fr 80px 80px',gap:8,padding:'6px 12px',fontSize:9,fontWeight:700,color:t.textMuted,textTransform:'uppercase',letterSpacing:'0.07em'}}>
                   <span>Tijd</span><span>Agent</span><span>Model</span><span>Tokens</span><span>Kosten</span>
                 </div>
                 {summary.recent.map((r,i) => (
-                  <div key={i} style={{background:t.bgSecondary,border:`1px solid ${t.border}`,borderRadius:8,padding:'8px 12px',display:'grid',gridTemplateColumns:'140px 100px 1fr 80px 80px',gap:8,alignItems:'center'}}>
+                  <div key={i} style={{background:t.bgSecondary,border:`1px solid ${t.border}`,borderRadius:8,padding:'8px 12px',display:'grid',gridTemplateColumns:isMobile?'1fr 80px':'140px 100px 1fr 80px 80px',gap:8,alignItems:'center'}}>
                     <span style={{fontSize:9,color:t.textMuted,fontFamily:'monospace'}}>{r.timestamp?.slice(0,16)}</span>
                     <span style={{fontSize:10,fontWeight:700,color:acc}}>{r.agent_id}</span>
                     <span style={{fontSize:9,color:t.textMuted,fontFamily:'monospace',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{r.model}</span>
