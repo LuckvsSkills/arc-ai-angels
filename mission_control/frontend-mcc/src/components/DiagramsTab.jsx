@@ -191,6 +191,7 @@ export default function DiagramsTab({ theme }) {
               </div>
             )
           })}
+        )}
         </div>
 
         {/* Diagram weergave */}
