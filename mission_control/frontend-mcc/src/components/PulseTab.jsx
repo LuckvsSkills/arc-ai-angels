@@ -171,7 +171,8 @@ export default function PulseTab({ theme }) {
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden', flexDirection: 'row' }}>
 
         {/* ── DOMEIN HEATMAP ── */}
-        {(!isMobile || !selected) && <div style={{ flex: selected ? '0 0 55%' : 1, overflowY: 'auto', padding: '16px 18px', scrollbarWidth: 'thin', scrollbarColor: `${acc} transparent` }}>}
+        {(!isMobile || !selected) && (
+        <div style={{ flex: selected ? '0 0 55%' : 1, overflowY: 'auto', padding: '16px 18px', scrollbarWidth: 'thin', scrollbarColor: `${acc} transparent` }}>
           {domains.map(domain => {
             const color = domain.color || DOMAIN_COLORS[domain.id] || acc
             const domainAgents = domain.agents.map(id => getAgent(id)).filter(Boolean)
@@ -203,7 +204,8 @@ export default function PulseTab({ theme }) {
           })}
         </div>
 
-        {(!isMobile || !selected) && null}
+        </div>
+        )}
         {/* ── DETAIL PANEL ── */}
         {selected && (
           <div style={{
