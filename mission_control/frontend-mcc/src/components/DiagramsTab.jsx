@@ -194,8 +194,7 @@ export default function DiagramsTab({ theme }) {
         </div>
 
         {/* Diagram weergave */}
-        {(!isMobile || !showDetail) && null}
-        {(!isMobile || showDetail) && <div style={{ flex: 1, overflowY: 'auto', padding: 20 }}>
+        <div style={{ flex: 1, overflowY: 'auto', padding: 20 }}>
           {selected ? (
             <div>
               {/* Diagram header */}
