@@ -191,8 +191,8 @@ export default function DiagramsTab({ theme }) {
               </div>
             )
           })}
-        )}
         </div>
+        )}
 
         {/* Diagram weergave */}
         <div style={{ flex: 1, overflowY: 'auto', padding: 20 }}>
