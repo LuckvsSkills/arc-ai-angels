@@ -83,9 +83,17 @@ function MermaidRenderer({ diag, t }) {
 }
 
 export default function DiagramsTab({ theme }) {
+  const [winW, setWinW] = React.useState(window.innerWidth)
+  const isMobile = winW < 768
+  React.useEffect(() => {
+    const h = () => setWinW(window.innerWidth)
+    window.addEventListener('resize', h)
+    return () => window.removeEventListener('resize', h)
+  }, [])
   const t = theme?.colors || {}
   const acc = t.accent || '#c9a84c'
   const [diagrams, setDiagrams] = useState([])
+  const [showDetail, setShowDetail] = React.useState(false)
   const [selected, setSelected] = useState(null)
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('all')
@@ -152,7 +160,7 @@ export default function DiagramsTab({ theme }) {
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
 
         {/* Sidebar */}
-        <div style={{ width: 240, borderRight: `1px solid ${t.border}`, overflowY: 'auto', flexShrink: 0 }}>
+        {(!isMobile || !showDetail) && <div style={{ width: isMobile?'100%':240, borderRight: isMobile?'none':`1px solid ${t.border}`, overflowY: 'auto', flexShrink: 0 }}>
           {filtered.map(diag => {
             const color = CHAPTER_COLORS[diag.chapter] || acc
             const icon = TYPE_ICONS[diag.type] || 'ti-schema'
@@ -186,7 +194,8 @@ export default function DiagramsTab({ theme }) {
         </div>
 
         {/* Diagram weergave */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: 20 }}>
+        {(!isMobile || !showDetail) && null}
+        {(!isMobile || showDetail) && <div style={{ flex: 1, overflowY: 'auto', padding: 20 }}>
           {selected ? (
             <div>
               {/* Diagram header */}
