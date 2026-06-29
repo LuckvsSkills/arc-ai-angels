@@ -291,6 +291,7 @@ export default function SkillsTab({ theme }) {
               })}
             </div>
 
+            )}
             {/* Midden — skills van geselecteerde agent */}
             {(!isMobile || selectedAgent) && (
             <div style={{flex:1,overflowY:'auto'}}>
