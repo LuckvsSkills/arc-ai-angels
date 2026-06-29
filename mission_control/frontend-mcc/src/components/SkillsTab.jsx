@@ -27,6 +27,13 @@ export default function SkillsTab({ theme }) {
   const t = theme?.colors || {}
   const acc = t.accent || '#c9a84c'
   const [tab, setTab] = useState('pending')
+  const [winW, setWinW] = React.useState(window.innerWidth)
+  const isMobile = winW < 768
+  React.useEffect(() => {
+    const h = () => setWinW(window.innerWidth)
+    window.addEventListener('resize', h)
+    return () => window.removeEventListener('resize', h)
+  }, [])
   const [pending, setPending] = useState(null)
   const [approved, setApproved] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -130,7 +137,7 @@ export default function SkillsTab({ theme }) {
       )}
 
       {/* Sub tabs */}
-      <div style={{display:'flex',gap:2,padding:'10px 16px 0',borderBottom:`1px solid ${t.border}`,flexShrink:0}}>
+      <div style={{display:'flex',gap:2,padding:'10px 16px 0',borderBottom:`1px solid ${t.border}`,flexShrink:0,overflowX:'auto'}}>
         {[
           ['pending','ti-clock','Pending Approvals', pendingCount],
           ['active','ti-check','Actieve Skills', null],
@@ -251,7 +258,7 @@ export default function SkillsTab({ theme }) {
           <div style={{display:'flex',gap:12,height:'100%'}}>
 
             {/* Links — agent kaarten per domein */}
-            <div style={{width:220,flexShrink:0,overflowY:'auto',display:'flex',flexDirection:'column',gap:12}}>
+            {(!isMobile || !selectedAgent) && <div style={{width:isMobile?'100%':220,flexShrink:0,overflowY:'auto',display:'flex',flexDirection:'column',gap:12}}>}
               {Object.entries(DOMAIN_AGENTS).map(([domain, agents]) => {
                 const domainColor = DOMAIN_COLORS[domain]
                 const activeAgents = agents.filter(a => byAgent[a])
@@ -284,7 +291,7 @@ export default function SkillsTab({ theme }) {
             </div>
 
             {/* Midden — skills van geselecteerde agent */}
-            <div style={{flex:1,overflowY:'auto'}}>
+            {(!isMobile || selectedAgent) && <div style={{flex:1,overflowY:'auto'}}>}
               {!selectedAgent ? (
                 <div style={{textAlign:'center',color:t.textMuted,padding:40,fontSize:12}}>
                   <i className="ti ti-arrow-left" style={{fontSize:24,display:'block',marginBottom:10,opacity:0.3}}/>
@@ -321,7 +328,7 @@ export default function SkillsTab({ theme }) {
 
             {/* Rechts — skill detail */}
             {selectedSkill && (
-              <div style={{width:260,flexShrink:0,background:t.bgSecondary,border:`1px solid ${t.border}`,borderRadius:10,padding:'12px 14px',overflowY:'auto',display:'flex',flexDirection:'column',gap:8}}>
+              {(!isMobile || selectedSkill) && <div style={{width:isMobile?'100%':260,flexShrink:0,background:t.bgSecondary,border:`1px solid ${t.border}`,borderRadius:10,padding:'12px 14px',overflowY:'auto',display:'flex',flexDirection:'column',gap:8}}>}
                 <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                   <div style={{fontSize:11,fontWeight:700,color:t.text,fontFamily:'monospace'}}>{selectedSkill}</div>
                   <button onClick={() => {setSelectedSkill(null); setSkillContent(null)}}
